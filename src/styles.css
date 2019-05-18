@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 96% 'Open Sans', Arial, Helvetica, sans-serif;
+    color: #4D626C;
+    background: #FFF;
+}
+
+.centro {
+    clear: both;
+    margin: 0 auto;
+    width: 990px;
+}
+
+.txtcenter {
+    text-align: center;
+}
+
+header .logos .figure {
+    float: left;
+}
+
+.header {
+    width: 100%;
+    padding: 15px 0 0 0;
+    height: auto;
+    background-color: #8F141B;
+}
+
+.footer {
+    clear: both;
+    float: left;
+    margin: 60px 0 20px 0;
+    width: 100%;
+    font-size: 94%;
+}
+
+.espacio {
+    padding: 15px;
+}
+
+.espacio1 {
+    padding: 15px;
+}
