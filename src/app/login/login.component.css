@@ -1,0 +1,39 @@
+.card-login{
+    border: 1px;
+    border-color: blue;
+    padding: 1.25rem;
+    text-align: center;
+    width: 45%;
+    margin: 0 auto;
+}
+
+
+.card-uscoHeader {
+    background-color: #8f141b;
+    border-color: #707070;
+    border-width: 1px;
+    color: #CAB691;
+    padding: 0.9rem;
+    
+}
+
+.card-uscoContent {
+    background-color: #F9E4E4;
+    border-color: #8F141B;
+    border-width: 1px;
+    padding: 0.9rem;
+}
+
+.uscoButton {
+    background-color: #8F141B;
+    border-color: #707070;
+    border-width: 1px;
+    color: #DFD4A6;
+    padding: .375rem .75rem;
+    cursor: pointer;
+}
+
+.uscolink {
+    color: #8F141B;
+    text-decoration: none;
+}
