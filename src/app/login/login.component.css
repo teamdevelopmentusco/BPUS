@@ -1,10 +1,32 @@
+.card {
+    width: 55%;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 0.25rem;
+}
 .card-login{
-    border: 1px;
-    border-color: blue;
+    
     padding: 1.25rem;
     text-align: center;
     width: 45%;
     margin: 0 auto;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 0.25rem;
 }
 
 
@@ -14,14 +36,26 @@
     border-width: 1px;
     color: #CAB691;
     padding: 0.9rem;
-    
 }
 
 .card-uscoContent {
     background-color: #F9E4E4;
+    color: #000;
     border-color: #8F141B;
     border-width: 1px;
     padding: 0.9rem;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  
+}
+
+.uscoInputs {
+    width: 70%;
+    border-radius: 6px;
+    padding: 0.5rem;
+    margin: 0.5em 1em 1em 1em;
+    background-color: #fff;
+    color: black;
 }
 
 .uscoButton {
@@ -30,6 +64,7 @@
     border-width: 1px;
     color: #DFD4A6;
     padding: .375rem .75rem;
+    margin: 1em 1em 1em 1em;
     cursor: pointer;
 }
 
@@ -37,3 +72,7 @@
     color: #8F141B;
     text-decoration: none;
 }
+
+input:invalid {
+    border-color: red ;
+  }
