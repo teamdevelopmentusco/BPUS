@@ -1,10 +1,34 @@
+<!--
+    - Proyecto:         BPUS
+    - Componente:       cambio-clave
+    - Desarrollador:    Cristian Julián Andrade Murillo
+    - Descripción:      Esta es la ventana en la que una se cambia de clave cuando el código de validación
+                        es verificado.  
+    -Última modificación:  18/05/2019   
+-->
+<app-header></app-header>
 
+<div class="container">
+    <div class="card w-50">
+        <div class="card-uscoHeader text-center card-header">BANCO DE PROYECTOS</div>
+        <div class="card-uscoContent card-body">
+            <h3 class="text-center">¿OLVIDASTE LA CONTRASEÑA?</h3>
+            <h6 class="text-center font-weight-lighter font-italic">Por favor llene el formulario</h6>
+            <br>
+            <form>
+                <div class="w-100 form-group custom-control-inline">
+                    <label for="pwd" class="font-weight-bold">CONTRASEÑA NUEVA:</label>
+                    <input type="password" class="form-control" id="pwd">
+                </div>
+                <div class="w-100 form-group custom-control-inline">
+                    <label for="pwd2" class="font-weight-bold">CONFIRME SU CONTRASEÑA:</label>
+                    <input type="password" class="form-control" id="pwd2">
+                </div>
+                <a routerLink="/codigoverificacion" class="btn btn-link uscolink">Volver ATRÁS</a>
+                <button type="submit" class="float-right btn uscoButton">ENVIAR CORREO</button>
+            </form>
+        </div>
+    </div>
+</div>
 
-
-
-  <h1>CAMBIO CLAVE </h1>
-
-  <h1>CAMBIO CLAVE </h1>
-
-  <h1>CAMBIO CLAVE !!!!!!!!!!!!!!! </h1>
-
+<app-footer></app-footer>
