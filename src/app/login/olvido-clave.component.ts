@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-olvido-clave',
   templateUrl: './olvido-clave.component.html',
-  styles: []
+  styleUrls: ['./login.component.css']
 })
 export class OlvidoClaveComponent implements OnInit {
 

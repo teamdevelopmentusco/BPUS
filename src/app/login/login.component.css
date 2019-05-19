@@ -12,8 +12,8 @@
     background-clip: border-box;
     border-radius: 0.25rem;
 }
-.card-login{
-    
+
+.card-login {
     padding: 1.25rem;
     text-align: center;
     width: 45%;
@@ -29,6 +29,20 @@
     border-radius: 0.25rem;
 }
 
+.card-olvidoClave {
+    padding: 1.25rem;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 0.25rem;
+}
 
 .card-uscoHeader {
     background-color: #8f141b;
@@ -46,7 +60,6 @@
     padding: 0.9rem;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-  
 }
 
 .uscoInputs {
@@ -74,5 +87,5 @@
 }
 
 input:invalid {
-    border-color: red ;
-  }
+    border-color: red;
+}

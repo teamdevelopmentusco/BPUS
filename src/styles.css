@@ -47,27 +47,3 @@ header .logos .figure {
 .espacio1 {
     padding: 15px;
 }
-
-.card-uscoHeader {
-    background-color: #8f141b;
-    border-color: #707070;
-    border-width: 1px;
-    color: #CAB691
-}
-
-.card-uscoContent {
-    background-color: #F9E4E4;
-    border-color: #8F141B;
-    border-width: 1px;
-}
-
-.uscoButton {
-    background-color: #8F141B;
-    border-color: #707070;
-    border-width: 1px;
-    color: #DFD4A6
-}
-
-.uscolink {
-    color: #8F141B;
-}
