@@ -10,23 +10,43 @@
 
 <div class="container">
     <div class="card-olvidoClave">
-        <div class="card-uscoHeader text-center card-header ">BANCO DE PROYECTOS</div>
+        <div class="card-uscoHeader text-center card-header ">
+            <h2>BANCO DE PROYECTOS</h2>
+        </div>
         <div class="card-uscoContent card-body ">
             <h3 class="text-center ">¿OLVIDASTE LA CONTRASEÑA?</h3>
             <h6 class="text-center font-weight-lighter font-italic ">Por favor llene el formulario</h6>
             <br>
-            <form>
-                <div class="w-100 form-group custom-control-inline ">
-                    <label for="pwd " class="font-weight-bold ">CONTRASEÑA NUEVA:</label>
-                    <input type="password " class="form-control " id="pwd ">
+            <form [formGroup]="passwordForm" (ngSubmit)="savePassword()" appPasswordMismatch>
+                <div class="w-100 form-group custom-control-inline">
+                    <label for="newPassword" class="font-weight-bold ">CONTRASEÑA NUEVA:</label>
+                    <input type="password" formControlName="newPassword" class="form-control " id="newPassword" title="Debe contener al menos una letra mayúscula y un número y un carácter especial, y mínimo 8 carácteres." pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,32}"
+                        required>
                 </div>
-                <div class="w-100 form-group custom-control-inline ">
-                    <label for="pwd2 " class="font-weight-bold ">CONFIRME SU CONTRASEÑA:</label>
-                    <input type="password " class="form-control " id="pwd2 ">
+                <div *ngIf="newPassword.invalid && (newPassword.dirty || newPassword.touched)" class="alert alert-danger">
+                    <div *ngIf="newPassword.errors.required">
+                        La contraseña es requerida.
+                    </div>
+                    <div *ngIf="newPassword.errors.invalidPassword">
+                        Debe contener al menos una letra mayúscula y un número y un carácter especial, y mínimo 8 carácteres.
+                    </div>
                 </div>
-                <a routerLink="/codigoverificacion " class="btn btn-link uscolink ">Volver ATRÁS</a>
-                <button type="submit " class="float-right btn uscoButton ">ENVIAR CORREO</button>
+                <div class="w-100 form-group custom-control-inline">
+                    <label for="confirmNewPassword" class="font-weight-bold ">CONFIRME SU CONTRASEÑA:</label>
+                    <input type="password" formControlName="confirmNewPassword" class="form-control " id="confirmNewPassword" title="Las contraseñas deben coincidir" required>
+                </div>
+                <div *ngIf="confirmNewPassword?.invalid && (confirmNewPassword.dirty || confirmNewPassword.touched)" class="alert alert-danger">
+                    <div *ngIf="confirmNewPassword.errors.required">
+                        La contraseña es requerida.
+                    </div>
+                </div>
+                <div *ngIf="passwordForm.errors?.mismatch && (passwordForm.touched || passwordForm.dirty)" class="alert alert-danger">
+                    Las contraseñas no coinciden.
+                </div>
+                <button type="submit" [disabled]="!passwordForm.valid" class="float-right btn uscoButton">CONFIRMAR</button>
             </form>
+            <br>
+            <a routerLink="/olvidoclave" class="float-left p-1 uscolink">Volver ATRÁS</a>
         </div>
     </div>
 </div>

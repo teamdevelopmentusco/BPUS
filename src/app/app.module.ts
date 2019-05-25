@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PagesComponent } from './pages/pages.component';
@@ -10,9 +10,8 @@ import { CodigoVerificacionComponent } from './login/codigo-verificacion.compone
 import { OlvidoClaveComponent } from './login/olvido-clave.component';
 import { CambioClaveComponent } from './login/cambio-clave.component';
 
-// Enrutamiento 
+// Enrutamiento
 import { APP_ROUTES } from './app.routing';
-
 
 @NgModule({
   declarations: [
@@ -22,13 +21,13 @@ import { APP_ROUTES } from './app.routing';
     CodigoVerificacionComponent,
     OlvidoClaveComponent,
     CambioClaveComponent,
- 
   ],
   imports: [
     BrowserModule,
     SharedModule,
-    APP_ROUTES
-    
+    APP_ROUTES,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

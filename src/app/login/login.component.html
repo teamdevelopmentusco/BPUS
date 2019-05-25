@@ -3,18 +3,31 @@
 
 <div class="card-login">
     <div class="card-uscoHeader">
-        <h1>BANCO DE PROYECTOS</h1>
+        <h2>BANCO DE PROYECTOS</h2>
     </div>
     <div class="card-uscoContent">
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
             <h2>LOGIN</h2>
             <br>
             <p>USUARIO:</p>
-            <input class="uscoInputs" type="text" name="id" placeholder="Digite su numero de ID" maxlength="10" required pattern="([0-9]){2,10}" title="El ID es de maximo 10 caracteres solo numericos" onkeypress="return validaNumericos(event)">
+            <input class="uscoInputs" type="text" formControlName="id" name="id" placeholder="Digite su número de ID" maxlength="10" required pattern="([0-9]){1,10}" title="El ID es de máximo 10 carácteres solo numericos" required>
+            <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
+                <div *ngIf="id.errors.required">
+                    El ID es requerido.
+                </div>
+                <div *ngIf="id.errors.pattern">
+                    El ID es de máximo 10 carácteres solo numéricos.
+                </div>
+            </div>
             <p>CONTRASEÑA:</p>
-            <input class="uscoInputs" type="password" placeholder="Digite su contraseña">
+            <input class="uscoInputs" type="password" formControlName="password" placeholder="Digite su contraseña" required>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password.errors.required">
+                    La contraseña es requerida.
+                </div>
+            </div>
             <div class="card g-recaptcha" data-sitekey="6LePQaQUAAAAAIjw9HuJbJkbkTt7MrsNW1DMxnar"></div>
-            <input type="submit" class="uscoButton" value="ENTRAR">
+            <input type="submit" [disabled]="!loginForm.valid" class="btn uscoButton" value="ENTRAR">
         </form>
         <a class="uscolink" routerLink="/olvidoclave">¿Olvidó su contraseña?</a>
     </div>
