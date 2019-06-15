@@ -12,6 +12,9 @@ import { CambioClaveComponent } from './login/cambio-clave.component';
 
 // Enrutamiento
 import { APP_ROUTES } from './app.routing';
+import { RegistroUnoComponent } from './registro-uno/registro-uno.component';
+import { RegistroDosComponent } from './registro-dos/registro-dos.component';
+import { RegistroTresComponent } from './registro-tres/registro-tres.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { APP_ROUTES } from './app.routing';
     CodigoVerificacionComponent,
     OlvidoClaveComponent,
     CambioClaveComponent,
+    RegistroUnoComponent,
+    RegistroDosComponent,
+    RegistroTresComponent,
   ],
   imports: [
     BrowserModule,
