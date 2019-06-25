@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="usco-card">
+    <div class="card-uscoHeader">
+        <h2>BANCO DE PROYECTOS</h2>
+    </div>
+    <div class="card-uscoContent">
+        <h2 class="text-center">REGISTRE SUS DATOS</h2>
+        <h6 class="text-center font-weight-lighter font-italic">Por favor digite el siguiente formulario</h6>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="nombre" class="font-weight-bold">NOMBRES</label>
+                        <input type="text" class="uscoInputs" name="nombre" placeholder="Digite su nombre">
+                    </div>
+                    <h6>SEDE UNIVERSITARIA</h6>
+                    <select name="cars" class="custom-select uscoInputs mb-3">
+                        <option selected>Seleccione...</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <h6>FACULTAD</h6>
+                    <select name="cars" class="custom-select uscoInputs mb-3">
+                        <option selected>Seleccione...</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <h6>PROGRAMA</h6>
+                    <select name="cars" class="custom-select uscoInputs mb-3">
+                        <option selected>Seleccione...</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="code" class="font-weight-bold">APELLIDOS</label>
+                        <input class="uscoInputs" type="text" name="code" placeholder="Digite sus apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label for="id" class="font-weight-bold">TELÉFONO</label>
+                        <input class="uscoInputs" type="text" name="id" placeholder="Digite su número teléfonico">
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LePQaQUAAAAAIjw9HuJbJkbkTt7MrsNW1DMxnar" style="transform:scale(0.85);-webkit-transform:scale(0.85);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
+                </div>
+            </div>
+            <div class="txtcenter">
+                <a class="uscolink" routerLink="/registro-dos">ATRAS</a>
+                <input type="submit" value="SIGUIENTE" class="uscoButton">
+            </div>
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

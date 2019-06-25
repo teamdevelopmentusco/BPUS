@@ -4,27 +4,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PagesComponent } from './pages/pages.component';
-import { LoginComponent } from './login/login.component';
 import { SharedModule } from './shared/shared.module';
-import { CodigoVerificacionComponent } from './login/codigo-verificacion.component';
+// login
+import { LoginComponent } from './login/login.component';
 import { OlvidoClaveComponent } from './login/olvido-clave.component';
 import { CambioClaveComponent } from './login/cambio-clave.component';
+// registro
+import { RegistroComponent } from './registro/registro.component';
+import { RegistroDosComponent } from './registro/registro-dos.component';
+import { RegistroTresComponent } from './registro/registro-tres.component';
 
 // Enrutamiento
 import { APP_ROUTES } from './app.routing';
-import { RegistroUnoComponent } from './registro-uno/registro-uno.component';
-import { RegistroDosComponent } from './registro-dos/registro-dos.component';
-import { RegistroTresComponent } from './registro-tres/registro-tres.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PagesComponent,
-    CodigoVerificacionComponent,
     OlvidoClaveComponent,
     CambioClaveComponent,
-    RegistroUnoComponent,
+    RegistroComponent,
     RegistroDosComponent,
     RegistroTresComponent,
   ],

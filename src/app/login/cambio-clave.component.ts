@@ -5,8 +5,7 @@ import { passwordMatchValidator } from '../shared/password-match.directive';
 
 @Component({
   selector: 'app-cambio-clave',
-  templateUrl: './cambio-clave.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './cambio-clave.component.html'
 })
 export class CambioClaveComponent implements OnInit {
   passwordForm: any;

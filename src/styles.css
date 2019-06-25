@@ -1,10 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font: 96% 'Open Sans', Arial, Helvetica, sans-serif;
     color: #4D626C;
@@ -40,10 +35,65 @@ header .logos .figure {
     font-size: 94%;
 }
 
-.espacio {
-    padding: 15px;
+.usco-card {
+    padding: 1.25rem;
+    width: 45%;
+    margin: 0 auto;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 0.25rem;
 }
 
-.espacio1 {
-    padding: 15px;
+.card-uscoHeader {
+    background-color: #8f141b;
+    border-color: #707070;
+    border-width: 1px;
+    color: #CAB691;
+    padding: 0.9rem;
+    text-align: center;
+}
+
+.card-uscoContent {
+    background-color: #F9E4E4;
+    color: #000;
+    border-color: #8F141B;
+    border-width: 1px;
+    padding: 0.9rem;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.uscoInputs {
+    width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 0.4rem;
+    font-family: Segoe UI;
+    color: black;
+    font-style: italic;
+}
+
+.uscoButton {
+    background-color: #8F141B;
+    border-color: #707070;
+    border-width: 1px;
+    color: #DFD4A6;
+    padding: .375rem .75rem;
+    margin: 1em 1em 1em 1em;
+    cursor: pointer;
+}
+
+.uscolink {
+    color: #8F141B;
+    text-decoration: none;
+}
+
+input:invalid {
+    border-color: red;
 }

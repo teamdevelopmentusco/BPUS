@@ -4,8 +4,7 @@ import { ValidationService } from '../shared/validation.service';
 
 @Component({
   selector: 'app-olvido-clave',
-  templateUrl: './olvido-clave.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './olvido-clave.component.html'
 })
 export class OlvidoClaveComponent implements OnInit {
   emailForm: any;

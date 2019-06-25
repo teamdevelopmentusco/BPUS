@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="usco-card">
+    <div class="card-uscoHeader">
+        <h2>BANCO DE PROYECTOS</h2>
+    </div>
+    <div class="card-uscoContent">
+        <h2 class="text-center">REGISTRE SUS DATOS</h2>
+        <h6 class="text-center font-weight-lighter font-italic">Por favor digite el siguiente formulario</h6>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-sm-5">
+                    <h6>TIPO DE USUARIO</h6>
+                    <select name="cars" class="custom-select uscoInputs mb-3">
+                        <option selected>Seleccione...</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <h6>TIPO DE IDENTIFICACION</h6>
+                    <select name="cars" class="custom-select uscoInputs mb-3">
+                        <option selected>Seleccione...</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+                <div class="col-sm-7">
+                    <div class="form-group">
+                        <label for="code" class="font-weight-bold">CÓDIGO ESTUDIANTIL</label>
+                        <input class="uscoInputs" type="text" name="code" placeholder="Digite su código" maxlength="11" required pattern="([0-9]){11}" title="El código es de 11 carácteres numericos">
+                    </div>
+                    <div class="form-group">
+                        <label for="id" class="font-weight-bold">NÚMERO DE DOCUMENTO</label>
+                        <input class="uscoInputs" type="text" name="id" placeholder="Digite su ID" maxlength="10" required pattern="([0-9]){10}" title="El ID es de máximo 10 carácteres numericos">
+                    </div>
+                </div>
+            </div>
+            <div class="txtcenter">
+                <a class="uscolink" routerLink="/registro">ATRAS</a>
+                <input type="submit" value="SIGUIENTE" class="uscoButton">
+            </div>
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

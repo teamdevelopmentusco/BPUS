@@ -7,35 +7,31 @@
     -Última modificación:  19/05/2019
 -->
 <app-header></app-header>
-
-<div class="container">
-    <div class="card-olvidoClave">
-        <div class="card-uscoHeader text-center card-header">
-            <h2>BANCO DE PROYECTOS</h2>
-        </div>
-        <div class="card-uscoContent card-body">
-            <h3 class="text-center">¿OLVIDASTE LA CONTRASEÑA?</h3>
-            <h6 class="text-center font-weight-lighter font-italic">Por favor llene el formulario</h6>
-            <br>
-            <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
-                <div class="form-group">
-                    <label for="email" class="font-weight-bold">Correo:</label>
-                    <input formControlName="email" class="form-control" placeholder="Digite su Correo Institucional" id="email" pattern="[a-z0-9._%+-]+@+usco.edu.co" title="El correo debe ser institucional: @usco.edu.co" required>
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-                        <div *ngIf="email.errors.required">
-                            El correo es requerido.
-                        </div>
-                        <div *ngIf="email.errors.invalidEmailAddress">
-                            El correo debe ser institucional: @usco.edu.co
-                        </div>
+<div class="usco-card">
+    <div class="card-uscoHeader">
+        <h2>BANCO DE PROYECTOS</h2>
+    </div>
+    <div class="card-uscoContent">
+        <h3 class="text-center">¿OLVIDASTE LA CONTRASEÑA?</h3>
+        <h6 class="text-center font-weight-lighter font-italic">Por favor llene el formulario</h6>
+        <br>
+        <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
+            <div class="form-group">
+                <label for="email" class="font-weight-bold">Correo:</label>
+                <input formControlName="email" class="uscoInputs" placeholder="Digite su Correo Institucional" id="email" pattern="[a-z0-9._%+-]+@+usco.edu.co" title="El correo debe ser institucional: @usco.edu.co" required>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        El correo es requerido.
+                    </div>
+                    <div *ngIf="email.errors.invalidEmailAddress">
+                        El correo debe ser institucional: @usco.edu.co
                     </div>
                 </div>
-                <button type="submit" [disabled]="!emailForm.valid" class="float-right btn uscoButton">ENVIAR CORREO</button>
-            </form>
-            <br>
-            <a routerLink="/" class="float-left btn btn-link uscolink">Volver al LOGIN</a>
-        </div>
+            </div>
+            <button type="submit" [disabled]="!emailForm.valid" class="float-right btn uscoButton">ENVIAR CORREO</button>
+        </form>
+        <br>
+        <a routerLink="/login" class="float-left btn btn-link uscolink">Volver al LOGIN</a>
     </div>
 </div>
-
 <app-footer></app-footer>
