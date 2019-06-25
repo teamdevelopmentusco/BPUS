@@ -97,3 +97,59 @@ header .logos .figure {
 input:invalid {
     border-color: red;
 }
+.uscoSearchTitulo {
+    width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 0.4rem;
+    font-family: Segoe UI;
+    color: black;
+}
+.flechaSelect {
+    background-image: url(/assets/flechaSelect.png);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.iconoSelect{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 100px 100px 0 100px;
+    border-color: #8f141a transparent transparent transparent;
+}
+.categoriasSearch{
+    background-color: #8f141b;
+    border-width: 1px;
+    padding: 0.9rem;
+    text-align: center;
+    border-radius: 20px;
+}
+.colorCategoria{
+    color: #dfd9bf;
+    text-align: center;
+}
+.uscoInputSearch {
+    width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 0.6rem;
+    font-family: Segoe UI;
+    color: black;
+    font-style: italic;
+}
+.selectSearch {
+    width: 100%;
+    background-color: #fff;
+    padding: 0.6rem;
+    font-family: Segoe UI;
+    color: black;
+    font-style: italic;
+}
+.flechaSelect {
+    border: 1px solid #ccc;
+    background: URL(/assets/flechaSelect.png) no-repeat 298px 3px #fff !important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
