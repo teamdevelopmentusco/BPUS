@@ -16,22 +16,32 @@
         <h6 class="text-center font-weight-lighter font-italic ">Por favor llene el formulario</h6>
         <br>
         <form [formGroup]="passwordForm" (ngSubmit)="savePassword()" appPasswordMismatch>
-            <div class="w-100 form-group custom-control-inline">
+            <div class="mx-5 form-group">
                 <label for="newPassword" class="font-weight-bold ">CONTRASEÑA NUEVA:</label>
-                <input type="password" formControlName="newPassword" class="uscoInputs" id="newPassword" placeholder="contraseña" title="Debe contener al menos una letra mayúscula y un número y un carácter especial, y mínimo 8 carácteres." pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,32}"
-                    required>
+                <div class="mb-2 input-group">
+                    <input type="password" formControlName="newPassword" class="uscoInputs form-control" id="newPassword" placeholder="Digite una nueva contraseña" maxlength="30" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,30}" required>
+                    <div class="input-group-append">
+                        <button class="input-group-text input-inside-button" type="button" (click)="showpassword('newPassword','showpass1')"><i class='far fa-eye-slash' id="showpass1"></i></button>
+                    </div>
+                </div>
+                <p>Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
             </div>
             <div *ngIf="newPassword.invalid && (newPassword.dirty || newPassword.touched)" class="alert alert-danger">
                 <div *ngIf="newPassword.errors.required">
                     La contraseña es requerida.
                 </div>
                 <div *ngIf="newPassword.errors.invalidPassword">
-                    Debe contener al menos una letra mayúscula y un número y un carácter especial, y mínimo 8 carácteres.
+                    Hay algo mal :)
                 </div>
             </div>
-            <div class="w-100 form-group custom-control-inline">
+            <div class="mx-5 form-group">
                 <label for="confirmNewPassword" class="font-weight-bold ">CONFIRME SU CONTRASEÑA:</label>
-                <input type="password" formControlName="confirmNewPassword" class="uscoInputs" id="confirmNewPassword" placeholder="confirme contraseña" title="Las contraseñas deben coincidir" required>
+                <div class="mb-2 input-group">
+                    <input type="password" formControlName="confirmNewPassword" class="uscoInputs form-control" id="confirmNewPassword" placeholder="Confirme la contraseña" maxlength="30" required>
+                    <div class="input-group-append">
+                        <button class="input-group-text input-inside-button" type="button" (click)="showpassword('confirmNewPassword','showpass2')"><i class='far fa-eye-slash' id="showpass2"></i></button>
+                    </div>
+                </div>
             </div>
             <div *ngIf="confirmNewPassword?.invalid && (confirmNewPassword.dirty || confirmNewPassword.touched)" class="alert alert-danger">
                 <div *ngIf="confirmNewPassword.errors.required">
@@ -41,10 +51,11 @@
             <div *ngIf="passwordForm.errors?.mismatch && (passwordForm.touched || passwordForm.dirty)" class="alert alert-danger">
                 Las contraseñas no coinciden.
             </div>
-            <button type="submit" [disabled]="!passwordForm.valid" class="float-right btn uscoButton">CONFIRMAR</button>
+            <div class="txtcenter">
+                <a routerLink="/inicio" class="mr-5 btn btn-info">CANCELAR</a>
+                <button type="submit" [disabled]="!passwordForm.valid" class="btn uscoButton">CONFIRMAR</button>
+            </div>
         </form>
-        <br>
-        <a routerLink="/olvido-clave" class="float-left p-1 uscolink">Volver ATRÁS</a>
     </div>
 </div>
 <app-footer></app-footer>

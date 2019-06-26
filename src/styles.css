@@ -73,10 +73,15 @@ header .logos .figure {
     width: 100%;
     border-radius: 20px;
     background-color: #fff;
-    padding: 0.4rem;
     font-family: Segoe UI;
     color: black;
     font-style: italic;
+    display: block;
+    padding: 0.375rem 0.75rem;
+    line-height: 1.5;
+    color: #495057;
+    background-clip: padding-box;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .uscoButton {
@@ -95,5 +100,11 @@ header .logos .figure {
 }
 
 input:invalid {
-    border-color: red;
+    border: 1px solid red;
+    box-shadow: 0 0 3px 1px red;
+}
+
+.input-inside-button {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }

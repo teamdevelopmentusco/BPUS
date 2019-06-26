@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ValidationService } from '../shared/validation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-olvido-clave',
@@ -9,7 +10,7 @@ import { ValidationService } from '../shared/validation.service';
 export class OlvidoClaveComponent implements OnInit {
   emailForm: any;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.emailForm = this.formBuilder.group({
       email: ['', [Validators.required, ValidationService.emailValidator]]
     });
@@ -23,7 +24,7 @@ export class OlvidoClaveComponent implements OnInit {
 
   sendEmail() {
     if (this.emailForm.dirty && this.emailForm.valid) {
-      alert(`Link de cambio de clave enviado a : ${this.emailForm.value.email}`);
+      this.router.navigate(['/cambio-clave']);
     }
   }
 

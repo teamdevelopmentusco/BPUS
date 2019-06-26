@@ -13,21 +13,27 @@
                 <div class="txtcenter">
                     <label for="id" class="font-weight-bold">USUARIO:</label>
                 </div>
-                <input class="uscoInputs" type="text" formControlName="id" name="id" placeholder="Digite su número de ID" maxlength="10" required pattern="([0-9]){1,10}" title="El ID es de máximo 10 carácteres solo numericos" required>
+                <input class="uscoInputs form-control" type="text" formControlName="id" name="id" placeholder="Digite su número de ID" maxlength="10" pattern="([0-9]){8,10}" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' title="El ID es entre 8-10 carácteres solo numéricos"
+                    required>
             </div>
             <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
                 <div *ngIf="id.errors.required">
                     El ID es requerido.
                 </div>
                 <div *ngIf="id.errors.pattern">
-                    El ID es de máximo 10 carácteres solo numéricos.
+                    El ID es entre 8-10 carácteres solo numéricos.
                 </div>
             </div>
             <div class="mx-5 form-group">
                 <div class="txtcenter">
                     <label for="password" class="font-weight-bold">CONTRASEÑA:</label>
                 </div>
-                <input class="uscoInputs" type="password" formControlName="password" placeholder="Digite su contraseña" required>
+                <div class="input-group">
+                    <input class="uscoInputs form-control" type="password" formControlName="password" id="password" placeholder="Digite su contraseña" maxlength="30" required>
+                    <div class="input-group-append">
+                        <button class="input-group-text input-inside-button" type="button" (click)="showpassword()"><i class='far fa-eye-slash' id="showpass"></i></button>
+                    </div>
+                </div>
             </div>
             <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
                 <div *ngIf="password.errors.required">
