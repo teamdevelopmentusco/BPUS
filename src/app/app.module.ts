@@ -16,6 +16,7 @@ import { RegistroTresComponent } from './registro/registro-tres.component';
 
 // Enrutamiento
 import { APP_ROUTES } from './app.routing';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { APP_ROUTES } from './app.routing';
     RegistroComponent,
     RegistroDosComponent,
     RegistroTresComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
