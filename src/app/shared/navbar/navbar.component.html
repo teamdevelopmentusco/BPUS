@@ -1,0 +1,39 @@
+<!--
+    - Proyecto:         BPUS
+    - Componente:       Navbar de perfiles
+    - Desarrollador:    John David Guerrero Córdoba
+    - Descripción:      Menú de navegación realizado con dropdowns button, aplicado en todas las páginas
+                        pero se puede habilitar donde las requiera el diseño.  
+    -Última modificación:  18/07/2019   
+-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 60px;border-style:solid;border-width: 1px">
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <div class="btn-group" role="group">
+      <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btnGroupDrop1" class="btn btn-outline my-2 my-sm-0 rounded-circle" style="margin-right: 20px; align-items: center;background-color: #E8E8E8"><span class="fas fa-bars fa-lg"></span></button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="background-color:#f6dbdb;margin-top: 12px;margin-left:0px">
+        <a class="dropdown-header" href="#" ><img src="../assets/universidad-surcolombiana.png" alt="" style="width: 250px"></a>
+        <hr>
+        <a class="dropdown-item uscoMenuNav" onfocus="focus" href="#">> Plantilla de solicitud</a>
+        <hr>
+        <a class="dropdown-item uscoMenuNav" href="#">> Inicio</a>
+        <hr>
+        <a class="dropdown-item uscoMenuNav" href="#">> Plantilla de anteproyecto</a>
+        <hr>
+        <a class="dropdown-item uscoMenuNav" href="#">> Subir anteproyecto</a>
+        <hr>
+        <a class="dropdown-item uscoMenuNav" href="#">> Subir proyecto</a>
+      </div>
+    </div>
+  </div>
+  <h4 style="margin-top: 5px"> Menu</h4>
+  <form class="form-inline" style="margin-left: 250px">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text uscoInputSearch" id="basic-addon1"><span class="fa fa-search"></span></span>
+      </div>
+      <input type="text" class="form-control uscoInputSearch" placeholder=""  aria-describedby="basic-addon1" style="width: 580px">
+    </div>
+    <input type="button" class="btn uscoButton" value="BUSCAR" style="width: 100px;height: 40px;border-radius: 50px;margin-left: 5px;">
+  </form>
+</nav>

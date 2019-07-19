@@ -118,6 +118,17 @@ input:invalid {
     font-family: Segoe UI;
     color: black;
 }
+.uscoMenuNav {
+    width: 100%;
+    padding: 0.4rem;
+    font-family: Segoe UI;
+    color: black;
+    padding: 10px;
+    font-size: 20px;
+}
+.focus{
+    background-color: #ffecec;
+}
 
 .flechaSelect {
     background-image: url(/assets/flechaSelect.png);

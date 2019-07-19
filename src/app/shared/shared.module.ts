@@ -4,9 +4,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, NopagefoundComponent],
+  declarations: [HeaderComponent, FooterComponent, NopagefoundComponent, NavbarComponent],
   imports: [
     CommonModule,
     RouterModule
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
   exports: [
     HeaderComponent,
     FooterComponent,
-    NopagefoundComponent
+    NopagefoundComponent,
+    NavbarComponent
   ]
 })
 export class SharedModule { }
