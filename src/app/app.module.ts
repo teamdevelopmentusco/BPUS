@@ -17,6 +17,8 @@ import { RegistroTresComponent } from './registro/registro-tres.component';
 // Enrutamiento
 import { APP_ROUTES } from './app.routing';
 import { SearchComponent } from './search/search.component';
+import { EstudianteComponent } from './estudiante/estudiante.component';
+import { SolicitudComponent } from './estudiante/solicitud.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { SearchComponent } from './search/search.component';
     RegistroDosComponent,
     RegistroTresComponent,
     SearchComponent,
+    EstudianteComponent,
+    SolicitudComponent,
   ],
   imports: [
     BrowserModule,

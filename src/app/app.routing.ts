@@ -8,6 +8,7 @@ import { CambioClaveComponent } from './login/cambio-clave.component';
 import { OlvidoClaveComponent } from './login/olvido-clave.component';
 import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
 import { SearchComponent } from './search/search.component';
+import { SolicitudComponent } from './estudiante/solicitud.component';
 
 
 
@@ -20,6 +21,7 @@ const appRoutes: Routes = [ // Se crea el objeto de tipo Routes,
     { path: 'registro-dos' , component: RegistroDosComponent},
     { path: 'registro-tres' , component: RegistroTresComponent},
     { path: 'search' , component: SearchComponent},
+    { path: 'solicitud' , component: SolicitudComponent},
     // loadChildren = primera parte es el path al modulo que quiero cargar y la segunda es el nombre del modulo.
 
   { path: '**' , component: NopagefoundComponent}, // Los ** es un comodin para cualquier ruta invalida.

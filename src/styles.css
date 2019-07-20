@@ -17,13 +17,13 @@ body {
 }
 
 header .logos .figure {
-    float: left;
+    float: center;
 }
 
 .header {
     width: 100%;
-    padding: 15px 0 0 0;
-    height: auto;
+    padding: 5px 0 0 0;
+    height: 110px;
     background-color: #8F141B;
 }
 
@@ -125,6 +125,15 @@ input:invalid {
     color: black;
     padding: 10px;
     font-size: 20px;
+}
+.uscoSesion {
+    width: 100%;
+    padding: 0.4rem;
+    font-family: Segoe UI;
+    color: #8F141B;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 500;
 }
 .focus{
     background-color: #ffecec;
