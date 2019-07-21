@@ -14,11 +14,20 @@ import { RegistroComponent } from './registro/registro.component';
 import { RegistroDosComponent } from './registro/registro-dos.component';
 import { RegistroTresComponent } from './registro/registro-tres.component';
 
+// docentes
+import { DocenteComponent } from './docente/docente.component';
+import { DocenteDosComponent } from './docente/docente-dos.component';
+import { DocenteTresComponent } from './docente/docente-tres.component';
+
+
 // Enrutamiento
 import { APP_ROUTES } from './app.routing';
 import { SearchComponent } from './search/search.component';
 import { EstudianteComponent } from './estudiante/estudiante.component';
 import { SolicitudComponent } from './estudiante/solicitud.component';
+
+
+
 
 
 @NgModule({
@@ -34,6 +43,11 @@ import { SolicitudComponent } from './estudiante/solicitud.component';
     SearchComponent,
     EstudianteComponent,
     SolicitudComponent,
+    DocenteComponent,
+    DocenteDosComponent,
+    DocenteTresComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -43,6 +57,8 @@ import { SolicitudComponent } from './estudiante/solicitud.component';
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+
 })
 export class AppModule { }
