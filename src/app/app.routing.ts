@@ -12,6 +12,7 @@ import { SolicitudComponent } from './estudiante/solicitud.component';
 import { DocenteComponent } from './docente/docente.component';
 import { DocenteDosComponent } from './docente/docente-dos.component';
 import { DocenteTresComponent } from './docente/docente-tres.component';
+import { EstudianteComponent } from './estudiante/estudiante.component';
 
 
 
@@ -29,8 +30,7 @@ const appRoutes: Routes = [ // Se crea el objeto de tipo Routes,
     {path: 'docente', component: DocenteComponent},
     {path: 'docente-dos', component: DocenteDosComponent},
     {path: 'docente-tres', component: DocenteTresComponent},
-
-
+    {path: 'estudiante', component: EstudianteComponent},
 
 
     // loadChildren = primera parte es el path al modulo que quiero cargar y la segunda es el nombre del modulo.

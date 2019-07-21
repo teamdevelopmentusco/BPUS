@@ -1,8 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-    font: 96% 'Open Sans', Arial, Helvetica, sans-serif;
-    color: #4D626C;
+    /* font: 96% 'Open Sans', Arial, Helvetica, sans-serif;*/
     background: #FFF;
 }
 
@@ -118,6 +117,7 @@ input:invalid {
     font-family: Segoe UI;
     color: black;
 }
+
 .uscoMenuNav {
     width: 100%;
     padding: 0.4rem;
@@ -126,6 +126,7 @@ input:invalid {
     padding: 10px;
     font-size: 20px;
 }
+
 .uscoSesion {
     width: 100%;
     padding: 0.4rem;
@@ -135,7 +136,8 @@ input:invalid {
     font-size: 20px;
     font-weight: 500;
 }
-.focus{
+
+.focus {
     background-color: #ffecec;
 }
 
