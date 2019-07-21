@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-solicitud',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class SolicitudComponent implements OnInit {
-
-  constructor() { }
-
+  today = new Date();
+  jstoday = '';
+  constructor() {
+    this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '+0530');
+  }
   ngOnInit() {
   }
-
 }
