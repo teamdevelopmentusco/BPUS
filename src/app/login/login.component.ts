@@ -1,31 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { UsuarioService } from '../services/service.index';
+import { Usuario } from '../models/usuario.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
+  email:string;
+  recuerdame:boolean=false;
 
   loginForm: any;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
-    this.loginForm = this.formBuilder.group({
-      id: ['', [Validators.required, Validators.pattern('([0-9]){8,10}')]],
-      password: ['', [Validators.required]]
-    });
+  constructor(private formBuilder: FormBuilder,  public router: Router,
+    public _usuarioService:UsuarioService) {
 
-    console.log(this.loginForm);
+
   }
 
-  get id() {
-    return this.loginForm.get('id');
-  }
-
-  get password() {
-    return this.loginForm.get('password');
-  }
+ 
 
   showpassword() {
     const password = document.getElementById('password');
@@ -39,13 +35,28 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login() {
-    if (this.loginForm.dirty && this.loginForm.valid) {
-      this.router.navigate(['/inicio']);
-    }
-  }
+  
 
   ngOnInit() {
+   
+  }
+
+
+  ingresar(forma: NgForm){
+
+    if (forma.invalid) {
+      return;
+    }
+
+
+
+    let usuario = new Usuario(null,null,forma.value.password,null,null,null,null,forma.value.numDocumento,null,null,null,null,null,null,null);
+    console.log(forma.valid);
+    console.log(forma.value);
+
+    this._usuarioService.login(usuario).subscribe(correcto=>this.router.navigate(['/dashboard']));
+  
+    //this.router.navigate(['/dashboard']);
   }
 
 }

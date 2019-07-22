@@ -8,11 +8,12 @@ import { CambioClaveComponent } from './login/cambio-clave.component';
 import { OlvidoClaveComponent } from './login/olvido-clave.component';
 import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
 import { SearchComponent } from './search/search.component';
-import { SolicitudComponent } from './estudiante/solicitud.component';
-import { DocenteComponent } from './docente/docente.component';
-import { DocenteDosComponent } from './docente/docente-dos.component';
-import { DocenteTresComponent } from './docente/docente-tres.component';
-import { EstudianteComponent } from './estudiante/estudiante.component';
+import { LoginGuardGuard } from './services/guards/login-guard.guard';
+import { SolicitudComponent } from './pages/estudiante/solicitud.component';
+import { DocenteComponent } from './pages/docente/docente.component';
+import { DocenteDosComponent } from './pages/docente/docente-dos.component';
+import { DocenteTresComponent } from './pages/docente/docente-tres.component';
+import { EstudianteComponent } from './pages/estudiante/estudiante.component';
 
 
 
@@ -26,17 +27,19 @@ const appRoutes: Routes = [ // Se crea el objeto de tipo Routes,
     { path: 'registro-dos' , component: RegistroDosComponent},
     { path: 'registro-tres' , component: RegistroTresComponent},
     { path: 'search' , component: SearchComponent},
+
+    // Temporalmente estan estas rutas aqui, para mostrarlo en factoria.
     { path: 'solicitud' , component: SolicitudComponent},
-    {path: 'docente', component: DocenteComponent},
-    {path: 'docente-dos', component: DocenteDosComponent},
-    {path: 'docente-tres', component: DocenteTresComponent},
-    {path: 'estudiante', component: EstudianteComponent},
+    { path: 'docente' , component: DocenteComponent},
+    { path: 'docente2' , component: DocenteDosComponent},
+    { path: 'docente3' , component: DocenteTresComponent},
+    { path: 'estudiante' , component: EstudianteComponent},
 
-
+    { path:'',component:PagesComponent,canActivate:[LoginGuardGuard],loadChildren:'./pages/pages.module#PagesModule'}, // Carga de forma dinamica. Un modulo independiente.
     // loadChildren = primera parte es el path al modulo que quiero cargar y la segunda es el nombre del modulo.
 
   { path: '**' , component: NopagefoundComponent}, // Los ** es un comodin para cualquier ruta invalida.
-  // { path: '', component: PagesComponent, loadChildren: './pages/pages.module#PagesModule'}
+  
 ];
 // Se modulan las rutas para ser importadas en el module principal.
 export const APP_ROUTES = RouterModule.forRoot(appRoutes, {useHash: true});

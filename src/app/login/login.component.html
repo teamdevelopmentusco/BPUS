@@ -5,42 +5,30 @@
     <div class="card-uscoContent">
         <h2 class="text-center">LOGIN</h2>
         <br>
-        <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <form ngNativeValidate #f="ngForm"  (ngSubmit)="ingresar(f)"  id="loginform">
             <div class="mx-5 form-group">
                 <div class="txtcenter">
                     <label for="id" class="font-weight-bold">USUARIO:</label>
                 </div>
-                <input class="uscoInputs form-control" type="text" formControlName="id" name="id" placeholder="Digite su número de ID" maxlength="10" pattern="([0-9]){8,10}" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' title="El ID es entre 8-10 carácteres solo numéricos"
+                <input [ngModel]="numDocumento" class="uscoInputs form-control" type="text"  name="numDocumento" placeholder="Digite su número de ID" maxlength="10" pattern="([0-9]){8,10}" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' title="El ID es entre 8-10 carácteres solo numéricos"
                     required>
             </div>
-            <h6 *ngIf="id.invalid && (id.dirty || id.touched)" class="mx-5" style="color: red;">
-                <div *ngIf="id.errors.required">
-                    El ID es requerido.
-                </div>
-                <div *ngIf="id.errors.pattern">
-                    El ID es entre 8-10 carácteres solo numéricos.
-                    <br><br>
-                </div>
-            </h6>
+          
             <div class="mx-5 form-group">
                 <div class="txtcenter">
                     <label for="password" class="font-weight-bold">CONTRASEÑA:</label>
                 </div>
                 <div class="input-group">
-                    <input class="uscoInputs form-control" type="password" formControlName="password" id="password" placeholder="Digite su contraseña" maxlength="30" required>
+                    <input ngModel name="password" class="uscoInputs form-control" type="password"  id="password" placeholder="Digite su contraseña" maxlength="30" required>
                     <div class="input-group-append">
                         <button class="input-group-text input-inside-button" type="button" (click)="showpassword()"><i class='far fa-eye-slash' id="showpass"></i></button>
                     </div>
                 </div>
             </div>
-            <h6 *ngIf="password.invalid && (password.dirty || password.touched)" class="mx-5" style="color:red;">
-                <div *ngIf="password.errors.required">
-                    La contraseña es requerida.
-                </div>
-            </h6>
+      
             <div class="txtcenter">
                 <a class="btn uscoButton" routerLink="/registro">REGISTRARSE</a>
-                <input type="submit" [disabled]="!loginForm.valid" class="btn uscoButton" value="ENTRAR">
+                <input type="submit" class="btn uscoButton" value="ENTRAR">
             </div>
         </form>
         <br>

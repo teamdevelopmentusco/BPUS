@@ -14,17 +14,19 @@ import { RegistroComponent } from './registro/registro.component';
 import { RegistroDosComponent } from './registro/registro-dos.component';
 import { RegistroTresComponent } from './registro/registro-tres.component';
 
-// docentes
-import { DocenteComponent } from './docente/docente.component';
-import { DocenteDosComponent } from './docente/docente-dos.component';
-import { DocenteTresComponent } from './docente/docente-tres.component';
-
-
 // Enrutamiento
 import { APP_ROUTES } from './app.routing';
 import { SearchComponent } from './search/search.component';
-import { EstudianteComponent } from './estudiante/estudiante.component';
-import { SolicitudComponent } from './estudiante/solicitud.component';
+
+// Servicios
+import { ServiceModule } from './services/service.module';
+import { EstudianteComponent } from './pages/estudiante/estudiante.component';
+import { SolicitudComponent } from './pages/estudiante/solicitud.component';
+import { DocenteComponent } from './pages/docente/docente.component';
+import { DocenteDosComponent } from './pages/docente/docente-dos.component';
+import { DocenteTresComponent } from './pages/docente/docente-tres.component';
+
+
 
 
 
@@ -47,14 +49,14 @@ import { SolicitudComponent } from './estudiante/solicitud.component';
     DocenteDosComponent,
     DocenteTresComponent,
 
-
   ],
   imports: [
     BrowserModule,
     SharedModule,
     APP_ROUTES,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent],
