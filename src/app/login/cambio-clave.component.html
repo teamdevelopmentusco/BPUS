@@ -23,16 +23,13 @@
                         <button class="input-group-text input-inside-button" type="button" (click)="showpassword('newPassword','showpass1')"><i class='far fa-eye-slash' id="showpass1"></i></button>
                     </div>
                 </div>
-                <p>Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
+                <p id="passwordPatter">Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
             </div>
-            <div *ngIf="newPassword.invalid && (newPassword.dirty || newPassword.touched)" class="alert alert-danger">
+            <h6 *ngIf="newPassword.invalid && (newPassword.dirty || newPassword.touched)" class="mx-5" style="color:red;">
                 <div *ngIf="newPassword.errors.required">
                     La contraseña es requerida.
                 </div>
-                <div *ngIf="newPassword.errors.invalidPassword">
-                    Hay algo mal :)
-                </div>
-            </div>
+            </h6>
             <div class="mx-5 form-group">
                 <label for="confirmNewPassword" class="font-weight-bold ">CONFIRME SU CONTRASEÑA:</label>
                 <div class="mb-2 input-group">
@@ -42,16 +39,16 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="confirmNewPassword?.invalid && (confirmNewPassword.dirty || confirmNewPassword.touched)" class="alert alert-danger">
+            <h6 *ngIf="confirmNewPassword?.invalid && (confirmNewPassword.dirty || confirmNewPassword.touched)" class="mx-5" style="color: red;">
                 <div *ngIf="confirmNewPassword.errors.required">
-                    La contraseña es requerida.
+                    La confirmación de la contraseña es requerida.
                 </div>
-            </div>
-            <div *ngIf="passwordForm.errors?.mismatch && (passwordForm.touched || passwordForm.dirty)" class="alert alert-danger">
+            </h6>
+            <h6 *ngIf="passwordForm.errors?.mismatch" class="mx-5" style="color: red;">
                 Las contraseñas no coinciden.
-            </div>
+            </h6>
             <div class="txtcenter">
-                <a routerLink="/inicio" class="mr-5 btn btn-info">CANCELAR</a>
+                <a routerLink="/search" class="mr-5 btn btn-info">CANCELAR</a>
                 <button type="submit" [disabled]="!passwordForm.valid" class="btn uscoButton">CONFIRMAR</button>
             </div>
         </form>

@@ -18,19 +18,19 @@
             <div class="form-group">
                 <label for="email" class="font-weight-bold">Correo:</label>
                 <div class="input-group">
-                    <input formControlName="email" class="uscoInputs form-control" placeholder="Digite su Correo Institucional" id="email" maxlenght="25" pattern="[^@]([A-Za-z0-9._]+){1,25}" required autofocus>
+                    <input formControlName="email" class="uscoInputs form-control" placeholder="Digite su Correo Institucional" id="email" maxlength="25" pattern="[^@]([A-Za-z0-9._]+){1,25}" required autofocus>
                     <div class="input-group-append">
                         <span class="input-group-text input-inside-button">@usco.edu.co</span>
                     </div>
                 </div>
-                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                <h6 *ngIf="email.invalid && (email.dirty || email.touched)" style="color: red;">
                     <div *ngIf="email.errors.required">
-                        El correo es requerido.
+                        <br> El correo es requerido.
                     </div>
-                    <div *ngIf="email.errors.invalidEmailAddress">
-                        El correo debe ser institucional: @usco.edu.co
+                    <div *ngIf="email.errors.pattern">
+                        <br>El correo no es valido.
                     </div>
-                </div>
+                </h6>
             </div>
             <div class="txtcenter">
                 <a href="javascript: history.back()" class="mr-5 uscolink">VOLVER ATRÁS</a>

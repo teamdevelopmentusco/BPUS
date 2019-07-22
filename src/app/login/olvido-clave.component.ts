@@ -12,7 +12,7 @@ export class OlvidoClaveComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.emailForm = this.formBuilder.group({
-      email: ['', [Validators.required, ValidationService.emailValidator]]
+      email: ['', [Validators.required, Validators.pattern('[^@]([A-Za-z0-9._]+){1,25}')]]
     });
 
     console.log(this.emailForm);

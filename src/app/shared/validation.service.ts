@@ -1,6 +1,6 @@
 export class ValidationService {
   static emailValidator(control: any) {
-    if (control.value.match(/[a-z0-9._%+-]+@+usco.edu.co/)) {
+    if (control.value.match('[^@]([A-Za-z0-9._]+){1,25}')) {
       return null;
     } else {
       return { invalidEmailAddress: true };

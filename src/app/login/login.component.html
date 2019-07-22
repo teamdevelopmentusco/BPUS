@@ -13,14 +13,15 @@
                 <input class="uscoInputs form-control" type="text" formControlName="id" name="id" placeholder="Digite su número de ID" maxlength="10" pattern="([0-9]){8,10}" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' title="El ID es entre 8-10 carácteres solo numéricos"
                     required>
             </div>
-            <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
+            <h6 *ngIf="id.invalid && (id.dirty || id.touched)" class="mx-5" style="color: red;">
                 <div *ngIf="id.errors.required">
                     El ID es requerido.
                 </div>
                 <div *ngIf="id.errors.pattern">
                     El ID es entre 8-10 carácteres solo numéricos.
+                    <br><br>
                 </div>
-            </div>
+            </h6>
             <div class="mx-5 form-group">
                 <div class="txtcenter">
                     <label for="password" class="font-weight-bold">CONTRASEÑA:</label>
@@ -32,11 +33,11 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+            <h6 *ngIf="password.invalid && (password.dirty || password.touched)" class="mx-5" style="color:red;">
                 <div *ngIf="password.errors.required">
                     La contraseña es requerida.
                 </div>
-            </div>
+            </h6>
             <div class="txtcenter">
                 <a class="btn uscoButton" routerLink="/registro">REGISTRARSE</a>
                 <input type="submit" [disabled]="!loginForm.valid" class="btn uscoButton" value="ENTRAR">
