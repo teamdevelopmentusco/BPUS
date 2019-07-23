@@ -6,7 +6,7 @@ import swal from 'sweetalert2';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styles: []
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
 
