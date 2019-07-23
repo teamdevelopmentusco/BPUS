@@ -14,16 +14,26 @@ import { DocenteTresComponent } from './docente/docente-tres.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PAGES_ROUTES } from './pages.router';
+import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     
-    DashboardComponent
+    DashboardComponent,
+    EstudianteComponent,
+    SolicitudComponent,
+    DocenteComponent,
+    DocenteDosComponent,
+    DocenteTresComponent,
+    ProfileComponent
+
   ],
   imports: [
     CommonModule,
     SharedModule,
-    PAGES_ROUTES
+    PAGES_ROUTES,
+    FormsModule
   ]
 })
 export class PagesModule { }

@@ -9,11 +9,7 @@ import { OlvidoClaveComponent } from './login/olvido-clave.component';
 import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
 import { SearchComponent } from './search/search.component';
 import { LoginGuardGuard } from './services/guards/login-guard.guard';
-import { SolicitudComponent } from './pages/estudiante/solicitud.component';
-import { DocenteComponent } from './pages/docente/docente.component';
-import { DocenteDosComponent } from './pages/docente/docente-dos.component';
-import { DocenteTresComponent } from './pages/docente/docente-tres.component';
-import { EstudianteComponent } from './pages/estudiante/estudiante.component';
+
 
 
 
@@ -29,11 +25,7 @@ const appRoutes: Routes = [ // Se crea el objeto de tipo Routes,
     { path: 'search' , component: SearchComponent},
 
     // Temporalmente estan estas rutas aqui, para mostrarlo en factoria.
-    { path: 'solicitud' , component: SolicitudComponent},
-    { path: 'docente' , component: DocenteComponent},
-    { path: 'docente2' , component: DocenteDosComponent},
-    { path: 'docente3' , component: DocenteTresComponent},
-    { path: 'estudiante' , component: EstudianteComponent},
+    
 
     { path:'',component:PagesComponent,canActivate:[LoginGuardGuard],loadChildren:'./pages/pages.module#PagesModule'}, // Carga de forma dinamica. Un modulo independiente.
     // loadChildren = primera parte es el path al modulo que quiero cargar y la segunda es el nombre del modulo.

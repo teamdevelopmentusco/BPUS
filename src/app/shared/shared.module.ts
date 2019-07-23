@@ -6,6 +6,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 
+
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, NopagefoundComponent, NavbarComponent],
   imports: [

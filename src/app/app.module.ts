@@ -42,12 +42,8 @@ import { DocenteTresComponent } from './pages/docente/docente-tres.component';
     RegistroComponent,
     RegistroDosComponent,
     RegistroTresComponent,
-    SearchComponent,
-    EstudianteComponent,
-    SolicitudComponent,
-    DocenteComponent,
-    DocenteDosComponent,
-    DocenteTresComponent,
+    SearchComponent
+    
 
   ],
   imports: [
