@@ -11,22 +11,17 @@
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <div class="btn-group" role="group">
       <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btnGroupDrop1" class="btn btn-outline my-2 my-sm-0 rounded-circle" style="margin-right: 20px; align-items: center;background-color: #E8E8E8"><span class="fas fa-bars fa-lg"></span></button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="background-color:#f6dbdb;margin-top: 12px;margin-left:0px">
+      <div *ngFor="let menu of _sidebar.menu" class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="background-color:#f6dbdb;margin-top: 12px;margin-left:0px">
         <a class="dropdown-header" href="#" ><img src="../assets/universidad-surcolombiana.png" alt="" style="width: 250px"></a>
-        <hr>
-        <a class="dropdown-item uscoMenuNav" [routerLink]="['solicitud']" href="#">> Plantilla de solicitud</a>
-        <hr>
-        <a class="dropdown-item uscoMenuNav" href="#">> Inicio</a>
-        <hr>
-        <a class="dropdown-item uscoMenuNav" href="#">> Plantilla de anteproyecto</a>
-        <hr>
-        <a class="dropdown-item uscoMenuNav" href="#">> Subir anteproyecto</a>
-        <hr>
-        <a class="dropdown-item uscoMenuNav" href="#">> Subir proyecto</a>
+   
+        <a *ngFor="let submenu of menu.submenu" class="dropdown-item uscoMenuNav" [routerLink]="['solicitud']" href="#"><hr>{{submenu.titulo}} <hr></a>
+        <a (click)="_usuarioService.logout()"  class="dropdown-item uscoMenuNav"  href="#"><hr>Cerrar sesión<hr></a>
       </div>
     </div>
   </div>
-  <h4 style="margin-top: 5px"> Menu</h4>
+
+
+  
   <form class="form-inline" style="margin-left: 250px">
     <div class="input-group">
       <div class="input-group-prepend">
