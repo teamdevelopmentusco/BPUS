@@ -15,7 +15,7 @@ import { LoginGuardGuard } from './services/guards/login-guard.guard';
 
 
 const appRoutes: Routes = [ // Se crea el objeto de tipo Routes,
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '', redirectTo: 'search', pathMatch: 'full' },
     { path: 'login' , component: LoginComponent},
     { path: 'cambio-clave' , component: CambioClaveComponent},
     { path: 'olvido-clave' , component: OlvidoClaveComponent},

@@ -105,8 +105,9 @@ export class UsuarioService {
     localStorage.removeItem('usuario');
     localStorage.removeItem('menu');
     localStorage.removeItem('id');
-    this.router.navigate(['/login']);
 
+    this.router.navigate(['/search']);
+    
   }
 
   loginGoogle(token: string){
@@ -122,6 +123,51 @@ export class UsuarioService {
     });
   }
 
+
+  paginadoRegistro1a2(usuario:Usuario){
+   /* let url = URL_SERVICIOS + '/login';
+    return this.http.post( url, usuario )
+                .map( (resp: any) => {
+                  console.log(this.usuario);*/
+                  localStorage.setItem('email',usuario.email);
+                  localStorage.setItem('password',usuario.password);
+                /*  return true;
+                }).catch(err =>{
+                  //console.log(err.error.mensaje);
+                  swal.fire('Error en el paginaRegistro1a2',err.error.mensaje,'error');
+                  return Observable.throw(err);
+
+                });*/
+             
+
+  }
+
+  paginadoRegistro2a3(usuario:Usuario){
+    /*let url = URL_SERVICIOS + '/login';
+    return this.http.post( url, usuario )
+                .map( (resp: any) => {*/
+                  localStorage.setItem('tipoUsuario',usuario.tipoUsuario);
+                  localStorage.setItem('codigoUniversitario',usuario.codigoUniversitario);
+                  localStorage.setItem('tipoID',usuario.tipoID);
+                  localStorage.setItem('numDocumento',usuario.numDocumento);
+               
+                /*  return true;
+                }).catch(err =>{
+                  //console.log(err.error.mensaje);
+                  swal.fire('Error en el paginaRegistro2a3',err.error.mensaje,'error');
+                  return Observable.throw(err);
+                });*/
+  }
+
+  removerRegistroStorage(){
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
+    localStorage.removeItem('tipoUsuario');
+    localStorage.removeItem('codigoUniversitario');
+    localStorage.removeItem('tipoID');
+    localStorage.removeItem('numDocumento');
+  }
+
   login( usuario: Usuario) {
 
     let url = URL_SERVICIOS + '/login';
@@ -130,6 +176,7 @@ export class UsuarioService {
                   console.log(this.usuario);
                   this.guardarStorage( resp.id, resp.token, resp.Usuario,resp.menu );
                  // console.log(resp);
+                
                   return true;
                 }).catch(err =>{
                   //console.log(err.error.mensaje);
@@ -146,7 +193,7 @@ export class UsuarioService {
   crearUsuario(usuario:Usuario){
 
     let url=URL_SERVICIOS+'/usuario';
-
+   
     return this.http.post(url, usuario)
     .map((resp:any)=>{
       swal.fire('Usuario creado',usuario.email,'success');

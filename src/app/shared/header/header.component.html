@@ -7,22 +7,27 @@
                 </a>
             </div>
             <div class="col-6 text-center">
-                <a href="https://www.usco.edu.co/es/" title="Universidad Surcolombiana">
+                <a  title="Universidad Surcolombiana">
                     <img style="width: 400px;margin: 20px;align-content: center" src="../../assets/universidad-surcolombiana-acreditacion.png" alt="Universidad Surcolombiana">
                 </a>
             </div>
             <div class="col text-right">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <div class="btn-group" role="group">
+
+                    <!-- SOLUCIONAR ESTO -->
+                    <div *ngIf="iniciarSesion" class="btn-group" role="group">
                         <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btnGroupDrop1" class="btn btn-outline my-2 my-sm-0 rounded-circle" style="margin-right: 20px; align-items: center;background-color: #dfd4a6">
                             <span class="fas fa-user fa-3x" style="color: #8f141b"></span>
                           </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="margin-top: 23px;margin-right:15px">
-                            <a class="dropdown-item uscoSesion" href="#">Actualización de datos</a>
+                            <a class="dropdown-item uscoSesion" routerLink='/perfil' >Perfil</a>
                             <hr>
-                            <a (click)="_usuarioService.logout()" class="dropdown-item uscoSesion" href="#">Cerrar sesión</a>
+                            <a (click)="_usuarioService.logout()" class="dropdown-item uscoSesion" routerLink='/search'  href="#">Cerrar sesión</a>
                         </div>
                     </div>
+
+                    <a *ngIf="!iniciarSesion" routerLink="/login" class="btn uscoButton">Iniciar sesión</a>
+                   <!-- SOLUCIONAR ESTO -->
                 </div>
             </div>
         </div>

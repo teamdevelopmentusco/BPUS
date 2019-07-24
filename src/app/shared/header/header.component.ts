@@ -10,10 +10,29 @@ import { Usuario } from 'src/app/models/usuario.model';
 })
 export class HeaderComponent implements OnInit {
   usuario:Usuario;
-  constructor(public _usuarioService:UsuarioService, public router:Router) { }
+  iniciarSesion:Boolean;
+  constructor(public _usuarioService:UsuarioService, public router:Router) {
+
+
+    
+   }
 
   ngOnInit() {
+    
     this.usuario=this._usuarioService.usuario;
+
+    //console.log(this.usuario.nombres );
+
+    if (!(this.usuario===null)) {
+      this.iniciarSesion = true;
+
+      console.log("iniciarSesion true");
+    }else{
+      this.iniciarSesion = false;
+      console.log("iniciarSesion false");
+    }   
+    
+
   }
 
 }
