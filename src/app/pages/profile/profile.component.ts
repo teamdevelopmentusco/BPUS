@@ -5,36 +5,39 @@ import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  templateUrl: './profile.component.html'
 })
 export class ProfileComponent implements OnInit {
 
 
-  usuario:Usuario;
-  imagenSubir:File;
-  imagenTemp:string;
+  usuario: Usuario;
+  imagenSubir: File;
+  imagenTemp: string;
 
   constructor(
     public _usuarioService: UsuarioService
   ) {
 
-    this.usuario= this._usuarioService.usuario;
+    this.usuario = this._usuarioService.usuario;
    }
 
   ngOnInit() {
   }
 
+  activeTab(tab: string) {
+    const activeTab = document.getElementById(tab);
+    const personalTab = document.getElementById('personalTab');
+    const academicTab = document.getElementById('academicTab');
+    personalTab.setAttribute('class', 'nav-link');
+    academicTab.setAttribute('class', 'nav-link');
+    activeTab.setAttribute('class', 'nav-link activeTab font-weight-bold');
+  }
 
-  guardar(usuario:Usuario){
+  guardar(usuario: Usuario) {
 
-    this.usuario.nombres=usuario.nombres;
+    this.usuario.nombres = usuario.nombres;
 
     this._usuarioService.actualizarUsuario(this.usuario)
                           .subscribe();
   }
-
-
-  
-
 }

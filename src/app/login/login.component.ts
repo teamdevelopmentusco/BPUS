@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../services/service.index';
@@ -10,20 +10,32 @@ import { Usuario } from '../models/usuario.model';
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
-  email:string;
-  recuerdame:boolean=false;
+  recuerdame = false;
 
   loginForm: any;
 
   constructor(private formBuilder: FormBuilder,  public router: Router,
-    public _usuarioService:UsuarioService) {
-
-
+              public _usuarioService: UsuarioService) {
+                this.loginForm = this.formBuilder.group({
+                  numDocumento: [
+                    '',
+                    [Validators.required, Validators.pattern('([0-9]){8,10}')]
+                  ],
+                  password: [
+                    '',
+                    [Validators.required]
+                  ]
+                });
+              }
+  get numDocumento() {
+    return this.loginForm.get('numDocumento');
   }
 
- 
+  get password() {
+    return this.loginForm.get('password');
+  }
 
-  showpassword() {
+   showpassword() {
     const password = document.getElementById('password');
     const icon = document.getElementById('showpass');
     if (password.getAttribute('type') === 'password') {
@@ -35,28 +47,24 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  
 
   ngOnInit() {
-   
   }
 
 
-  ingresar(forma: NgForm){
+  ingresar(forma: FormGroup) {
 
     if (forma.invalid) {
       return;
     }
 
-
-
-    let usuario = new Usuario(null,null,forma.value.password,null,null,null,null,forma.value.numDocumento,null,null,null,null,null,null,null);
+    // tslint:disable-next-line: max-line-length
+    let usuario = new Usuario(null, null, forma.value.password, null, null, null, null, forma.value.numDocumento, null, null, null, null, null, null, null);
     console.log(forma.valid);
     console.log(forma.value);
 
-    this._usuarioService.login(usuario).subscribe(correcto=>this.router.navigate(['/dashboard']));
-  
-    //this.router.navigate(['/dashboard']);
+    this._usuarioService.login(usuario).subscribe(correcto => this.router.navigate(['/dashboard']));
+    // this.router.navigate(['/dashboard']);
   }
 
 }

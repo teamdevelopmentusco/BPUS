@@ -195,3 +195,13 @@ input:invalid {
     -webkit-appearance: none;
     appearance: none;
 }
+
+.activeTab {
+    color: #8f141b;
+    border-bottom: 5px solid #8f141b;
+    border-radius: 5px;
+}
+
+a.activeTab:hover {
+    color: #CAB691;
+}
