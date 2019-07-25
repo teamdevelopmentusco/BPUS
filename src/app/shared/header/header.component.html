@@ -1,35 +1,51 @@
-<header class="all header">
+<header class="all header" >
     <div class="container">
         <div class="row align-items-center">
+
             <div class="col text-left">
                 <a href="#" title="Universidad Surcolombiana">
                     <img style="height: 100px;align-content: center" src="../../assets/logo-BPUS.png" alt="Universidad Surcolombiana">
                 </a>
             </div>
+            
             <div class="col-6 text-center">
                 <a  title="Universidad Surcolombiana">
                     <img style="width: 400px;margin: 20px;align-content: center" src="../../assets/universidad-surcolombiana-acreditacion.png" alt="Universidad Surcolombiana">
                 </a>
             </div>
+
+
+
             <div class="col text-right">
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown"></div>
 
                     <!-- SOLUCIONAR ESTO -->
-                    <div *ngIf="iniciarSesion" class="btn-group" role="group">
+                    <div *ngIf="sesionLogo()" class="btn-group" role="group">
                         <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btnGroupDrop1" class="btn btn-outline my-2 my-sm-0 rounded-circle" style="margin-right: 20px; align-items: center;background-color: #dfd4a6">
                             <span class="fas fa-user fa-3x" style="color: #8f141b"></span>
                           </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="margin-top: 23px;margin-right:15px">
-                            <a class="dropdown-item uscoSesion" routerLink='/perfil' >Perfil</a>
+              
+                            
+                            <a class="dropdown-item uscoSesion" style="background-color: #fce6e7" routerLink='/perfil' >Perfil</a>
                             <hr>
-                            <a (click)="_usuarioService.logout()" class="dropdown-item uscoSesion" routerLink='/search'  href="#">Cerrar sesión</a>
+                            <a (click)="_usuarioService.logout()" style="background-color: #fce6e7" class="dropdown-item uscoSesion" routerLink='/search'>Cerrar sesión</a>
                         </div>
                     </div>
-
-                    <a *ngIf="!iniciarSesion" routerLink="/login" class="btn uscoButton">Iniciar sesión</a>
-                   <!-- SOLUCIONAR ESTO -->
                 </div>
+
+
+                <div *ngIf="!sesionLogo()" class="col text-right">
+                  
+                    <a  routerLink="/login" class="btn uscoButton">Iniciar-sesión</a>      
+                </div>
+                <div *ngIf="!sesionLogo()" class="col text-right">
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown"></div>
+                        <a  routerLink="/registro" class="btn uscoButton">Registrarse</a>      
+                    </div> 
+              
+                
             </div>
         </div>
-    </div>
+    
 </header>

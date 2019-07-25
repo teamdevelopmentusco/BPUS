@@ -8,31 +8,23 @@ import { Usuario } from 'src/app/models/usuario.model';
   templateUrl: './header.component.html',
   styles: []
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit  {
   usuario:Usuario;
   iniciarSesion:Boolean;
+
   constructor(public _usuarioService:UsuarioService, public router:Router) {
-
-
+    this.usuario=this._usuarioService.usuario;
     
    }
 
   ngOnInit() {
     
-    this.usuario=this._usuarioService.usuario;
-
-    //console.log(this.usuario.nombres );
-
-    if (!(this.usuario===null)) {
-      this.iniciarSesion = true;
-
-      console.log("iniciarSesion true");
-    }else{
-      this.iniciarSesion = false;
-      console.log("iniciarSesion false");
-    }   
+  }
+  
+  sesionLogo(){
+  
+    return (localStorage.getItem("token"))?true:false;
     
-
   }
 
 }

@@ -33,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     PAGES_ROUTES,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class PagesModule { }
