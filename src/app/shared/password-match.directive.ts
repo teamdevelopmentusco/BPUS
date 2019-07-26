@@ -12,8 +12,8 @@ import {
 export const passwordMatchValidator: ValidatorFn = (
     control: FormGroup
   ): ValidationErrors | null => {
-    const newPassword = control.get('newPassword');
-    const confirmNewPassword = control.get('confirmNewPassword');
+    const newPassword = control.get('password');
+    const confirmNewPassword = control.get('passwordComprobar');
     return confirmNewPassword.value === newPassword.value
       ? null
       : { mismatch: true };

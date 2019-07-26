@@ -13,11 +13,11 @@ export class CambioClaveComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.passwordForm = this.formBuilder.group({
-      newPassword: [
+      password: [
         '',
         [Validators.required, ValidationService.passwordValidator]
       ],
-      confirmNewPassword: [
+      passwordComprobar: [
         '',
         [Validators.required]
       ]
@@ -25,12 +25,12 @@ export class CambioClaveComponent implements OnInit {
     console.log(this.passwordForm);
   }
 
-  get newPassword() {
-    return this.passwordForm.get('newPassword');
+  get password() {
+    return this.passwordForm.get('password');
   }
 
-  get confirmNewPassword() {
-    return this.passwordForm.get('confirmNewPassword');
+  get passwordComprobar() {
+    return this.passwordForm.get('passwordComprobar');
   }
   savePassword() {
     if (this.passwordForm.dirty && this.passwordForm.valid) {

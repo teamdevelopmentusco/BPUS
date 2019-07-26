@@ -2,50 +2,47 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../services/service.index';
 import { Usuario } from '../models/usuario.model';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { passwordMatchValidator } from '../shared/password-match.directive';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html'
 })
 export class RegistroComponent implements OnInit {
-  forma: FormGroup;
-  constructor(private router: Router,
-    public _usuarioService: UsuarioService) { }
-
-  ngOnInit() {
-    this.forma=new FormGroup({
-
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
-      passwordComprobar: new FormControl(null, Validators.required)
-     
-
-    }/*,{validators: this.sonIguales('password','passwordComprobar')}*/);
-   
+  forma: any;
+  constructor(private formBuilder: FormBuilder, private router: Router,public _usuarioService: UsuarioService ) {
+    this.forma = this.formBuilder.group({
+      email: [
+        '',
+        [Validators.required, Validators.pattern("[^@]([A-Za-z0-9._]+){1,25}") ]
+      ],
+      password: [
+        '',
+        [Validators.required]
+      ],
+      passwordComprobar: [
+        '',
+        [Validators.required]
+      ]
+    }, { validators: passwordMatchValidator });
+    console.log(this.forma);
   }
 
+  ngOnInit() {
+  }
+  
+  get email() {
+    return this.forma.get('email');
+  }
 
-  /*sonIguales(campo1:string,campo2:string){
-    return( group: FormGroup)=>{
-      
-      let pass1=group.controls[campo1].value;
-      let pass2=group.controls[campo2].value;
-      
-      if (pass1===pass2) {
-        return null;
-      }
-      return{
-        sonIguales:true
+  get password() {
+    return this.forma.get('password');
+  }
 
-        
-      };
-
-      
-      
-    };
-
-  }*/
+  get passwordComprobar() {
+    return this.forma.get('passwordComprobar');
+  }
 
   nextRegistro() {
 

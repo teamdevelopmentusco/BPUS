@@ -18,29 +18,29 @@
             <div class="mx-5 form-group">
                 <label for="newPassword" class="font-weight-bold ">CONTRASEÑA NUEVA:</label>
                 <div class="mb-2 input-group">
-                    <input type="password" formControlName="newPassword" class="uscoInputs form-control" id="newPassword" placeholder="Digite una nueva contraseña" maxlength="30" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,30}" required>
+                    <input type="password" formControlName="password" class="uscoInputs form-control" id="newPassword" placeholder="Digite una nueva contraseña" maxlength="30" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,30}" required>
                     <div class="input-group-append">
                         <button class="input-group-text input-inside-button" type="button" (click)="showpassword('newPassword','showpass1')"><i class='far fa-eye-slash' id="showpass1"></i></button>
                     </div>
                 </div>
                 <p id="passwordPatter">Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
             </div>
-            <h6 *ngIf="newPassword.invalid && (newPassword.dirty || newPassword.touched)" class="mx-5" style="color:red;">
-                <div *ngIf="newPassword.errors.required">
+            <h6 *ngIf="password.invalid && (password.dirty || password.touched)" class="mx-5" style="color:red;">
+                <div *ngIf="password.errors.required">
                     La contraseña es requerida.
                 </div>
             </h6>
             <div class="mx-5 form-group">
                 <label for="confirmNewPassword" class="font-weight-bold ">CONFIRME SU CONTRASEÑA:</label>
                 <div class="mb-2 input-group">
-                    <input type="password" formControlName="confirmNewPassword" class="uscoInputs form-control" id="confirmNewPassword" placeholder="Confirme la contraseña" maxlength="30" required>
+                    <input type="password" formControlName="passwordComprobar" class="uscoInputs form-control" id="confirmNewPassword" placeholder="Confirme la contraseña" maxlength="30" required>
                     <div class="input-group-append">
                         <button class="input-group-text input-inside-button" type="button" (click)="showpassword('confirmNewPassword','showpass2')"><i class='far fa-eye-slash' id="showpass2"></i></button>
                     </div>
                 </div>
             </div>
-            <h6 *ngIf="confirmNewPassword?.invalid && (confirmNewPassword.dirty || confirmNewPassword.touched)" class="mx-5" style="color: red;">
-                <div *ngIf="confirmNewPassword.errors.required">
+            <h6 *ngIf="passwordComprobar?.invalid && (passwordComprobar.dirty || passwordComprobar.touched)" class="mx-5" style="color: red;">
+                <div *ngIf="passwordComprobar.errors.required">
                     La confirmación de la contraseña es requerida.
                 </div>
             </h6>

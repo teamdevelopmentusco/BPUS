@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
                   ]
                 });
               }
+              
   get numDocumento() {
     return this.loginForm.get('numDocumento');
   }
