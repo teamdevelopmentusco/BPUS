@@ -1,0 +1,214 @@
+<!--
+    - Proyecto:         BPUS
+    - Componente:       Perfil Admin
+    - Desarrollador:    John David Guerrero Córdoba
+    - Descripción:      Perfil Admin con rutas hijas para CRUD de tablas
+    -Última modificación:  27/07/2019   
+-->
+<h3 class="text-uppercase">Tabla general</h3><br>
+<h6 class="text-left text-uppercase" style="margin-top: 2%">Filtrar por:</h6>
+<select class="custom-select selectAdmin" style="width: 10%">
+  <option selected>Tipo de documetno</option>
+  <option value="1">Cédula de ciudadania</option>
+  <option value="2">Tarjeta de identidad</option>
+  <option value="3">Contraseña</option>
+  <option value="3">Cédula extranjera</option>
+</select>
+<select class="custom-select selectAdmin" style="width: 10%">
+  <option selected>Genero</option>
+  <option value="1">Masculino</option>
+  <option value="2">Femenino</option>
+</select>
+<select class="custom-select selectAdmin" style="width: 10%">
+  <option selected>Facultad</option>
+  <option value="1">Ingeniería</option>
+  <option value="2">Salúd</option>
+  <option value="3">Licenciatura</option>
+</select>
+<select class="custom-select selectAdmin" style="width: 10%">
+  <option selected>Programa</option>
+  <option value="1">Ingeniería de software</option>
+  <option value="2">Tecnología de software</option>
+</select>
+<select class="custom-select selectAdmin" style="width: 10%">
+  <option selected>Sede</option>
+  <option value="1">Neiva</option>
+  <option value="2">Garzón</option>
+  <option value="3">Pitalito</option>
+</select>
+<select class="custom-select selectAdmin" style="width: 10%">
+  <option selected>Rol</option>
+  <option value="1">Estudiante</option>
+  <option value="2">Profesor</option>
+</select>
+<div class="text-right" style="padding: 1%">
+<button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
+<button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
+</div>
+<div class="table-responsive-md">
+  <table class="table table-bordered">
+     <thead>
+    <tr class="tablaAdmin">
+      <th scope="col" style="width: 10%" class="align-middle">ID</th>
+      <th scope="col" style="width: 10%" class="align-middle">Numero del documento</th>
+      <th scope="col" style="width: 10%" class="align-middle">
+        Tipo de documento
+      </th>
+      <th scope="col" style="width: 10%" class="align-middle">Nombre</th>
+      <th scope="col" style="width: 10%" class="align-middle">Apellido</th>
+      <th scope="col" style="width: 10%" class="align-middle">
+        Genero
+      </th>
+      <th scope="col" style="width: 10%" class="align-middle">
+        Facultad
+      </th>
+      <th scope="col" style="width: 10%" class="align-middle">
+        Programa
+      </th>
+      <th scope="col" style="width: 10%" class="align-middle">
+        Sede
+      </th>
+      <th scope="col" style="width: 10%" class="align-middle">
+        Rol
+      </th>
+      <th scope="col" class="align-middle colorRojo">
+        Opciones
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+       <td>
+        <div class="row">
+          <div class="col text-left" style="width: 50%;padding: 2%">
+            <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+          </div>
+          <div class="col text-right" style="width: 50%;padding: 2%">
+            <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+       <td>
+        <div class="row">
+          <div class="col text-left" style="width: 50%;padding: 2%">
+            <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+          </div>
+          <div class="col text-right" style="width: 50%;padding: 2%">
+            <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+       <td>
+        <div class="row">
+          <div class="col text-left" style="width: 50%;padding: 2%">
+            <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+          </div>
+          <div class="col text-right" style="width: 50%;padding: 2%">
+            <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+        <th scope="row">4</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+         <td>
+          <div class="row">
+            <div class="col text-left" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+            </div>
+            <div class="col text-right" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+          <th scope="row">5</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+           <td>
+            <div class="row">
+              <div class="col text-left" style="width: 50%;padding: 2%">
+                <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+              </div>
+              <div class="col text-right" style="width: 50%;padding: 2%">
+                <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+             <td>
+              <div class="row">
+                <div class="col text-left" style="width: 50%;padding: 2%">
+                  <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+                </div>
+                <div class="col text-right" style="width: 50%;padding: 2%">
+                  <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+                </div>
+              </div>
+            </td>
+          </tr>
+  </tbody>
+  </table>
+</div>

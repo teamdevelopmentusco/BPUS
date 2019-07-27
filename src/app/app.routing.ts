@@ -25,13 +25,11 @@ const appRoutes: Routes = [ // Se crea el objeto de tipo Routes,
     { path: 'search' , component: SearchComponent},
 
     // Temporalmente estan estas rutas aqui, para mostrarlo en factoria.
-    
-
-    { path:'',component:PagesComponent,canActivate:[LoginGuardGuard],loadChildren:'./pages/pages.module#PagesModule'}, // Carga de forma dinamica. Un modulo independiente.
+    // tslint:disable-next-line:max-line-length
+    { path: '', component: PagesComponent, canActivate: [LoginGuardGuard], loadChildren: './pages/pages.module#PagesModule'}, // Carga de forma dinamica. Un modulo independiente.
     // loadChildren = primera parte es el path al modulo que quiero cargar y la segunda es el nombre del modulo.
 
   { path: '**' , component: NopagefoundComponent}, // Los ** es un comodin para cualquier ruta invalida.
-  
 ];
 // Se modulan las rutas para ser importadas en el module principal.
 export const APP_ROUTES = RouterModule.forRoot(appRoutes, {useHash: true});

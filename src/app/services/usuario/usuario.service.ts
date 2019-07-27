@@ -5,7 +5,7 @@ import { URL_SERVICIOS } from '../../config/config';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-//import 'rxjs/add/operator/throw';
+// import 'rxjs/add/operator/throw';
 
 
 import swal from 'sweetalert2';
@@ -16,15 +16,15 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UsuarioService {
 
-  usuario:Usuario;
-  token:string;
-  menu:any[]=[];
+  usuario: Usuario;
+  token: string;
+  menu: any[] = [];
 
-  constructor( 
+  constructor(
     public http: HttpClient,
-     public router:Router,
-     public _subirArchivoService:SubirArchivoService,
-    ) { //Inyectar servicios
+    public router: Router,
+    public _subirArchivoService: SubirArchivoService,
+    ) { // Inyectar servicios
 
     console.log('Servicio de usuario listo.');
 

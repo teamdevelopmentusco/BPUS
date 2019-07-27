@@ -204,3 +204,54 @@ input:invalid {
 a.activeTab:hover {
     color: #CAB691;
 }
+.colorRojo{
+    background-color: #8F141B;
+}
+.colorCafe{
+    background-color: #DFD4A6;
+}
+.colorNegro{
+    color: black;
+}
+.colorRojoContorno{
+    color: #8F141B;
+}
+.iconRadio {
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 5px black;
+    padding: 0.5em 0.6em;
+}
+.divUpload {
+    position: relative;
+    overflow: hidden;
+  }
+.inputUpload {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.menuAdmin{
+    background-color: white;
+    padding: 10px;
+    font-style: italic;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    color: #8fc8ee;
+}
+.selectAdmin{
+    font-size: 12px;
+    width: 15%;
+    margin-bottom: 5%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1%;
+}
+.tablaAdmin{
+    font-size: 13px;
+    color: #FFF;
+    background-color: #9bbb59;
+}

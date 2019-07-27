@@ -1,0 +1,49 @@
+<!--
+    - Proyecto:         BPUS
+    - Componente:       Perfil Admin
+    - Desarrollador:    John David Guerrero Córdoba
+    - Descripción:      Perfil Admin con rutas hijas para CRUD de tablas
+    -Última modificación:  27/07/2019   
+-->
+<div class="row" style="width: 100%">
+    <div class="col-sm-3 text-center" style="background-color: #e4e4e4;height: 800px;padding: 0px;"><br>
+        <div>
+            <h3 class="text-uppercase" style="padding-bottom: 5%;padding-top: 2%;font-style: italic">visualizar <br> tabla:</h3>
+        </div>
+        <div class="menuAdmin">
+            <a href="" [routerLink]="['tablaTodos']">
+                <h3 class="text-uppercase">general</h3>
+            </a>
+        </div>
+        <div class="menuAdmin">
+            <a href="" [routerLink]="['tablaEstudiantes']">
+                <h3 class="text-uppercase">estudiantes</h3>
+            </a>
+        </div>
+        <div class="menuAdmin">
+            <a href="" [routerLink]="['tablaProfesores']">
+                <h3 class="text-uppercase">profesores</h3>
+            </a>
+        </div>
+    </div>
+    <div class="col text-center"><br>
+        <form action="">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h6 class="text-uppercase text-right">buscar por:</h6>
+                </div>
+                <div class="col text-left">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline1">Nombre</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline2">Número de Documento</label>
+                    </div>
+                </div>
+            </div><br>
+            <router-outlet></router-outlet>
+        </form>
+    </div>
+</div>

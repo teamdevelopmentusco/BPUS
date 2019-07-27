@@ -29,10 +29,6 @@ import { UsuarioService } from './services/service.index';
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +39,7 @@ import { UsuarioService } from './services/service.index';
     RegistroComponent,
     RegistroDosComponent,
     RegistroTresComponent,
-    SearchComponent
-    
+    SearchComponent,
 
   ],
   imports: [
