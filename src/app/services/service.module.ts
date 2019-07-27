@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 
 import{
-  SettingsService,
   SidebarService,
   SharedService,
   UsuarioService,
@@ -24,7 +23,6 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
     CommonModule,
     HttpClientModule
   ],providers:[
-    SettingsService,
     SidebarService,
     SharedService,
     UsuarioService,

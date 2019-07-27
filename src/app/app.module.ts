@@ -20,12 +20,7 @@ import { SearchComponent } from './search/search.component';
 
 // Servicios
 import { ServiceModule } from './services/service.module';
-import { EstudianteComponent } from './pages/estudiante/estudiante.component';
-import { SolicitudComponent } from './pages/estudiante/solicitud.component';
-import { DocenteComponent } from './pages/docente/docente.component';
-import { DocenteDosComponent } from './pages/docente/docente-dos.component';
-import { DocenteTresComponent } from './pages/docente/docente-tres.component';
-import { UsuarioService } from './services/service.index';
+
 
 
 

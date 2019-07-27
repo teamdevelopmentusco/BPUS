@@ -110,53 +110,23 @@ export class UsuarioService {
     
   }
 
-  loginGoogle(token: string){
-
-    let url= URL_SERVICIOS + '/login/google';
-  
-    return this.http.post(url,{token}).map((resp:any)=>{
-      
-      this.guardarStorage(resp.id,resp.token,resp.Usuario,resp.menu); //Pequeño bug, no olvidar, la resp es Usuario.
-      
-      //console.log(resp);
-      return true;
-    });
-  }
 
 
   paginadoRegistro1a2(usuario:Usuario){
-   /* let url = URL_SERVICIOS + '/login';
-    return this.http.post( url, usuario )
-                .map( (resp: any) => {
-                  console.log(this.usuario);*/
-                  localStorage.setItem('email',usuario.email);
-                  localStorage.setItem('password',usuario.password);
-                /*  return true;
-                }).catch(err =>{
-                  //console.log(err.error.mensaje);
-                  swal.fire('Error en el paginaRegistro1a2',err.error.mensaje,'error');
-                  return Observable.throw(err);
 
-                });*/
-             
+    localStorage.setItem('email',usuario.email);
+    localStorage.setItem('password',usuario.password);
 
   }
 
   paginadoRegistro2a3(usuario:Usuario){
-    /*let url = URL_SERVICIOS + '/login';
-    return this.http.post( url, usuario )
-                .map( (resp: any) => {*/
-                  localStorage.setItem('tipoUsuario',usuario.tipoUsuario);
-                  localStorage.setItem('codigoUniversitario',usuario.codigoUniversitario);
-                  localStorage.setItem('tipoID',usuario.tipoID);
-                  localStorage.setItem('numDocumento',usuario.numDocumento);
+
+    localStorage.setItem('tipoUsuario',usuario.tipoUsuario);
+    localStorage.setItem('codigoUniversitario',usuario.codigoUniversitario);
+    localStorage.setItem('tipoID',usuario.tipoID);
+    localStorage.setItem('numDocumento',usuario.numDocumento);
                
-                /*  return true;
-                }).catch(err =>{
-                  //console.log(err.error.mensaje);
-                  swal.fire('Error en el paginaRegistro2a3',err.error.mensaje,'error');
-                  return Observable.throw(err);
-                });*/
+
   }
 
   removerRegistroStorage(){

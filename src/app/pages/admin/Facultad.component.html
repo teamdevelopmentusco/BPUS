@@ -5,15 +5,8 @@
     - Descripción:      Perfil Admin con rutas hijas para CRUD de tablas
     -Última modificación:  27/07/2019   
 -->
-<h3 class="text-uppercase">Usuarios</h3><br>
+<h3 class="text-uppercase">Facultades</h3><br>
 <h6 class="text-left text-uppercase" style="margin-top: 2%">Filtrar por:</h6>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Tipo de documetno</option>
-  <option value="1">Cédula de ciudadania</option>
-  <option value="2">Tarjeta de identidad</option>
-  <option value="3">Contraseña</option>
-  <option value="3">Cédula extranjera</option>
-</select>
 <select class="custom-select selectAdmin" style="width: 10%">
   <option selected>Genero</option>
   <option value="1">Masculino</option>
@@ -40,6 +33,11 @@
   <option selected>Rol</option>
   <option value="1">Estudiante</option>
   <option value="2">Profesor</option>
+</select>
+<select class="custom-select selectAdmin" style="width: 10%">
+  <option selected>Subrol</option>
+  <option value="1">Jefe de programa</option>
+  <option value="2">Asesor</option>
 </select>
 <div class="text-right" style="padding: 1%">
 <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
@@ -71,6 +69,9 @@
       <th scope="col" style="width: 10%" class="align-middle">
         Rol
       </th>
+      <th scope="col"  class="align-middle">
+        Subrol
+      </th>
       <th scope="col" class="align-middle colorRojo">
         Opciones
       </th>
@@ -79,6 +80,7 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -110,6 +112,7 @@
       <td></td>
       <td></td>
       <td></td>
+      <td></td>
        <td>
         <div class="row">
           <div class="col text-left" style="width: 50%;padding: 2%">
@@ -123,6 +126,7 @@
     </tr>
     <tr>
       <th scope="row">3</th>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -154,6 +158,7 @@
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
          <td>
           <div class="row">
             <div class="col text-left" style="width: 50%;padding: 2%">
@@ -176,6 +181,7 @@
           <td></td>
           <td></td>
           <td></td>
+          <td></td>
            <td>
             <div class="row">
               <div class="col text-left" style="width: 50%;padding: 2%">
@@ -189,6 +195,7 @@
         </tr>
         <tr>
             <th scope="row">6</th>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>

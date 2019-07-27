@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Estudiantes
-import { EstudianteComponent } from './estudiante/estudiante.component';
-import { SolicitudComponent } from './estudiante/solicitud.component';
+
+//ProyectosUsco
+
 
 // docentes
 import { DocenteComponent } from './docente/docente.component';
@@ -12,35 +12,54 @@ import { DocenteTresComponent } from './docente/docente-tres.component';
 
 
 import { SharedModule } from '../shared/shared.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { PAGES_ROUTES } from './pages.router';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { InformacionComponent } from './informacion/informacion.component';
+import { NotificacionesComponent } from './notificaciones/notificaciones.component';
+
+//CrudAdmin
 import { AdminComponent } from './admin/admin.component';
 import { TablaTodosComponent } from './admin/tabla-todos.component';
-import { TablaEstudiantesComponent } from './admin/tabla-estudiantes.component';
-import { TablaProfesoresComponent } from './admin/tabla-profesores.component';
+import { ProgramasAcademicosComponent } from './admin/programas-academicos.component';
+import { SedesComponent } from './admin/sedes.component';
+import { FacultadComponent } from './admin/Facultad.component';
+
+// Proyectos Usco
+import { SolicitudComponent } from './proyectosUsco/solicitud/solicitud.component';
+import { AnteproyectoComponent } from './proyectosUsco/anteproyecto/anteproyecto.component';
+import { ProyectoComponent } from './proyectosUsco/proyecto/proyecto.component';
+import { ArticuloComponent } from './proyectosUsco/articulo/articulo.component';
 
 @NgModule({
   declarations: [
-    DashboardComponent,
-    EstudianteComponent,
-    SolicitudComponent,
+   
     DocenteComponent,
     DocenteDosComponent,
     DocenteTresComponent,
     ProfileComponent,
+    InformacionComponent,
+    NotificacionesComponent,
+    //CrudAdmin
     AdminComponent,
     TablaTodosComponent,
-    TablaEstudiantesComponent,
-    TablaProfesoresComponent
+    ProgramasAcademicosComponent,
+    SedesComponent,
+    FacultadComponent,
+    // Proyectos Usco
+    SolicitudComponent,
+    AnteproyectoComponent,
+    ProyectoComponent,
+    ArticuloComponent,
 
   ],
   imports: [
     CommonModule,
     SharedModule,
     PAGES_ROUTES,
-    FormsModule,
+    FormsModule
+    
   ]
 })
 export class PagesModule { }

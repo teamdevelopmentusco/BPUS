@@ -5,8 +5,15 @@
     - Descripción:      Perfil Admin con rutas hijas para CRUD de tablas
     -Última modificación:  27/07/2019   
 -->
-<h3 class="text-uppercase">Tabla profesores</h3><br>
+<h3 class="text-uppercase">Programas Académicos</h3><br>
 <h6 class="text-left text-uppercase" style="margin-top: 2%">Filtrar por:</h6>
+<select class="custom-select selectAdmin" style="width: 10%">
+  <option selected>Tipo de documetno</option>
+  <option value="1">Cédula de ciudadania</option>
+  <option value="2">Tarjeta de identidad</option>
+  <option value="3">Contraseña</option>
+  <option value="3">Cédula extranjera</option>
+</select>
 <select class="custom-select selectAdmin" style="width: 10%">
   <option selected>Genero</option>
   <option value="1">Masculino</option>
@@ -28,16 +35,6 @@
   <option value="1">Neiva</option>
   <option value="2">Garzón</option>
   <option value="3">Pitalito</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Rol</option>
-  <option value="1">Estudiante</option>
-  <option value="2">Profesor</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Subrol</option>
-  <option value="1">Jefe de programa</option>
-  <option value="2">Asesor</option>
 </select>
 <div class="text-right" style="padding: 1%">
 <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
@@ -66,12 +63,6 @@
       <th scope="col" style="width: 10%" class="align-middle">
         Sede
       </th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Rol
-      </th>
-      <th scope="col"  class="align-middle">
-        Subrol
-      </th>
       <th scope="col" class="align-middle colorRojo">
         Opciones
       </th>
@@ -88,9 +79,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td></td>
-       <td>
+      <td>
         <div class="row">
           <div class="col text-left" style="width: 50%;padding: 2%">
             <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
@@ -111,18 +100,16 @@
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td></td>
-       <td>
-        <div class="row">
-          <div class="col text-left" style="width: 50%;padding: 2%">
-            <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+      <td>
+          <div class="row">
+            <div class="col text-left" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+            </div>
+            <div class="col text-right" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+            </div>
           </div>
-          <div class="col text-right" style="width: 50%;padding: 2%">
-            <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
-          </div>
-        </div>
-      </td>
+        </td>
     </tr>
     <tr>
       <th scope="row">3</th>
@@ -134,32 +121,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td></td>
-       <td>
-        <div class="row">
-          <div class="col text-left" style="width: 50%;padding: 2%">
-            <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
-          </div>
-          <div class="col text-right" style="width: 50%;padding: 2%">
-            <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
-          </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-        <th scope="row">4</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-         <td>
+      <td>
           <div class="row">
             <div class="col text-left" style="width: 50%;padding: 2%">
               <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
@@ -169,53 +131,70 @@
             </div>
           </div>
         </td>
-      </tr>
-      <tr>
-          <th scope="row">5</th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-           <td>
-            <div class="row">
-              <div class="col text-left" style="width: 50%;padding: 2%">
-                <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
-              </div>
-              <div class="col text-right" style="width: 50%;padding: 2%">
-                <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
-              </div>
+    </tr>
+     <tr>
+      <th scope="row">4</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+          <div class="row">
+            <div class="col text-left" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
             </div>
-          </td>
-        </tr>
-        <tr>
-            <th scope="row">6</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-             <td>
-              <div class="row">
-                <div class="col text-left" style="width: 50%;padding: 2%">
-                  <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
-                </div>
-                <div class="col text-right" style="width: 50%;padding: 2%">
-                  <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
-                </div>
-              </div>
-            </td>
-          </tr>
+            <div class="col text-right" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+            </div>
+          </div>
+        </td>
+    </tr>
+     <tr>
+      <th scope="row">5</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+          <div class="row">
+            <div class="col text-left" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+            </div>
+            <div class="col text-right" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+            </div>
+          </div>
+        </td>
+    </tr>
+     <tr>
+      <th scope="row">6</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+          <div class="row">
+            <div class="col text-left" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+            </div>
+            <div class="col text-right" style="width: 50%;padding: 2%">
+              <button class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+            </div>
+          </div>
+        </td>
+    </tr>
   </tbody>
   </table>
 </div>

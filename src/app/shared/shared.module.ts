@@ -16,7 +16,6 @@ import { NavbarComponent } from './navbar/navbar.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    NopagefoundComponent,
     NavbarComponent
   ]
 })

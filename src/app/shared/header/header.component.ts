@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit  {
   usuario:Usuario;
   iniciarSesion:Boolean;
 
-  constructor(public _usuarioService:UsuarioService, public router:Router) {
+  constructor(public _usuarioService:UsuarioService) {
     this.usuario=this._usuarioService.usuario;
     
    }
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit  {
   
   sesionLogo(){
   
-    return (localStorage.getItem("token"))?true:false;
+    return this._usuarioService.estaLogueado();
     
   }
 
