@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 
 //ProyectosUsco
-
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 // docentes
 import { DocenteComponent } from './docente/docente.component';
@@ -58,8 +58,8 @@ import { ArticuloComponent } from './proyectosUsco/articulo/articulo.component';
     CommonModule,
     SharedModule,
     PAGES_ROUTES,
-    FormsModule
-    
+    FormsModule,
+    NgxDropzoneModule
   ]
 })
 export class PagesModule { }

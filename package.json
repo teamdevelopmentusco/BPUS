@@ -25,6 +25,7 @@
     "@reactivex/rxjs": "^6.5.2",
     "core-js": "^2.5.4",
     "ng-unity": "0.0.4",
+    "ngx-dropzone": "^1.2.0",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
     "sweetalert2": "^8.14.0",
