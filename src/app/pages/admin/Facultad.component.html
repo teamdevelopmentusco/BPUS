@@ -5,40 +5,9 @@
     - Descripción:      Perfil Admin con rutas hijas para CRUD de tablas
     -Última modificación:  27/07/2019   
 -->
+
+<!---->
 <h3 class="text-uppercase">Facultades</h3><br>
-<h6 class="text-left text-uppercase" style="margin-top: 2%">Filtrar por:</h6>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Genero</option>
-  <option value="1">Masculino</option>
-  <option value="2">Femenino</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Facultad</option>
-  <option value="1">Ingeniería</option>
-  <option value="2">Salúd</option>
-  <option value="3">Licenciatura</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Programa</option>
-  <option value="1">Ingeniería de software</option>
-  <option value="2">Tecnología de software</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Sede</option>
-  <option value="1">Neiva</option>
-  <option value="2">Garzón</option>
-  <option value="3">Pitalito</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Rol</option>
-  <option value="1">Estudiante</option>
-  <option value="2">Profesor</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Subrol</option>
-  <option value="1">Jefe de programa</option>
-  <option value="2">Asesor</option>
-</select>
 <div class="text-right" style="padding: 1%">
 <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
 <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
@@ -48,43 +17,17 @@
      <thead>
     <tr class="tablaAdmin">
       <th scope="col" style="width: 10%" class="align-middle">ID</th>
-      <th scope="col" style="width: 10%" class="align-middle">Numero del documento</th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Tipo de documento
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">Nombre</th>
-      <th scope="col" style="width: 10%" class="align-middle">Apellido</th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Genero
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Facultad
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Programa
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Sede
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Rol
-      </th>
-      <th scope="col"  class="align-middle">
-        Subrol
-      </th>
-      <th scope="col" class="align-middle colorRojo">
-        Opciones
-      </th>
+      <th scope="col" style="width: 10%" class="align-middle">Nombre de la facultad</th>
+      <th scope="col" style="width: 10%" class="align-middle">Año de creación</th>
+      <th scope="col" style="width: 10%" class="align-middle">Número de Ofertas</th>
+      <th scope="col" style="width: 10%" class="align-middle">Tipo</th>
+      <th scope="col" style="width: 10%" class="align-middle">Semilleros</th>
+      <th scope="col" style="width: 10%" class="align-middle colorRojo">Opciones</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -108,11 +51,6 @@
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
        <td>
         <div class="row">
           <div class="col text-left" style="width: 50%;padding: 2%">
@@ -126,11 +64,6 @@
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -154,11 +87,6 @@
         <td></td>
         <td></td>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
          <td>
           <div class="row">
             <div class="col text-left" style="width: 50%;padding: 2%">
@@ -172,11 +100,6 @@
       </tr>
       <tr>
           <th scope="row">5</th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
           <td></td>
           <td></td>
           <td></td>
@@ -200,11 +123,6 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
              <td>
               <div class="row">
                 <div class="col text-left" style="width: 50%;padding: 2%">
@@ -218,4 +136,13 @@
           </tr>
   </tbody>
   </table>
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col text-right">
+      <button class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
+      <input class="" type="text" value="1" style="width: 45px;height: 37px;margin: 0px;padding-bottom: 8px;text-align: center">
+      <button class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
+    </div>
+  </div>
 </div>
