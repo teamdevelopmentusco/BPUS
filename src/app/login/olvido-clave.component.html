@@ -34,7 +34,7 @@
             </div>
             <div class="txtcenter">
                 <a href="javascript: history.back()" class="mr-5 uscolink">VOLVER ATRÁS</a>
-                <button type="submit" [disabled]="!emailForm.valid" class="btn uscoButton">ENVIAR CORREO</button>
+                <button type="submit" [disabled]="!emailForm.valid" class="btn uscoButton" (click)="showModal()">ENVIAR CORREO</button>
             </div>
         </form>
     </div>
