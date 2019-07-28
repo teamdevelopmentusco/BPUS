@@ -28,8 +28,8 @@ export class ProfileComponent implements OnInit {
     const activeTab = document.getElementById(tab);
     const personalTab = document.getElementById('personalTab');
     const academicTab = document.getElementById('academicTab');
-    personalTab.setAttribute('class', 'nav-link');
-    academicTab.setAttribute('class', 'nav-link');
+    personalTab.setAttribute('class', 'nav-link text-body');
+    academicTab.setAttribute('class', 'nav-link text-body');
     activeTab.setAttribute('class', 'nav-link activeTab font-weight-bold');
   }
 

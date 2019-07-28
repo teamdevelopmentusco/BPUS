@@ -5,19 +5,15 @@
     - Descripción:      Perfil Admin con rutas hijas para CRUD de tablas
     -Última modificación:  27/07/2019   
 -->
-<div class="row" style="width: 100%" style="margin-left:20%">
-    <div class="col text-center"><br>
-        
-        <form class="form-inline">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text uscoInputSearch" id="basic-addon1"><span class="fa fa-search"></span></span>
-              </div>
-              <input type="text" class="form-control uscoInputSearch" placeholder=""  aria-describedby="basic-addon1" style="width: 580px">
-            </div>
-            <input type="button" class="btn uscoButton" value="BUSCAR" style="width: 100px;height: 40px;border-radius: 50px;margin-left: 5px;">
-          </form>
-            <router-outlet></router-outlet>
-        
+<div class=" container text-center">
+  <form class="form-inline justify-content-center">
+    <div class="input-group text-center">
+      <div class="input-group-prepend">
+        <span class="input-group-text uscoInputSearch" id="basic-addon1"><span class="fa fa-search"></span></span>
+      </div>
+      <input type="text" class="form-control uscoInputSearch" placeholder=""  aria-describedby="basic-addon1" style="width:500px">
     </div>
+    <input type="button" class="btn uscoButton text-right" value="BUSCAR" style="width: 100px;height: 40px;border-radius: 50px;margin-left: 5px;">
+  </form>
+  <router-outlet></router-outlet>    
 </div>
