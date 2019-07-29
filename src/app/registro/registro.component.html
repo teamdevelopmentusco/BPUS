@@ -24,7 +24,7 @@
             <div class="mx-5 form-group">
                 <label for="password " class="font-weight-bold">CONTRASEÑA:</label><br>
                 <div class="mb-2 input-group">
-                    <!--Falla de seguridad--><input formControlName="password" name="password" type="password" id="password" placeholder="Digite su contraseña" class="uscoInputs form-control" maxlength="30" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,30}" required>
+                    <!--Falla de seguridad--><input formControlName="password" name="password" type="password" id="password" placeholder="Digite su contraseña" class="uscoInputs form-control" maxlength="30" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,30}" required>
                     <div class=" input-group-append ">
                         <button class="input-group-text input-inside-button " type="button" (click)="showpassword( 'password', 'showpass1')"><i class='far fa-eye-slash' id="showpass1"></i></button>
                     </div>
@@ -34,7 +34,7 @@
                         La contraseña es requerida.
                     </div>
                 </h6>
-                <p>Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
+                <p>Use 8 o más carácteres con una combinación de letras incluida una mayúscula y números </p>
             </div>
             <div class="mx-5 form-group">
                 <label for="password" class="font-weight-bold">CONFIRME SU CONTRASEÑA:</label><br>
