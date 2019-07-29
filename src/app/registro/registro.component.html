@@ -24,7 +24,8 @@
             <div class="mx-5 form-group">
                 <label for="password " class="font-weight-bold">CONTRASEÑA:</label><br>
                 <div class="mb-2 input-group">
-                    <!--Falla de seguridad--><input formControlName="password" name="password" type="password" id="password" placeholder="Digite su contraseña" class="uscoInputs form-control" maxlength="30" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,30}" required>
+                    <!--Falla de seguridad--><input formControlName="password" (change)="somethingChanged()" name="password" type="password" id="password" placeholder="Digite su contraseña" class="uscoInputs form-control" maxlength="30" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,30}$"
+                        required>
                     <div class=" input-group-append ">
                         <button class="input-group-text input-inside-button " type="button" (click)="showpassword( 'password', 'showpass1')"><i class='far fa-eye-slash' id="showpass1"></i></button>
                     </div>
@@ -33,8 +34,11 @@
                     <div *ngIf="password.errors.required">
                         La contraseña es requerida.
                     </div>
+                    <div *ngIf="password.errors.pattern">
+                        <p class="d-none" id="patternWrong"><i class='fas fa-exclamation-circle' style='color:red'></i> Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
+                    </div>
                 </h6>
-                <p>Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
+                <p class="" id="patternOkay">Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
             </div>
             <div class="mx-5 form-group">
                 <label for="password" class="font-weight-bold">CONFIRME SU CONTRASEÑA:</label><br>

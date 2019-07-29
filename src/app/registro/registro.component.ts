@@ -15,11 +15,11 @@ export class RegistroComponent implements OnInit {
     this.forma = this.formBuilder.group({
       email: [
         '',
-        [Validators.required, Validators.pattern("[^@]([A-Za-z0-9._]+){1,25}") ]
+        [Validators.required, Validators.pattern('[^@]([A-Za-z0-9._]+){1,25}')]
       ],
       password: [
         '',
-        [Validators.required]
+        [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,30}')]
       ],
       passwordComprobar: [
         '',
@@ -29,9 +29,6 @@ export class RegistroComponent implements OnInit {
     console.log(this.forma);
   }
 
-  ngOnInit() {
-  }
-  
   get email() {
     return this.forma.get('email');
   }
@@ -42,6 +39,22 @@ export class RegistroComponent implements OnInit {
 
   get passwordComprobar() {
     return this.forma.get('passwordComprobar');
+  }
+
+  somethingChanged() {
+    if (this.password.invalid && (this.password.dirty || this.password.touched)) {
+      const patternWrong = document.getElementById('patternWrong');
+      const patternOkay = document.getElementById('patternOkay');
+      if (this.password.errors.pattern && !this.password.errors.required) {
+        patternWrong.setAttribute('class', '');
+        patternOkay.setAttribute('class', 'd-none');
+      } else if (this.password.errors.required) {
+        patternOkay.setAttribute('class', '');
+      }
+    }
+  }
+
+  ngOnInit() {
   }
 
   nextRegistro() {
@@ -59,13 +72,13 @@ export class RegistroComponent implements OnInit {
   }
 
   showpassword(inputId: string, iconId: string) {
-    const password = document.getElementById(inputId);
+    const passwordd = document.getElementById(inputId);
     const icon = document.getElementById(iconId);
-    if (password.getAttribute('type') === 'password') {
-      password.setAttribute('type', 'text');
+    if (passwordd.getAttribute('type') === 'password') {
+      passwordd.setAttribute('type', 'text');
       icon.setAttribute('class', 'far fa-eye');
     } else {
-      password.setAttribute('type', 'password');
+      passwordd.setAttribute('type', 'password');
       icon.setAttribute('class', 'far fa-eye-slash');
     }
   }
