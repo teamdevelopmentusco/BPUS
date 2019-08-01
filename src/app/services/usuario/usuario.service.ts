@@ -19,6 +19,7 @@ export class UsuarioService {
   usuario: Usuario;
   token: string;
   menu: any[] = [];
+  totalUsuarios:number=0;
 
   constructor(
     public http: HttpClient,
@@ -230,7 +231,13 @@ export class UsuarioService {
 
 
     let url=URL_SERVICIOS+'/usuario?desde='+desde;
-    return this.http.get(url);
+    return this.http.get(url) .map((resp:any) =>{
+
+      this.totalUsuarios=resp.total;
+      return resp.usuarios;
+
+
+    });
   }
 
   buscarUsuarios(termino:string){

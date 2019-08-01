@@ -76,7 +76,7 @@ export class RegistroTresComponent implements OnInit {
     let usuario = new Usuario( this.forma.value.nombres,
         this.forma.value.apellidos,
          localStorage.getItem("password"),
-          localStorage.getItem("email"),
+          localStorage.getItem("email")+"@usco.edu.co",
            this.forma.value.telefono,
             localStorage.getItem("tipoUsuario"),
             localStorage.getItem("tipoID"),
