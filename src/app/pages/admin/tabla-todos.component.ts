@@ -52,19 +52,23 @@ this._usuarioService.cargarUsuarios(this.desde)
   }
 
   buscarUsuarios( termino:string){
+    
     this.cargando=true;
+
     if(termino.length<=0){
         this.cargarUsuarios();
         return;
     }
 
     
-
+    
       this._usuarioService.buscarUsuarios(termino)
                             .subscribe((usuarios:Usuario[])=>{
                               this.usuarios=usuarios;
                               this.cargando=false;
       });
+
+  
 
   }
 
@@ -74,7 +78,7 @@ this._usuarioService.cargarUsuarios(this.desde)
 
     swal.fire({
       title: '¿Estas seguro?',
-      text: "Esta a punto de borrar a "+usuario.nombres,
+      text: "Esta a punto de borrar a "+usuario.nombres+" "+usuario.apellidos,
       type: 'warning',
       showCancelButton: true,
       showConfirmButton: true,

@@ -60,9 +60,6 @@ export class LoginComponent implements OnInit {
 
     // tslint:disable-next-line: max-line-length
     let usuario = new Usuario(null, null, forma.value.password, null, null, null, null, forma.value.numDocumento, null, null, null, null, null, null, null);
-    console.log(forma.valid);
-    console.log(forma.value);
-
     this._usuarioService.login(usuario).subscribe(correcto => this.router.navigate(['/search']));
     // this.router.navigate(['/dashboard']);
   }

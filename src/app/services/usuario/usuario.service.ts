@@ -144,13 +144,10 @@ export class UsuarioService {
     let url = URL_SERVICIOS + '/login';
     return this.http.post( url, usuario )
                 .map( (resp: any) => {
-                  console.log(this.usuario);
                   this.guardarStorage( resp.id, resp.token, resp.Usuario,resp.menu );
-                 // console.log(resp);
-                
+                 
                   return true;
                 }).catch(err =>{
-                  //console.log(err.error.mensaje);
                   swal.fire('Error en el login',err.error.mensaje,'error');
                   return Observable.throw(err);
 

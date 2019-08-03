@@ -13,12 +13,26 @@
                     <img style="width: 400px;margin: 20px;align-content: center" src="../../assets/universidad-surcolombiana-acreditacion.png" alt="Universidad Surcolombiana">
                 </a>
             </div>
+            
 
+             <!-- INFORMACIÓN-->
+             <div *ngIf="sesionLogo()"  class="col text-right" >
+               
+                    <div class="dropdown">
+                        <button routerLink='/informacion' type="button" class="btn" style='font-size:36px; color:#dfd4a6'><i class='far fa-question-circle'></i></button>
+                    </div>
+                </div>
+            <!-- NOTIFICACIONES-->
+            <div *ngIf="sesionLogo()"  class="col text-right" >
+               
+                <div class="dropdown">
+                    <button routerLink='/notificaciones' type="button" class="btn" style='font-size:36px; color:#dfd4a6'><i class='fas fa-bell'></i></button>
+                </div>
+            </div>
 
-
-            <div class="col text-right">
-                <!-- SOLUCIONAR ESTO -->
-                <div *ngIf="sesionLogo()">
+            <!-- PERFIL -->
+            <div *ngIf="sesionLogo()" class="col text-right">
+             
                     <div class="dropdown">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style='font-size:36px; color:#dfd4a6'><i class='fas fa-user-circle'></i></button>
                         <div class="dropdown-menu">
@@ -27,7 +41,6 @@
                             <a (click)="_usuarioService.logout()" class="dropdown-item" routerLink='/search'>Cerrar sesión</a>
                         </div>
                     </div>
-                </div>
             </div>
 
             <div *ngIf="!sesionLogo()">
