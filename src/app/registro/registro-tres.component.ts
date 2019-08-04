@@ -36,6 +36,10 @@ export class RegistroTresComponent implements OnInit {
     programaUniversitario: [
       'Ingeniería de software',
       Validators.required,
+    ],
+    genero: [
+      'Femenino',
+      Validators.required
     ]
   });
 }
@@ -63,6 +67,11 @@ export class RegistroTresComponent implements OnInit {
   get programaUniversitario() {
     return this.forma.get('programaUniversitario');
   }
+
+  get genero() {
+    return this.forma.get('genero');
+  }
+
 
   ngOnInit() {
   }

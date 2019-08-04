@@ -9,8 +9,8 @@
 
 <h3 class="text-uppercase">Usuarios</h3><br>
 
-<h6 class="text-left text-uppercase"  style="margin-top: 2%">Usuarios Registrados (<small>{{ _usuarioService.totalUsuarios }}</small>)</h6>
-<input (keyup)="buscarUsuarios(input.value)" #input type="text" class="form-control uscoInputSearch" placeholder=""  aria-describedby="basic-addon1" style="width:500px"> 
+<h6 class="text-left text-uppercase" style="margin-top: 2%">Usuarios Registrados (<small>{{ _usuarioService.totalUsuarios }}</small>)</h6>
+<input (keyup)="buscarUsuarios(input.value)" #input type="text" class="form-control uscoInputSearch" placeholder="" aria-describedby="basic-addon1" style="width:500px">
 
 <!--  TEMPORALMENTE COMENTARIADO.
 
@@ -40,78 +40,78 @@
 -->
 
 <div class="text-right" style="padding: 1%">
-<button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
-<button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
+    <button (click)="agregarUsuario()" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
+    <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
 </div>
 <div class="table-responsive-md">
-  <table class="table table-bordered">
-     <thead>
-    <tr class="tablaAdmin">
-      <th scope="col" style="width: 10%" class="align-middle">ID</th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Tipo de documento
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">Número del documento</th>
-      <th scope="col" style="width: 10%" class="align-middle">Nombre</th>
-      <th scope="col" style="width: 10%" class="align-middle">Apellido</th>
-      <th scope="col" style="width: 10%" class="align-middle">Teléfono</th>
-      <th scope="col" style="width: 10%" class="align-middle">Código</th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Genero
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Facultad
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Programa
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Sede
-      </th>
-      <th scope="col" style="width: 10%" class="align-middle">
-        Rol
-      </th>
-      <th scope="col" class="align-middle colorRojo">
-        Opciones
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let usuario of usuarios;  let i = index;">
-      <th scope="row">{{i+1}}</th>
-      <td>{{ usuario.tipoID}}</td>
-      <td>{{ usuario.numDocumento}}</td>
-      <td>{{ usuario.nombres}}</td>
-      <td>{{ usuario.apellidos}}</td>
-      <td>{{ usuario.telefono}}</td>
-      <td>{{ usuario.codigoUniversitario}}</td>
-      <td></td>
-      <td>{{ usuario.facultad}}</td>
-      <td>{{ usuario.programaUniversitario}}</td>
-      <td>{{ usuario.sedeUniversitaria}}</td>
-      <td>{{ usuario.role}}</td>
-       <td>
-        <div class="row">
-          <div class="col text-left" style="width: 50%;padding: 2%">
-            <button  class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
-          </div>
-          <div class="col text-right" style="width: 50%;padding: 2%">
-            <button (click)="borrarUsuarios(usuario)"  class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
-          </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="tablaAdmin">
+                <th scope="col" style="width: 10%" class="align-middle">ID</th>
+                <th scope="col" style="width: 10%" class="align-middle">
+                    Tipo de documento
+                </th>
+                <th scope="col" style="width: 10%" class="align-middle">Número del documento</th>
+                <th scope="col" style="width: 10%" class="align-middle">Nombre</th>
+                <th scope="col" style="width: 10%" class="align-middle">Apellido</th>
+                <th scope="col" style="width: 10%" class="align-middle">Teléfono</th>
+                <th scope="col" style="width: 10%" class="align-middle">Código</th>
+                <th scope="col" style="width: 10%" class="align-middle">
+                    Genero
+                </th>
+                <th scope="col" style="width: 10%" class="align-middle">
+                    Facultad
+                </th>
+                <th scope="col" style="width: 10%" class="align-middle">
+                    Programa
+                </th>
+                <th scope="col" style="width: 10%" class="align-middle">
+                    Sede
+                </th>
+                <th scope="col" style="width: 10%" class="align-middle">
+                    Rol
+                </th>
+                <th scope="col" class="align-middle colorRojo">
+                    Opciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios;  let i = index;">
+                <th scope="row">{{i+1}}</th>
+                <td>{{ usuario.tipoID}}</td>
+                <td>{{ usuario.numDocumento}}</td>
+                <td>{{ usuario.nombres}}</td>
+                <td>{{ usuario.apellidos}}</td>
+                <td>{{ usuario.telefono}}</td>
+                <td>{{ usuario.codigoUniversitario}}</td>
+                <td></td>
+                <td>{{ usuario.facultad}}</td>
+                <td>{{ usuario.programaUniversitario}}</td>
+                <td>{{ usuario.sedeUniversitaria}}</td>
+                <td>{{ usuario.role}}</td>
+                <td>
+                    <div class="row">
+                        <div class="col text-left" style="width: 50%;padding: 2%">
+                            <button (click)="editarUsuarios(usuario)" class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+                        </div>
+                        <div class="col text-right" style="width: 50%;padding: 2%">
+                            <button (click)="borrarUsuarios(usuario)" class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col">
         </div>
-      </td>
-    </tr>
-   
-   
-  </tbody>
-  </table>
-  <div class="row">
-    <div class="col">
+        <div class="col text-right">
+            <button (click)="cambiarDesde(-5)" class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
+            <input class="" type="text" value="1" style="width: 45px;height: 37px;margin: 0px;padding-bottom: 8px;text-align: center">
+            <button (click)="cambiarDesde(5)" class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
+        </div>
     </div>
-    <div class="col text-right">
-      <button (click)="cambiarDesde(-5)" class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
-      <input class="" type="text" value="1" style="width: 45px;height: 37px;margin: 0px;padding-bottom: 8px;text-align: center">
-      <button (click)="cambiarDesde(5)" class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
-    </div>
-  </div>
 </div>
