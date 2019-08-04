@@ -7,20 +7,7 @@
 -->
 <br>
 <h3 class="text-uppercase animated fadeIn fast">Programas Académicos</h3><br>
-<h6 class="text-left text-uppercase" style="margin-top: 2%">Filtrar por:</h6>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Año de creación</option>
-  <option value="1">2019</option>
-  <option value="2">2018</option>
-  <option value="3">2017</option>
-  <option value="3">2016</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Nivel de formación</option>
-  <option value="1">Ingeniero</option>
-  <option value="2">Tecnólogo</option>
-  <option value="3">Licenciado</option>
-</select>
+<h6 class="text-left text-uppercase" style="margin-top: 2%">Programas Registrados (<small>{{ _programaService.totalProgramas }}</small>)</h6>
 <div class="text-right" style="padding: 1%">
 <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
 <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
@@ -40,14 +27,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+    <tr *ngFor="let programa of programas;  let i = index;">
+      <th scope="row">{{i+1}}</th>
+      <td>{{ programa.SNIES}}</td>
+      <td>{{ programa.nombre}}</td>
+      <td>{{ programa.numCreditos}}</td>
+      <td>{{ programa.nivelAcademico}}</td>
+      <td>{{ programa.tituloOtogado}}</td>
+      <td>{{ programa.modalidadFormacion}}</td>
       <td>
         <div class="row">
           <div class="col text-left" style="width: 50%;padding: 2%">

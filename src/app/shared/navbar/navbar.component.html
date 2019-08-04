@@ -15,9 +15,9 @@
     
         <a class="dropdown-header" href="#" ><img src="../assets/universidad-surcolombiana.png" alt="" style="width: 250px"></a>
         
-        <a *ngFor="let menu of _SIDEBAR.menu" class=" uscoMenuNav"  >{{menu.titulo}}   <a *ngFor="let submenu of menu.submenu" class="dropdown-item uscoMenuNav" [routerLink]="[submenu.url]" >{{submenu.titulo}}</a></a>
+        <a *ngFor="let menu of _SIDEBAR.menu" class=" uscoMenuNav  "  >{{menu.titulo}}   <a *ngFor="let submenu of menu.submenu" class="dropdown-item uscoMenuNav" [routerLink]="[submenu.url]"> <i [class]="submenu.icono"></i>{{submenu.titulo}}</a></a>
     
-        <a (click)="_USUARIOSERVICE.logout()"  class="dropdown-item uscoMenuNav"  href="#">Cerrar sesión</a>
+        <a (click)="_USUARIOSERVICE.logout()"  class="dropdown-item uscoMenuNav "  href="#"><i class="fas fa-sign-out-alt"></i>Cerrar sesión</a>
       </div>
     </div>
   </div>
