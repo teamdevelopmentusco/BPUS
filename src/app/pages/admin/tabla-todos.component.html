@@ -6,8 +6,8 @@
     -Última modificación:  27/07/2019   
 -->
 
-
-<h3 class="text-uppercase">Usuarios</h3><br>
+<br>
+<h3 class="text-uppercase animated fadeIn fast">Usuarios</h3><br>
 
 <h6 class="text-left text-uppercase" style="margin-top: 2%">Usuarios Registrados (<small>{{ _usuarioService.totalUsuarios }}</small>)</h6>
 <input (keyup)="buscarUsuarios(input.value)" #input type="text" class="form-control uscoInputSearch" placeholder="" aria-describedby="basic-addon1" style="width:500px">
@@ -43,7 +43,7 @@
     <button (click)="agregarUsuario()" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
     <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
 </div>
-<div class="table-responsive-md">
+<div class="table-responsive-md animated fadeIn fast">
     <table class="table table-bordered">
         <thead>
             <tr class="tablaAdmin">
