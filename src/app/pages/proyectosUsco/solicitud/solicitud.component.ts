@@ -16,7 +16,7 @@ export class SolicitudComponent implements OnInit {
 
   constructor(public _usuarioService: UsuarioService) {
     this.usuario = this._usuarioService.usuario;
-    this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '+0530');
+    this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '-0500');
   }
   ngOnInit() {
   }

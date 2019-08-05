@@ -10,9 +10,10 @@ import swal from 'sweetalert2';
   styles: []
 })
 export class ProgresoComponent implements OnInit {
-
+  today = new Date();
+  jstoday = '';
   constructor() {
-    
+    this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '-0500');
   }
   ngOnInit() {
   }
