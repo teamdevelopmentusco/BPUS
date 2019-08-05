@@ -52,17 +52,19 @@ export class SedeService {
 
     let url = URL_SERVICIOS+'/sedeUniversitaria/'+sede._id+'?token='+this.token;
 
-    return this.http.put(url,sede)
-                    .map((resp:any)=>{
-                      if (sede._id===this.sede._id) {
-                        let usuarioDB:Usuario=resp.usuario;
+    return this.http.put(url, sede)
+                    .map((resp: any) => {
+                      /*
+                      *****arreglar el if*****
+                      if (sede._id === this.sede._id) {
+                        let usuarioDB:Usuario = resp.usuario;
                       }
-                      swal.fire('Sede actualizada',sede.nombre,'success');
+                      */
+                      swal.fire('Sede actualizada', sede.nombre, 'success');
                       return true;
                     }).catch(err =>{
-                      swal.fire(err.error.mensaje,err.error.errors.message,'error');
+                      swal.fire('Error al actualizar', sede.nombre, 'error');
                       return Observable.throw(err);
-                
                     });
 
   }

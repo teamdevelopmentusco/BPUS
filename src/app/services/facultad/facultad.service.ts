@@ -34,17 +34,17 @@ export class FacultadService {
 
 
  
-  crearFacultad(facultad:Facultad){
+  crearFacultad(facultad: Facultad) {
 
-    let url=URL_SERVICIOS+'/facultad';
+    let url = URL_SERVICIOS + '/facultad';
    
     return this.http.post(url, facultad)
-    .map((resp:any)=>{
-      swal.fire('Usuario creado',facultad.email,'success');
+    .map((resp: any) => {
+      swal.fire('Facultad creada', facultad.email, 'success');
       return resp.facultad;
 
-    }).catch(err =>{
-      //console.log(err.error.mensaje);
+    }).catch(err => {
+      // console.log(err.error.mensaje);
       swal.fire(err.error.mensaje,err.error.errors.message,'error');
       return Observable.throw(err);
 
@@ -59,20 +59,20 @@ export class FacultadService {
     
    // console.log(url);
 
-    return this.http.put(url,facultad)
-                    .map((resp:any)=>{
-
+    return this.http.put(url, facultad)
+                    .map((resp: any) => {
+                      /*
+                      ***REVISAR**
                       if (facultad._id===this.facultad._id) {
                         let facultadDB:Facultad=resp.facultad;
                       }
-                      
-                           
-                      swal.fire('La facultad a sido actualizada',facultad.nombre,'success');
+                      */
+                      swal.fire('La facultad ha sido actualizada', facultad.nombre, 'success');
 
                       return true;
                     }).catch(err =>{
-                      //console.log(err.error.mensaje);
-                      swal.fire(err.error.mensaje,err.error.errors.message,'error');
+                      // console.log(err.error.mensaje);
+                      swal.fire('Error al actualizar facultad', facultad.nombre, 'error');
                       return Observable.throw(err);
                 
                     });

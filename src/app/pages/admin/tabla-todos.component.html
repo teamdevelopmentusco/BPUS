@@ -43,7 +43,7 @@
     <button (click)="agregarUsuario()" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
     <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
 </div>
-<div class="table-responsive-md animated fadeIn fast">
+<div class="table-responsive-md table-sm animated fadeIn fast">
     <table class="table table-bordered">
         <thead>
             <tr class="tablaAdmin">
@@ -57,7 +57,7 @@
                 <th scope="col" style="width: 10%" class="align-middle">Teléfono</th>
                 <th scope="col" style="width: 10%" class="align-middle">Código</th>
                 <th scope="col" style="width: 10%" class="align-middle">
-                    Genero
+                    Tipo
                 </th>
                 <th scope="col" style="width: 10%" class="align-middle">
                     Facultad
@@ -85,7 +85,7 @@
                 <td>{{ usuario.apellidos}}</td>
                 <td>{{ usuario.telefono}}</td>
                 <td>{{ usuario.codigoUniversitario}}</td>
-                <td></td>
+                <td>{{ usuario.tipoUsuario}}</td>
                 <td>{{ usuario.facultad}}</td>
                 <td>{{ usuario.programaUniversitario}}</td>
                 <td>{{ usuario.sedeUniversitaria}}</td>
@@ -101,8 +101,6 @@
                     </div>
                 </td>
             </tr>
-
-
         </tbody>
     </table>
     <div class="row">

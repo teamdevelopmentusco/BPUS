@@ -35,7 +35,7 @@ export class ProgramaService {
  
   crearPrograma(programa:Programa){
 
-    let url=URL_SERVICIOS+'/usuario';
+    let url=URL_SERVICIOS+'/programaUniversitario';
    
     return this.http.post(url, programa)
     .map((resp:any)=>{
@@ -59,18 +59,17 @@ export class ProgramaService {
 
     return this.http.put(url,programa)
                     .map((resp:any)=>{
-
+                      /*
                       if (programa._id===this.programa._id) {
                         let usuarioDB:Usuario=resp.usuario;
                       }
-                      
-                           
-                      swal.fire('El programa actualizado',programa.nombre,'success');
+                      */
+                      swal.fire('Programa actualizado', programa.nombre, 'success');
 
                       return true;
                     }).catch(err =>{
                       //console.log(err.error.mensaje);
-                      swal.fire(err.error.mensaje,err.error.errors.message,'error');
+                      swal.fire('Error al actualizar programa', programa.nombre, 'error');
                       return Observable.throw(err);
                 
                     });
