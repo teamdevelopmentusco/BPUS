@@ -7,15 +7,18 @@
     -Última modificación:  20/07/2019   
 -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 60px;border-style:solid;border-bottom-width: 1px;border-top-width: 1px;border-right-width: 0px;border-left-width: 0px">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: auto;">
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-    <div class="btn-group" role="group">
+    <div class="btn-group" role="group" >
       <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btnGroupDrop1" class="btn btn-outline my-2 my-sm-0 rounded-circle" style="margin-right: 20px; align-items: center;background-color: #E8E8E8"><span class="fas fa-bars fa-lg"></span></button>
-      <div *ngFor="let menu of _SIDEBAR.menu" class="dropdown-menu animated fadeIn fast" aria-labelledby="btnGroupDrop1" style="background-color:#f6dbdb;margin-top: 12px;margin-left:0px">
+      
+      <div *ngFor="let menu of _SIDEBAR.menu" class="dropdown-menu animated fadeIn fast"  aria-labelledby="btnGroupDrop1" style="background-color:#f6dbdb;margin-top: 5px; margin-left:-18px;width: 500%;padding: 0px;">
     
-        <a class="dropdown-header" href="#" ><img src="../assets/universidad-surcolombiana.png" alt="" style="width: 250px"></a>
-        
-        <a *ngFor="let menu of _SIDEBAR.menu" class=" uscoMenuNav  "  >{{menu.titulo}}   <a *ngFor="let submenu of menu.submenu" class="dropdown-item uscoMenuNav" [routerLink]="[submenu.url]"> <i [class]="submenu.icono"></i>{{submenu.titulo}}</a></a>
+        <div class="card-uscoHeader text-center"  >
+        <h5 class="font-weight-bold text-left"> {{ usuario.nombres }} {{usuario.apellidos}}</h5>
+        <h6 class=" card-subtitle text-left"> {{ usuario.tipoUsuario }}</h6>
+        </div>
+        <a *ngFor="let menu of _SIDEBAR.menu" class=" uscoMenuNav pl-3 ">  <a *ngFor="let submenu of menu.submenu" class="dropdown-item uscoMenuNav pl-4" [routerLink]="[submenu.url]"> <i [class]="submenu.icono"></i>{{submenu.titulo}}</a></a>
     
         <a (click)="_USUARIOSERVICE.logout()"  class="dropdown-item uscoMenuNav "  href="#"><i class="fas fa-sign-out-alt"></i>Cerrar sesión</a>
       </div>

@@ -9,10 +9,12 @@ import { Usuario } from 'src/app/models/usuario.model';
 })
 export class NavbarComponent implements OnInit {
   usuario: Usuario;
-  constructor(public _SIDEBAR: SidebarService, public _USUARIOSERVICE: UsuarioService) { }
+  constructor(public _SIDEBAR: SidebarService, public _USUARIOSERVICE: UsuarioService) {
+    this.usuario = this._USUARIOSERVICE.usuario;
+   }
 
   ngOnInit() {
-    this.usuario = this._USUARIOSERVICE.usuario;
+   
     this._SIDEBAR.cargarMenu();
   }
 

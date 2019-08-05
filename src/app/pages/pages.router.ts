@@ -4,9 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginGuardGuard, VerificaTokenGuard } from '../services/service.index';
 import { AdminGuard } from '../services/service.index';
 
-
-
-
 import { SolicitudComponent } from './proyectosUsco/solicitud/solicitud.component';
 import { DocenteComponent } from './docente/docente.component';
 import { DocenteDosComponent } from './docente/docente-dos.component';
@@ -19,10 +16,10 @@ import { SedesComponent } from './admin/sedes.component';
 import { FacultadComponent } from './admin/Facultad.component';
 import { InformacionComponent } from './informacion/informacion.component';
 import { NotificacionesComponent } from './notificaciones/notificaciones.component';
-import { SearchComponent } from '../search/search.component';
 import { AnteproyectoComponent } from './proyectosUsco/anteproyecto/anteproyecto.component';
 import { ProyectoComponent } from './proyectosUsco/proyecto/proyecto.component';
 import { ArticuloComponent } from './proyectosUsco/articulo/articulo.component';
+import { ProgresoComponent } from './proyectosUsco/progreso/progreso.component';
 
 
 const pagesRouter: Routes = [
@@ -37,6 +34,7 @@ const pagesRouter: Routes = [
     { path: 'anteproyecto' , component: AnteproyectoComponent},
     { path: 'proyecto' , component: ProyectoComponent},
     { path: 'articulo' , component: ArticuloComponent},
+    { path: 'progreso' , component: ProgresoComponent},
     { path: 'perfil' , component: ProfileComponent},
     { path: 'notificaciones' , component: NotificacionesComponent},
     {

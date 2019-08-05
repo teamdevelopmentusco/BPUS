@@ -31,6 +31,7 @@ import { SolicitudComponent } from './proyectosUsco/solicitud/solicitud.componen
 import { AnteproyectoComponent } from './proyectosUsco/anteproyecto/anteproyecto.component';
 import { ProyectoComponent } from './proyectosUsco/proyecto/proyecto.component';
 import { ArticuloComponent } from './proyectosUsco/articulo/articulo.component';
+import { ProgresoComponent } from './proyectosUsco/progreso/progreso.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ArticuloComponent } from './proyectosUsco/articulo/articulo.component';
     AnteproyectoComponent,
     ProyectoComponent,
     ArticuloComponent,
+    ProgresoComponent
 
   ],
   imports: [
