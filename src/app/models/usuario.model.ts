@@ -11,6 +11,7 @@ export class Usuario{
         public tipoUsuario:string,
         public tipoID:string,
         public numDocumento:string,
+        public genero:string,
         public codigoUniversitario:string,
         public sedeUniversitaria:string,
         public facultad:string,

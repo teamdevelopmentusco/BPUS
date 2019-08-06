@@ -90,6 +90,7 @@ export class RegistroTresComponent implements OnInit {
             localStorage.getItem("tipoUsuario"),
             localStorage.getItem("tipoID"),
             localStorage.getItem("numDocumento"),
+            this.forma.value.genero,
               localStorage.getItem("codigoUniversitario"),
                 this.forma.value.sedeUniversitaria,
                  this.forma.value.facultad,

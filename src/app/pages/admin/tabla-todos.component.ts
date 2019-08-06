@@ -127,6 +127,7 @@ this._usuarioService.cargarUsuarios(this.desde)
       '<select id="tipoUsuario" name="tipoUsuario" class="custom-select uscoInputs mb-3">' +
       '<option selected value="Estudiante">Estudiante</option>' +
       '<option value="Docente">Docente</option>' +
+      '<option value="Jefe de programa">Jefe de programa</option>' +
       '</select>' +
       '<h6>TIPO DE IDENTIFICACION</h6>' +
       '<select id="tipoID" name="tipoID" class="custom-select uscoInputs mb-3">' +
@@ -167,7 +168,9 @@ this._usuarioService.cargarUsuarios(this.desde)
       '<option selected value="USER_ROLE">Usuario</option>' +
       '<option value="ADMIN_ROLE">Administrador</option>' +
       '</select>' +
+      
       '</div>' +
+      
       '<div class="col-sm-6">' +
       '<div class="form-group">' +
       '<label for="code" class="font-weight-bold">APELLIDOS</label>' +
@@ -182,6 +185,11 @@ this._usuarioService.cargarUsuarios(this.desde)
       '<select id="programaUniversitario" name="programaUniversitario" class="custom-select uscoInputs mb-3">' +
       '<option selected value="Ingeniería de software">Ingeniería de software</option>' +
       '</select>' +
+      '<label for="genero" class="font-weight-bold">Género</label>' +
+      '<select id="genero" name="genero" class="custom-select uscoInputs mb-3">' +
+      '<option selected value="Masculino">Masculino</option>' +
+      '<option value="Femenino">Femenino</option>' +
+      '</select>' +
       '</div>' +
       '</div>'
     }).then(crear => {
@@ -190,6 +198,7 @@ this._usuarioService.cargarUsuarios(this.desde)
         const clave = (document.getElementById('password') as HTMLInputElement).value;
         const tipoID = (document.getElementById('tipoID') as HTMLInputElement).value;
         const numId = (document.getElementById('numId') as HTMLInputElement).value;
+        const genero = (document.getElementById('genero') as HTMLInputElement).value;
         const code = (document.getElementById('code') as HTMLInputElement).value;
         const tipoUsuario = (document.getElementById('tipoUsuario') as HTMLInputElement).value;
         const nombres = (document.getElementById('nombres') as HTMLInputElement).value;
@@ -199,7 +208,7 @@ this._usuarioService.cargarUsuarios(this.desde)
         const facultad = (document.getElementById('facultad') as HTMLInputElement).value;
         const programa = (document.getElementById('programaUniversitario') as HTMLInputElement).value;
         const rol = (document.getElementById('rol') as HTMLInputElement).value;
-        const nuevoUsuario = new Usuario(nombres, apellidos, clave, correo, telefono, tipoUsuario, tipoID, numId, code, sede, facultad, programa, true, rol);
+        const nuevoUsuario = new Usuario(nombres, apellidos, clave, correo, telefono, tipoUsuario, tipoID, numId,genero, code, sede, facultad, programa, true, rol);
 
         this._usuarioService.crearUsuario(nuevoUsuario).subscribe(resp => {
         console.log(resp);
@@ -226,6 +235,7 @@ this._usuarioService.cargarUsuarios(this.desde)
       '<select id="tipoUsuario" name="tipoUsuario" class="custom-select uscoInputs mb-3">' +
       '<option selected value="Estudiante">Estudiante</option>' +
       '<option value="Docente">Docente</option>' +
+      '<option value="Jefe de programa">Jefe de programa</option>' +
       '</select>' +
       '<h6>TIPO DE IDENTIFICACION</h6>' +
       '<select id="tipoID" name="tipoID" class="custom-select uscoInputs mb-3">' +
@@ -281,6 +291,11 @@ this._usuarioService.cargarUsuarios(this.desde)
       '<select id="programaUniversitario" name="programaUniversitario" class="custom-select uscoInputs mb-3">' +
       '<option selected value="Ingeniería de software">Ingeniería de software</option>' +
       '</select>' +
+      '<label for="rol" class="font-weight-bold">Género</label>' +
+      '<select id="genero" name="genero" class="custom-select uscoInputs mb-3">' +
+      '<option selected value="Masculino">Masculino</option>' +
+      '<option value="Femenino">Femenino</option>' +
+      '</select>' +
       '</div>' +
       '</div>'
     }).then(editar => {
@@ -288,6 +303,7 @@ this._usuarioService.cargarUsuarios(this.desde)
         usuario.email = (document.getElementById('email') as HTMLInputElement).value;
         usuario.tipoID = (document.getElementById('tipoID') as HTMLInputElement).value;
         usuario.numDocumento = (document.getElementById('numId') as HTMLInputElement).value;
+        usuario.genero = (document.getElementById('genero') as HTMLInputElement).value;
         usuario.codigoUniversitario = (document.getElementById('code') as HTMLInputElement).value;
         usuario.tipoUsuario = (document.getElementById('tipoUsuario') as HTMLInputElement).value;
         usuario.nombres = (document.getElementById('nombres') as HTMLInputElement).value;
