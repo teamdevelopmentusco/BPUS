@@ -131,6 +131,11 @@ this._programaService.cargarProgramas(this.desde)
       '<div class="form-group text-left">' +
       '<label for="correo" class="font-weight-bold text-uppercase">Modalidad de formación:</label>' +
       '<input type="text" id="programaModalFor" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>' +
+      '</div>'+
+      '<div class="form-group text-left">' +
+      '<label for="correo" class="font-weight-bold text-uppercase">Jefe de programa:</label>' +
+      '<input type="text" id="jefePrograma" placeholder="Ingrese el jefe de programa" class="uscoInputs form-control" ' +
+      'maxlength="50" required>' +
       '</div>'
     }).then(crear => {
       if (crear.value) {
@@ -140,7 +145,8 @@ this._programaService.cargarProgramas(this.desde)
         const nivelAcademico = (document.getElementById('programaNivelAcademico') as HTMLInputElement).value;
         const tituloOtorgado = (document.getElementById('programaTituloOrtorgado') as HTMLInputElement).value;
         const modalidadFormacion = (document.getElementById('programaModalFor') as HTMLInputElement).value;
-        const programa = new Programa(registroSNIES, nombre, numCreditos, nivelAcademico, tituloOtorgado, modalidadFormacion);
+        const jefePrograma = (document.getElementById('jefePrograma') as HTMLInputElement).value;
+        const programa = new Programa(registroSNIES, nombre, numCreditos, nivelAcademico, tituloOtorgado, modalidadFormacion, jefePrograma);
 
         this._programaService.crearPrograma(programa).subscribe(resp => {
         console.log(resp);

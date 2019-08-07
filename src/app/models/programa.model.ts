@@ -9,6 +9,7 @@ export class Programa{
         public nivelAcademico:string,
         public tituloOtogado:string,
         public modalidadFormacion:string,
+        public jefePrograma:string,
         public _id?: string
     ){
 

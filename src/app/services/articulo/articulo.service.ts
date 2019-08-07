@@ -1,6 +1,6 @@
 /*
 * Proyecto: BPUS
-* Componente: /services/articulo.ts
+* Componente: articulo.service.ts
 * Desarrollador: Cristian Julián Andrade Murillo
 * Descripción: servicios crud del artículo
 * Última modificación: 06/08/2019
@@ -15,7 +15,7 @@ import 'rxjs/add/observable/throw';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Articulo } from 'src/app/models/articulo';
+import { Articulo } from 'src/app/models/articulo.model';
 
 
 @Injectable()
