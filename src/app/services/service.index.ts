@@ -16,6 +16,5 @@ export { ArticuloService } from './articulo/articulo.service';
 export { ProyectoService } from './proyecto/proyecto.service';
 export { SolicitudService } from './solicitud/solicitud.service';
 export { NotificacionService } from './notificacion/notificacion.service';
-export { TipoNotificacionService } from './tipoNotificacion/tipoNotificacion.service';
 export { SidebarService } from './shared/sidebar.service';
 

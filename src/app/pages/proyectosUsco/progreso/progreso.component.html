@@ -1,8 +1,10 @@
 <div class="container">
     <fieldset class="border p-3">
-      <legend  class="w-auto" style="background-color: #8F141B;color: #DFD4A6;padding: 5px">Progreso actual del estudiante: Nombre del estudiante</legend>
+      <legend  class="w-auto" style="background-color: #8F141B;color: #DFD4A6;padding: 5px">PROGRESO ACTUAL </legend>
       <h6 class="uscoSearchTitulo text-left" style="margin: 0px;padding:0px;">Fecha:</h6><p class="uscoSesion text-left" style="margin: 0px;padding:0px;font-size: 15px">{{jstoday}}</p>
       <br>
+
+       <!-- ***************************** SOLICITUD **********************************-->
       <div class="row text-center" style="width: 100%">
         <div class="col" style="width: 25%">
 
@@ -11,7 +13,7 @@
                   <div class="card-header" id="headingOne" style="background-color: #8F141B;color:#DFD4A6;">
                     <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #DFD4A6">
-                        Solicitud
+                                SOLICITUD
                       </button>
                     </h2>
                   </div>
@@ -25,27 +27,17 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                      <h6 class="card-title">Título solicitud</h6>
-                                      <form action="">
-                                            <label for="" style="font-size: 12px">Fecha publicado</label>
-                                            <input type="text" value="{{jstoday}}">
-                                            <label for="" style="font-size: 12px">Fecha aprobado</label>
-                                            <input type="text">
-                                            <!--
-                                            <div class="text-left" style="padding: 10px">
-                                                  <div class="custom-control custom-switch">
-                                                      <input type="radio" name="radio1" class="custom-control-input" id="customSwitch1">
-                                                      <label class="custom-control-label" for="customSwitch1">Aprobado</label>
-                                                    </div>
-                                                    <div class="custom-control custom-switch">
-                                                      <input type="radio" name="radio1" class="custom-control-input" id="customSwitch2">
-                                                      <label class="custom-control-label" for="customSwitch2">Rechazado</label>
-                                                    </div>
-                                            </div>
-                                            -->
-                                                <label for="" style="font-size: 12px">Revisado</label>
-                                                <input type="text">
-                                      </form>
+                                      
+                                
+                                      <label for="" style="font-size: 12px">Fecha publicado: </label> <br>
+                                      <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
+                                      
+                                      <label for="" style="font-size: 12px">Fecha aprobado</label><br>
+                                      <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
+                                      
+                                      <label for="" style="font-size: 12px">Revisado</label><br>
+                                      <label for="" style="font-size: 12px"> Inserte nombre</label> <br>
+                                      
                                     </div>
                             </div>          
                     </div>
@@ -57,13 +49,15 @@
             </div>
             
         </div>
+
+        <!-- ***************************** ANTEPROYECTO **********************************-->
         <div class="col" style="width: 25%">
                 <div class="accordion" id="accordionExample">
                         <div class="card">
                           <div class="card-header" id="headingTwo" style="background-color: #8F141B;color:#DFD4A6;">
                             <h2 class="mb-0">
                               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: #DFD4A6">
-                                Anteproyecto
+                                  ANTEPROYECTO
                               </button>
                             </h2>
                           </div>
@@ -77,26 +71,16 @@
                                                     </div>
                                                 </div>
                                             <div class="card-body">
-                                                    <h6 class="card-title">Título anteproyecto</h6>
-                                                    <label for="" style="font-size: 12px">Fecha publicado</label>
-                                                    <input type="text" value="{{jstoday}}">
-                                                    <label for="" style="font-size: 12px">Fecha aprobado</label>
-                                                    <input type="text">
-                                                    <!--
-                                                    <div class="text-left" style="padding: 10px">
-                                                          <div class="custom-control custom-switch">
-                                                              <input type="radio" name="radio2" class="custom-control-input" id="customSwitch3">
-                                                              <label class="custom-control-label" for="customSwitch1">Aprobado</label>
-                                                            </div>
-                                                            <div class="custom-control custom-switch">
-                                                              <input type="radio" name="radio2" class="custom-control-input" id="customSwitch4">
-                                                              <label class="custom-control-label" for="customSwitch2">Rechazado</label>
-                                                            </div>
-                                                    </div>
-                                                    -->
-                                                        <label for="" style="font-size: 12px">Revisado</label>
-                                                        <input type="text">
-                                                  </div>
+                                                    
+                                                <label for="" style="font-size: 12px">Fecha publicado: </label> <br>
+                                                <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
+                                                
+                                                <label for="" style="font-size: 12px">Fecha aprobado</label><br>
+                                                <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
+                                                
+                                                <label for="" style="font-size: 12px">Revisado</label><br>
+                                                <label for="" style="font-size: 12px"> Inserte nombre</label> <br>
+                                            </div>
                                             
                                     </div>          
                             </div>
@@ -108,13 +92,15 @@
                     </div>
                     
         </div>
+
+         <!-- ***************************** PROYECTO **********************************-->
         <div class="col" style="width: 25%">
                 <div class="accordion" id="accordionExample">
                         <div class="card">
                           <div class="card-header" id="headingThree" style="background-color: #8F141B;">
                             <h2 class="mb-0">
                               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="color: #DFD4A6">
-                                Proyecto
+                                PROYECTO
                               </button>
                             </h2>
                           </div>
@@ -128,26 +114,17 @@
                                                     </div>
                                                 </div>
                                             <div class="card-body">
-                                                    <h6 class="card-title">Título proyecto</h6>
-                                                    <label for="" style="font-size: 12px">Fecha publicado</label>
-                                                    <input type="text" value="{{jstoday}}">
-                                                    <label for="" style="font-size: 12px">Fecha aprobado</label>
-                                                    <input type="text">
-                                                    <!--
-                                                    <div class="text-left" style="padding: 10px">
-                                                          <div class="custom-control custom-switch">
-                                                              <input type="radio" name="radio3" class="custom-control-input" id="customSwitch5">
-                                                              <label class="custom-control-label" for="customSwitch1">Aprobado</label>
-                                                            </div>
-                                                            <div class="custom-control custom-switch">
-                                                              <input type="radio" name="radio3" class="custom-control-input" id="customSwitch6">
-                                                              <label class="custom-control-label" for="customSwitch2">Rechazado</label>
-                                                            </div>
-                                                    </div>
-                                                    -->
-                                                        <label for="" style="font-size: 12px">Revisado</label>
-                                                        <input type="text">
-                                                  </div>
+                                                   
+                                                    
+                                                <label for="" style="font-size: 12px">Fecha publicado: </label> <br>
+                                                <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
+                                                
+                                                <label for="" style="font-size: 12px">Fecha aprobado</label><br>
+                                                <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
+                                                
+                                                <label for="" style="font-size: 12px">Revisado</label><br>
+                                                <label for="" style="font-size: 12px"> Inserte nombre</label> <br>
+                                            </div>
                                     </div>          
                             </div>
                           </div>
@@ -158,13 +135,14 @@
                     </div>
                     
         </div>
+         <!-- ***************************** ARTICULO **********************************-->
         <div class="col" style="width: 25%">
                 <div class="accordion" id="accordionExample">
                         <div class="card">
                           <div class="card-header" id="headingFour" style="background-color: #8F141B;">
                             <h2 class="mb-0">
                               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="color: #DFD4A6">
-                                Artículo
+                                ARTÍCULO
                               </button>
                             </h2>
                           </div>
@@ -178,26 +156,17 @@
                                                     </div>
                                                 </div>
                                             <div class="card-body">
-                                                    <h6 class="card-title">Título artículo</h6>
-                                                    <label for="" style="font-size: 12px">Fecha publicado</label>
-                                                    <input type="text" value="{{jstoday}}">
-                                                    <label for="" style="font-size: 12px">Fecha aprobado</label>
-                                                    <input type="text">
-                                                    <!--
-                                                    <div class="text-left" style="padding: 10px">
-                                                          <div class="custom-control custom-switch">
-                                                              <input type="radio" name="radio4" class="custom-control-input" id="customSwitch7">
-                                                              <label class="custom-control-label" for="customSwitch1">Aprobado</label>
-                                                            </div>
-                                                            <div class="custom-control custom-switch">
-                                                              <input type="radio" name="radio4" class="custom-control-input" id="customSwitch8">
-                                                              <label class="custom-control-label" for="customSwitch2">Rechazado</label>
-                                                            </div>
-                                                    </div>
-                                                    -->
-                                                        <label for="" style="font-size: 12px">Revisado</label>
-                                                        <input type="text">
-                                                  </div>
+                                                   
+  
+                                                <label for="" style="font-size: 12px">Fecha publicado: </label> <br>
+                                                <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
+                                                
+                                                <label for="" style="font-size: 12px">Fecha aprobado</label><br>
+                                                <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
+                                                
+                                                <label for="" style="font-size: 12px">Revisado</label><br>
+                                                <label for="" style="font-size: 12px"> Inserte nombre</label> <br>
+                                            </div>
                                     </div>          
                             </div>
                           </div>

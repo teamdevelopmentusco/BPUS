@@ -1,13 +1,14 @@
 <div class="mt-3 container animated fadeIn fast">
-    <h2>Anteproyecto</h2>
-    <p>Descarga la plantilla del anteproyecto
-        <a download="02-Formato Anteproyecto de grado.pdf" href="../../../../assets/02-Formato Anteproyecto de grado.pdf">aquí</a>
-    </p>
+    
+    
     <div class="w-75 mx-auto card shadow">
         <div class="card-uscoHeader">
             <h3>Sube tu Anteproyecto</h3>
         </div>
         <div class="card-body">
+                <p>Descarga la plantilla del anteproyecto
+                        <a download="02-Formato Anteproyecto de grado.pdf" href="../../../../assets/02-Formato Anteproyecto de grado.pdf">aquí</a>
+                    </p>
             <form>
                 <ngx-dropzone class="custom-dropzone" [multiple]="false" [showPreviews]="true" #dropzone (filesAdded)="onFilesAdded($event)" (filesRejected)="onFilesRejected($event)" class="custom-dropzone" [label]="'Arrastra el archivo aquí (o click)'"></ngx-dropzone>
                 <div class="mt-3 text-center">

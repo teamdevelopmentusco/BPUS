@@ -16,8 +16,7 @@ import {
   ArticuloService,
   NotificacionService,
   ProyectoService,
-  SolicitudService,
-  TipoNotificacionService
+  SolicitudService
 
 } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
@@ -44,8 +43,7 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
     ArticuloService,
     NotificacionService,
     ProyectoService,
-    SolicitudService,
-    TipoNotificacionService
+    SolicitudService
   ],
   declarations: []
 })
