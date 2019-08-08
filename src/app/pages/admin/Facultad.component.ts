@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Facultad } from 'src/app/models/facultad.model';
 import { FacultadService } from 'src/app/services/service.index';
 import swal from 'sweetalert2';
+import { NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-tabla-profesores',
   templateUrl: './Facultad.component.html',
@@ -11,14 +13,44 @@ export class FacultadComponent implements OnInit {
   desde: number=0;
   facultades: Facultad[]=[];
   cargando:boolean=true;
-  constructor(public _facultadService: FacultadService) { }
+  forma: any;
+  constructor(private formBuilder: FormBuilder, private modalService: NgbModal, public _facultadService: FacultadService) { 
+    this.forma = this.formBuilder.group({
+      nombre: [
+        '',
+        [Validators.required]
+      ],
+      telefono: [
+        '',
+        [Validators.required]
+      ],
+      email: [
+        '',
+        [Validators.required]
+      ]
+    });
+  }
+
+  get email() {
+    return this.forma.get('email');
+  }
+
+  get nombre() {
+    return this.forma.get('nombre');
+  }
+
+  get telefono() {
+    return this.forma.get('telefono');
+  }
 
   ngOnInit() {
 
     this.cargarFacultades();
   }
 
-
+  openModal(agregarFacultad) {
+    this.modalService.open(agregarFacultad);
+  }
   
   cambiarDesde(valor:number){
 
@@ -102,37 +134,10 @@ this._facultadService.cargarFacultades(this.desde)
   }
 
   crearFacultad() {
-    swal.fire({
-      title: 'Crear Facultad',
-      showCancelButton: true,
-      focusConfirm: false,
-      html:
-      '<div class="mt-3 form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">NOMBRE:</label>' +
-      '<input type="text" id="facultadNombre" placeholder="Ingrese el nombre" class="uscoInputs form-control" ' +
-      'maxlength="25" required autofocus>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">teléfono:</label>' +
-      '<input type="text" id="facultadTelefono" placeholder="Ingrese el teléfono" class="uscoInputs form-control" ' +
-      'maxlength="11" required>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">CORREO:</label>' +
-      '<input type="text" id="facultadEmail" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="50" required>' +
-      '</div>'
-    }).then(crear => {
-      if (crear.value) {
-        const nombre = (document.getElementById('facultadNombre') as HTMLInputElement).value;
-        const telefono = (document.getElementById('facultadTelefono') as HTMLInputElement).value;
-        const email = (document.getElementById('facultadEmail') as HTMLInputElement).value;
-        const facultad = new Facultad(nombre, telefono, email);
-
-        this._facultadService.crearFacultad(facultad).subscribe(resp => {
-        console.log(resp);
-        this.cargarFacultades();
-        });
-      }
+    const facultad = new Facultad(this.forma.value.nombre,this.forma.value.telefono,this.forma.value.email);
+    this._facultadService.crearFacultad(facultad).subscribe(resp => {
+    console.log(resp);
+    this.cargarFacultades();
     });
   }
 

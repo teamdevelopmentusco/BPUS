@@ -21,6 +21,7 @@ import { SearchComponent } from './search/search.component';
 // Servicios
 import { ServiceModule } from './services/service.module';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -43,6 +44,7 @@ import { ServiceModule } from './services/service.module';
     APP_ROUTES,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     ServiceModule
   ],
   providers: [],

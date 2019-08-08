@@ -4,6 +4,8 @@ import { ProgramaService } from 'src/app/services/service.index';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import swal from 'sweetalert2';
+import { NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tabla-estudiantes',
@@ -15,7 +17,71 @@ export class ProgramasAcademicosComponent implements OnInit {
   programas: Programa[]=[];
   jefePrograma: Usuario=new Usuario('','','','','','','','','','','','','');
   cargando:boolean=true;
-  constructor(public _programaService: ProgramaService, public _usuarioService: UsuarioService) { }
+  forma: any;
+  constructor(private formBuilder: FormBuilder, private modalService: NgbModal, public _programaService: ProgramaService, public _usuarioService: UsuarioService) { 
+    this.forma = this.formBuilder.group({
+      registroSNIES: [
+        '',
+        [Validators.required]
+      ],
+      nombre: [
+        '',
+        [Validators.required]
+      ],
+      numCreditos: [
+        '',
+        [Validators.required]
+      ],
+      nivelAcademico: [
+        '',
+        [Validators.required]
+      ],
+      tituloOtorgado: [
+        '',
+        [Validators.required]
+      ],
+      modalidadFormacion: [
+        '',
+        [Validators.required]
+      ],
+      jefeProgramaCC: [
+        '',
+        [Validators.required]
+      ]
+    });
+  }
+
+  get registroSNIES() {
+    return this.forma.get('registroSNIES');
+  }
+
+  get nombre() {
+    return this.forma.get('nombre');
+  }
+
+  get numCreditos() {
+    return this.forma.get('numCreditos');
+  }
+
+  get nivelAcademico() {
+    return this.forma.get('nivelAcademico');
+  }
+
+  get tituloOtorgado() {
+    return this.forma.get('tituloOtorgado');
+  }
+
+   get modalidadFormacion() {
+    return this.forma.get('modalidadFormacion');
+  }
+
+  get jefeProgramaCC() {
+    return this.forma.get('jefeProgramaCC');
+  }
+
+  openModal(agregarPrograma) {
+    this.modalService.open(agregarPrograma);
+  }
 
   ngOnInit() {
 
@@ -122,55 +188,16 @@ this._programaService.cargarProgramas(this.desde)
 
   }
 
-  agregarPrograma() {
-    swal.fire({
-      title: 'Crear Programa Academico',
-      showCancelButton: true,
-      focusConfirm: false,
-      html:
-      '<div class="mt-3 form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">Registro SNIES:</label>' +
-      '<input type="text" id="programaRegistroSNIES" placeholder="Ingrese el Registro SNIES" class="uscoInputs form-control" maxlength="25" required autofocus>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">NOMBRE DEL PROGRAMA:</label>' +
-      '<input type="text" id="programaNombre" placeholder="Ingrese la ciudad" class="uscoInputs form-control" maxlength="25" required>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">Número de creditos:</label>' +
-      '<input type="text" id="programaNumCreditos" placeholder="Ingrese la dirección" class="uscoInputs form-control" maxlength="25" required>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">Nivel académico:</label>' +
-      '<input type="text" id="programaNivelAcademico" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">Titulo otorgado:</label>' +
-      '<input type="text" id="programaTituloOrtorgado" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">Modalidad de formación:</label>' +
-      '<input type="text" id="programaModalFor" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>' +
-      '</div>'+
-      '<div class="form-group text-left">' +
-      '<label for="jefePrograma" class="font-weight-bold">Jefe de programa</label>' +
-      '<input type="text" id="jefePrograma" placeholder="Ingrese la c.c del jefe de programa" class="uscoInputs form-control" maxlength="25" required>' +
-      '</div>'
-    }).then(crear => {
-      if (crear.value) {
-        var registroSNIES = (document.getElementById('programaRegistroSNIES') as HTMLInputElement).value;
-        var nombre = (document.getElementById('programaNombre') as HTMLInputElement).value;
-        var numCreditos = (document.getElementById('programaNumCreditos') as HTMLInputElement).value;
-        var nivelAcademico = (document.getElementById('programaNivelAcademico') as HTMLInputElement).value;
-        var tituloOtorgado = (document.getElementById('programaTituloOrtorgado') as HTMLInputElement).value;
-        var modalidadFormacion = (document.getElementById('programaModalFor') as HTMLInputElement).value;
-
-
-        var jefePrograma = (document.getElementById('jefePrograma') as HTMLInputElement).value;
-
+  crearPrograma() {
         try {
-          this.cambioJefePrograma(jefePrograma);
-          var programa = new Programa(registroSNIES, nombre, numCreditos, nivelAcademico, tituloOtorgado, modalidadFormacion, this.jefePrograma.nombres+ this.jefePrograma.apellidos);
+          this.cambioJefePrograma(this.forma.value.jefeProgramaCC);
+          var programa = new Programa(this.forma.value.registroSNIES, 
+            this.forma.value.nombre, 
+            this.forma.value.numCreditos, 
+            this.forma.value.nivelAcademico, 
+            this.forma.value.tituloOtorgado, 
+            this.forma.value.modalidadFormacion, 
+            this.jefePrograma.nombres+" "+this.jefePrograma.apellidos);
         
           this._programaService.crearPrograma(programa).subscribe(resp => {
           console.log(resp);
@@ -183,10 +210,6 @@ this._programaService.cargarProgramas(this.desde)
             'error'
           );       
         }
-       
-        
-      }
-    });
   }
 
   editarPrograma(programa: Programa) {

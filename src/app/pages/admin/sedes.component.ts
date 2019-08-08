@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Sede } from 'src/app/models/sede.model';
 import { SedeService } from 'src/app/services/service.index';
 import swal from 'sweetalert2';
+import { NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-tabla-profesores',
   templateUrl: './sedes.component.html',
@@ -11,7 +13,47 @@ export class SedesComponent implements OnInit {
   desde: number=0;
   sedes: Sede[]=[];
   cargando:boolean=true;
-  constructor(public _SedeService: SedeService) { }
+  forma:any;
+  constructor(private formBuilder: FormBuilder, private modalService: NgbModal, public _SedeService: SedeService) { 
+    this.forma = this.formBuilder.group({
+      nombre: [
+        '',
+        [Validators.required]
+      ],
+      ciudad: [
+        '',
+        [Validators.required]
+      ],
+      direccion: [
+        '',
+        [Validators.required]
+      ],
+      email: [
+        '',
+        [Validators.required]
+      ]
+    });
+  }
+
+  get email() {
+    return this.forma.get('email');
+  }
+
+  get nombre() {
+    return this.forma.get('nombre');
+  }
+
+  get direccion() {
+    return this.forma.get('direccion');
+  }
+
+  get ciudad() {
+    return this.forma.get('ciudad');
+  }
+
+  openModal(agregarSede) {
+    this.modalService.open(agregarSede);
+  }
 
   ngOnInit() {
 
@@ -101,42 +143,15 @@ this._SedeService.cargarSedes(this.desde)
 
   }
 
-  agregarSede() {
-    swal.fire({
-      title: 'Crear Sede',
-      showCancelButton: true,
-      focusConfirm: false,
-      html:
-      '<div class="mt-3 form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">NOMBRE:</label>' +
-      '<input type="text" id="sedeNombre" placeholder="Ingrese el nombre" class="uscoInputs form-control" maxlength="25" required autofocus>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">CIUDAD:</label>' +
-      '<input type="text" id="sedeCiudad" placeholder="Ingrese la ciudad" class="uscoInputs form-control" maxlength="25" required>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">DIRECCIÓN:</label>' +
-      '<input type="text" id="sedeDireccion" placeholder="Ingrese la dirección" class="uscoInputs form-control" maxlength="25" required>' +
-      '</div>' +
-      '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">CORREO:</label>' +
-      '<input type="email" id="sedeEmail" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>' +
-      '</div>'
-    }).then(crear => {
-      if (crear.value) {
-        const nombre = (document.getElementById('sedeNombre') as HTMLInputElement).value;
-        const ciudad = (document.getElementById('sedeCiudad') as HTMLInputElement).value;
-        const direccion = (document.getElementById('sedeDireccion') as HTMLInputElement).value;
-        const email = (document.getElementById('sedeEmail') as HTMLInputElement).value;
-        const sede = new Sede(nombre, ciudad, direccion, email);
+  addSede() {
+    const sede = new Sede( this.forma.value.nombre,
+      this.forma.value.ciudad,
+      this.forma.value.direccion,
+      this.forma.value.email);
 
-        this._SedeService.crearSede(sede).subscribe(resp => {
-        console.log(resp);
-        this.cargarSedes();
-        });
-      }
-    });
+    this._SedeService.crearSede(sede).subscribe(resp=> {
+      this.cargarSedes();
+      });
   }
 
   editarSede(sede: Sede) {

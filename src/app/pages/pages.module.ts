@@ -15,13 +15,14 @@ import { SharedModule } from '../shared/shared.module';
 
 import { PAGES_ROUTES } from './pages.router';
 import { ProfileComponent } from './profile/profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InformacionComponent } from './informacion/informacion.component';
 import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 
 //CrudAdmin
 import { AdminComponent } from './admin/admin.component';
 import { TablaTodosComponent } from './admin/tabla-todos.component';
+import { NgbdModalContent } from './admin/tabla-todos.component';
 import { ProgramasAcademicosComponent } from './admin/programas-academicos.component';
 import { SedesComponent } from './admin/sedes.component';
 import { FacultadComponent } from './admin/Facultad.component';
@@ -32,6 +33,8 @@ import { AnteproyectoComponent } from './proyectosUsco/anteproyecto/anteproyecto
 import { ProyectoComponent } from './proyectosUsco/proyecto/proyecto.component';
 import { ArticuloComponent } from './proyectosUsco/articulo/articulo.component';
 import { ProgresoComponent } from './proyectosUsco/progreso/progreso.component';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { ProgresoComponent } from './proyectosUsco/progreso/progreso.component';
     //CrudAdmin
     AdminComponent,
     TablaTodosComponent,
+    NgbdModalContent,
     ProgramasAcademicosComponent,
     SedesComponent,
     FacultadComponent,
@@ -56,11 +60,16 @@ import { ProgresoComponent } from './proyectosUsco/progreso/progreso.component';
     ProgresoComponent
 
   ],
+  entryComponents: [
+    NgbdModalContent
+  ],
   imports: [
     CommonModule,
     SharedModule,
     PAGES_ROUTES,
     FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
     NgxDropzoneModule
   ]
 })
