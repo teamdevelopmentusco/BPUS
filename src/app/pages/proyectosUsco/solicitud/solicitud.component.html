@@ -32,8 +32,8 @@
                     <tbody>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
-                            <td><input class="selectSearch" placeholder="{{usuario.codigoUniversitario}}" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}" disabled></td>
-                            <td><input class="selectSearch" placeholder="{{usuario.nombres}} {{usuario.apellidos}}" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" disabled></td>
+                            <td><input class="selectSearch" placeholder="nn" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}" disabled></td>
+                            <td><input class="selectSearch" placeholder="nn" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" disabled></td>
                             <td><input class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
                         </tr>
                     </tbody>
@@ -41,7 +41,7 @@
             </div>
             <!--****Boton de agregar estudianntes****-->
             <div class="col-2 my-auto mx-auto text-left">
-                <button class="text-uppercase iconRadio" style="color: black;font-size: 18px;font-family:Segoe UI;background-color: white">
+                <button (click)="solicitarEstudiantes()"  class="text-uppercase iconRadio" style="color: black;font-size: 18px;font-family:Segoe UI;background-color: white">
                 <span class="fas fa-plus-circle fa-lg"></span>
                 agregar
               </button>
@@ -114,7 +114,7 @@
         <div class="row animated fadeIn fast">
             <div class="col text-right">
 
-                <button class="text-uppercase iconRadio" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white">
+                <button (click)="notificar()"class="text-uppercase iconRadio" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white">
                     guardar  
                     <span class="far fa-save fa-lg colorNegro"></span>
                   </button>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {formatDate } from '@angular/common';
+import { Component} from '@angular/core';
 import Swal from 'sweetalert2';
+import { NotificacionService } from 'src/app/services/service.index';
+import { Notificacion } from 'src/app/models/notificacion.model';
 @Component({
   selector: 'app-notificaciones',
   templateUrl: './notificaciones.component.html',
@@ -8,48 +9,82 @@ import Swal from 'sweetalert2';
 })
 
 export class NotificacionesComponent {
-title = 'sweetAlert';
-showModal() {
-  Swal.fire({
-    title: '¿Está seguro que desea aprobar el proyecto?',
-    type: 'question',
-    showCancelButton: true,
-    confirmButtonColor: '#40b534',
-    cancelButtonColor: '#d33',
-    cancelButtonText: 'No, Cancelar!',
-    confirmButtonText: 'Si, Aprobarlo!'
+  notificaciones: Notificacion[]=[];
+  cargando:boolean=true;
+  notifiVacia:boolean=false;
+  constructor(  public _notificacionService: NotificacionService) {
 
-  }).then((result) => {
-    if (result.value) {
-      Swal.fire(
-        'Aprobado!',
-        'El proyecto ha sido aprobado',
-        'success'
-      );
+   }
+
+   ngOnInit() {
+
+    this.cargarNotificaciones();
+    if (this.notificaciones.length===0) {
+      this.notifiVacia=true;
     }
-  });
-}
+  }
 
-showModal2() {
-  Swal.fire({
-    title: '¿Está seguro que desea rechazar el proyecto?',
-    type: 'question',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    cancelButtonText: 'No, Cancelar!',
-    confirmButtonText: 'Si, Rechazar!'
 
-  }).then((result) => {
-    if (result.value) {
-      Swal.fire(
-        'Rechazado!',
-        'El proyecto ha sido rechazado',
-        'success'
-      );
+
+  cargarNotificaciones(){
+    this.cargando=true;
+    this._notificacionService.cargarNotificaciones(0)
+    .subscribe( notificaciones => this.notificaciones=notificaciones);  
+    this.cargando=false;
+  }
+
+  
+  aceptarNotificacion(notificacion:Notificacion){
+    Swal.fire({
+      title: '¿Está seguro que desea aprobar el proyecto?',
+      type: 'question',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonText: 'Si, Aprobarlo!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    })
+    .then(borrar => {
+      
+    if (borrar.value) {
+   
+      this._notificacionService.borrarNotificaciones(notificacion._id).subscribe(resp=>{
+          console.log(resp);
+          this.cargarNotificaciones();});
     }
-  });
-}
+
+    });
+  }
+
+
+  rechazarNotificacion(notificacion:Notificacion){
+
+    Swal.fire({
+      title: '¿Está seguro que desea rechazar el proyecto?',
+      type: 'question',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonText: 'Si, Rechazar!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    })
+    .then(borrar => {
+      
+    if (borrar.value) {
+   
+
+      this._notificacionService.borrarNotificaciones(notificacion._id).subscribe(resp=>{           
+        console.log(resp);
+        this.cargarNotificaciones();
+      });
+
+    } 
+
+    });   
+  }
+
+
+  
 }
 
 

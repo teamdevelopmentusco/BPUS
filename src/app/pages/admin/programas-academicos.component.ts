@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import swal from 'sweetalert2';
 import { Programa } from 'src/app/models/programa.model';
 import { ProgramaService } from 'src/app/services/service.index';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { Usuario } from 'src/app/models/usuario.model';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tabla-estudiantes',
@@ -11,12 +13,15 @@ import { ProgramaService } from 'src/app/services/service.index';
 export class ProgramasAcademicosComponent implements OnInit {
   desde: number=0;
   programas: Programa[]=[];
+  jefePrograma: Usuario=new Usuario('','','','','','','','','','','','','');
   cargando:boolean=true;
-  constructor(public _programaService: ProgramaService) { }
+  constructor(public _programaService: ProgramaService, public _usuarioService: UsuarioService) { }
 
   ngOnInit() {
 
     this.cargarProgramas();
+   
+    this.cambioJefePrograma(this.jefePrograma.numDocumento);
   }
 
 
@@ -39,6 +44,17 @@ export class ProgramasAcademicosComponent implements OnInit {
     this.cargarProgramas();
   }
 
+  cambioJefePrograma(numDocumento:string){
+    console.log("CAMBIO DE JEFE DE PROGRAMA");
+
+    this._usuarioService.obtenerJefePrograma(numDocumento)
+        .subscribe(jefePrograma=> {
+          this.jefePrograma=jefePrograma
+        });   
+   
+          
+}
+
 
   cargarProgramas(){
     this.cargando=true;
@@ -46,6 +62,10 @@ this._programaService.cargarProgramas(this.desde)
             .subscribe( programas => this.programas=programas );
             this.cargando=false;
   }
+
+ 
+
+
 
   buscarProgramas( termino:string){
     
@@ -133,25 +153,38 @@ this._programaService.cargarProgramas(this.desde)
       '<input type="text" id="programaModalFor" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>' +
       '</div>'+
       '<div class="form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">Jefe de programa:</label>' +
-      '<input type="text" id="jefePrograma" placeholder="Ingrese el jefe de programa" class="uscoInputs form-control" ' +
-      'maxlength="50" required>' +
+      '<label for="jefePrograma" class="font-weight-bold">Jefe de programa</label>' +
+      '<input type="text" id="jefePrograma" placeholder="Ingrese la c.c del jefe de programa" class="uscoInputs form-control" maxlength="25" required>' +
       '</div>'
     }).then(crear => {
       if (crear.value) {
-        const registroSNIES = (document.getElementById('programaRegistroSNIES') as HTMLInputElement).value;
-        const nombre = (document.getElementById('programaNombre') as HTMLInputElement).value;
-        const numCreditos = (document.getElementById('programaNumCreditos') as HTMLInputElement).value;
-        const nivelAcademico = (document.getElementById('programaNivelAcademico') as HTMLInputElement).value;
-        const tituloOtorgado = (document.getElementById('programaTituloOrtorgado') as HTMLInputElement).value;
-        const modalidadFormacion = (document.getElementById('programaModalFor') as HTMLInputElement).value;
-        const jefePrograma = (document.getElementById('jefePrograma') as HTMLInputElement).value;
-        const programa = new Programa(registroSNIES, nombre, numCreditos, nivelAcademico, tituloOtorgado, modalidadFormacion, jefePrograma);
+        var registroSNIES = (document.getElementById('programaRegistroSNIES') as HTMLInputElement).value;
+        var nombre = (document.getElementById('programaNombre') as HTMLInputElement).value;
+        var numCreditos = (document.getElementById('programaNumCreditos') as HTMLInputElement).value;
+        var nivelAcademico = (document.getElementById('programaNivelAcademico') as HTMLInputElement).value;
+        var tituloOtorgado = (document.getElementById('programaTituloOrtorgado') as HTMLInputElement).value;
+        var modalidadFormacion = (document.getElementById('programaModalFor') as HTMLInputElement).value;
 
-        this._programaService.crearPrograma(programa).subscribe(resp => {
-        console.log(resp);
-        this.cargarProgramas();
-        });
+
+        var jefePrograma = (document.getElementById('jefePrograma') as HTMLInputElement).value;
+
+        try {
+          this.cambioJefePrograma(jefePrograma);
+          var programa = new Programa(registroSNIES, nombre, numCreditos, nivelAcademico, tituloOtorgado, modalidadFormacion, this.jefePrograma.nombres+ this.jefePrograma.apellidos);
+        
+          this._programaService.crearPrograma(programa).subscribe(resp => {
+          console.log(resp);
+          this.cargarProgramas();
+          });
+        } catch (error) {
+          swal.fire(
+            'INVALIDO!',
+            'El jefe de programa es invalido',
+            'error'
+          );       
+        }
+       
+        
       }
     });
   }
@@ -185,6 +218,10 @@ this._programaService.cargarProgramas(this.desde)
       '<div class="form-group text-left">' +
       '<label for="correo" class="font-weight-bold text-uppercase">Modalidad de formación:</label>' +
       '<input type="text" id="programaModalFor" value="'+programa.modalidadFormacion+'" placeholder="'+programa.modalidadFormacion+'" class="uscoInputs form-control" maxlength="25" required>' +
+      '</div>'+
+      '<div class="form-group text-left">' +
+      '<label for="jefePrograma" class="font-weight-bold">Jefe de programa</label>' +
+      '<input type="text" id="jefePrograma"value="'+programa.jefePrograma+'" placeholder="Ingrese la c.c del jefe de programa" class="uscoInputs form-control" maxlength="25" required>' +
       '</div>'
     }).then(editar => {
       if (editar.value) {
@@ -194,12 +231,35 @@ this._programaService.cargarProgramas(this.desde)
         programa.nivelAcademico = (document.getElementById('programaNivelAcademico') as HTMLInputElement).value;
         programa.tituloOtogado = (document.getElementById('programaTituloOrtorgado') as HTMLInputElement).value;
         programa.modalidadFormacion = (document.getElementById('programaModalFor') as HTMLInputElement).value;
+        programa.jefePrograma = (document.getElementById('jefePrograma') as HTMLInputElement).value;
 
-        this._programaService.actualizarPrograma(programa).subscribe(resp => {
-        console.log(resp);
-        this.cargarProgramas();
-        });
+
+      
+
+
+        try {
+          this.jefePrograma=null;
+          this.cambioJefePrograma(programa.jefePrograma);
+
+          programa.jefePrograma= this.jefePrograma.nombres+ this.jefePrograma.apellidos;
+       
+          this._programaService.actualizarPrograma(programa).subscribe(resp => {
+            console.log(resp);
+            this.cargarProgramas();
+            });
+        } catch (error) {
+        swal.fire(
+          'INVALIDO!',
+          'El jefe de programa es invalido',
+          'error'
+        );       
       }
+
+
+      }
+
+
+
     });
   }
 }

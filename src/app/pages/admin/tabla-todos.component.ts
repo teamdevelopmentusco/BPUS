@@ -48,7 +48,10 @@ export class TablaTodosComponent implements OnInit {
     this.cargando=true;
 this._usuarioService.cargarUsuarios(this.desde)
             .subscribe( usuarios => this.usuarios=usuarios );
+
+           
             this.cargando=false;
+            
   }
 
   buscarUsuarios( termino:string){

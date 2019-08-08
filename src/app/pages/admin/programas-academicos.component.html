@@ -24,6 +24,7 @@
                 <th scope="col" style="width: 10%" class="align-middle">Nivel académico</th>
                 <th scope="col" style="width: 10%" class="align-middle">Titulo otorgado</th>
                 <th scope="col" style="width: 10%" class="align-middle">Modalidad de formación</th>
+                <th scope="col" style="width: 10%" class="align-middle">Jefe de programa</th>
                 <th scope="col" style="width: 10%" class="align-middle colorRojo">Opciones</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                 <td>{{ programa.nivelAcademico}}</td>
                 <td>{{ programa.tituloOtogado}}</td>
                 <td>{{ programa.modalidadFormacion}}</td>
+                <td>{{ programa.jefePrograma}}</td>
                 <td>
                     <div class="row">
                         <div class="col text-left" style="width: 50%;padding: 2%">
@@ -55,9 +57,9 @@
         <div class="col">
         </div>
         <div class="col text-right">
-            <button class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
+            <button (click)="cambiarDesde(-5)"class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
             <input class="" type="text" value="1" style="width: 45px;height: 37px;margin: 0px;padding-bottom: 8px;text-align: center">
-            <button class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
+            <button (click)="cambiarDesde(5)"class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
         </div>
     </div>
 </div>

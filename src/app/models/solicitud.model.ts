@@ -9,11 +9,11 @@
 export class Solicitud {
 
     constructor(
-        public tipoModalidad: string,
-        public tituloProyecto: string,
-        public estudiante1: string,
-        public jefePrograma: string,
-        public consejero1: string,
+        public tipoModalidad?: string,
+        public tituloProyecto?: string,
+        public estudiante1?: string,
+        public jefePrograma?: string,
+        public consejero1?: string,
         public estudiante2?: string,
         public estudiante3?: string,
         public consejero2?: string,

@@ -204,6 +204,13 @@ export class UsuarioService {
 
   }
 
+  obtenerJefePrograma( numDocumento: string ){
+
+    let url = URL_SERVICIOS+'/usuario/'+numDocumento;
+
+    return this.http.get(url).map((resp:any) => resp.usuario);
+  }
+
 /*  // AGREGAR PARA LOS PDFS DESPUES 
   cambiarImagen(archivo:File,id:string){
 
@@ -228,7 +235,7 @@ export class UsuarioService {
 
 
     let url=URL_SERVICIOS+'/usuario?desde='+desde;
-    return this.http.get(url) .map((resp:any) =>{
+    return this.http.get(url).map((resp:any) =>{
 
       this.totalUsuarios=resp.total;
       return resp.usuarios;

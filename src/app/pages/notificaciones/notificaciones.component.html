@@ -5,61 +5,22 @@
     - Descripción:      Front de las notificaciones
 
 -->
-
-
 <body>
     <br><br>
     <div class='container animated fadeIn fast'>
-
         <h2>Tus notificaciones</h2>
         <br><br>
-
         <table>
-
-            <tr>
-                <td class="foto"><img src="../../../assets/usuario1.jpg"></td>
-                <td class="informacion">Se aprobó tu solicitud para unirte a AJjakjskasjkasj sajalksjkalsjlkas jaslkjas asjslkaj</td>
+            <tr *ngFor="let notificacion of notificaciones">
+                <td class="informacion">{{notificacion.emisor }}</td>
+                <td class="informacion">{{ notificacion.tipoNotificacionEmisor }}</td>
+                <td class="informacion">{{ notificacion.tipoNotificacionReceptor }}</td>
+                <td class="informacion">{{ notificacion.receptor}}</td>
                 <td class="confirmacion">
-                    <td><input type="button" class="btn uscoButton" value="ACEPTAR" (click)="showModal()"></td>
-                    <td><input type="button" class="btn uscoButton" value="RECHAZAR" (click)="showModal2()"></td>
-
+                <td><input (click)="aceptarNotificacion(notificacion)" type="button" class="btn uscoButton" value="ACEPTAR" ></td>
+                <td><input (click)="rechazarNotificacion(notificacion)" type="button" class="btn uscoButton" value="RECHAZAR"></td>
             </tr>
-            <tr>
-                <td class="foto"><img src="../../../assets/usuario1.jpg"></td>
-                <td class="informacion">Se aprobó tu solicitud para unirte a AJjakjskasjkasj sajalksjkalsjlkas jaslkjas asjslkaj</td>
-                <td class="confirmacion">
-                    <td><input type="button" class="btn uscoButton" value="ACEPTAR" (click)="showModal()"></td>
-                    <td><input type="button" class="btn uscoButton" value="RECHAZAR" (click)="showModal2()"></td>
-            </tr>
-            <tr>
-                <td class="foto"><img src="../../../assets/usuario1.jpg"></td>
-                <td class="informacion">Se aprobó tu solicitud para unirte a AJjakjskasjkasj sajalksjkalsjlkas jaslkjas asjslkaj</td>
-                <td class="confirmacion">
-                    <td><input type="button" class="btn uscoButton" value="ACEPTAR" (click)="showModal()"></td>
-                    <td><input type="button" class="btn uscoButton" value="RECHAZAR" (click)="showModal2()"></td>
-                    <tr>
-                        <td class="foto"><img src="../../../assets/usuario1.jpg"></td>
-                        <td class="informacion">Se aprobó tu solicitud para unirte a AJjakjskasjkasj sajalksjkalsjlkas jaslkjas asjslkaj</td>
-                        <td class="confirmacion">
-                            <td><input type="button" class="btn uscoButton" value="ACEPTAR" (click)="showModal()"></td>
-                            <td><input type="button" class="btn uscoButton" value="RECHAZAR" (click)="showModal2()"></td>
-                    </tr>
-                    <tr>
-                        <td class="foto"><img src="../../../assets/usuario1.jpg"></td>
-                        <td class="informacion">Se aprobó tu solicitud para unirte a AJjakjskasjkasj sajalksjkalsjlkas jaslkjas asjslkaj</td>
-                        <td class="confirmacion">
-                            <td><input type="button" class="btn uscoButton" value="ACEPTAR" (click)="showModal()"></td>
-                            <td><input type="button" class="btn uscoButton" value="RECHAZAR" (click)="showModal2()"></td>
-                    </tr>
-                    <tr>
-                        <td class="foto"><img src="../../../assets/usuario1.jpg"></td>
-                        <td class="informacion">Se aprobó tu solicitud para unirte a AJjakjskasjkasj sajalksjkalsjlkas jaslkjas asjslkaj</td>
-                        <td class="confirmacion">
-                            <td><input type="button" class="btn uscoButton" value="ACEPTAR" (click)="showModal()"></td>
-                            <td><input type="button" class="btn uscoButton" value="RECHAZAR" (click)="showModal2()"></td>
-                    </tr>
         </table>
-
+        <!--   <p *ngIf="notifiVacia">No tienes ninguna notificación... :)</p>-->
     </div>
-
 </body>
