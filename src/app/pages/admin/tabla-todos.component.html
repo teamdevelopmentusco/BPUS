@@ -93,7 +93,7 @@
                 <td>
                     <div class="row">
                         <div class="col text-left" style="width: 50%;padding: 2%">
-                            <button (click)="openEditUser(usuario)" class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+                            <button (click)="editarUsuarios(usuario)" class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
                         </div>
                         <div class="col text-right" style="width: 50%;padding: 2%">
                             <button (click)="borrarUsuarios(usuario)" class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
@@ -269,6 +269,13 @@
                         <input type="radio" class="custom-control-input" id="generoRadioF" formControlName="genero" name="genero" value="Femenino">
                         <label class="custom-control-label" for="generoRadioF">Femenino</label>
                     </div>
+                    <h6>ROLE</h6>
+                    <select formControlName="role" name="cars" class="custom-select uscoInputs mb-3">
+                         
+                            <option selected value="ADMIN_ROLE">ADMIN_ROLE</option>
+                            <option  value="USER_ROLE">USER_ROLE</option>
+                        </select>
+
                 </div>
             </div>
             <div class="txtcenter">

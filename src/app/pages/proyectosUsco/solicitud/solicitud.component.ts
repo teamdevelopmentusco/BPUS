@@ -4,7 +4,7 @@ import { Usuario } from '../../../models/usuario.model';
 import { UsuarioService, NotificacionService, SolicitudService } from '../../../services/service.index';
 import swal from 'sweetalert2';
 import { Solicitud } from 'src/app/models/solicitud.model';
-
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-solicitud',
   templateUrl: './solicitud.component.html',
@@ -12,16 +12,76 @@ import { Solicitud } from 'src/app/models/solicitud.model';
 })
 export class SolicitudComponent implements OnInit {
   estudiantes: Usuario[]=[];
-  solicitud:Solicitud = new Solicitud('','','','','','','','','','','');
+  solicitud:Solicitud = new Solicitud('','','','','','','','','','','','',);
   today = new Date();
   jstoday = '';
-
-  constructor(public _usuarioService: UsuarioService,
+  solicitudForm: any;
+  constructor(private formBuilder: FormBuilder,public _usuarioService: UsuarioService,
      public _notificacionService:NotificacionService,
      public _solicitudService: SolicitudService) {
 
    // this.usuario = this._usuarioService.usuario;
     this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '-0500');
+
+
+    this.solicitudForm = this.formBuilder.group({
+      codigoEstudiante1: [
+        '',
+        [ Validators.pattern('([0-9]){8,10}')]
+      ],
+      codigoEstudiante2: [
+        '',
+        [ Validators.pattern('([0-9]){8,10}')]
+      ],
+      codigoEstudiante3: [
+        '',
+        [ Validators.pattern('([0-9]){8,10}')]
+      ],
+      nombreEstudiante1: [
+        ''
+      ],
+      nombreEstudiante2: [
+        ''
+      ],
+      nombreEstudiante3: [
+        ''
+      ],
+      apellidoEstudiante1: [
+        ''
+      ],
+      apellidoEstudiante2: [
+        ''
+      ],
+      apellidoEstudiante3: [
+        ''
+      ],
+      titulo: [
+        '',
+        [Validators.required]
+      ],
+      tipoModalidad: [
+        '',
+        [Validators.required]
+      ],
+      nombreConsjero1: [
+        ''
+      ],
+      nombreConsjero2: [
+        ''
+      ],
+      nombreConsjero3: [
+        ''
+      ],
+      apellidoConsjero1: [
+        ''
+      ],
+      apellidoConsjero2: [
+        ''
+      ],
+      apellidoConsjero3: [
+        ''
+      ]
+    });
   }
   ngOnInit() {
   }
@@ -32,46 +92,6 @@ export class SolicitudComponent implements OnInit {
 
   }
 
-
-  solicitarEstudiantes() {
-    swal.fire({
-      title: 'Crear Programa Academico',
-      showCancelButton: true,
-      focusConfirm: false,
-      html:
-      '<div class="mt-3 form-group text-left">' +
-      '<label for="correo" class="font-weight-bold text-uppercase">Ingresar documento:</label>' +
-      '<input type="text" id="estudiante" placeholder="Ingrese el documento del estudiante" class="uscoInputs form-control" maxlength="25" required autofocus>' +
-      '</div>' 
-    }).then(crear => {
-      if (crear.value) {
-
-       
-          var estudiante = (document.getElementById('estudiante') as HTMLInputElement).value;
-
-        try {
-
-          this.agregarEstudiante(estudiante);
-          var solicitud = new Solicitud('PROYECTO DE GRADO','','','','','','','','',null,null);
-          this._solicitudService.crearSolicitud(solicitud).subscribe(resp => {
-          console.log(resp);
-          this.cargarSolicitudes();
-          });
-
-        } catch (error) {
-          swal.fire(
-            'Error!',
-            'El estudiante no es valido',
-            'error'
-          ); 
-        }
-        
-    
-
-
-      }
-    });
-  }
 
   
   agregarEstudiante(numDocumento:string){
@@ -86,7 +106,7 @@ export class SolicitudComponent implements OnInit {
 
 
 
-  notificar(emisor: Usuario, receptor: Usuario, tipoMensaje:String){
+  notificar(forma:FormGroup){
 
     swal.fire({
       title: '¿Está seguro que desea enviar la solicitud?',
@@ -101,11 +121,30 @@ export class SolicitudComponent implements OnInit {
       
     if (borrar.value) {
 
+      var solicitud = new Solicitud(
+        forma.value.tipoModalidad,
+        forma.value.titulo,
+        forma.value.nombreEstudiante1+forma.value.apellidoEstudiante1,
+        forma.value.nombreEstudiante2+forma.value.apellidoEstudiante2,
+        forma.value.nombreEstudiante3+forma.value.apellidoEstudiante3,
+        forma.value.nombreConsjero1+forma.value.apellidoConsjero1,
+        forma.value.nombreConsjero2+forma.value.apellidoConsjero2,
+        forma.value.nombreConsjero3+forma.value.apellidoConsjero3,
+        "1075306358",  // Jefe de programa
+        null,
+        null,
+        null,
+
+        );
+
+     
 
 
-      this._solicitudService.actualizarSolicitud(this.solicitud).subscribe(()=> this.cargarSolicitudes());
-   
-      swal.fire('Solicitud Enviada', 'La solicitud ha sido enviada.', 'success');
+      this._solicitudService.crearSolicitud(solicitud).subscribe(resp => {
+      console.log(resp);
+      this.cargarSolicitudes();
+      //swal.fire('Solicitud Enviada', 'La solicitud ha sido enviada.', 'success');
+      });
     }
 
     });

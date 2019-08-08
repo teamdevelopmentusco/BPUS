@@ -6,7 +6,7 @@
     -Última modificación:  27/07/2019   
 -->
 <div class="mt-3 container">
-    <form>
+    <form [formGroup]="solicitudForm" (ngSubmit)="notificar(solicitudForm)" id="solicitudForm">
         <div class="row animated fadeIn fast">
             <div class="col-8 text-center">
                 <h4 class="uscoSesion">FORMULARIO DE INSCRIPCIÓN</h4>
@@ -16,6 +16,7 @@
                 <p class="uscoSesion" style="margin: 0px;padding:0px;font-size: 15px">{{jstoday}}</p>
             </div>
         </div>
+   
         <div class="row animated fadeIn fast">
             <div class="col-10">
                 <h5 class="uscoSearchTitulo text-uppercase text-center">Estudiantes</h5>
@@ -32,9 +33,21 @@
                     <tbody>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
-                            <td><input class="selectSearch" placeholder="nn" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}" disabled></td>
-                            <td><input class="selectSearch" placeholder="nn" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" disabled></td>
-                            <td><input class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td><input formControlName="codigoEstudiante1" name="codigoEstudiante1" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}" ></td>
+                            <td><input formControlName="nombreEstudiante1" name="nombreEstudiante1"class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" ></td>
+                            <td><input formControlName="apellidoEstudiante1" name="apellidoEstudiante1"class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
+                        </tr>
+                        <tr class="text-center">
+                            <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
+                            <td><input formControlName="codigoEstudiante2" name="codigoEstudiante2" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}" ></td>
+                            <td><input formControlName="nombreEstudiante2" name="nombreEstudiante2" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" ></td>
+                            <td><input formControlName="apellidoEstudiante2" name="apellidoEstudiante2" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
+                        </tr>
+                        <tr class="text-center">
+                            <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
+                            <td><input formControlName="codigoEstudiante3" name="codigoEstudiante3" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}" ></td>
+                            <td><input formControlName="nombreEstudiante3" name="nombreEstudiante3" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" ></td>
+                            <td><input formControlName="apellidoEstudiante3"name="apellidoEstudiante3" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" ></td>
                         </tr>
                     </tbody>
                 </table>
@@ -53,12 +66,12 @@
             <h5 class="uscoSearchTitulo text-uppercase text-center">información del proyecto</h5>
             <div class="col-7">
                 <h5 class="uscoSesion text-uppercase">Titulo</h5>
-                <input class="w-75 px-3 form-control-plaintext" placeholder="Ponle un titulo a tu proyecto" type="text" style="height: 50px">
+                <input formControlName="titulo" class="w-75 px-3 form-control-plaintext" placeholder="Ponle un titulo a tu proyecto" type="text" style="height: 50px">
             </div>
             <div class="col-5">
                 <h5 class="uscoSesion text-uppercase">tipo de modalidad:</h5>
                 <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" name="tipoModalidad" id="customCheck1" checked>
+                    <input formControlName="tipoModalidad" type="radio" class="custom-control-input" name="tipoModalidad" id="customCheck1" checked>
                     <label class="custom-control-label text-uppercase" style="color: black;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px" for="customCheck1">proyecto de grado</label>
                 </div>
                 <div class="custom-control custom-radio">
@@ -94,18 +107,18 @@
                     <tbody>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">1</label></th>
-                            <td><input class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
-                            <td><input class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
+                            <td><input formControlName="nombreConsjero1" class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
+                            <td><input formControlName="apellidoConsjero1" class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">2</label></th>
-                            <td><input class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
-                            <td><input class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
+                            <td><input formControlName="nombreConsjero2"class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
+                            <td><input formControlName="apellidoConsjero2"class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">3</label></th>
-                            <td><input class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
-                            <td><input class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
+                            <td><input formControlName="nombreConsjero3" class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
+                            <td><input formControlName="apellidoConsjero3" class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -114,11 +127,12 @@
         <div class="row animated fadeIn fast">
             <div class="col text-right">
 
-                <button (click)="notificar()"class="text-uppercase iconRadio" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white">
-                    guardar  
+                <button type="submit"  class="text-uppercase iconRadio" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white">
+                    Enviar  
                     <span class="far fa-save fa-lg colorNegro"></span>
                   </button>
             </div>
+     
             <div class="col text-left">
                 <button href="" class="text-uppercase iconRadio" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white" onClick="window.print()">
                       <span class="fas fa-download fa-lg colorNegro"></span>

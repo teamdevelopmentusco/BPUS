@@ -7,165 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ngbd-modal-content',
-  template: `
-  <div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Editar Usuarios</h4>
-  <button type="button" class="close" aria-label="Close"  (click)="activeModal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-</div>
-<div class="modal-body">
-  <form [formGroup]="forma" (ngSubmit)="editarUsuarios()">
-      <div class="form-group">
-          <label for="correo" class="font-weight-bold">CORREO:</label>
-          <div class="input-group">
-              <input formControlName="email" id="email" type="text" value="{{correo}}" placeholder="{{correo}}" class="uscoInputs form-control" maxlength="25" required autofocus>
-          </div>
-          <h6 *ngIf="email.invalid && (email.dirty || email.touched)" class="mt-2" style="color:red;">
-              <div *ngIf="email.errors.required">
-                  El correo es requerido.
-              </div>
-          </h6>
-      </div>
-      <div class="row">
-          <div class="col-sm-5">
-              <h6>TIPO DE USUARIO</h6>
-              <select formControlName="tipoUsuario" name="tipoUsuario" class="custom-select uscoInputs mb-3">
-                          <option selected value="Estudiante">Estudiante</option>
-                          <option value="Docente">Docente</option>
-                          <option value="JefePrograma">Jefe de Programa</option>
-                      </select>
-              <h6>TIPO DE IDENTIFICACION</h6>
-              <select formControlName="tipoID" name="tipoID" class="custom-select uscoInputs mb-3">
-                  <option selected value="C.C">C.C</option>
-                  <option value="T.I">T.I</option>
-              </select>
-          </div>
-          <div class="col-sm-7">
-              <div *ngIf="tipoUsuario.value == 'Estudiante'" class="form-group">
-                  <label for="code" class="font-weight-bold">CÓDIGO ESTUDIANTIL</label>
-                  <input formControlName="codigoUniversitario" class="uscoInputs" type="text" value="{{code}}" placeholder="{{code}}" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' maxlength="11" required pattern="([0-9]){11}">
-                  <h6 *ngIf="codigoUniversitario.invalid && (codigoUniversitario.dirty || codigoUniversitario.touched)" class="mt-2" style="color: red;">
-                      <div *ngIf="codigoUniversitario.errors.required">
-                          El código universitario es requerido.
-                      </div>
-                      <div *ngIf="codigoUniversitario.errors.pattern">
-                          Deber ser de 11 carácteres solo numéricos.
-                      </div>
-                  </h6>
-              </div>
-              <div class="form-group">
-                  <label for="id" class="font-weight-bold">NÚMERO DE DOCUMENTO</label>
-                  <input formControlName="numDocumento" class="uscoInputs" type="text" value="{{idNumber}}" placeholder="{{idNumber}}" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' maxlength="10" required pattern="([0-9]){8,10}">
-                  <h6 *ngIf="numDocumento.invalid && (numDocumento.dirty || numDocumento.touched)" class="mt-2" style="color:red;">
-                      <div *ngIf="numDocumento.errors.required">
-                          El número de documento es requerido.
-                      </div>
-                      <div *ngIf="numDocumento.errors.pattern">
-                          El ID es entre 8-10 carácteres solo numéricos.
-                      </div>
-                  </h6>
-              </div>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-sm-6">
-              <div class="form-group">
-                  <label for="nombre" class="font-weight-bold">NOMBRES</label>
-                  <input formControlName="nombres" type="text" class="uscoInputs" value="{{name}}" placeholder="{{name}}" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || event.charCode ==32'
-                      maxlength="50" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" required autofocus>
-                  <h6 *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="mt-2" style="color:red;">
-                      <div *ngIf="nombres.errors.required">
-                          EL nombre es requerido.
-                      </div>
-                      <div *ngIf="nombres.errors.pattern">
-                          El nombre no es valido.
-                      </div>
-                  </h6>
-              </div>
-              <h6>SEDE UNIVERSITARIA</h6>
-              <select formControlName="sedeUniversitaria" name="sedeUniversitaria" class="custom-select uscoInputs mb-3">                   
-                <div *ngIf="sede == 'Gárzon'">
-                  <option selected value="Gárzon">Gárzon</option>
-                  <option value="La plata">La plata</option>
-                  <option value="Neiva">Neiva</option>
-                  <option value="Pitalito">Pitalito</option>
-                </div>
-                <div *ngIf="sede == 'La plata'">
-                  <option value="Gárzon">Gárzon</option>
-                  <option selected value="">La plata</option>
-                  <option value="Neiva">Neiva</option>
-                  <option value="Pitalito">Pitalito</option>
-                </div>   
-                <div *ngIf="sede == 'Neiva'">
-                  <option value="Gárzon">Gárzon</option>
-                  <option value="La plata">La plata</option>
-                  <option selected value="Neiva">Neiva</option>
-                  <option value="Pitalito">Pitalito</option>
-                </div>   
-                <div *ngIf="sede == 'Pitalito'">
-                  <option value="Gárzon">Gárzon</option>
-                  <option value="La plata">La plata</option>
-                  <option value="Neiva">Neiva</option>
-                  <option selected value="Pitalito">Pitalito</option>
-                </div>       
-              </select>
-              <h6>FACULTAD</h6>
-              <select formControlName="facultad" name="cars" class="custom-select uscoInputs mb-3">
-                <option selected value="Ingeniería">Ingeniería</option>          
-              </select>
-              <h6>PROGRAMA</h6>
-              <select formControlName="programaUniversitario" name="cars" class="custom-select uscoInputs mb-3">
-                <option selected value="Ingeniería de software">Ingeniería de software</option>
-              </select>
-          </div>
-          <div class="col-sm-6">
-              <div class="form-group">
-                  <label for="code" class="font-weight-bold">APELLIDOS</label>
-                  <input formControlName="apellidos" class="uscoInputs" type="text" value="{{lastname}}" placeholder="{{lastname}}" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || event.charCode ==32'
-                      maxlength="50" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" required>
-                  <h6 *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)" class="mt-2" style="color:red;">
-                      <div *ngIf="apellidos.errors.required">
-                          Los apellidos son requeridos.
-                      </div>
-                      <div *ngIf="apellidos.errors.pattern">
-                          Los apellidos no son validos.
-                      </div>
-                  </h6>
-              </div>
-              <div class="form-group">
-                  <label for="id" class="font-weight-bold">TELÉFONO</label>
-                  <input formControlName="telefono" class="uscoInputs" type="text" value="{{cellphone}}" placeholder="{{cellphone}}" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' maxlength="10" required pattern="([0-9]){10}" required>
-                  <h6 *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="mt-2" style="color:red;">
-                      <div *ngIf="telefono.errors.required">
-                          El teléfono es requerido.
-                      </div>
-                      <div *ngIf="telefono.errors.pattern">
-                          El teléfono no es valido.
-                      </div>
-                  </h6>
-              </div>
-              <h6>GÉNERO:</h6>
-              <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="generoRadioM" formControlName="genero" name="genero" value="Masculino">
-                  <label class="custom-control-label" for="generoRadioM">Masculino</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="generoRadioF" formControlName="genero" name="genero" value="Femenino">
-                  <label class="custom-control-label" for="generoRadioF">Femenino</label>
-              </div>
-          </div>
-      </div>
-      <div class="txtcenter">
-          <a class="mr-5 uscolink" href="javascript: history.back()">VOLVER ATRÁS</a>
-          <input type="submit" value="SIGUIENTE" [disabled]="!forma.valid" class="btn uscoButton">
-      </div>
-  </form>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-</div>
-  `
+  template: ``
 })
 export class NgbdModalContent {
   @Input() correo;
@@ -348,6 +190,10 @@ export class TablaTodosComponent implements OnInit {
       genero: [
         'Femenino',
         Validators.required
+      ],
+      role: [
+        'ADMIN_ROLE',
+        Validators.required
       ]
     });
     console.log(this.forma);
@@ -355,22 +201,6 @@ export class TablaTodosComponent implements OnInit {
 
   open(content) {
     this.modalService.open(content);
-  }
-
-  openEditUser(usuario: Usuario) {
-    const modalRef = this.modalService.open(NgbdModalContent);
-    modalRef.componentInstance.correo = usuario.email;
-    modalRef.componentInstance.userType = usuario.tipoUsuario;
-    modalRef.componentInstance.code = usuario.codigoUniversitario;
-    modalRef.componentInstance.idType = usuario.tipoID;
-    modalRef.componentInstance.idNumber = usuario.numDocumento;
-    modalRef.componentInstance.name = usuario.nombres;
-    modalRef.componentInstance.lastname = usuario.apellidos;
-    modalRef.componentInstance.cellphone = usuario.telefono;
-    modalRef.componentInstance.sede = usuario.sedeUniversitaria;
-    modalRef.componentInstance.faculty = usuario.facultad;
-    modalRef.componentInstance.program = usuario.programaUniversitario;
-    modalRef.componentInstance.gender = usuario.genero;
   }
 
   get email() {
@@ -423,6 +253,9 @@ export class TablaTodosComponent implements OnInit {
 
   get genero() {
     return this.forma.get('genero');
+  }
+  get role() {
+    return this.forma.get('role');
   }
 
   somethingChanged() {
@@ -555,7 +388,9 @@ this._usuarioService.cargarUsuarios(this.desde)
       this.forma.value.codigoUniversitario,
       this.forma.value.sedeUniversitaria,
       this.forma.value.facultad,
-      this.forma.value.programaUniversitario);
+      this.forma.value.programaUniversitario,true,
+      this.forma.value.role
+      );
 
     this._usuarioService.crearUsuario(usuario).subscribe(resp=> {
       this.cargarUsuarios();
