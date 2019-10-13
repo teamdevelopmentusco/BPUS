@@ -5,7 +5,7 @@
     - Descripción:      Plantilla de solicitud con tablas dinámicas
     -Última modificación:  27/07/2019   
 -->
-<div class="mt-3 container">
+<div class="mt-3 px-5 container">
     <form [formGroup]="solicitudForm" (ngSubmit)="notificar(solicitudForm)" id="solicitudForm">
         <div class="row animated fadeIn fast">
             <div class="col-8 text-center">
@@ -16,10 +16,22 @@
                 <p class="uscoSesion" style="margin: 0px;padding:0px;font-size: 15px">{{jstoday}}</p>
             </div>
         </div>
-   
-        <div class="row animated fadeIn fast">
+
+        <!--****Sección de titulo y linea de investigacion****-->
+        <div class="mt-5 row animated fadeIn fast">
+            <div class="col-6">
+                <label for="titulo" class="font-weight-bold">TÍTULO:</label>
+                <input formControlName="titulo" class="uscoInputs form-control" placeholder="Ponle un titulo a tu proyecto" type="text" required>
+            </div>
+            <div class="col-6">
+                <label for="lineaInvestigacion" class="font-weight-bold">LÍNEA DE INVESTIGACIÓN:</label>
+                <input formControlName="lineaInvestigacion" class="uscoInputs form-control" placeholder="Ingrese la línea de investigación del proyecto" type="text" required>
+            </div>
+        </div>
+
+        <div class="mt-4 row animated fadeIn fast">
             <div class="col-10">
-                <h5 class="uscoSearchTitulo text-uppercase text-center">Estudiantes</h5>
+                <h5 class="uscoSearchTitulo text-uppercase">Investigadores</h5>
                 <!--****Table de Usuarios****-->
                 <table class="table table-bordered shadow bg-white rounded">
                     <thead class="text-center">
@@ -33,106 +45,112 @@
                     <tbody>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
-                            <td><input formControlName="codigoEstudiante1" name="codigoEstudiante1" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}" ></td>
-                            <td><input formControlName="nombreEstudiante1" name="nombreEstudiante1"class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" ></td>
-                            <td><input formControlName="apellidoEstudiante1" name="apellidoEstudiante1"class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td><input formControlName="codigoEstudiante1" name="codigoEstudiante1" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}"></td>
+                            <td><input formControlName="nombreEstudiante1" name="nombreEstudiante1" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}"></td>
+                            <td><input formControlName="apellidoEstudiante1" name="apellidoEstudiante1" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
-                            <td><input formControlName="codigoEstudiante2" name="codigoEstudiante2" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}" ></td>
-                            <td><input formControlName="nombreEstudiante2" name="nombreEstudiante2" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" ></td>
+                            <td><input formControlName="codigoEstudiante2" name="codigoEstudiante2" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}"></td>
+                            <td><input formControlName="nombreEstudiante2" name="nombreEstudiante2" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}"></td>
                             <td><input formControlName="apellidoEstudiante2" name="apellidoEstudiante2" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
-                            <td><input formControlName="codigoEstudiante3" name="codigoEstudiante3" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}" ></td>
-                            <td><input formControlName="nombreEstudiante3" name="nombreEstudiante3" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" ></td>
-                            <td><input formControlName="apellidoEstudiante3"name="apellidoEstudiante3" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" ></td>
+                            <td><input formControlName="codigoEstudiante3" name="codigoEstudiante3" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}"></td>
+                            <td><input formControlName="nombreEstudiante3" name="nombreEstudiante3" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}"></td>
+                            <td><input formControlName="apellidoEstudiante3" name="apellidoEstudiante3" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <!--****Boton de agregar estudianntes****-->
             <div class="col-2 my-auto mx-auto text-left">
-                <button (click)="solicitarEstudiantes()"  class="text-uppercase iconRadio" style="color: black;font-size: 18px;font-family:Segoe UI;background-color: white">
+                <button (click)="solicitarEstudiantes()" class="text-uppercase iconRadio" style="color: black;font-size: 18px;font-family:Segoe UI;background-color: white">
                 <span class="fas fa-plus-circle fa-lg"></span>
                 agregar
               </button>
             </div>
         </div>
-        <hr>
-        <!--****Sección de titulo y tipo de modalidad****-->
-        <div class="row animated fadeIn fast">
-            <h5 class="uscoSearchTitulo text-uppercase text-center">información del proyecto</h5>
-            <div class="col-7">
-                <h5 class="uscoSesion text-uppercase">Titulo</h5>
-                <input formControlName="titulo" class="w-75 px-3 form-control-plaintext" placeholder="Ponle un titulo a tu proyecto" type="text" style="height: 50px">
-            </div>
-            <div class="col-5">
-                <h5 class="uscoSesion text-uppercase">tipo de modalidad:</h5>
-                <div class="custom-control custom-radio">
-                    <input formControlName="tipoModalidad" type="radio" class="custom-control-input" name="tipoModalidad" id="customCheck1" checked>
-                    <label class="custom-control-label text-uppercase" style="color: black;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px" for="customCheck1">proyecto de grado</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input disabled type="radio" class="custom-control-input" name="tipoModalidad" id="customCheck2">
-                    <label class="custom-control-label text-uppercase" style="color: black;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px" for="customCheck2">pasantia</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input disabled type="radio" class="custom-control-input" name="tipoModalidad" id="customCheck3">
-                    <label class="custom-control-label text-uppercase" style="color: black;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px" for="customCheck3">postgrado</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input disabled type="radio" class="custom-control-input" name="tipoModalidad" id="customCheck4">
-                    <label class="custom-control-label text-uppercase" style="color: black;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px" for="customCheck4">empresa</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input disabled type="radio" class="custom-control-input" name="tipoModalidad" id="customCheck5">
-                    <label class="custom-control-label text-uppercase" style="color: black;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px" for="customCheck5">promedio académico de excelencia</label>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="row animated fadeIn fast">
-            <h5 class="uscoSearchTitulo text-uppercase text-center">Consejero(s)</h5>
-            <div class="mx-auto">
-                <table class="table table-bordered shadow p-3 mb-5 bg-white rounded">
-                    <thead class="text-center">
-                        <tr class="colorCafe">
-                            <th scope="col"><label class="uscoSesion text-uppercase " style="margin: 0px;padding:0px">No.</label></th>
-                            <th scope="col"><label class="uscoSesion text-uppercase " style="margin: 0px;padding:0px">Nombre</label></th>
-                            <th scope="col"><label class="uscoSesion text-uppercase " style="margin: 0px;padding:0px">apellido</label></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="text-center">
-                            <th scope="row"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">1</label></th>
-                            <td><input formControlName="nombreConsjero1" class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
-                            <td><input formControlName="apellidoConsjero1" class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
-                        </tr>
-                        <tr class="text-center">
-                            <th scope="row"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">2</label></th>
-                            <td><input formControlName="nombreConsjero2"class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
-                            <td><input formControlName="apellidoConsjero2"class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
-                        </tr>
-                        <tr class="text-center">
-                            <th scope="row"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">3</label></th>
-                            <td><input formControlName="nombreConsjero3" class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
-                            <td><input formControlName="apellidoConsjero3" class="selectSearch " type="text" style="height: 30px;border: 0px"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row animated fadeIn fast">
-            <div class="col text-right">
 
-                <button type="submit"  class="text-uppercase iconRadio" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white">
+        <!--****información personal****-->
+        <div class="mt-5 px-5 row animated fadeIn fast">
+            <div class="col-6">
+                <h6 class="font-weight-bold">CORREO ELECTRÓNICO:</h6>
+                <h5 class="font-weight-light">willyrex@usco.edu.co</h5>
+                <h6 class="mt-3 font-weight-bold">TELÉFONO:</h6>
+                <h5 class="font-weight-light">3016666666</h5>
+            </div>
+            <div class="col-6">
+                <h6 class="mt-3 font-weight-bold">NÚMERO DE DOCUMENTO:</h6>
+                <h5 class="font-weight-light">7777777777</h5>
+            </div>
+        </div>
+
+        <!--****Lugar de ejecución del proyecto****-->
+        <div class="mt-3 px-5 row animated fadeIn fast">
+            <h4 class="mb-3 uscoSesion text-center text-uppercase">Lugar de ejecución del proyecto</h4>
+            <div class="col-6">
+                <label for="customRange" class="font-weight-bold text-uppercase">departamento</label>
+                <select name="cars" class="custom-select">
+                    <option selected>Departamento...</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <label for="duracionProyecto" class="mt-3 font-weight-bold text-uppercase">Duración del proyecto(meses)</label>
+                <input type="number" class="form-control" id="duracionProyecto" placeholder="Escriba la duración del proyecto" min="4" max="12" required>
+            </div>
+            <div class="col-6">
+                <label for="customRange" class="font-weight-bold text-uppercase">ciudad</label>
+                <select name="cars" class="custom-select">
+                    <option selected>Ciudad...</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+            </div>
+        </div>
+
+        <!--****Tipo de proyecto ****-->
+        <div class="mt-5 px-5 row animated fadeIn fast">
+            <h4 class="mb-3 uscoSesion text-center text-uppercase">tipo de proyecto</h4>
+            <div class="col-6">
+                <div class="custom-control">
+                    <input type="radio" class="custom-control-input" id="investigacionBasica" name="example1">
+                    <label class="custom-control-label text-uppercase font-weight-bold" for="investigacionBasica">investigación Básica</label>
+                </div>
+                <div class="my-3 custom-control">
+                    <input type="radio" class="custom-control-input" id="investigacionAplicada" name="example1">
+                    <label class="custom-control-label text-uppercase font-weight-bold" for="investigacionAplicada">investigación Aplicada</label>
+                </div>
+                <div class="custom-control">
+                    <input type="radio" class="custom-control-input" id="desTecExp" name="example1">
+                    <label class="custom-control-label text-uppercase font-weight-bold" for="desTecExp">Desarrollo tecnológico o experimental</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <label class="font-weight-bold text-uppercase" for="keyWords">Descriptores/Palabras clave:</label>
+                <input type="text" class="uscoInputs form-control" id="keyWords" maxlength="500" placeholder="Escriba las palabras clave" required>
+                <h6 class="mt-1 ml-2">0/500</h6>
+            </div>
+        </div>
+
+        <!--****Resumen del proyecto****-->
+        <div class="mt-5 px-5 animated fadeIn fast">
+            <h4 class="uscoSesion text-center text-uppercase">resumen del proyecto</h4>
+            <div class="form-group">
+                <textarea class="form-control" rows="5" id="resumen" maxlength="3000" placeholder="Escriba un breve resumen con la idea de su proyecto" required></textarea>
+            </div>
+        </div>
+
+        <div class="mt-5 row animated fadeIn fast">
+            <div class="col text-right">
+                <button type="submit" class="text-uppercase iconRadio" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white">
                     Enviar  
                     <span class="far fa-save fa-lg colorNegro"></span>
                   </button>
             </div>
-     
             <div class="col text-left">
                 <button href="" class="text-uppercase iconRadio" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white" onClick="window.print()">
                       <span class="fas fa-download fa-lg colorNegro"></span>
