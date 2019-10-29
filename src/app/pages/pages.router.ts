@@ -20,6 +20,8 @@ import { AnteproyectoComponent } from './proyectosUsco/anteproyecto/anteproyecto
 import { ProyectoComponent } from './proyectosUsco/proyecto/proyecto.component';
 import { ArticuloComponent } from './proyectosUsco/articulo/articulo.component';
 import { ProgresoComponent } from './proyectosUsco/progreso/progreso.component';
+import { SemilleroUscoComponent } from './semillero-usco/semillero-usco.component';
+import { PasantiaUscoComponent } from './pasantia-usco/pasantia-usco.component';
 
 
 const pagesRouter: Routes = [
@@ -37,6 +39,11 @@ const pagesRouter: Routes = [
     { path: 'progreso' , component: ProgresoComponent},
     { path: 'perfil' , component: ProfileComponent},
     { path: 'notificaciones' , component: NotificacionesComponent},
+
+
+     { path: 'semillero' , component: SemilleroUscoComponent},
+     { path: 'pasantia' , component: PasantiaUscoComponent},
+
     {
         path: 'admin' ,
         component: AdminComponent,

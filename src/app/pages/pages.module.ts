@@ -35,6 +35,8 @@ import { ArticuloComponent } from './proyectosUsco/articulo/articulo.component';
 import { ProgresoComponent } from './proyectosUsco/progreso/progreso.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SemilleroUscoComponent } from './semillero-usco/semillero-usco.component';
+import { PasantiaUscoComponent } from './pasantia-usco/pasantia-usco.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AnteproyectoComponent,
     ProyectoComponent,
     ArticuloComponent,
-    ProgresoComponent
+    ProgresoComponent,
+    SemilleroUscoComponent,
+    PasantiaUscoComponent
 
   ],
   entryComponents: [
