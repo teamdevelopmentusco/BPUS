@@ -11,13 +11,13 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   styles: []
 })
 export class SolicitudComponent implements OnInit {
-  estudiantes: Usuario[]=[];
-  solicitud:Solicitud = new Solicitud('','','','','','','','','','','','',);
+  estudiantes: Usuario[] = [];
+  solicitud: Solicitud = new Solicitud('', '', '', '', '', '', '', '', '', '', '', '', );
   today = new Date();
   jstoday = '';
   solicitudForm: any;
-  constructor(private formBuilder: FormBuilder,public _usuarioService: UsuarioService,
-     public _notificacionService:NotificacionService,
+  constructor(private formBuilder: FormBuilder, public _usuarioService: UsuarioService,
+     public _notificacionService: NotificacionService,
      public _solicitudService: SolicitudService) {
 
    // this.usuario = this._usuarioService.usuario;
@@ -25,6 +25,14 @@ export class SolicitudComponent implements OnInit {
 
 
     this.solicitudForm = this.formBuilder.group({
+      titulo: [
+        '',
+        [Validators.required, Validators.maxLength(60)]
+      ],
+      lineaInvestigacion: [
+        '',
+        [Validators.required, Validators.maxLength(60)]
+      ],
       codigoEstudiante1: [
         '',
         [ Validators.pattern('([0-9]){8,10}')]
@@ -55,58 +63,77 @@ export class SolicitudComponent implements OnInit {
       apellidoEstudiante3: [
         ''
       ],
-      titulo: [
+      departamento: [
         '',
         [Validators.required]
       ],
-      tipoModalidad: [
+      ciudad: [
         '',
         [Validators.required]
       ],
-      nombreConsjero1: [
-        ''
+      duracionProyecto: [
+        '',
+        [Validators.required, Validators.min(4), Validators.max(12)]
       ],
-      nombreConsjero2: [
-        ''
+      tipoProyecto: [
+        '',
+        [Validators.required, Validators.min(4), Validators.max(12)]
       ],
-      nombreConsjero3: [
-        ''
+      palabrasClave: [
+        '',
+        [Validators.required, Validators.maxLength(500)]
       ],
-      apellidoConsjero1: [
-        ''
+      resumen: [
+        '',
+        [Validators.required, Validators.maxLength(3000)]
       ],
-      apellidoConsjero2: [
-        ''
-      ],
-      apellidoConsjero3: [
-        ''
-      ]
     });
   }
+
+  get titulo() {
+    return this.solicitudForm.get('titulo');
+  }
+
+  get lineaInvestigacion() {
+    return this.solicitudForm.get('lineaInvestigacion');
+  }
+
+  get duracionProyecto() {
+    return this.solicitudForm.get('duracionProyecto');
+  }
+
+  get palabrasClave() {
+    return this.solicitudForm.get('palabrasClave');
+  }
+
   ngOnInit() {
   }
 
-  cargarSolicitudes(){
-    this._solicitudService.cargarSolicitudes((0)).subscribe((resp:any)=>{});
+  cargarSolicitudes() {
+    this._solicitudService.cargarSolicitudes((0)).subscribe((resp: any) => {});
 
 
   }
 
+  countChars() {
+    const keywords = (document.getElementById('keyWords') as HTMLInputElement).value;
+    const strLength = keywords.length;
+    document.getElementById('charNum').innerHTML = strLength + '/500';
+  }
 
-  
-  agregarEstudiante(numDocumento:string){
+  agregarEstudiante(numDocumento: string){
     console.log("CAMBIO DE JEFE DE PROGRAMA");
 
     this._usuarioService.obtenerJefePrograma(numDocumento)
-        .subscribe(estudiantes=> {
-          this.estudiantes=estudiantes
+        .subscribe(estudiantes => {
+          this.estudiantes = estudiantes
         });   
 
 }
 
 
 
-  notificar(forma:FormGroup){
+  notificar(forma: FormGroup){
 
     swal.fire({
       title: '¿Está seguro que desea enviar la solicitud?',
@@ -124,12 +151,12 @@ export class SolicitudComponent implements OnInit {
       var solicitud = new Solicitud(
         forma.value.tipoModalidad,
         forma.value.titulo,
-        forma.value.nombreEstudiante1+forma.value.apellidoEstudiante1,
-        forma.value.nombreEstudiante2+forma.value.apellidoEstudiante2,
-        forma.value.nombreEstudiante3+forma.value.apellidoEstudiante3,
-        forma.value.nombreConsjero1+forma.value.apellidoConsjero1,
-        forma.value.nombreConsjero2+forma.value.apellidoConsjero2,
-        forma.value.nombreConsjero3+forma.value.apellidoConsjero3,
+        forma.value.nombreEstudiante1 + forma.value.apellidoEstudiante1,
+        forma.value.nombreEstudiante2 + forma.value.apellidoEstudiante2,
+        forma.value.nombreEstudiante3 + forma.value.apellidoEstudiante3,
+        forma.value.nombreConsjero1 + forma.value.apellidoConsjero1,
+        forma.value.nombreConsjero2 + forma.value.apellidoConsjero2,
+        forma.value.nombreConsjero3 + forma.value.apellidoConsjero3,
         "1075306358",  // Jefe de programa
         null,
         null,
