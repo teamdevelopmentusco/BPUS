@@ -12,15 +12,16 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class SolicitudComponent implements OnInit {
   estudiantes: Usuario[] = [];
+  usuario: Usuario;
   solicitud: Solicitud = new Solicitud('', '', '', '', '', '', '', '', '', '', '', '', );
   today = new Date();
   jstoday = '';
   solicitudForm: any;
   constructor(private formBuilder: FormBuilder, public _usuarioService: UsuarioService,
-     public _notificacionService: NotificacionService,
-     public _solicitudService: SolicitudService) {
+              public _notificacionService: NotificacionService,
+              public _solicitudService: SolicitudService) {
 
-   // this.usuario = this._usuarioService.usuario;
+    this.usuario = this._usuarioService.usuario;
     this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '-0500');
 
 
@@ -77,7 +78,7 @@ export class SolicitudComponent implements OnInit {
       ],
       tipoProyecto: [
         '',
-        [Validators.required, Validators.min(4), Validators.max(12)]
+        [Validators.required]
       ],
       palabrasClave: [
         '',
@@ -102,8 +103,23 @@ export class SolicitudComponent implements OnInit {
     return this.solicitudForm.get('duracionProyecto');
   }
 
+  get departamento() {
+    return this.solicitudForm.get('departamento');
+  }
+  get ciudad() {
+    return this.solicitudForm.get('ciudad');
+  }
+
   get palabrasClave() {
     return this.solicitudForm.get('palabrasClave');
+  }
+
+  get resumen() {
+    return this.solicitudForm.get('resumen');
+  }
+
+  get tipoProyecto() {
+    return this.solicitudForm.get('tipoProyecto');
   }
 
   ngOnInit() {
@@ -111,9 +127,23 @@ export class SolicitudComponent implements OnInit {
 
   cargarSolicitudes() {
     this._solicitudService.cargarSolicitudes((0)).subscribe((resp: any) => {});
-
-
   }
+
+    // Cambiar la ciudad
+    changeCity(e) {
+      console.log(e.value);
+      this.ciudad.setValue(e.target.value, {
+        onlySelf: true
+      });
+    }
+
+    // Cambiar de departamento
+    changeDepartment(e) {
+      console.log(e.value);
+      this.departamento.setValue(e.target.value, {
+        onlySelf: true
+      });
+    }
 
   countChars() {
     const keywords = (document.getElementById('keyWords') as HTMLInputElement).value;
@@ -133,7 +163,7 @@ export class SolicitudComponent implements OnInit {
 
 
 
-  notificar(forma: FormGroup){
+  notificar(forma: FormGroup) {
 
     swal.fire({
       title: '¿Está seguro que desea enviar la solicitud?',
