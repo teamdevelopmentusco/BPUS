@@ -64,6 +64,10 @@ export class SolicitudComponent implements OnInit {
       apellidoEstudiante3: [
         ''
       ],
+      pais: [
+        '',
+        [Validators.required]
+      ],
       departamento: [
         '',
         [Validators.required]
@@ -82,7 +86,7 @@ export class SolicitudComponent implements OnInit {
       ],
       palabrasClave: [
         '',
-        [Validators.required, Validators.maxLength(500)]
+        [Validators.required, Validators.maxLength(64)]
       ],
       resumen: [
         '',
@@ -103,9 +107,14 @@ export class SolicitudComponent implements OnInit {
     return this.solicitudForm.get('duracionProyecto');
   }
 
+  get pais() {
+    return this.solicitudForm.get('pais');
+  }
+
   get departamento() {
     return this.solicitudForm.get('departamento');
   }
+
   get ciudad() {
     return this.solicitudForm.get('ciudad');
   }
@@ -129,26 +138,16 @@ export class SolicitudComponent implements OnInit {
     this._solicitudService.cargarSolicitudes((0)).subscribe((resp: any) => {});
   }
 
-    // Cambiar la ciudad
-    changeCity(e) {
-      console.log(e.value);
-      this.ciudad.setValue(e.target.value, {
-        onlySelf: true
-      });
-    }
-
-    // Cambiar de departamento
-    changeDepartment(e) {
-      console.log(e.value);
-      this.departamento.setValue(e.target.value, {
-        onlySelf: true
-      });
-    }
-
   countChars() {
     const keywords = (document.getElementById('keyWords') as HTMLInputElement).value;
     const strLength = keywords.length;
-    document.getElementById('charNum').innerHTML = strLength + '/500';
+    document.getElementById('charNum').innerHTML = strLength + '/64';
+  }
+
+  countCharsResumen() {
+    const keywords = (document.getElementById('resumen') as HTMLInputElement).value;
+    const strLength = keywords.length;
+    document.getElementById('charNumResumen').innerHTML = strLength + '/3000';
   }
 
   agregarEstudiante(numDocumento: string){

@@ -107,47 +107,51 @@
         <div class="mt-3 px-5 row animated fadeIn fast">
             <h4 class="mb-3 uscoSesion text-center text-uppercase">Lugar de ejecución del proyecto</h4>
             <div class="col-6">
-                <label for="departamento" class="font-weight-bold text-uppercase">departamento</label>
-                <select name="departamento" class="custom-select" (change)="changeDepartment($event)" formControlName="departamento">
-                    <option value="" selected>Departamento...</option>
-                    <option value="volvo">Volvo</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
-                </select>
-                <h6 *ngIf="departamento.invalid && (departamento.dirty || departamento.touched)" class="mt-2" style="color:red;">
-                    <div *ngIf="departamento.errors.required">
-                        Debes seleccionar un departamento
+                <!--pais-->
+                <label for="pais" class="mt-3 font-weight-bold text-uppercase">País:</label>
+                <input formControlName="pais" type="text" class="form-control" id="pais" placeholder="Escribe el pais" required>
+                <h6 *ngIf="pais.invalid && (pais.dirty || pais.touched)" class="mt-2" style="color:red;">
+                    <div *ngIf="pais.errors.required">
+                        Debes escribir un país
                     </div>
                 </h6>
-                <!--Duracion del protecto-->
-                <label for="duracionProyecto" class="mt-3 font-weight-bold text-uppercase">Duración del proyecto(4-12 meses)</label>
-                <input formControlName="duracionProyecto" type="number" class="form-control" id="duracionProyecto" placeholder="Escriba la duración del proyecto" min="4" max="12" required>
-                <h6 *ngIf="duracionProyecto.invalid && (duracionProyecto.dirty || duracionProyecto.touched)" class="mt-2" style="color:red;">
-                    <div *ngIf="duracionProyecto.errors.required">
-                        La duracion del proyecto es requerida
-                    </div>
-                    <div *ngIf="duracionProyecto.errors.max">
-                        La duracion del proyecto es muy larga
-                    </div>
-                    <div *ngIf="duracionProyecto.errors.min">
-                        La duracion del proyecto es muy corta
+                <!--ciudad-->
+                <label for="ciudad" class="mt-3 font-weight-bold text-uppercase">Ciudad:</label>
+                <input formControlName="ciudad" type="text" class="form-control" id="ciudad" placeholder="Escribe la ciudad" required>
+                <h6 *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)" class="mt-2" style="color:red;">
+                    <div *ngIf="ciudad.errors.required">
+                        Debes escribir una ciudad
                     </div>
                 </h6>
             </div>
             <div class="col-6">
-                <label for="ciudad" class="font-weight-bold text-uppercase">ciudad</label>
-                <select name="ciudad" class="custom-select" (change)="changeCity($event)" formControlName="ciudad">
-                    <option value="" selected>Ciudad...</option>
-                    <option value="volvo">Volvo</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
-                </select>
-                <h6 *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)" class="mt-2" style="color:red;">
-                    <div *ngIf="ciudad.errors.required">
-                        Debes seleccionar una ciudad
+                <!--departamento-->
+                <label for="departamento" class="mt-3 font-weight-bold text-uppercase">Departamento:</label>
+                <input formControlName="departamento" type="text" class="form-control" id="departamento" placeholder="Escribe el departamento" required>
+                <h6 *ngIf="departamento.invalid && (departamento.dirty || departamento.touched)" class="mt-2" style="color:red;">
+                    <div *ngIf="departamento.errors.required">
+                        Debes escribir un departamento
                     </div>
                 </h6>
             </div>
+        </div>
+
+        <!--Duracion del protecto-->
+        <h4 class="mt-5 uscoSesion text-center text-uppercase">Duración del proyecto</h4>
+        <div class="mt-3 px-5 w-50 row animated fadeIn fast">
+            <label for="duracionProyecto" class="mt-3 font-weight-bold text-uppercase">Duración del proyecto(4-12 meses)</label>
+            <input formControlName="duracionProyecto" type="number" class="form-control" id="duracionProyecto" placeholder="Escriba la duración del proyecto" min="4" max="12" required>
+            <h6 *ngIf="duracionProyecto.invalid && (duracionProyecto.dirty || duracionProyecto.touched)" class="mt-2" style="color:red;">
+                <div *ngIf="duracionProyecto.errors.required">
+                    La duracion del proyecto es requerida
+                </div>
+                <div *ngIf="duracionProyecto.errors.max">
+                    La duracion del proyecto es muy larga
+                </div>
+                <div *ngIf="duracionProyecto.errors.min">
+                    La duracion del proyecto es muy corta
+                </div>
+            </h6>
         </div>
 
         <!--****Tipo de proyecto ****-->
@@ -169,8 +173,8 @@
             </div>
             <div class="col-6">
                 <label class="font-weight-bold text-uppercase" for="keyWords">Descriptores/Palabras clave:</label>
-                <input formControlName="palabrasClave" type="text" class="uscoInputs form-control" id="keyWords" maxlength="500" placeholder="Escriba las palabras clave" (keyup)="countChars();" required>
-                <p id="charNum" class="ml-2 mt-1">0/500</p>
+                <input formControlName="palabrasClave" type="text" class="uscoInputs form-control" id="keyWords" maxlength="64" placeholder="Escriba las palabras clave" (keyup)="countChars();" required>
+                <p id="charNum" class="ml-2 mt-1">0/64</p>
                 <h6 *ngIf="palabrasClave.invalid && (palabrasClave.dirty || palabrasClave.touched)" class="mt-2" style="color:red;">
                     <div *ngIf="palabrasClave.errors.required">
                         La(s) palabra(s) clave(s) requerida(s)
@@ -183,8 +187,9 @@
         <div class="mt-5 px-5 animated fadeIn fast">
             <h4 class="uscoSesion text-center text-uppercase">resumen del proyecto</h4>
             <div class="form-group">
-                <textarea formControlName="resumen" class="form-control" rows="10" id="resumen" maxlength="3000" placeholder="Escriba un breve resumen con la idea de su proyecto" required></textarea>
+                <textarea formControlName="resumen" class="form-control" rows="10" id="resumen" maxlength="3000" placeholder="Escriba un breve resumen con la idea de su proyecto" (keyup)="countCharsResumen();" required></textarea>
             </div>
+            <p id="charNumResumen" class="ml-2 mt-1">0/3000</p>
             <h6 *ngIf="resumen.invalid && (resumen.dirty || resumen.touched)" class="mt-2" style="color:red;">
                 <div *ngIf="resumen.errors.required">
                     El resumen es requerido
