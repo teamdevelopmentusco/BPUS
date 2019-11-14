@@ -150,6 +150,13 @@ export class SolicitudComponent implements OnInit {
     document.getElementById('charNumResumen').innerHTML = strLength + '/3000';
   }
 
+  espandirTexarea() {
+    const textarea = (document.getElementById('resumen') as HTMLInputElement);
+    textarea.style.overflow = 'hidden';
+    textarea.style.height = textarea.getAttribute('data-min.rows');
+    textarea.style.height = textarea.scrollHeight + 'px';
+  }
+
   agregarEstudiante(numDocumento: string){
     console.log("CAMBIO DE JEFE DE PROGRAMA");
 

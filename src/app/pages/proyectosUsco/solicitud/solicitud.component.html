@@ -109,7 +109,7 @@
             <div class="col-6">
                 <!--pais-->
                 <label for="pais" class="mt-3 font-weight-bold text-uppercase">País:</label>
-                <input formControlName="pais" type="text" class="form-control" id="pais" placeholder="Escribe el pais" required>
+                <input formControlName="pais" type="text" class="uscoInputs form-control" id="pais" placeholder="Escribe el pais" required>
                 <h6 *ngIf="pais.invalid && (pais.dirty || pais.touched)" class="mt-2" style="color:red;">
                     <div *ngIf="pais.errors.required">
                         Debes escribir un país
@@ -117,7 +117,7 @@
                 </h6>
                 <!--ciudad-->
                 <label for="ciudad" class="mt-3 font-weight-bold text-uppercase">Ciudad:</label>
-                <input formControlName="ciudad" type="text" class="form-control" id="ciudad" placeholder="Escribe la ciudad" required>
+                <input formControlName="ciudad" type="text" class="uscoInputs form-control" id="ciudad" placeholder="Escribe la ciudad" required>
                 <h6 *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)" class="mt-2" style="color:red;">
                     <div *ngIf="ciudad.errors.required">
                         Debes escribir una ciudad
@@ -127,7 +127,7 @@
             <div class="col-6">
                 <!--departamento-->
                 <label for="departamento" class="mt-3 font-weight-bold text-uppercase">Departamento:</label>
-                <input formControlName="departamento" type="text" class="form-control" id="departamento" placeholder="Escribe el departamento" required>
+                <input formControlName="departamento" type="text" class="uscoInputs form-control" id="departamento" placeholder="Escribe el departamento" required>
                 <h6 *ngIf="departamento.invalid && (departamento.dirty || departamento.touched)" class="mt-2" style="color:red;">
                     <div *ngIf="departamento.errors.required">
                         Debes escribir un departamento
@@ -140,7 +140,7 @@
         <h4 class="mt-5 uscoSesion text-center text-uppercase">Duración del proyecto</h4>
         <div class="mt-3 px-5 w-50 row animated fadeIn fast">
             <label for="duracionProyecto" class="mt-3 font-weight-bold text-uppercase">Duración del proyecto(4-12 meses)</label>
-            <input formControlName="duracionProyecto" type="number" class="form-control" id="duracionProyecto" placeholder="Escriba la duración del proyecto" min="4" max="12" required>
+            <input formControlName="duracionProyecto" type="number" class="uscoInputs form-control" id="duracionProyecto" placeholder="Escriba la duración del proyecto" min="4" max="12" required>
             <h6 *ngIf="duracionProyecto.invalid && (duracionProyecto.dirty || duracionProyecto.touched)" class="mt-2" style="color:red;">
                 <div *ngIf="duracionProyecto.errors.required">
                     La duracion del proyecto es requerida
@@ -187,7 +187,7 @@
         <div class="mt-5 px-5 animated fadeIn fast">
             <h4 class="uscoSesion text-center text-uppercase">resumen del proyecto</h4>
             <div class="form-group">
-                <textarea formControlName="resumen" class="form-control" rows="10" id="resumen" maxlength="3000" placeholder="Escriba un breve resumen con la idea de su proyecto" (keyup)="countCharsResumen();" required></textarea>
+                <textarea formControlName="resumen" class="form-control" rows="7" id="resumen" maxlength="3000" placeholder="Escriba un breve resumen con la idea de su proyecto" (keyup)="countCharsResumen();espandirTexarea();" style="resize: none;" required></textarea>
             </div>
             <p id="charNumResumen" class="ml-2 mt-1">0/3000</p>
             <h6 *ngIf="resumen.invalid && (resumen.dirty || resumen.touched)" class="mt-2" style="color:red;">
@@ -205,7 +205,7 @@
                   </button>
             </div>
             <div class="col text-left">
-                <button type="button" class="text-uppercase iconRadio" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white" onClick="window.print()">
+                <button type="button" class="text-uppercase iconRadio" [disabled]="!solicitudForm.valid" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white" onClick="window.print()">
                       <span class="fas fa-download fa-lg colorNegro"></span>
                       descargar
                   </button>
