@@ -4,14 +4,13 @@ import { NotificacionService } from 'src/app/services/service.index';
 import { Notificacion } from 'src/app/models/notificacion.model';
 @Component({
   selector: 'app-notificaciones',
-  templateUrl: './notificaciones.component.html',
-  styleUrls: ['./notificaciones.component.css'],
+  templateUrl: './notificaciones.component.html'
 })
 
 export class NotificacionesComponent {
-  notificaciones: Notificacion[]=[];
-  cargando:boolean=true;
-  notifiVacia:boolean=false;
+  notificaciones: Notificacion[] = [];
+  cargando = true;
+  notifiVacia = false;
   constructor(  public _notificacionService: NotificacionService) {
 
    }
@@ -19,18 +18,25 @@ export class NotificacionesComponent {
    ngOnInit() {
 
     this.cargarNotificaciones();
-    if (this.notificaciones.length===0) {
-      this.notifiVacia=true;
+    if (this.notificaciones.length === 0) {
+      this.notifiVacia = true;
     }
   }
 
+  activeTab(tab: string) {
+    const activeTab = document.getElementById(tab);
+    const recibidasTab = document.getElementById('recibidasTab');
+    const enviadasTab = document.getElementById('enviadasTab');
+    recibidasTab.setAttribute('class', 'nav-link text-body');
+    enviadasTab.setAttribute('class', 'nav-link text-body');
+    activeTab.setAttribute('class', 'nav-link activeTab font-weight-bold');
+  }
 
-
-  cargarNotificaciones(){
-    this.cargando=true;
+  cargarNotificaciones() {
+    this.cargando = true;
     this._notificacionService.cargarNotificaciones(0)
-    .subscribe( notificaciones => this.notificaciones=notificaciones);  
-    this.cargando=false;
+    .subscribe( notificaciones => this.notificaciones = notificaciones);
+    this.cargando = false;
   }
 
   

@@ -1,26 +1,51 @@
 <!--
     - Proyecto:         BPUS
     - Componente:       notificaciones.component
-    - Desarrollador:    Jorge Andres Cutiva Tafur
+    - Desarrollador:    Jorge Andres Cutiva Tafur & Cristian Julián Andrade Murillo
     - Descripción:      Front de las notificaciones
-
 -->
-<body>
-    <br><br>
-    <div class='container animated fadeIn fast'>
-        <h2>Tus notificaciones</h2>
-        <br><br>
-        <table>
-            <tr *ngFor="let notificacion of notificaciones">
-                <td class="informacion">{{notificacion.emisor }}</td>
-                <td class="informacion">{{ notificacion.tipoNotificacionEmisor }}</td>
-                <td class="informacion">{{ notificacion.tipoNotificacionReceptor }}</td>
-                <td class="informacion">{{ notificacion.receptor}}</td>
-                <td class="confirmacion">
-                <td><input (click)="aceptarNotificacion(notificacion)" type="button" class="btn uscoButton" value="ACEPTAR" ></td>
-                <td><input (click)="rechazarNotificacion(notificacion)" type="button" class="btn uscoButton" value="RECHAZAR"></td>
-            </tr>
-        </table>
-        <!--   <p *ngIf="notifiVacia">No tienes ninguna notificación... :)</p>-->
+<div class='mt-3 container animated fadeIn fast'>
+    <h2>Tus notificaciones</h2>
+    <div>
+        <ul class="mt-3 nav nav-justified" role="tablist">
+            <li class="nav-item">
+                <a (click)="activeTab('recibidasTab')" id="recibidasTab" class="nav-link activeTab font-weight-bold" href="#recibidas" role="tab" data-toggle="tab">Recibidas</a>
+            </li>
+            <li class="nav-item">
+                <a (click)="activeTab('enviadasTab')" id="enviadasTab" class="nav-link text-body" href="#enviadas" role="tab" data-toggle="tab">Enviadas</a>
+            </li>
+        </ul>
+        <!-- tabs panes -->
+        <div class="mt-4 px-5 tab-content">
+            <div role="tabpanel" class="tab-pane fade show active" id="recibidas">
+                <table class="table table-hover">
+                    <tr *ngFor="let notificacion of notificaciones">
+                        <td>{{notificacion.emisor }}</td>
+                        <td>{{ notificacion.tipoNotificacionEmisor }}</td>
+                        <td>{{ notificacion.tipoNotificacionReceptor }}</td>
+                        <td>{{ notificacion.receptor}}</td>
+                        <td><input (click)="aceptarNotificacion(notificacion)" type="button" class="btn uscoButton" value="ACEPTAR"></td>
+                        <td><input (click)="rechazarNotificacion(notificacion)" type="button" class="btn uscoButton" value="RECHAZAR"></td>
+                    </tr>
+                </table>
+            </div>
+            <div role="tabpanel" class="tab-pane fade show" id="enviadas">
+                <table class="table table-hover">
+                    <tr *ngFor="let notificacion of notificaciones">
+                        <td>{{notificacion.emisor }}</td>
+                        <td>{{ notificacion.tipoNotificacionEmisor }}</td>
+                        <td>{{ notificacion.tipoNotificacionReceptor }}</td>
+                        <td>{{ notificacion.receptor}}</td>
+                        <td><input (click)="aceptarNotificacion(notificacion)" type="button" class="btn uscoButton" value="ACEPTAR"></td>
+                        <td><input (click)="rechazarNotificacion(notificacion)" type="button" class="btn uscoButton" value="RECHAZAR"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-</body>
+    <!--
+    <div class="my-5 text-center">
+        <h4 *ngIf="notifiVacia">No tienes ninguna notificación...</h4>
+    </div>
+    -->
+</div>
