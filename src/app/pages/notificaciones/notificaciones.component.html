@@ -42,8 +42,8 @@
                         <td>{{usuario.nombres +" " + usuario.apellidos }}</td>
                         <td>{{ notificacion.tipoNotificacionEmisor }}</td>
                 
-                        <td>{{ notificacion.receptor}}</td>
-                        <td><input (click)="rechazarNotificacion(notificacion)" type="button" class="btn uscoButton" value="BORRAR"></td>
+                        <td>{{ notificacion.receptor }}</td>
+                        <td><input (click)="borrarNotificacion(notificacion)" type="button" class="btn uscoButton" value="BORRAR"></td>
                     </div>
                     </tr>
                 </table>

@@ -11,8 +11,6 @@ import { UsuarioService } from '../../services/service.index';
 
 export class NotificacionesComponent {
   notificaciones: Notificacion[] = [];
-  notificacionesRecibidas: Notificacion[] = [];
-  notificacionesEnviadas: Notificacion[] = [];
   usuarioPorID: Usuario;
   usuario: Usuario;
   cargando = true;
@@ -46,11 +44,13 @@ export class NotificacionesComponent {
   }
 
 
-  obtenerUsuario(id:String){
+    obtenerUsuario(id:String){
 
   this._usuarioService.cargarUsuarioPorId(id).subscribe( usuarioPorId => this.usuarioPorID = usuarioPorId);
 
+ // console.log(this.usuarioPorID);
 
+    return this.usuarioPorID;
   }
 
   
@@ -85,6 +85,33 @@ export class NotificacionesComponent {
       showCancelButton: true,
       showConfirmButton: true,
       confirmButtonText: 'Si, Rechazar!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    })
+    .then(borrar => {
+      
+    if (borrar.value) {
+   
+
+      this._notificacionService.borrarNotificaciones(notificacion._id).subscribe(resp=>{           
+        console.log(resp);
+        this.cargarNotificaciones();
+      });
+
+    } 
+
+    });   
+  }
+
+
+  borrarNotificacion(notificacion:Notificacion){
+
+    Swal.fire({
+      title: '¿Está seguro que deseas borrar la notificación?',
+      type: 'question',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonText: 'Si, Borrar!',
       cancelButtonText: 'No, cancelar!',
       reverseButtons: true
     })

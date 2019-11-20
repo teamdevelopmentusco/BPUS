@@ -5,6 +5,8 @@ import { UsuarioService, NotificacionService, SolicitudService } from '../../../
 import swal from 'sweetalert2';
 import { Solicitud } from 'src/app/models/solicitud.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Notificacion } from 'src/app/models/notificacion.model';
 @Component({
   selector: 'app-solicitud',
   templateUrl: './solicitud.component.html',
@@ -13,20 +15,23 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class SolicitudComponent implements OnInit {
   estudiantes: Usuario[] = [];
   usuario: Usuario;
-  solicitud: Solicitud = new Solicitud('', '', '', '', '', '', '', '', '', '', '', '', );
+  solicitud: Solicitud = new Solicitud('','','', '', '', '', '', '', '', '', '', '', '', '' );
+  notificacion: Notificacion = new Notificacion('','','','');
   today = new Date();
   jstoday = '';
   solicitudForm: any;
   constructor(private formBuilder: FormBuilder, public _usuarioService: UsuarioService,
               public _notificacionService: NotificacionService,
-              public _solicitudService: SolicitudService) {
+              public _solicitudService: SolicitudService,  public router: Router) {
 
     this.usuario = this._usuarioService.usuario;
     this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '-0500');
 
 
     this.solicitudForm = this.formBuilder.group({
-      titulo: [
+      fechaSolicitud: [
+        ''],
+        titulo: [
         '',
         [Validators.required, Validators.maxLength(60)]
       ],
@@ -35,29 +40,24 @@ export class SolicitudComponent implements OnInit {
         [Validators.required, Validators.maxLength(60)]
       ],
       codigoEstudiante1: [
-        '',
-        [ Validators.pattern('([0-9]){8,10}')]
+        ''
       ],
       codigoEstudiante2: [
         '',
-        [ Validators.pattern('([0-9]){8,10}')]
+        [ Validators.pattern('([0-9]){8,11}')]
       ],
       codigoEstudiante3: [
         '',
-        [ Validators.pattern('([0-9]){8,10}')]
+        [ Validators.pattern('([0-9]){8,11}')]
       ],
-      nombreEstudiante1: [
-        ''
-      ],
+
       nombreEstudiante2: [
         ''
       ],
       nombreEstudiante3: [
         ''
       ],
-      apellidoEstudiante1: [
-        ''
-      ],
+      
       apellidoEstudiante2: [
         ''
       ],
@@ -76,7 +76,7 @@ export class SolicitudComponent implements OnInit {
         '',
         [Validators.required]
       ],
-      duracionProyecto: [
+      duracionProyectoMeses: [
         '',
         [Validators.required, Validators.min(4), Validators.max(12)]
       ],
@@ -84,17 +84,20 @@ export class SolicitudComponent implements OnInit {
         '',
         [Validators.required]
       ],
-      palabrasClave: [
+      palabrasClaves: [
         '',
         [Validators.required, Validators.maxLength(64)]
       ],
-      resumen: [
+      resumenProyecto: [
         '',
         [Validators.required, Validators.maxLength(3000)]
       ],
     });
   }
 
+  get fechaSolicitud() {
+    return this.solicitudForm.get('fechaSolicitud');
+  }
   get titulo() {
     return this.solicitudForm.get('titulo');
   }
@@ -103,8 +106,8 @@ export class SolicitudComponent implements OnInit {
     return this.solicitudForm.get('lineaInvestigacion');
   }
 
-  get duracionProyecto() {
-    return this.solicitudForm.get('duracionProyecto');
+  get duracionProyectoMeses() {
+    return this.solicitudForm.get('duracionProyectoMeses');
   }
 
   get pais() {
@@ -119,12 +122,12 @@ export class SolicitudComponent implements OnInit {
     return this.solicitudForm.get('ciudad');
   }
 
-  get palabrasClave() {
-    return this.solicitudForm.get('palabrasClave');
+  get palabrasClaves() {
+    return this.solicitudForm.get('palabrasClaves');
   }
 
-  get resumen() {
-    return this.solicitudForm.get('resumen');
+  get resumenProyecto() {
+    return this.solicitudForm.get('resumenProyecto');
   }
 
   get tipoProyecto() {
@@ -186,10 +189,10 @@ export class SolicitudComponent implements OnInit {
 
       var solicitud = new Solicitud(
         this.usuario._id,
-        forma.value.fechaSolicitud,
-        forma.value.tituloProyecto,
+        this.jstoday,
+        forma.value.titulo,
         forma.value.lineaInvestigacion,
-        forma.value.nombreEstudiante1 + forma.value.apellidoEstudiante1,
+        this.usuario.nombres + this.usuario.apellidos,
         forma.value.nombreEstudiante2 + forma.value.apellidoEstudiante2,
         forma.value.nombreEstudiante3 + forma.value.apellidoEstudiante3,
         forma.value.pais,
@@ -201,21 +204,44 @@ export class SolicitudComponent implements OnInit {
         forma.value.resumenProyecto,
         null,
         null,
-        null,
-
+        null
         );
 
-     
+        var notificacion = new Notificacion(
+          this.usuario._id,
+          "5dd50a0c6159e2198c4e39ee",
+          "Envió una solicitud a",
+          "Solicita la aprobación de",
+          
+          );
 
 
       this._solicitudService.crearSolicitud(solicitud).subscribe(resp => {
       console.log(resp);
       this.cargarSolicitudes();
-      //swal.fire('Solicitud Enviada', 'La solicitud ha sido enviada.', 'success');
+
+
+//---------------------------
+      this._notificacionService.crearNotificacion(notificacion).subscribe(resp => {
+        console.log(resp);
+        
+        this.router.navigate(['/search']);
+        });
+//---------------------------
+
+
+    
       });
     }
 
     });
+
+
+
+    
+
+
+   
 
 
 

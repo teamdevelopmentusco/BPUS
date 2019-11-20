@@ -13,7 +13,7 @@
             </div>
             <div class="col-4 text-center">
                 <h6 class="uscoSearchTitulo" style="margin: 0px;padding:0px;">Fecha:</h6>
-                <p formControlName="fechaSolicitud" class="uscoSesion" style="margin: 0px;padding:0px;font-size: 15px">{{jstoday}}</p>
+             <p class="uscoSesion" style="margin: 0px;padding:0px;font-size: 15px">{{jstoday}}</p>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
         <div class="mt-5 row animated fadeIn fast">
             <div class="col-6">
                 <label for="titulo" class="font-weight-bold">TÍTULO:</label>
-                <input formControlName="tituloProyecto" class="uscoInputs form-control" placeholder="Ponle un titulo a tu proyecto" type="text" maxlength="60" required>
+                <input formControlName="titulo" class="uscoInputs form-control" placeholder="Ponle un titulo a tu proyecto" type="text" maxlength="60" required>
                 <h6 *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="mt-2" style="color:red;">
                     <div *ngIf="titulo.errors.required">
                         EL titulo es requerido
@@ -61,15 +61,15 @@
                     <tbody>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
-                            <td><input formControlName="codigoEstudiante1" name="codigoEstudiante1" class="selectSearch" placeholder="{{usuario.codigoUniversitario}}" type="text" style="height: 30px;border: 0px" disabled></td>
-                            <td><input formControlName="nombreEstudiante1" name="nombreEstudiante1" class="selectSearch" placeholder="{{usuario.nombres}} {{usuario.apellidos}}" type="text" style="height: 30px;border: 0px" disabled></td>
-                            <td><input formControlName="apellidoEstudiante1" name="apellidoEstudiante1" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td><input  name="codigoEstudiante1" class="selectSearch" placeholder="{{usuario.codigoUniversitario}}" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td><input  name="nombreEstudiante1" class="selectSearch" placeholder="{{usuario.nombres}} {{usuario.apellidos}}" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td><input  name="apellidoEstudiante1" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">2</label></th>
                             <td><input formControlName="codigoEstudiante2" name="codigoEstudiante2" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}"></td>
                             <td><input formControlName="nombreEstudiante2" name="nombreEstudiante2" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}"></td>
-                            <td><input formControlName="apellidoEstudiante2" name="apellidoEstudiante2" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td><input formControlName="apellidoEstudiante2" name="apellidoEstudiante2" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px"></td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">3</label></th>
@@ -81,12 +81,14 @@
                 </table>
             </div>
             <!--****Boton de agregar estudianntes****-->
-            <div class="col-2 my-auto mx-auto text-left">
+
+
+          <!--   <div class="col-2 my-auto mx-auto text-left">
                 <button (click)="solicitarEstudiantes()" class="text-uppercase iconRadio" style="color: black;font-size: 18px;font-family:Segoe UI;background-color: white">
                 <span class="fas fa-plus-circle fa-lg"></span>
                 agregar
-              </button>
-            </div>
+              </button> 
+            </div> -->
         </div>
 
         <!--****información personal****-->
@@ -139,16 +141,16 @@
         <!--Duracion del protecto-->
         <h4 class="mt-5 uscoSesion text-center text-uppercase">Duración del proyecto</h4>
         <div class="mt-3 px-5 w-50 row animated fadeIn fast">
-            <label for="duracionProyecto" class="mt-3 font-weight-bold text-uppercase">Duración del proyecto(4-12 meses)</label>
-            <input formControlName="duracionProyectoMeses" type="number" class="uscoInputs form-control" id="duracionProyecto" placeholder="Escriba la duración del proyecto" min="4" max="12" required>
-            <h6 *ngIf="duracionProyecto.invalid && (duracionProyecto.dirty || duracionProyecto.touched)" class="mt-2" style="color:red;">
-                <div *ngIf="duracionProyecto.errors.required">
+            <label for="duracionProyectoMeses" class="mt-3 font-weight-bold text-uppercase">Duración del proyecto(4-12 meses)</label>
+            <input formControlName="duracionProyectoMeses" type="number" class="uscoInputs form-control" id="duracionProyectoMeses" placeholder="Escriba la duración del proyecto" min="4" max="12" required>
+            <h6 *ngIf="duracionProyectoMeses.invalid && (duracionProyectoMeses.dirty || duracionProyectoMeses.touched)" class="mt-2" style="color:red;">
+                <div *ngIf="duracionProyectoMeses.errors.required">
                     La duracion del proyecto es requerida
                 </div>
-                <div *ngIf="duracionProyecto.errors.max">
+                <div *ngIf="duracionProyectoMeses.errors.max">
                     La duracion del proyecto es muy larga
                 </div>
-                <div *ngIf="duracionProyecto.errors.min">
+                <div *ngIf="duracionProyectoMeses.errors.min">
                     La duracion del proyecto es muy corta
                 </div>
             </h6>
@@ -173,10 +175,10 @@
             </div>
             <div class="col-6">
                 <label class="font-weight-bold text-uppercase" for="keyWords">Descriptores/Palabras clave:</label>
-                <input formControlName="palabrasClave" type="text" class="uscoInputs form-control" id="keyWords" maxlength="64" placeholder="Escriba las palabras clave" (keyup)="countChars();" required>
+                <input formControlName="palabrasClaves" type="text" class="uscoInputs form-control" id="keyWords" maxlength="64" placeholder="Escriba las palabras clave" (keyup)="countChars();" required>
                 <p id="charNum" class="ml-2 mt-1">0/64</p>
-                <h6 *ngIf="palabrasClave.invalid && (palabrasClave.dirty || palabrasClave.touched)" class="mt-2" style="color:red;">
-                    <div *ngIf="palabrasClave.errors.required">
+                <h6 *ngIf="palabrasClaves.invalid && (palabrasClaves.dirty || palabrasClaves.touched)" class="mt-2" style="color:red;">
+                    <div *ngIf="palabrasClaves.errors.required">
                         La(s) palabra(s) clave(s) requerida(s)
                     </div>
                 </h6>
@@ -187,11 +189,11 @@
         <div class="mt-5 px-5 animated fadeIn fast">
             <h4 class="uscoSesion text-center text-uppercase">resumen del proyecto</h4>
             <div class="form-group">
-                <textarea formControlName="resumen" class="form-control" rows="7" id="resumen" maxlength="3000" placeholder="Escriba un breve resumen con la idea de su proyecto" (keyup)="countCharsResumen();espandirTexarea();" style="resize: none;" required></textarea>
+                <textarea formControlName="resumenProyecto" class="form-control" rows="7" id="resumen" maxlength="3000" placeholder="Escriba un breve resumen con la idea de su proyecto" (keyup)="countCharsResumen();espandirTexarea();" style="resize: none;" required></textarea>
             </div>
             <p id="charNumResumen" class="ml-2 mt-1">0/3000</p>
-            <h6 *ngIf="resumen.invalid && (resumen.dirty || resumen.touched)" class="mt-2" style="color:red;">
-                <div *ngIf="resumen.errors.required">
+            <h6 *ngIf="resumenProyecto.invalid && (resumenProyecto.dirty || resumenProyecto.touched)" class="mt-2" style="color:red;">
+                <div *ngIf="resumenProyecto.errors.required">
                     El resumen es requerido
                 </div>
             </h6>
