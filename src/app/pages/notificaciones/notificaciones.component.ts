@@ -2,6 +2,8 @@ import { Component} from '@angular/core';
 import Swal from 'sweetalert2';
 import { NotificacionService } from 'src/app/services/service.index';
 import { Notificacion } from 'src/app/models/notificacion.model';
+import { Usuario } from '../../models/usuario.model';
+import { UsuarioService } from '../../services/service.index';
 @Component({
   selector: 'app-notificaciones',
   templateUrl: './notificaciones.component.html'
@@ -9,10 +11,14 @@ import { Notificacion } from 'src/app/models/notificacion.model';
 
 export class NotificacionesComponent {
   notificaciones: Notificacion[] = [];
+  notificacionesRecibidas: Notificacion[] = [];
+  notificacionesEnviadas: Notificacion[] = [];
+  usuarioPorID: Usuario;
+  usuario: Usuario;
   cargando = true;
   notifiVacia = false;
-  constructor(  public _notificacionService: NotificacionService) {
-
+  constructor(  public _notificacionService: NotificacionService,  public _usuarioService: UsuarioService) {
+    this.usuario = this._usuarioService.usuario;
    }
 
    ngOnInit() {
@@ -34,9 +40,17 @@ export class NotificacionesComponent {
 
   cargarNotificaciones() {
     this.cargando = true;
-    this._notificacionService.cargarNotificaciones(0)
+    this._notificacionService.cargarNotificaciones()
     .subscribe( notificaciones => this.notificaciones = notificaciones);
     this.cargando = false;
+  }
+
+
+  obtenerUsuario(id:String){
+
+  this._usuarioService.cargarUsuarioPorId(id).subscribe( usuarioPorId => this.usuarioPorID = usuarioPorId);
+
+
   }
 
   

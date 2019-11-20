@@ -13,7 +13,7 @@
             </div>
             <div class="col-4 text-center">
                 <h6 class="uscoSearchTitulo" style="margin: 0px;padding:0px;">Fecha:</h6>
-                <p class="uscoSesion" style="margin: 0px;padding:0px;font-size: 15px">{{jstoday}}</p>
+                <p formControlName="fechaSolicitud" class="uscoSesion" style="margin: 0px;padding:0px;font-size: 15px">{{jstoday}}</p>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
         <div class="mt-5 row animated fadeIn fast">
             <div class="col-6">
                 <label for="titulo" class="font-weight-bold">TÍTULO:</label>
-                <input formControlName="titulo" class="uscoInputs form-control" placeholder="Ponle un titulo a tu proyecto" type="text" maxlength="60" required>
+                <input formControlName="tituloProyecto" class="uscoInputs form-control" placeholder="Ponle un titulo a tu proyecto" type="text" maxlength="60" required>
                 <h6 *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="mt-2" style="color:red;">
                     <div *ngIf="titulo.errors.required">
                         EL titulo es requerido
@@ -140,7 +140,7 @@
         <h4 class="mt-5 uscoSesion text-center text-uppercase">Duración del proyecto</h4>
         <div class="mt-3 px-5 w-50 row animated fadeIn fast">
             <label for="duracionProyecto" class="mt-3 font-weight-bold text-uppercase">Duración del proyecto(4-12 meses)</label>
-            <input formControlName="duracionProyecto" type="number" class="uscoInputs form-control" id="duracionProyecto" placeholder="Escriba la duración del proyecto" min="4" max="12" required>
+            <input formControlName="duracionProyectoMeses" type="number" class="uscoInputs form-control" id="duracionProyecto" placeholder="Escriba la duración del proyecto" min="4" max="12" required>
             <h6 *ngIf="duracionProyecto.invalid && (duracionProyecto.dirty || duracionProyecto.touched)" class="mt-2" style="color:red;">
                 <div *ngIf="duracionProyecto.errors.required">
                     La duracion del proyecto es requerida

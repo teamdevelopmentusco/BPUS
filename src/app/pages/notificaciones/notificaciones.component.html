@@ -16,31 +16,39 @@
             </li>
         </ul>
         <!-- tabs panes -->
+        
         <div class="mt-4 px-5 tab-content">
+            <!--***************  NOTIFICACIONES RECIBIDAS *************** -->
             <div role="tabpanel" class="tab-pane fade show active" id="recibidas">
                 <table class="table table-hover">
                     <tr *ngFor="let notificacion of notificaciones">
-                        <td>{{notificacion.emisor }}</td>
-                        <td>{{ notificacion.tipoNotificacionEmisor }}</td>
-                        <td>{{ notificacion.tipoNotificacionReceptor }}</td>
+                    <div *ngIf="notificacion.receptor == usuario._id">
                         <td>{{ notificacion.receptor}}</td>
+                        <td>{{ notificacion.tipoNotificacionReceptor }}</td>
+                        <td>{{usuario.nombres +" " + usuario.apellidos  }}</td>
                         <td><input (click)="aceptarNotificacion(notificacion)" type="button" class="btn uscoButton" value="ACEPTAR"></td>
                         <td><input (click)="rechazarNotificacion(notificacion)" type="button" class="btn uscoButton" value="RECHAZAR"></td>
+                    </div>
                     </tr>
                 </table>
             </div>
+
+            <!-- **************************************************-->
+            <!-- NOTIFICACIONES ENVIADAS -->
             <div role="tabpanel" class="tab-pane fade show" id="enviadas">
                 <table class="table table-hover">
                     <tr *ngFor="let notificacion of notificaciones">
-                        <td>{{notificacion.emisor }}</td>
+                    <div *ngIf="notificacion.emisor == usuario._id">
+                        <td>{{usuario.nombres +" " + usuario.apellidos }}</td>
                         <td>{{ notificacion.tipoNotificacionEmisor }}</td>
-                        <td>{{ notificacion.tipoNotificacionReceptor }}</td>
+                
                         <td>{{ notificacion.receptor}}</td>
-                        <td><input (click)="aceptarNotificacion(notificacion)" type="button" class="btn uscoButton" value="ACEPTAR"></td>
-                        <td><input (click)="rechazarNotificacion(notificacion)" type="button" class="btn uscoButton" value="RECHAZAR"></td>
+                        <td><input (click)="rechazarNotificacion(notificacion)" type="button" class="btn uscoButton" value="BORRAR"></td>
+                    </div>
                     </tr>
                 </table>
             </div>
+             <!-- **************************************************-->
         </div>
     </div>
     <!--

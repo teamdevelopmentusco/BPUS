@@ -185,15 +185,20 @@ export class SolicitudComponent implements OnInit {
     if (borrar.value) {
 
       var solicitud = new Solicitud(
-        forma.value.tipoModalidad,
-        forma.value.titulo,
+        this.usuario._id,
+        forma.value.fechaSolicitud,
+        forma.value.tituloProyecto,
+        forma.value.lineaInvestigacion,
         forma.value.nombreEstudiante1 + forma.value.apellidoEstudiante1,
         forma.value.nombreEstudiante2 + forma.value.apellidoEstudiante2,
         forma.value.nombreEstudiante3 + forma.value.apellidoEstudiante3,
-        forma.value.nombreConsjero1 + forma.value.apellidoConsjero1,
-        forma.value.nombreConsjero2 + forma.value.apellidoConsjero2,
-        forma.value.nombreConsjero3 + forma.value.apellidoConsjero3,
+        forma.value.pais,
+        forma.value.departamento,
+        forma.value.ciudad,
+        forma.value.duracionProyectoMeses,
         "1075306358",  // Jefe de programa
+        forma.value.palabrasClaves,
+        forma.value.resumenProyecto,
         null,
         null,
         null,

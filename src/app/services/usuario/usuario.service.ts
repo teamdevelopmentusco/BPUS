@@ -244,6 +244,17 @@ export class UsuarioService {
     });
   }
 
+  cargarUsuarioPorId(id: String){
+    let  url=URL_SERVICIOS+'/usuario/id/'+id;
+    return this.http.get(url).map((resp:any) =>{
+
+      return resp.usuarioPorId;
+
+
+    });
+
+  }
+
   buscarUsuarios(termino:string){
 
     let url=URL_SERVICIOS+'/busqueda/coleccion/usuarios/'+termino;
