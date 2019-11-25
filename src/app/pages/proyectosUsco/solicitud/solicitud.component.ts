@@ -7,6 +7,10 @@ import { Solicitud } from 'src/app/models/solicitud.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Notificacion } from 'src/app/models/notificacion.model';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 @Component({
   selector: 'app-solicitud',
   templateUrl: './solicitud.component.html',
@@ -26,7 +30,6 @@ export class SolicitudComponent implements OnInit {
 
     this.usuario = this._usuarioService.usuario;
     this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '-0500');
-
 
     this.solicitudForm = this.formBuilder.group({
       fechaSolicitud: [
@@ -57,11 +60,10 @@ export class SolicitudComponent implements OnInit {
       nombreEstudiante3: [
         ''
       ],
-      
-      apellidoEstudiante2: [
+      firmaEstudiante2: [
         ''
       ],
-      apellidoEstudiante3: [
+      firmaEstudiante3: [
         ''
       ],
       pais: [
@@ -137,8 +139,8 @@ export class SolicitudComponent implements OnInit {
   ngOnInit() {
   }
 
-  cargarSolicitudes() {
-    this._solicitudService.cargarSolicitudes((0)).subscribe((resp: any) => {});
+  cargarSolicitud() {
+    this._solicitudService.cargarSolicitud((this.usuario.codigoUniversitario)).subscribe((resp: any) => {});
   }
 
   countChars() {
@@ -165,8 +167,8 @@ export class SolicitudComponent implements OnInit {
 
     this._usuarioService.obtenerJefePrograma(numDocumento)
         .subscribe(estudiantes => {
-          this.estudiantes = estudiantes
-        });   
+          this.estudiantes = estudiantes;
+        });
 
 }
 
@@ -184,44 +186,47 @@ export class SolicitudComponent implements OnInit {
       reverseButtons: true
     })
     .then(borrar => {
-      
+
     if (borrar.value) {
 
-      var solicitud = new Solicitud(
+      const solicitud = new Solicitud(
         this.usuario._id,
         this.jstoday,
         forma.value.titulo,
         forma.value.lineaInvestigacion,
+        this.usuario.codigoUniversitario,
+        null, // fechaAprovacionSolicitud
+        forma.value.codigoEstudiante2,
+        forma.value.codigoEstudiante3,
         this.usuario.nombres + this.usuario.apellidos,
-        forma.value.nombreEstudiante2 + forma.value.apellidoEstudiante2,
-        forma.value.nombreEstudiante3 + forma.value.apellidoEstudiante3,
+        forma.value.nombreEstudiante2,
+        forma.value.nombreEstudiante3,
+        forma.value.firmaEstudiante2,
+        forma.value.firmaEstudiante3,
         forma.value.pais,
         forma.value.departamento,
         forma.value.ciudad,
         forma.value.duracionProyectoMeses,
-        "1075306358",  // Jefe de programa
+        '1075306358',  // Jefe de programa
         forma.value.palabrasClaves,
         forma.value.resumenProyecto,
+        'rutapdf', // ***Arrglar para que aqui se coloque la ruta en que se guardo el pdf de la solicitud***
+        'ENVIADA', // estadoSolicitud
         null,
         null,
         null
         );
 
-        var notificacion = new Notificacion(
-          this.usuario._id,
-          "5dd50a0c6159e2198c4e39ee",
-          "Envió una solicitud a",
-          "Solicita la aprobación de",
-          
-          );
-
+      const notificacion = new Notificacion(this.usuario._id, '5dd50a0c6159e2198c4e39ee', 'Envió una solicitud a',
+      'Solicita la aprobación de',
+      );
 
       this._solicitudService.crearSolicitud(solicitud).subscribe(resp => {
       console.log(resp);
-      this.cargarSolicitudes();
+      this.cargarSolicitud();
 
 
-//---------------------------
+// ---------------------------
       this._notificacionService.crearNotificacion(notificacion).subscribe(resp => {
         console.log(resp);
         
