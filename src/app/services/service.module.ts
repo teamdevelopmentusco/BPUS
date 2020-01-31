@@ -10,6 +10,7 @@ import {
   ProgramaService,
   LoginGuardGuard,
   AdminGuard,
+  JefeProgramaGuard,
   SubirArchivoService,
   VerificaTokenGuard,
   AnteProyectoService,
@@ -21,6 +22,7 @@ import {
 } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
+
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
     ProgramaService,
     LoginGuardGuard,
     AdminGuard,
+    JefeProgramaGuard,
     SubirArchivoService,
     ModalUploadService,
     VerificaTokenGuard,

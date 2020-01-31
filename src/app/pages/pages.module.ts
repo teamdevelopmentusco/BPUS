@@ -38,6 +38,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SemilleroUscoComponent } from './semillero-usco/semillero-usco.component';
 import { PasantiaUscoComponent } from './pasantia-usco/pasantia-usco.component';
 
+
+import { BandejaProyectosComponent } from './jefe-programa/bandeja-proyectos/bandeja-proyectos.component';
+import { JefeProgramaComponent } from './jefe-programa/jefe-programa.component';
+
 @NgModule({
   declarations: [
    
@@ -61,7 +65,9 @@ import { PasantiaUscoComponent } from './pasantia-usco/pasantia-usco.component';
     ArticuloComponent,
     ProgresoComponent,
     SemilleroUscoComponent,
-    PasantiaUscoComponent
+    PasantiaUscoComponent,
+    BandejaProyectosComponent,
+    JefeProgramaComponent
 
   ],
   entryComponents: [

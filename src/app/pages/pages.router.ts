@@ -1,8 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 // Guards
-import { LoginGuardGuard, VerificaTokenGuard } from '../services/service.index';
-import { AdminGuard } from '../services/service.index';
+import { LoginGuardGuard, VerificaTokenGuard, JefeProgramaGuard,AdminGuard } from '../services/service.index';
 
 import { SolicitudComponent } from './proyectosUsco/solicitud/solicitud.component';
 import { DocenteComponent } from './docente/docente.component';
@@ -22,6 +21,9 @@ import { ArticuloComponent } from './proyectosUsco/articulo/articulo.component';
 import { ProgresoComponent } from './proyectosUsco/progreso/progreso.component';
 import { SemilleroUscoComponent } from './semillero-usco/semillero-usco.component';
 import { PasantiaUscoComponent } from './pasantia-usco/pasantia-usco.component';
+
+import { BandejaProyectosComponent } from './jefe-programa/bandeja-proyectos/bandeja-proyectos.component';
+import { JefeProgramaComponent } from './jefe-programa/jefe-programa.component';
 
 
 const pagesRouter: Routes = [
@@ -55,6 +57,15 @@ const pagesRouter: Routes = [
           { path: 'sedeUniversitaria' , component: SedesComponent},
           { path: 'facultad' , component: FacultadComponent},
           { path: '' , redirectTo: 'usuarios', pathMatch: 'full'}
+        ]
+      },{
+        path: 'jefeprograma' ,
+        component: JefeProgramaComponent,
+       canActivate:[JefeProgramaGuard,VerificaTokenGuard],
+       
+        children: [
+          { path: 'bandejaProyectos', component: BandejaProyectosComponent}, // Agregar paginas.
+          { path: '' , redirectTo: 'bandejaProyectos', pathMatch: 'full'}
         ]
       },
     { path: 'docente' , component: DocenteComponent},

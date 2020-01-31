@@ -57,8 +57,9 @@ export class NotificacionService {
 
   cargarNotificaciones(desde: number= 0) {
     const url = URL_SERVICIOS + '/notificacion?desde=' + desde;
-    return this.http.get(url) .map((resp: any) => {
+    return this.http.get(url).map((resp: any) => {
       this.totalNotificaciones = resp.total;
+      console.log("Total notificaciones: "+this.totalNotificaciones);
       return resp.notificacion;
     });
   }

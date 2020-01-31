@@ -4,7 +4,9 @@ import { from } from 'rxjs';
 export { VerificaTokenGuard } from './guards/verifica-token.guard';
 export { LoginGuardGuard } from './guards/login-guard.guard';
 export { AdminGuard } from './guards/admin.guard';
+export { JefeProgramaGuard } from './guards/jefe-programa.guard';
 
+// Otros Servicios.
 export { UsuarioService } from './usuario/usuario.service';
 export { SedeService } from './sede/sede.service';
 export { ProgramaService } from './programa/programa.service';

@@ -11,6 +11,7 @@ import { UsuarioService } from '../../services/service.index';
 
 export class NotificacionesComponent {
   notificaciones: Notificacion[] = [];
+  notificacionAceptar: Notificacion = new Notificacion('','',null,'','');
   usuarioPorID: Usuario;
   usuario: Usuario;
   cargando = true;
@@ -22,9 +23,7 @@ export class NotificacionesComponent {
    ngOnInit() {
 
     this.cargarNotificaciones();
-    if (this.notificaciones.length === 0) {
-      this.notifiVacia = true;
-    }
+
   }
 
   activeTab(tab: string) {
@@ -40,6 +39,7 @@ export class NotificacionesComponent {
     this.cargando = true;
     this._notificacionService.cargarNotificaciones()
     .subscribe( notificaciones => this.notificaciones = notificaciones);
+    
     this.cargando = false;
   }
 
@@ -64,13 +64,36 @@ export class NotificacionesComponent {
       cancelButtonText: 'No, cancelar!',
       reverseButtons: true
     })
-    .then(borrar => {
+    .then(notificacionAceptada => {
       
-    if (borrar.value) {
+    if (notificacionAceptada.value) {
+
+
+      // Codigo para aceptar solicitud. ----------------------
+      var notificacionAceptar = new Notificacion(
+        this.usuario._id,
+        "5dd4a006952d6b266002a3e2",
+        true,
+        "Aprobó la solicitud de",
+        "te aprobó la solicitud de"
+        
+        );
+
    
       this._notificacionService.borrarNotificaciones(notificacion._id).subscribe(resp=>{
           console.log(resp);
           this.cargarNotificaciones();});
+
+        //---------------------------
+      this._notificacionService.crearNotificacion(notificacionAceptar).subscribe(resp => {
+        console.log(resp);
+       
+        });
+//---------------------------
+
+
+
+
     }
 
     });
@@ -91,12 +114,28 @@ export class NotificacionesComponent {
     .then(borrar => {
       
     if (borrar.value) {
-   
+
+
+      var notificacionRechazada = new Notificacion(
+        this.usuario._id,
+        "5dd4a006952d6b266002a3e2",
+        true,
+        "Aprobó la solicitud de",
+        "te aprobó la solicitud de"
+        
+        );
 
       this._notificacionService.borrarNotificaciones(notificacion._id).subscribe(resp=>{           
         console.log(resp);
         this.cargarNotificaciones();
       });
+
+         //---------------------------
+         this._notificacionService.crearNotificacion(notificacionRechazada).subscribe(resp => {
+          console.log(resp);
+         
+          });
+  //---------------------------
 
     } 
 

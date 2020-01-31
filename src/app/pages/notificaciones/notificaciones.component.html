@@ -22,10 +22,12 @@
             <div role="tabpanel" class="tab-pane fade show active" id="recibidas">
                 <table class="table table-hover">
                     <tr *ngFor="let notificacion of notificaciones">
-                    <div *ngIf="notificacion.receptor == usuario._id">
-                        <td>{{ notificacion.receptor}}</td>
+                      
+                    <div *ngIf="notificacion.receptor._id == usuario._id">
+                        
+                        <td>{{notificacion.receptor.nombres +" "+  notificacion.receptor.apellidos}}</td>
                         <td>{{ notificacion.tipoNotificacionReceptor }}</td>
-                        <td>{{usuario.nombres +" " + usuario.apellidos  }}</td>
+                        <td>{{notificacion.emisor.nombres +" "+  notificacion.emisor.apellidos }}</td>
                         <td><input (click)="aceptarNotificacion(notificacion)" type="button" class="btn uscoButton" value="ACEPTAR"></td>
                         <td><input (click)="rechazarNotificacion(notificacion)" type="button" class="btn uscoButton" value="RECHAZAR"></td>
                     </div>
@@ -38,11 +40,11 @@
             <div role="tabpanel" class="tab-pane fade show" id="enviadas">
                 <table class="table table-hover">
                     <tr *ngFor="let notificacion of notificaciones">
-                    <div *ngIf="notificacion.emisor == usuario._id">
-                        <td>{{usuario.nombres +" " + usuario.apellidos }}</td>
+                    <div *ngIf="notificacion.emisor._id == usuario._id">
+                        <td>{{notificacion.emisor.nombres +" "+  notificacion.emisor.apellidos }}</td>
                         <td>{{ notificacion.tipoNotificacionEmisor }}</td>
                 
-                        <td>{{ notificacion.receptor }}</td>
+                        <td>{{ notificacion.receptor.nombres +" "+  notificacion.receptor.apellidos}}</td>
                         <td><input (click)="borrarNotificacion(notificacion)" type="button" class="btn uscoButton" value="BORRAR"></td>
                     </div>
                     </tr>

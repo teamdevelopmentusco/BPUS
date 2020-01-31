@@ -16,7 +16,7 @@ export class SolicitudComponent implements OnInit {
   estudiantes: Usuario[] = [];
   usuario: Usuario;
   solicitud: Solicitud = new Solicitud('','','', '', '', '', '', '', '', '', '', '', '', '' );
-  notificacion: Notificacion = new Notificacion('','','','');
+  notificacion: Notificacion = new Notificacion('','',null,'','');
   today = new Date();
   jstoday = '';
   solicitudForm: any;
@@ -210,6 +210,7 @@ export class SolicitudComponent implements OnInit {
         var notificacion = new Notificacion(
           this.usuario._id,
           "5dd50a0c6159e2198c4e39ee",
+          true,
           "Envió una solicitud a",
           "Solicita la aprobación de",
           
