@@ -1,3 +1,46 @@
-<p>
-  bandeja-proyectos works!
-</p>
+<table class="table table-hover">
+    <thead class="text-white" style="background-color: #8F141B;">
+        <tr>
+            <th>Título</th>
+            <th>Fecha</th>
+            <th>Estudiante(s)</th>
+            <th>Archivo PDF</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+            <td>solicitud.pdf</td>
+            <td>
+                <button class="btn btn-primary mr-1">ACEPTAR</button>
+                <button class="btn btn-danger">RECHAZAR</button>
+            </td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+            <td>
+                asdasdasd
+            </td>
+            <td>
+                <button class="btn btn-primary mr-1">ACEPTAR</button>
+                <button class="btn btn-danger">RECHAZAR</button>
+            </td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+            <td>solicitud.pdf</td>
+            <td>
+                <button class="btn btn-primary mr-1">ACEPTAR</button>
+                <button class="btn btn-danger">RECHAZAR</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<pdf-viewer [src]="'../../../../assets/Manual Factoria.pdf'" [render-text]="true" style="display: block;"></pdf-viewer>
