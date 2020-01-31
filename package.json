@@ -25,6 +25,7 @@
     "@reactivex/rxjs": "^6.5.2",
     "core-js": "^2.5.4",
     "ng-unity": "0.0.4",
+    "ng2-pdf-viewer": "^6.0.2",
     "ngx-dropzone": "^1.2.0",
     "pdfmake": "^0.1.62",
     "rxjs": "^6.2.2",
