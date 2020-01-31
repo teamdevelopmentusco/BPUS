@@ -55,8 +55,8 @@ export class SolicitudService {
     });
   }
 
-  cargarSolicitudes(desde: number= 0) {
-    const url = URL_SERVICIOS + '/solicitud?desde=' + desde;
+  cargarSolicitud(codigoEstudiante: string ) {
+    const url = URL_SERVICIOS + '/solicitud/' + codigoEstudiante;
     return this.http.get(url) .map((resp: any) => {
       this.totalSolicitudes = resp.total;
       return resp.solicitud;

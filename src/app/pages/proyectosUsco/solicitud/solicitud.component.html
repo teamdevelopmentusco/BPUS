@@ -13,7 +13,7 @@
             </div>
             <div class="col-4 text-center">
                 <h6 class="uscoSearchTitulo" style="margin: 0px;padding:0px;">Fecha:</h6>
-             <p class="uscoSesion" style="margin: 0px;padding:0px;font-size: 15px">{{jstoday}}</p>
+                <p class="uscoSesion" style="margin: 0px;padding:0px;font-size: 15px">{{jstoday}}</p>
             </div>
         </div>
 
@@ -61,21 +61,21 @@
                     <tbody>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
-                            <td><input  name="codigoEstudiante1" class="selectSearch" placeholder="{{usuario.codigoUniversitario}}" type="text" style="height: 30px;border: 0px" disabled></td>
-                            <td><input  name="nombreEstudiante1" class="selectSearch" placeholder="{{usuario.nombres}} {{usuario.apellidos}}" type="text" style="height: 30px;border: 0px" disabled></td>
-                            <td><input  name="apellidoEstudiante1" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td><input name="codigoEstudiante1" class="selectSearch" placeholder="{{usuario.codigoUniversitario}}" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td><input name="nombreEstudiante1" class="selectSearch" placeholder="{{usuario.nombres}} {{usuario.apellidos}}" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td><input name="firmaEstudiante1" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">2</label></th>
                             <td><input formControlName="codigoEstudiante2" name="codigoEstudiante2" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}"></td>
                             <td><input formControlName="nombreEstudiante2" name="nombreEstudiante2" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}"></td>
-                            <td><input formControlName="apellidoEstudiante2" name="apellidoEstudiante2" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px"></td>
+                            <td><input formControlName="firmaEstudiante2" name="firmaEstudiante2" class="selectSearch" placeholder="PENDIENTE" type="text" style="height: 30px;border: 0px" disabled></td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">3</label></th>
                             <td><input formControlName="codigoEstudiante3" name="codigoEstudiante3" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}"></td>
                             <td><input formControlName="nombreEstudiante3" name="nombreEstudiante3" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}"></td>
-                            <td><input formControlName="apellidoEstudiante3" name="apellidoEstudiante3" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px"></td>
+                            <td><input formControlName="firmaEstudiante3" name="firmaEstudiante3" class="selectSearch" placeholder="PENDIENTE" type="text" style="height: 30px;border: 0px" disabled></td>
                         </tr>
                     </tbody>
                 </table>
@@ -83,7 +83,7 @@
             <!--****Boton de agregar estudianntes****-->
 
 
-          <!--   <div class="col-2 my-auto mx-auto text-left">
+            <!--   <div class="col-2 my-auto mx-auto text-left">
                 <button (click)="solicitarEstudiantes()" class="text-uppercase iconRadio" style="color: black;font-size: 18px;font-family:Segoe UI;background-color: white">
                 <span class="fas fa-plus-circle fa-lg"></span>
                 agregar
