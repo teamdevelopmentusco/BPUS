@@ -10,7 +10,6 @@ export class Programa{
         public tituloOtogado:string,
         public modalidadFormacion:string,
         public jefePrograma:string,
-        public sedeId:string,
         public facultadId:string,
         public _id?: string
     ){

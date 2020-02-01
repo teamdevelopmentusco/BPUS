@@ -4,6 +4,8 @@ import { ProgramaService } from 'src/app/services/service.index';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import swal from 'sweetalert2';
+import { Facultad } from 'src/app/models/facultad.model';
+import { FacultadService } from 'src/app/services/service.index';
 import { NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -13,12 +15,18 @@ import { FormBuilder, Validators } from '@angular/forms';
   styles: []
 })
 export class ProgramasAcademicosComponent implements OnInit {
-  desde: number=0;
-  programas: Programa[]=[];
-  jefePrograma: Usuario=new Usuario('','','','','','','','','','','','','');
-  cargando:boolean=true;
+  desde = 0;
+  programas: Programa[] = [];
+  facultades: Facultad[] = [];
+  jefePrograma: Usuario = new Usuario('', '', '', '', '', '', '', '', '', '', '', '', '');
+  cargando = true;
   forma: any;
-  constructor(private formBuilder: FormBuilder, private modalService: NgbModal, public _programaService: ProgramaService, public _usuarioService: UsuarioService) { 
+  programToEdit = null;
+  constructor(private formBuilder: FormBuilder,
+              private modalService: NgbModal,
+              public _programaService: ProgramaService,
+              public _usuarioService: UsuarioService,
+              public _facultadService: FacultadService) {
     this.forma = this.formBuilder.group({
       registroSNIES: [
         '',
@@ -45,6 +53,10 @@ export class ProgramasAcademicosComponent implements OnInit {
         [Validators.required]
       ],
       jefeProgramaCC: [
+        '',
+        [Validators.required]
+      ],
+      facultad: [
         '',
         [Validators.required]
       ]
@@ -78,44 +90,52 @@ export class ProgramasAcademicosComponent implements OnInit {
   get jefeProgramaCC() {
     return this.forma.get('jefeProgramaCC');
   }
+  get facultad() {
+    return this.forma.get('facultad');
+  }
 
   openModal(agregarPrograma) {
     this.modalService.open(agregarPrograma);
   }
 
+  openModalEdit(editarPrograma, programa) {
+    this.modalService.open(editarPrograma);
+    this.programToEdit = programa;
+  }
+
   ngOnInit() {
 
     this.cargarProgramas();
-   
+    this.cargarFacultades();
     this.cambioJefePrograma(this.jefePrograma.numDocumento);
   }
 
 
   
-  cambiarDesde(valor:number){
+  cambiarDesde(valor: number){
 
 
-    let desde = this.desde+valor;
+    let desde = this.desde + valor;
     
 
 
-    if (desde>=this._programaService.totalProgramas) { // Total
+    if (desde >= this._programaService.totalProgramas) { // Total
       return;
     }
-    if (desde<0) {
+    if (desde < 0) {
       return;
     }
 
-    this.desde+=valor;
+    this.desde += valor;
     this.cargarProgramas();
   }
 
-  cambioJefePrograma(numDocumento:string){
+  cambioJefePrograma(numDocumento: string){
     console.log("CAMBIO DE JEFE DE PROGRAMA");
 
     this._usuarioService.obtenerJefePrograma(numDocumento)
-        .subscribe(jefePrograma=> {
-          this.jefePrograma=jefePrograma
+        .subscribe(jefePrograma => {
+          this.jefePrograma = jefePrograma
         });   
    
           
@@ -123,21 +143,22 @@ export class ProgramasAcademicosComponent implements OnInit {
 
 
   cargarProgramas(){
-    this.cargando=true;
-this._programaService.cargarProgramas(this.desde)
-            .subscribe( programas => this.programas=programas );
-            this.cargando=false;
+    this.cargando = true;
+    this._programaService.cargarProgramas(this.desde).subscribe( programas => this.programas = programas );
+    this.cargando = false;
   }
 
- 
+  cargarFacultades() {
+    this.cargando = true;
+    this._facultadService.cargarFacultades(this.desde).subscribe( facultades => this.facultades = facultades );
+    this.cargando = false;
+  }
 
-
-
-  buscarProgramas( termino:string){
+  buscarProgramas( termino: string){
     
-    this.cargando=true;
+    this.cargando = true;
 
-    if(termino.length<=0){
+    if (termino.length <= 0){
         this.cargarProgramas();
         return;
     }
@@ -145,22 +166,22 @@ this._programaService.cargarProgramas(this.desde)
     
     
       this._programaService.buscarProgramas(termino)
-                            .subscribe((programas:Programa[])=>{
-                              this.programas=programas;
-                              this.cargando=false;
+                            .subscribe((programas: Programa[]) => {
+                              this.programas = programas;
+                              this.cargando = false;
       });
 
   
 
   }
 
-  borrarProgramas(programa:Programa){
+  borrarProgramas(programa: Programa){
 
    
 
     swal.fire({
       title: '¿Estas seguro?',
-      text: "Esta a punto de borrar a "+programa.nombre,
+      text: "Esta a punto de borrar a " + programa.nombre,
       type: 'warning',
       showCancelButton: true,
       showConfirmButton: true,
@@ -174,7 +195,7 @@ this._programaService.cargarProgramas(this.desde)
    
 
       this._programaService.borrarProgramas(programa._id)
-                    .subscribe(resp=>{
+                    .subscribe(resp => {
                       
                       console.log(resp);
                       this.cargarProgramas();
@@ -197,7 +218,7 @@ this._programaService.cargarProgramas(this.desde)
             this.forma.value.nivelAcademico, 
             this.forma.value.tituloOtorgado, 
             this.forma.value.modalidadFormacion, 
-            this.jefePrograma.nombres+" "+this.jefePrograma.apellidos,
+            this.jefePrograma.nombres + " " + this.jefePrograma.apellidos,
             this.forma.value.nombre,
             this.forma.value.nombre);
         
@@ -214,6 +235,31 @@ this._programaService.cargarProgramas(this.desde)
         }
   }
 
+  editPrograma(programa: Programa) {
+    try {
+      programa.SNIES = (document.getElementById('programaRegistroSNIES') as HTMLInputElement).value;
+      programa.nombre = (document.getElementById('programaNombre') as HTMLInputElement).value;
+      programa.numCreditos = (document.getElementById('programaNumCreditos') as HTMLInputElement).value;
+      programa.nivelAcademico = (document.getElementById('programaNivelAcademico') as HTMLInputElement).value;
+      programa.tituloOtogado = (document.getElementById('programaTituloOrtorgado') as HTMLInputElement).value;
+      programa.modalidadFormacion = (document.getElementById('programaModalFor') as HTMLInputElement).value;
+      programa.jefePrograma = (document.getElementById('jefePrograma') as HTMLInputElement).value;
+      programa.facultadId = (document.getElementById('facultad') as HTMLInputElement).value;
+      // programa._id = (document.getElementById('programaid') as HTMLInputElement).value;
+
+      this._programaService.actualizarPrograma(programa).subscribe(resp => {
+        console.log(resp);
+        this.cargarProgramas();
+      });
+    } catch (error) {
+      swal.fire(
+        'INVALIDO!',
+        'El jefe de programa es invalido',
+        'error'
+      );
+    }
+}
+/*
   editarPrograma(programa: Programa) {
     swal.fire({
       title: 'Editar Programa',
@@ -287,4 +333,5 @@ this._programaService.cargarProgramas(this.desde)
 
     });
   }
+  */
 }
