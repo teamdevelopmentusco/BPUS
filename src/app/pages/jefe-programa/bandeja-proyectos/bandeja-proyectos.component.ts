@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Solicitud } from 'src/app/models/solicitud.model';
+import { SolicitudService } from '../../../services/solicitud/solicitud.service';
 @Component({
   selector: 'app-bandeja-proyectos',
   templateUrl: './bandeja-proyectos.component.html',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BandejaProyectosComponent implements OnInit {
 
-  constructor() { }
+
+  desde: number=0;
+  solicitudes: Solicitud[]=[];
+  cargando:boolean=true;
+  constructor( public SolicitudService: SolicitudService) { 
+
+
+
+  }
 
   ngOnInit() {
+
+    this.cargarSolicitudes();
+  }
+
+
+  cargarSolicitudes(){
+    this.cargando=true;
+this.SolicitudService.cargarSolicitud(this.desde)
+            .subscribe( solicitudes => this.solicitudes=solicitudes );
+            this.cargando=false;
   }
 
 }

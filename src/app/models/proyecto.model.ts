@@ -9,12 +9,8 @@
 export class Proyecto {
 
     constructor(
-        public tema: string,
-        public palabraClave1: string,
-        public palabraClave2: string,
-        public palabraClave3: string,
         public rutaArticulo: string,
-        public estado?: boolean,
+        public estado?: string,
         public _id?: string
     ) {
     }

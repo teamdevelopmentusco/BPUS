@@ -19,7 +19,7 @@ export class ProgresoComponent implements OnInit {
     this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '-0500');
     this.usuario = this._usuarioService.usuario;
     // REVISAR ESTO
-    this._solicitudService.cargarSolicitud(this.usuario.codigoUniversitario).subscribe( solicitud => this.solicitud = solicitud);
+   // this._solicitudService.cargarSolicitud(this.usuario.codigoUniversitario).subscribe( solicitud => this.solicitud = solicitud);
     }
 
   ngOnInit() {

@@ -53,7 +53,38 @@ export class NotificacionesComponent {
     return this.usuarioPorID;
   }
 
-  
+
+  borrarNotificacion(notificacion:Notificacion){
+
+    Swal.fire({
+      title: '¿Está seguro que deseas borrar la notificación?',
+      type: 'question',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonText: 'Si, Borrar!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    })
+    .then(borrar => {
+      
+    if (borrar.value) {
+   
+
+      this._notificacionService.borrarNotificaciones(notificacion._id).subscribe(resp=>{           
+        console.log(resp);
+        this.cargarNotificaciones();
+      });
+
+    } 
+
+    });   
+  }
+
+
+
+ // ACEPTAR Y RECHAZAR NOTIFICACIONES CODIGO VIEJO..
+
+  /*
   aceptarNotificacion(notificacion:Notificacion){
     Swal.fire({
       title: '¿Está seguro que desea aprobar el proyecto?',
@@ -141,33 +172,10 @@ export class NotificacionesComponent {
 
     });   
   }
+*/
 
 
-  borrarNotificacion(notificacion:Notificacion){
 
-    Swal.fire({
-      title: '¿Está seguro que deseas borrar la notificación?',
-      type: 'question',
-      showCancelButton: true,
-      showConfirmButton: true,
-      confirmButtonText: 'Si, Borrar!',
-      cancelButtonText: 'No, cancelar!',
-      reverseButtons: true
-    })
-    .then(borrar => {
-      
-    if (borrar.value) {
-   
-
-      this._notificacionService.borrarNotificaciones(notificacion._id).subscribe(resp=>{           
-        console.log(resp);
-        this.cargarNotificaciones();
-      });
-
-    } 
-
-    });   
-  }
 
 
   

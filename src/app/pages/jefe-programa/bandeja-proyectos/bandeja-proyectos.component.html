@@ -9,32 +9,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-            <td>solicitud.pdf</td>
-            <td>
-                <button class="btn btn-primary mr-1">ACEPTAR</button>
-                <button class="btn btn-danger">RECHAZAR</button>
-            </td>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-            <td>
-                asdasdasd
-            </td>
-            <td>
-                <button class="btn btn-primary mr-1">ACEPTAR</button>
-                <button class="btn btn-danger">RECHAZAR</button>
-            </td>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
+        <tr *ngFor="let solicitud of solicitudes;  let i = index;">
+            <td>{{ solicitud.tituloProyecto}}</td>
+            <td>{{ solicitud.fechaSolicitud  }}</td>
+            <td>{{ solicitud.estudiante1}}</td>
             <td>solicitud.pdf</td>
             <td>
                 <button class="btn btn-primary mr-1">ACEPTAR</button>

@@ -25,6 +25,8 @@
                 <th scope="col" style="width: 10%" class="align-middle">Titulo otorgado</th>
                 <th scope="col" style="width: 10%" class="align-middle">Modalidad de formación</th>
                 <th scope="col" style="width: 10%" class="align-middle">Jefe de programa</th>
+                <th scope="col" style="width: 10%" class="align-middle">Sede</th>
+                <th scope="col" style="width: 10%" class="align-middle">Facultad</th>
                 <th scope="col" style="width: 10%" class="align-middle colorRojo">Opciones</th>
             </tr>
         </thead>
@@ -37,7 +39,9 @@
                 <td>{{ programa.nivelAcademico}}</td>
                 <td>{{ programa.tituloOtogado}}</td>
                 <td>{{ programa.modalidadFormacion}}</td>
-                <td>{{ programa.jefePrograma}}</td>
+                <td>{{ programa.jefePrograma.nombres +" "+ programa.jefePrograma.apellidos }}</td>
+                <td>{{ programa.sedeId.nombre }}</td>
+                <td>{{ programa.facultadId.nombre }}</td>
                 <td>
                     <div class="row">
                         <div class="col text-left" style="width: 50%;padding: 2%">

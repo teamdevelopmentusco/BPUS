@@ -197,7 +197,9 @@ this._programaService.cargarProgramas(this.desde)
             this.forma.value.nivelAcademico, 
             this.forma.value.tituloOtorgado, 
             this.forma.value.modalidadFormacion, 
-            this.jefePrograma.nombres+" "+this.jefePrograma.apellidos);
+            this.jefePrograma.nombres+" "+this.jefePrograma.apellidos,
+            this.forma.value.nombre,
+            this.forma.value.nombre);
         
           this._programaService.crearPrograma(programa).subscribe(resp => {
           console.log(resp);

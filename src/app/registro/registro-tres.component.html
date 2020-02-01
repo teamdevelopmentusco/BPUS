@@ -20,22 +20,20 @@
                         </h6>
                     </div>
                     <h6>SEDE UNIVERSITARIA</h6>
-                    <select formControlName="sedeUniversitaria" name="cars" class="custom-select uscoInputs mb-3">
+                    <select  formControlName="sedeUniversitaria" name="cars" class="custom-select uscoInputs mb-3">
                      
-                        <option value="Gárzon">Gárzon</option>
-                        <option value="La plata">La plata</option>
-                        <option selected value="Neiva">Neiva</option>
-                        <option value="Pitalito">Pitalito</option>
+                        <option *ngFor="let sede of sedes" value="{{ sede._id}}">{{ sede.nombre}}</option>
+
                     </select>
                     <h6>FACULTAD</h6>
                     <select formControlName="facultad" name="cars" class="custom-select uscoInputs mb-3">
                       
-                        <option selected value="Ingeniería">Ingeniería</option>
+                        <option *ngFor="let facultad of facultades"  value="{{ facultad._id }}">{{ facultad.nombre }}</option>
                         
                     </select>
                     <h6>PROGRAMA</h6>
                     <select formControlName="programaUniversitario" name="cars" class="custom-select uscoInputs mb-3">
-                        <option selected value="Ingeniería de software">Ingeniería de software</option>
+                        <option *ngFor="let programa of programas"   value="{{ programa._id }}">{{ programa.nombre}}</option>
                     </select>
                 </div>
                 <div class="col-sm-6">

@@ -10,7 +10,7 @@ export class Articulo {
 
     constructor(
         public rutaArticulo: string,
-        public estado?: boolean,
+        public estado?: string,
         public _id?: string
     ) {
     }

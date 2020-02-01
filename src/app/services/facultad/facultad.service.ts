@@ -76,6 +76,7 @@ export class FacultadService {
                       return Observable.throw(err);
                 
                     });
+                    
 
   }
   cargarFacultades(desde:number=0){

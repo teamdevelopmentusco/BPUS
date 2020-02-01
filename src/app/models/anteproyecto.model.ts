@@ -10,7 +10,7 @@ export class AnteProyecto {
 
     constructor(
         public rutaAnteproyecto: string,
-        public estado?: boolean,
+        public estado?: string,
         public _id?: string
     ) {
     }

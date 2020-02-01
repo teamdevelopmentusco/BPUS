@@ -54,9 +54,17 @@ export class SolicitudService {
       return Observable.throw(err);
     });
   }
+ 
+  cargarSolicitud(desde: number=0 ) {
+    const url = URL_SERVICIOS + '/solicitud?desde='+desde;
+    return this.http.get(url) .map((resp: any) => {
+      this.totalSolicitudes = resp.total;
+      return resp.solicitud;
+    });
+  }
 
-  cargarSolicitud(codigoEstudiante: string ) {
-    const url = URL_SERVICIOS + '/solicitud/' + codigoEstudiante;
+  cargarSolicitudEstudiante(codigoUniversitario: String ) {
+    const url = URL_SERVICIOS + '/solicitud/'+codigoUniversitario;
     return this.http.get(url) .map((resp: any) => {
       this.totalSolicitudes = resp.total;
       return resp.solicitud;

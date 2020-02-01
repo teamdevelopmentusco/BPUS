@@ -139,7 +139,7 @@ export class SolicitudComponent implements OnInit {
   }
 
   cargarSolicitud() {
-    this._solicitudService.cargarSolicitud((this.usuario.codigoUniversitario)).subscribe((resp: any) => {});
+    this._solicitudService.cargarSolicitudEstudiante((this.usuario.codigoUniversitario)).subscribe((resp: any) => {});
   }
 
   countChars() {
@@ -189,28 +189,24 @@ export class SolicitudComponent implements OnInit {
     if (borrar.value) {
 
       const solicitud = new Solicitud(
-        this.usuario._id,
         this.jstoday,
         forma.value.titulo,
         forma.value.lineaInvestigacion,
-        this.usuario.codigoUniversitario,
-        null, // fechaAprovacionSolicitud
-        forma.value.codigoEstudiante2,
-        forma.value.codigoEstudiante3,
-        this.usuario.nombres + this.usuario.apellidos,
-        forma.value.nombreEstudiante2,
-        forma.value.nombreEstudiante3,
-        forma.value.firmaEstudiante2,
-        forma.value.firmaEstudiante3,
         forma.value.pais,
         forma.value.departamento,
         forma.value.ciudad,
         forma.value.duracionProyectoMeses,
-        '1075306358',  // Jefe de programa
+        '5dd50a0c6159e2198c4e39ee',  // Jefe de programa
         forma.value.palabrasClaves,
         forma.value.resumenProyecto,
+        this.usuario._id,
+        forma.value.nombreEstudiante2,
+        forma.value.nombreEstudiante3,
+        forma.value.firmaEstudiante2,
+        forma.value.firmaEstudiante3,
+        null,
         'rutapdf', // ***Arrglar para que aqui se coloque la ruta en que se guardo el pdf de la solicitud***
-        'ENVIADA', // estadoSolicitud
+        'Subido', // estadoSolicitud
         null,
         null,
         null
