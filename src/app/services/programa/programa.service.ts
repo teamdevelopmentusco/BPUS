@@ -52,28 +52,21 @@ export class ProgramaService {
 
 
   actualizarPrograma(programa:Programa){
-   // console.log(usuario._id);
+ 
     let url = URL_SERVICIOS+'/programaUniversitario/'+programa._id+'?token='+this.token;
-    
-   // console.log(url);
 
     return this.http.put(url,programa)
                     .map((resp:any)=>{
-                      /*
-                      if (programa._id===this.programa._id) {
-                        let usuarioDB:Usuario=resp.usuario;
-                      }
-                      */
+
                       swal.fire('Programa actualizado', programa.nombre, 'success');
 
                       return true;
                     }).catch(err =>{
-                      //console.log(err.error.mensaje);
+
                       swal.fire('Error al actualizar programa', programa.nombre, 'error');
                       return Observable.throw(err);
                 
                     });
-
   }
   cargarProgramas(desde:number=0){
 

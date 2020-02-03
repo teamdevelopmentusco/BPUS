@@ -54,7 +54,8 @@ export class FacultadService {
 
 
   actualizarFacultad(facultad:Facultad){
-   // console.log(usuario._id);
+   console.log("Token de la facultad:"+this.token);
+
     let url = URL_SERVICIOS+'/facultad/'+facultad._id+'?token='+this.token;
     
    // console.log(url);

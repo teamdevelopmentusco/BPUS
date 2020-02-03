@@ -7,6 +7,12 @@ import { Solicitud } from 'src/app/models/solicitud.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Notificacion } from 'src/app/models/notificacion.model';
+import { CiudadService } from '../../../services/ciudad/ciudad.service';
+import { DepartamentoService } from '../../../services/departamento/departamento.service';
+import { Departamento } from '../../../models/departamento.model';
+import { Ciudad } from '../../../models/ciudad.model';
+import { PaisService } from '../../../services/pais/pais.service';
+import { Pais } from '../../../models/pais.model';
 
 
 
@@ -16,16 +22,26 @@ import { Notificacion } from 'src/app/models/notificacion.model';
   styles: []
 })
 export class SolicitudComponent implements OnInit {
+  desde: number=0;
+  cargando:boolean=true;
   estudiantes: Usuario[] = [];
+  ciudades: Ciudad[]=[];
+  departamentos: Departamento[]=[];
+  paises: Pais[]=[];
   usuario: Usuario;
   solicitud: Solicitud = new Solicitud('','','', '', '', '', '', '', '', '', '', '', '', '' );
   notificacion: Notificacion = new Notificacion('','',null,'','');
   today = new Date();
   jstoday = '';
   solicitudForm: any;
-  constructor(private formBuilder: FormBuilder, public _usuarioService: UsuarioService,
-              public _notificacionService: NotificacionService,
-              public _solicitudService: SolicitudService,  public router: Router) {
+  constructor(
+      public _CiudadService: CiudadService,
+      public _DepartamentoService: DepartamentoService,
+      public _PaisService: PaisService,
+      private formBuilder: FormBuilder,
+      public _usuarioService: UsuarioService,
+      public _notificacionService: NotificacionService,
+      public _solicitudService: SolicitudService,  public router: Router) {
 
     this.usuario = this._usuarioService.usuario;
     this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '-0500');
@@ -136,11 +152,46 @@ export class SolicitudComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.cargarCiudades();
+    this.cargarDepartamentos();
+    this.cargarPaises();
   }
 
   cargarSolicitud() {
     this._solicitudService.cargarSolicitudEstudiante((this.usuario.codigoUniversitario)).subscribe((resp: any) => {});
   }
+
+  cargarCiudades(){
+    this.cargando=true;
+this._CiudadService.cargarCiudad(this.desde)
+            .subscribe( ciudades => this.ciudades=ciudades );
+            this.cargando=false;
+  }
+
+  cargarDepartamentos() {
+    this.cargando = true;
+    this._DepartamentoService.cargarDepartamentos(this.desde).subscribe( departamentos => this.departamentos = departamentos );
+    this.cargando = false;
+  }
+
+
+  cargarPaises() {
+    this.cargando = true;
+    this._PaisService.cargarPaises(this.desde).subscribe( paises => this.paises = paises );
+    this.cargando = false;
+  }
+
+
+
+
+
+
+
+
+
+
+
 
   countChars() {
     const keywords = (document.getElementById('keyWords') as HTMLInputElement).value;

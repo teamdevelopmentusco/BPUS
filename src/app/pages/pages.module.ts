@@ -41,6 +41,9 @@ import { PasantiaUscoComponent } from './pasantia-usco/pasantia-usco.component';
 
 import { BandejaProyectosComponent } from './jefe-programa/bandeja-proyectos/bandeja-proyectos.component';
 import { JefeProgramaComponent } from './jefe-programa/jefe-programa.component';
+import { PaisComponent } from './admin/pais.component';
+import { CiudadComponent } from './admin/ciudad.component';
+import { DepartamentoComponent } from './admin/departamento.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import { JefeProgramaComponent } from './jefe-programa/jefe-programa.component';
     SemilleroUscoComponent,
     PasantiaUscoComponent,
     BandejaProyectosComponent,
-    JefeProgramaComponent
+    JefeProgramaComponent,
+    PaisComponent,
+    CiudadComponent,
+    DepartamentoComponent
 
   ],
   entryComponents: [

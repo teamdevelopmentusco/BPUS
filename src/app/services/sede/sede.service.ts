@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
+import { Sede } from 'src/app/models/sede.model';
+
+// -------- Servicios Restful
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import 'rxjs/add/operator/map';
@@ -8,7 +11,9 @@ import 'rxjs/add/observable/throw';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Sede } from 'src/app/models/sede.model';
+//----------
+
+
 @Injectable()
 export class SedeService {
 

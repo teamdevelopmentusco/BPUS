@@ -18,7 +18,7 @@ export class ProgramasAcademicosComponent implements OnInit {
   desde = 0;
   programas: Programa[] = [];
   facultades: Facultad[] = [];
-  jefePrograma: Usuario = new Usuario('', '', '', '', '', '', '', '', '', '', '', '', '');
+  jefePrograma: Usuario = new Usuario('', '', '', '', '', '', '', '', '', '', '', '','');
   cargando = true;
   forma: any;
   programToEdit = null;
@@ -108,6 +108,8 @@ export class ProgramasAcademicosComponent implements OnInit {
     this.cargarProgramas();
     this.cargarFacultades();
     this.cambioJefePrograma(this.jefePrograma.numDocumento);
+
+    console.log(" Numero de documento jefe: "+this.jefePrograma.numDocumento);
   }
 
 
@@ -144,7 +146,7 @@ export class ProgramasAcademicosComponent implements OnInit {
 
   cargarProgramas(){
     this.cargando = true;
-    this._programaService.cargarProgramas(this.desde).subscribe( programas => this.programas = programas );
+    this._programaService.cargarProgramas(this.desde).subscribe( programa => this.programas = programa );
     this.cargando = false;
   }
 
@@ -218,15 +220,15 @@ export class ProgramasAcademicosComponent implements OnInit {
             this.forma.value.nivelAcademico, 
             this.forma.value.tituloOtorgado, 
             this.forma.value.modalidadFormacion, 
-            this.jefePrograma.nombres + " " + this.jefePrograma.apellidos,
-            this.forma.value.nombre,
-            this.forma.value.nombre);
+            this.forma.value.jefeProgramaCC,
+            this.forma.value.facultad);
         
           this._programaService.crearPrograma(programa).subscribe(resp => {
           console.log(resp);
           this.cargarProgramas();
           });
         } catch (error) {
+          console.log(error);
           swal.fire(
             'INVALIDO!',
             'El jefe de programa es invalido',
@@ -243,6 +245,16 @@ export class ProgramasAcademicosComponent implements OnInit {
       programa.nivelAcademico = (document.getElementById('programaNivelAcademico') as HTMLInputElement).value;
       programa.tituloOtogado = (document.getElementById('programaTituloOrtorgado') as HTMLInputElement).value;
       programa.modalidadFormacion = (document.getElementById('programaModalFor') as HTMLInputElement).value;
+      
+      
+      // Problemon: cambioJefePrograma() no puede ser aplicado aqui por que ese se debe usar en el Ngoinit
+
+      /*console.log((document.getElementById('jefePrograma') as HTMLInputElement).value);
+      this.cambioJefePrograma((document.getElementById('jefePrograma') as HTMLInputElement).value);
+      console.log(this.jefePrograma);
+      programa.jefePrograma = this.jefePrograma._id;*/
+      //---------------------------------------
+
       programa.jefePrograma = (document.getElementById('jefePrograma') as HTMLInputElement).value;
       programa.facultadId = (document.getElementById('facultad') as HTMLInputElement).value;
       // programa._id = (document.getElementById('programaid') as HTMLInputElement).value;
@@ -252,6 +264,8 @@ export class ProgramasAcademicosComponent implements OnInit {
         this.cargarProgramas();
       });
     } catch (error) {
+
+      console.log(error);
       swal.fire(
         'INVALIDO!',
         'El jefe de programa es invalido',

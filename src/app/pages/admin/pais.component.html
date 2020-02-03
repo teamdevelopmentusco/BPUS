@@ -1,0 +1,68 @@
+<br>
+<h3 class="text-uppercase animated fadeIn fast">PAÍSES</h3><br>
+<h6 class="text-left text-uppercase" style="margin-top: 2%">Países Registrados (<small> {{ _PaisService.totalPaises }} </small>)</h6>
+<div class="text-right" style="padding: 1%">
+    <button (click)="openModal(agregarPais)" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
+    <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
+</div>
+<div class="table-responsive-md animated fadeIn fast">
+    <table class="table table-bordered">
+        <thead>
+            <tr class="tablaAdmin">
+                <th scope="col" style="width: 10%" class="align-middle">#</th>
+                <th scope="col" style="width: 10%" class="align-middle">Nombre</th>
+                <th scope="col" style="width: 10%" class="align-middle colorRojo">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pais of paises;  let i = index;">
+                <th scope="row">{{i+1}}</th>
+                <td>{{ pais.nombre}}</td>
+                <td>
+                    <div class="row">
+                        <div class="col text-left" style="width: 50%;padding: 2%">
+                            <button (click)="editarPais(pais)" class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+                        </div>
+                        <div class="col text-right" style="width: 50%;padding: 2%">
+                            <button (click)="borrarPais(pais)" class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col text-right">
+            <button (click)="cambiarDesde(-5)" class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
+            <input class="" type="text" value="1" style="width: 45px;height: 37px;margin: 0px;padding-bottom: 8px;text-align: center">
+            <button (click)="cambiarDesde(5)" class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
+        </div>
+    </div>
+</div>
+
+<!--Modal de agregar pais-->
+<ng-template #agregarPais let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar Pais</h4>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="forma" (ngSubmit)="addPais()">
+            <div class="mt-3 form-group text-left">
+                <label for="correo" class="font-weight-bold text-uppercase">NOMBRE:</label>
+                <input type="text" formControlName="nombre" placeholder="Ingrese el nombre" class="uscoInputs form-control" maxlength="25" required autofocus>
+                <h6 *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="mt-2" style="color:red;">
+                    <div *ngIf="nombre.errors.required">
+                        El nombre es requerido.
+                    </div>
+                </h6>
+            </div>
+            <div class="txtcenter">
+                <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+                <button type="submit" [disabled]="!forma.valid" class="btn uscoButton">CREAR</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

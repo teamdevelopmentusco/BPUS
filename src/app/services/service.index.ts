@@ -1,4 +1,3 @@
-import { from } from 'rxjs';
 
 // Guards
 export { VerificaTokenGuard } from './guards/verifica-token.guard';
@@ -20,3 +19,6 @@ export { SolicitudService } from './solicitud/solicitud.service';
 export { NotificacionService } from './notificacion/notificacion.service';
 export { SidebarService } from './shared/sidebar.service';
 
+export { PaisService } from './pais/pais.service';
+export { DepartamentoService } from './departamento/departamento.service';
+export { CiudadService } from './ciudad/ciudad.service';

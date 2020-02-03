@@ -18,10 +18,19 @@ export class ProfileComponent implements OnInit {
     public _usuarioService: UsuarioService
   ) {
 
-    this.usuario = this._usuarioService.usuario;
+   // this.usuario = this._usuarioService.usuario;
+
+
+    console.log(this.usuario);
+
+    if("5dd4a006952d6b266002a3e2"==this._usuarioService.usuario._id){ console.log("Son iguales");}
    }
 
   ngOnInit() {
+
+
+    this.cargarUsuarioPorId(this._usuarioService.usuario._id);
+    console.log(this.usuario);
   }
 
   activeTab(tab: string) {
@@ -40,4 +49,28 @@ export class ProfileComponent implements OnInit {
     this._usuarioService.actualizarUsuario(this.usuario)
                           .subscribe();
   }
+
+  cargarUsuarioPorId(id:string){
+    this._usuarioService.cargarUsuarioPorId(id)
+    .subscribe( usuario => this.usuario = usuario);
+
+  }
+
+
+
+
 }
+
+
+/*
+
+this.cargarUsuarioPorId(this._usuarioService.usuario._id);
+
+
+  cargarUsuarioPorId(id:string){
+    this._usuarioService.cargarUsuarioPorId(id)
+    .subscribe( usuario => this.usuario = usuario);
+
+  }
+
+*/

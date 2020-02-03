@@ -14,7 +14,9 @@ export class SedesComponent implements OnInit {
   sedes: Sede[]=[];
   cargando:boolean=true;
   forma:any;
-  constructor(private formBuilder: FormBuilder, private modalService: NgbModal, public _SedeService: SedeService) { 
+  constructor(  private formBuilder: FormBuilder,
+     private modalService: NgbModal,
+      public _SedeService: SedeService  ) { 
     this.forma = this.formBuilder.group({
       nombre: [
         '',

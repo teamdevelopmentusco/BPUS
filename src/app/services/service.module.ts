@@ -4,10 +4,6 @@ import { CommonModule } from '@angular/common';
 import {
   SidebarService,
   SharedService,
-  UsuarioService,
-  SedeService,
-  FacultadService,
-  ProgramaService,
   LoginGuardGuard,
   AdminGuard,
   JefeProgramaGuard,
@@ -17,8 +13,16 @@ import {
   ArticuloService,
   NotificacionService,
   ProyectoService,
-  SolicitudService
-
+  SolicitudService,
+  // Servicios del CRUD
+  UsuarioService,
+  SedeService,
+  FacultadService,
+  ProgramaService,
+  PaisService,
+  DepartamentoService,
+  CiudadService
+  
 } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
@@ -32,10 +36,6 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
   ], providers: [
     SidebarService,
     SharedService,
-    UsuarioService,
-    SedeService,
-    FacultadService,
-    ProgramaService,
     LoginGuardGuard,
     AdminGuard,
     JefeProgramaGuard,
@@ -46,7 +46,15 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
     ArticuloService,
     NotificacionService,
     ProyectoService,
-    SolicitudService
+    SolicitudService,
+    UsuarioService,
+    SedeService,
+    FacultadService,
+    ProgramaService,
+    PaisService,
+    DepartamentoService,
+    CiudadService
+
   ],
   declarations: []
 })

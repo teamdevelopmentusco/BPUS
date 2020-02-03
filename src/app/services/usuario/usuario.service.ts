@@ -27,12 +27,6 @@ export class UsuarioService {
     public _subirArchivoService: SubirArchivoService,
     ) { // Inyectar servicios
 
-    console.log('Servicio de usuario listo.');
-
-
-    console.log(this.usuario);
-
-
     this.cargarStorage();
   }
 
@@ -208,7 +202,7 @@ export class UsuarioService {
 
     let url = URL_SERVICIOS+'/usuario/'+numDocumento;
 
-    return this.http.get(url).map((resp:any) => resp.usuario);
+    return this.http.get(url).map((resp:any) => resp.jefePrograma);
   }
 
 /*  // AGREGAR PARA LOS PDFS DESPUES 
@@ -248,7 +242,7 @@ export class UsuarioService {
     let  url=URL_SERVICIOS+'/usuario/id/'+id;
     return this.http.get(url).map((resp:any) =>{
 
-      return resp.usuarioPorId;
+      return resp.usuario;
 
 
     });
