@@ -12,7 +12,7 @@
     <button (click)="openModal(agregarSede)" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
     <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
 </div>
-<div class="table-responsive-md animated fadeIn fast">
+<div *ngIf="_SedeService.totalSedes != 0; else noSedesRegistradas" class="table-responsive-md animated fadeIn fast">
     <table class="table table-bordered">
         <thead>
             <tr class="tablaAdmin">
@@ -55,6 +55,10 @@
         </div>
     </div>
 </div>
+
+<ng-template #noSedesRegistradas>
+    <h2 class="m-5">No hay sedes registradas...</h2>
+</ng-template>
 
 <!--Modal de agregar sede-->
 <ng-template #agregarSede let-modal>

@@ -5,7 +5,7 @@
     <button (click)="openModal(agregarPais)" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
     <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
 </div>
-<div class="table-responsive-md animated fadeIn fast">
+<div *ngIf="_PaisService.totalPaises != 0; else noPaisesRegistrados" class="table-responsive-md animated fadeIn fast">
     <table class="table table-bordered">
         <thead>
             <tr class="tablaAdmin">
@@ -42,6 +42,10 @@
         </div>
     </div>
 </div>
+
+<ng-template #noPaisesRegistrados>
+    <h2 class="m-5">No hay países registrados...</h2>
+</ng-template>
 
 <!--Modal de agregar pais-->
 <ng-template #agregarPais let-modal>

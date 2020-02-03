@@ -13,58 +13,114 @@
     <button (click)="openModal(agregarPrograma)" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
     <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
 </div>
-<div class="table-responsive-md animated fadeIn fast">
-    <table class="table table-bordered">
-        <thead>
-            <tr class="tablaAdmin">
-                <th scope="col" style="width: 10%" class="align-middle">#</th>
-                <th scope="col" style="width: 10%" class="align-middle">Registro SNIES</th>
-                <th scope="col" style="width: 10%" class="align-middle">Nombre programa</th>
-                <th scope="col" style="width: 10%" class="align-middle">Número de creditos</th>
-                <th scope="col" style="width: 10%" class="align-middle">Nivel académico</th>
-                <th scope="col" style="width: 10%" class="align-middle">Titulo otorgado</th>
-                <th scope="col" style="width: 10%" class="align-middle">Modalidad de formación</th>
-                <th scope="col" style="width: 10%" class="align-middle">Jefe de programa</th>
-                <th scope="col" style="width: 10%" class="align-middle">Facultad</th>
-                <th scope="col" style="width: 10%" class="align-middle colorRojo">Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let programa of programas;  let i = index;">
-                <th scope="row">{{i+1}}</th>
-                <td>{{ programa.SNIES}}</td>
-                <td>{{ programa.nombre}}</td>
-                <td>{{ programa.numCreditos}}</td>
-                <td>{{ programa.nivelAcademico}}</td>
-                <td>{{ programa.tituloOtogado}}</td>
-                <td>{{ programa.modalidadFormacion}}</td>
-                <td>{{ programa.jefePrograma.nombres +" "+ programa.jefePrograma.apellidos }}</td>
-                <td>{{ programa.facultadId.nombre }}</td>
-                <td>
-                    <div class="row">
-                        <div class="col text-left" style="width: 50%;padding: 2%">
-                            <button (click)="openModalEdit(editarPrograma, programa)" class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+<div *ngIf=" _programaService.totalProgramas != 0; else noPragramasRegistrados">
+    <div class="table-responsive-md animated fadeIn fast">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="tablaAdmin">
+                    <th scope="col" style="width: 10%" class="align-middle">#</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Registro SNIES</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Nombre programa</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Número de creditos</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Nivel académico</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Titulo otorgado</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Modalidad de formación</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Jefe de programa</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Facultad</th>
+                    <th scope="col" style="width: 10%" class="align-middle colorRojo">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let programa of programas;  let i = index;">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{ programa.SNIES}}</td>
+                    <td>{{ programa.nombre}}</td>
+                    <td>{{ programa.numCreditos}}</td>
+                    <td>{{ programa.nivelAcademico}}</td>
+                    <td>{{ programa.tituloOtogado}}</td>
+                    <td>{{ programa.modalidadFormacion}}</td>
+                    <td>{{ programa.jefePrograma.nombres +" "+ programa.jefePrograma.apellidos }}</td>
+                    <td>{{ programa.facultadId.nombre }}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col text-left" style="width: 50%;padding: 2%">
+                                <button (click)="openModalEdit(editarPrograma, programa)" class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+                            </div>
+                            <div class="col text-right" style="width: 50%;padding: 2%">
+                                <button (click)="borrarProgramas(programa)" class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+                            </div>
                         </div>
-                        <div class="col text-right" style="width: 50%;padding: 2%">
-                            <button (click)="borrarProgramas(programa)" class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-        </tbody>
-    </table>
-    <div class="row">
-        <div class="col">
-        </div>
-        <div class="col text-right">
-            <button (click)="cambiarDesde(-5)" class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
-            <input class="" type="text" value="1" style="width: 45px;height: 37px;margin: 0px;padding-bottom: 8px;text-align: center">
-            <button (click)="cambiarDesde(5)" class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col text-right">
+                <button (click)="cambiarDesde(-5)" class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
+                <input class="" type="text" value="1" style="width: 45px;height: 37px;margin: 0px;padding-bottom: 8px;text-align: center">
+                <button (click)="cambiarDesde(5)" class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
+            </div>
         </div>
     </div>
+
+    <!--Modal de editar programa-->
+    <ng-template #editarPrograma let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Editar Programa</h4>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="editPrograma(programToEdit)">
+                <div class="mt-3 form-group text-left">
+                    <label for="correo" class="font-weight-bold text-uppercase">Registro SNIES:</label>
+                    <input type="text" id="programaRegistroSNIES" value="{{programToEdit.SNIES}}" placeholder="Ingrese el Registro SNIES" class="uscoInputs form-control" maxlength="25" required autofocus>
+                </div>
+                <div class="form-group text-left">
+                    <label for="correo" class="font-weight-bold text-uppercase">NOMBRE DEL PROGRAMA:</label>
+                    <input type="text" id="programaNombre" value="{{programToEdit.nombre}}" placeholder="Ingrese la ciudad" class="uscoInputs form-control" maxlength="25" required>
+                </div>
+                <div class="form-group text-left">
+                    <label for="correo" class="font-weight-bold text-uppercase">Número de creditos:</label>
+                    <input type="text" id="programaNumCreditos" value="{{programToEdit.numCreditos}}" placeholder="Ingrese la dirección" class="uscoInputs form-control" maxlength="25" required>
+                </div>
+                <div class="form-group text-left">
+                    <label for="correo" class="font-weight-bold text-uppercase">Nivel académico:</label>
+                    <input type="text" id="programaNivelAcademico" value="{{programToEdit.nivelAcademico}}" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>
+                </div>
+                <div class="form-group text-left">
+                    <label for="correo" class="font-weight-bold text-uppercase">Titulo otorgado:</label>
+                    <input type="text" id="programaTituloOrtorgado" value="{{programToEdit.tituloOtogado}}" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>
+                </div>
+                <div class="form-group text-left">
+                    <label for="correo" class="font-weight-bold text-uppercase">Modalidad de formación:</label>
+                    <input type="text" id="programaModalFor" value="{{programToEdit.modalidadFormacion}}" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>
+                </div>
+                <div class="form-group text-left">
+                    <label for="correo" class="font-weight-bold">Jefe de programa</label>
+                    <input type="text" id="jefePrograma" value="{{programToEdit.jefePrograma._id}}" placeholder="Ingrese la c.c del jefe de programa" class="uscoInputs form-control" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <label for="facultad" class="font-weight-bold text-uppercase">Facultad:</label>
+                    <select id="facultad" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
+                    <option *ngFor="let facultad of facultades" value="{{ facultad._id}}">{{ facultad.nombre}}</option>
+                </select>
+                </div>
+
+                <div class="txtcenter">
+                    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+                    <button type="submit" class="btn uscoButton">Editar</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
 </div>
+
+<ng-template #noPragramasRegistrados>
+    <h2 class="m-5">No hay programas registrados...</h2>
+</ng-template>
 
 <!--Modal de agregar programa-->
 <ng-template #agregarPrograma let-modal>
@@ -115,53 +171,3 @@
     </div>
 </ng-template>
 <!--Cierre del modal de agregar programa-->
-
-<!--Modal de editar programa-->
-<ng-template #editarPrograma let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Editar Programa</h4>
-    </div>
-    <div class="modal-body">
-        <form (ngSubmit)="editPrograma(programToEdit)">
-            <div class="mt-3 form-group text-left">
-                <label for="correo" class="font-weight-bold text-uppercase">Registro SNIES:</label>
-                <input type="text" id="programaRegistroSNIES" value="{{programToEdit.SNIES}}" placeholder="Ingrese el Registro SNIES" class="uscoInputs form-control" maxlength="25" required autofocus>
-            </div>
-            <div class="form-group text-left">
-                <label for="correo" class="font-weight-bold text-uppercase">NOMBRE DEL PROGRAMA:</label>
-                <input type="text" id="programaNombre" value="{{programToEdit.nombre}}" placeholder="Ingrese la ciudad" class="uscoInputs form-control" maxlength="25" required>
-            </div>
-            <div class="form-group text-left">
-                <label for="correo" class="font-weight-bold text-uppercase">Número de creditos:</label>
-                <input type="text" id="programaNumCreditos" value="{{programToEdit.numCreditos}}" placeholder="Ingrese la dirección" class="uscoInputs form-control" maxlength="25" required>
-            </div>
-            <div class="form-group text-left">
-                <label for="correo" class="font-weight-bold text-uppercase">Nivel académico:</label>
-                <input type="text" id="programaNivelAcademico" value="{{programToEdit.nivelAcademico}}" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>
-            </div>
-            <div class="form-group text-left">
-                <label for="correo" class="font-weight-bold text-uppercase">Titulo otorgado:</label>
-                <input type="text" id="programaTituloOrtorgado" value="{{programToEdit.tituloOtogado}}" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>
-            </div>
-            <div class="form-group text-left">
-                <label for="correo" class="font-weight-bold text-uppercase">Modalidad de formación:</label>
-                <input type="text" id="programaModalFor" value="{{programToEdit.modalidadFormacion}}" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>
-            </div>
-            <div class="form-group text-left">
-                <label for="correo" class="font-weight-bold">Jefe de programa</label>
-                <input type="text" id="jefePrograma" value="{{programToEdit.jefePrograma._id}}" placeholder="Ingrese la c.c del jefe de programa" class="uscoInputs form-control" maxlength="50" required>
-            </div>
-            <div class="form-group">
-                <label for="facultad" class="font-weight-bold text-uppercase">Facultad:</label>
-                <select id="facultad" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
-                    <option *ngFor="let facultad of facultades" value="{{ facultad._id}}">{{ facultad.nombre}}</option>
-                </select>
-            </div>
-
-            <div class="txtcenter">
-                <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-                <button type="submit" class="btn uscoButton">Editar</button>
-            </div>
-        </form>
-    </div>
-</ng-template>

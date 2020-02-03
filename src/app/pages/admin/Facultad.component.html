@@ -15,48 +15,88 @@
     <button (click)="openModal(agregarFacultad)" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
     <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
 </div>
-<div class="table-responsive-md animated fadeIn fast">
-    <table class="table table-bordered">
-        <thead>
-            <tr class="tablaAdmin">
-                <th scope="col" style="width: 10%" class="align-middle">ID</th>
-                <th scope="col" style="width: 10%" class="align-middle">Nombre de la facultad</th>
-                <th scope="col" style="width: 10%" class="align-middle">Teléfono</th>
-                <th scope="col" style="width: 10%" class="align-middle">Correo</th>
-                <th scope="col" style="width: 10%" class="align-middle">Sede</th>
-                <th scope="col" style="width: 10%" class="align-middle colorRojo">Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let falcultad of facultades;  let i = index;">
-                <th scope="row">{{i+1}}</th>
-                <td>{{ falcultad.nombre}}</td>
-                <td>{{ falcultad.telefono}}</td>
-                <td>{{ falcultad.email}}</td>
-                <td>{{ falcultad.sedeId.nombre}}</td>
-                <td>
-                    <div class="row">
-                        <div class="col text-left" style="width: 50%;padding: 2%">
-                            <button (click)="openModalEdit(editarFacultad, falcultad)" class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+<div *ngIf="_facultadService.totalFacultades != 0; else noFacultadesRegistradas">
+    <div class="table-responsive-md animated fadeIn fast">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="tablaAdmin">
+                    <th scope="col" style="width: 10%" class="align-middle">ID</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Nombre de la facultad</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Teléfono</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Correo</th>
+                    <th scope="col" style="width: 10%" class="align-middle">Sede</th>
+                    <th scope="col" style="width: 10%" class="align-middle colorRojo">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let falcultad of facultades;  let i = index;">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{ falcultad.nombre}}</td>
+                    <td>{{ falcultad.telefono}}</td>
+                    <td>{{ falcultad.email}}</td>
+                    <td>{{ falcultad.sedeId.nombre}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col text-left" style="width: 50%;padding: 2%">
+                                <button (click)="openModalEdit(editarFacultad, falcultad)" class="btn btn-outline-success" style="width: 100%;padding: 0%"><span class="fas fa-pencil-alt"></span></button>
+                            </div>
+                            <div class="col text-right" style="width: 50%;padding: 2%">
+                                <button (click)="borrarFacultades(falcultad)" class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
+                            </div>
                         </div>
-                        <div class="col text-right" style="width: 50%;padding: 2%">
-                            <button (click)="borrarFacultades(falcultad)" class="btn btn-outline-danger" style="width: 100%;padding: 0%"><span class="far fa-trash-alt"></span></button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="row">
-        <div class="col">
-        </div>
-        <div class="col text-right">
-            <button class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
-            <input class="" type="text" value="1" style="width: 45px;height: 37px;margin: 0px;padding-bottom: 8px;text-align: center">
-            <button class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col text-right">
+                <button class="btn btn-outline-dark" style="width: 50px;margin-right: 2px"><span class="fas fa-arrow-left"></span></button>
+                <input class="" type="text" value="1" style="width: 45px;height: 37px;margin: 0px;padding-bottom: 8px;text-align: center">
+                <button class="btn btn-outline-dark" style="width: 50px;margin-left: 2px"><span class="fas fa-arrow-right"></span></button>
+            </div>
         </div>
     </div>
+
+    <!--Modal de editar facultad-->
+    <ng-template #editarFacultad let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Editar Facultad</h4>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="editFacultad(facultadToEdit)">
+                <div class="mt-3 form-group text-left">
+                    <label for="correo" class="font-weight-bold text-uppercase">NOMBRE:</label>
+                    <input type="text" id="facultadNombre" value="{{facultadToEdit.nombre}}" placeholder="Ingrese el nombre" class="uscoInputs form-control" maxlength="25" required autofocus>
+                </div>
+                <div class="form-group text-left">
+                    <label for="correo" class="font-weight-bold text-uppercase">teléfono:</label>
+                    <input type="text" id="facultadTelefono" value="{{facultadToEdit.telefono}}" placeholder="Ingrese el teléfono" class="uscoInputs form-control" maxlength="25" required>
+                </div>
+                <div class="form-group text-left">
+                    <label for="email" class="font-weight-bold text-uppercase">CORREO:</label>
+                    <input type="email" id="facultadEmail" value="{{facultadToEdit.email}}" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>
+                </div>
+                <div class="form-group">
+                    <label for="sede" class="font-weight-bold text-uppercase">Sede:</label>
+                    <select id="sede" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
+                    <option *ngFor="let sede of sedes" value="{{ sede._id}}">{{ sede.nombre}}</option>
+                </select>
+                </div>
+                <div class="txtcenter">
+                    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+                    <button type="submit" class="btn uscoButton">Editar</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+    <!--Cierre del modal de editar facultad-->
 </div>
+
+<ng-template #noFacultadesRegistradas>
+    <h2 class="m-5">No hay facultades registradas...</h2>
+</ng-template>
 
 <!--Modal de agregar facultad-->
 <ng-template #agregarFacultad let-modal>
@@ -106,36 +146,3 @@
     </div>
 </ng-template>
 <!--Cierre del modal de agregar facultad-->
-<!--Modal de editar facultad-->
-<ng-template #editarFacultad let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Editar Facultad</h4>
-    </div>
-    <div class="modal-body">
-        <form (ngSubmit)="editFacultad(facultadToEdit)">
-            <div class="mt-3 form-group text-left">
-                <label for="correo" class="font-weight-bold text-uppercase">NOMBRE:</label>
-                <input type="text" id="facultadNombre" value="{{facultadToEdit.nombre}}" placeholder="Ingrese el nombre" class="uscoInputs form-control" maxlength="25" required autofocus>
-            </div>
-            <div class="form-group text-left">
-                <label for="correo" class="font-weight-bold text-uppercase">teléfono:</label>
-                <input type="text" id="facultadTelefono" value="{{facultadToEdit.telefono}}" placeholder="Ingrese el teléfono" class="uscoInputs form-control" maxlength="25" required>
-            </div>
-            <div class="form-group text-left">
-                <label for="email" class="font-weight-bold text-uppercase">CORREO:</label>
-                <input type="email" id="facultadEmail" value="{{facultadToEdit.email}}" placeholder="Ingrese el correo" class="uscoInputs form-control" maxlength="25" required>
-            </div>
-            <div class="form-group">
-                <label for="sede" class="font-weight-bold text-uppercase">Sede:</label>
-                <select id="sede" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
-                    <option *ngFor="let sede of sedes" value="{{ sede._id}}">{{ sede.nombre}}</option>
-                </select>
-            </div>
-            <div class="txtcenter">
-                <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-                <button type="submit" class="btn uscoButton">Editar</button>
-            </div>
-        </form>
-    </div>
-</ng-template>
-<!--Cierre del modal de editar facultad-->
