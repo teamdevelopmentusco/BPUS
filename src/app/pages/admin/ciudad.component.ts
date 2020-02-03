@@ -137,4 +137,26 @@ this._CiudadService.cargarCiudad(this.desde)
     this.cargarCiudades();
     });
   }
+
+
+  // Paginado -----------------------
+
+  cambiarDesde(valor:number){
+
+
+    let desde = this.desde+valor;
+    
+
+
+    if (desde>=this._CiudadService.totalCiudades) { // Total
+      return;
+    }
+    if (desde<0) {
+      return;
+    }
+
+    this.desde+=valor;
+    this.cargarCiudades();
+  }
+  //----------------------------
 }

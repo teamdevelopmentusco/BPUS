@@ -74,6 +74,7 @@ this._DepartamentoService.cargarDepartamentos(this.desde)
             .subscribe( departamentos => this.departamentos=departamentos );
             this.cargando=false;
   }
+  
 
   buscarDepartamentos( termino:string){
     
@@ -149,4 +150,31 @@ this._DepartamentoService.cargarDepartamentos(this.desde)
     this.cargarDepartamentos();
     });
   }
+
+
+
+
+
+
+// Paginado -----------------------
+
+  cambiarDesde(valor:number){
+
+
+    let desde = this.desde+valor;
+    
+
+
+    if (desde>=this._DepartamentoService.totalDepartamentos) { // Total
+      return;
+    }
+    if (desde<0) {
+      return;
+    }
+
+    this.desde+=valor;
+    this.cargarDepartamentos();
+  }
+  //----------------------------
+
 }

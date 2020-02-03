@@ -133,4 +133,26 @@ this._PaisService.cargarPaises(this.desde)
     });
   }
 
+
+   // Paginado -----------------------
+
+   cambiarDesde(valor:number){
+
+
+    let desde = this.desde+valor;
+    
+
+
+    if (desde>=this._PaisService.totalPaises) { // Total
+      return;
+    }
+    if (desde<0) {
+      return;
+    }
+
+    this.desde+=valor;
+    this.cargarPaises();
+  }
+  //----------------------------
+
 }
