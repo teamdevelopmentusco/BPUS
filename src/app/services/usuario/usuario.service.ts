@@ -249,6 +249,14 @@ export class UsuarioService {
 
   }
 
+  cargarUsuarioPorCodigoEstudiantil(codigoUniversitario: string) {
+    const url = URL_SERVICIOS + '/usuario/codigoUniversitario/' + codigoUniversitario;
+    return this.http.get(url).map((resp: any) => {
+      return resp.usuario;
+    });
+
+  }
+
   buscarUsuarios(termino:string){
 
     let url=URL_SERVICIOS+'/busqueda/coleccion/usuarios/'+termino;

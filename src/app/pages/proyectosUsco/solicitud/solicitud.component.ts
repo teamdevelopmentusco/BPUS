@@ -22,19 +22,23 @@ import { Pais } from '../../../models/pais.model';
   styles: []
 })
 export class SolicitudComponent implements OnInit {
-  desde: number=0;
-  cargando:boolean=true;
-  //estudiantes: Usuario[] = [];
-  estudiante2: String="Nombre completo del Estudiante";
-  estudiante3: String="Nombre completo del Estudiante";
+  desde = 0;
+  cargando = true;
+  // estudiantes: Usuario[] = [];
+  estudiante2 = 'Nombre completo del Estudiante';
+  estudiante3 = 'Nombre completo del Estudiante';
 
-  estudiantePrueba: Usuario=null;
-  ciudades: Ciudad[]=[];
-  departamentos: Departamento[]=[];
-  paises: Pais[]=[];
+  // ids estudiantes
+  estudiante2id = '';
+  estudiante3id = '';
+
+  estudiantePrueba = new Usuario('', '', '', '', '', '', '', '', '', '', '', '', '');
+  ciudades: Ciudad[] = [];
+  departamentos: Departamento[] = [];
+  paises: Pais[] = [];
   usuario: Usuario;
  // solicitud: Solicitud = new Solicitud('','','', '', '', '', '', '', '', '', '', '', '', '' );
-  notificacion: Notificacion = new Notificacion('','',null,'','');
+  notificacion: Notificacion = new Notificacion('', '', null, '', '');
   today = new Date();
   jstoday = '';
   solicitudForm: any;
@@ -155,11 +159,18 @@ export class SolicitudComponent implements OnInit {
     return this.solicitudForm.get('tipoProyecto');
   }
 
-  ngOnInit() {
+  get codigoEstudiante2() {
+    return this.solicitudForm.get('codigoEstudiante2');
+  }
 
-    this.cargarCiudadesSinlimiteFiltrado();
-    this.cargarDepartamentosSinlimiteFiltrado();
+  get codigoEstudiante3() {
+    return this.solicitudForm.get('codigoEstudiante3');
+  }
+
+  ngOnInit() {
     this.cargarPaisesSinlimite();
+    this.cargarDepartamentosSinlimiteFiltrado();
+    this.cargarCiudadesSinlimiteFiltrado();
   }
 
   cargarSolicitud() {
@@ -170,10 +181,9 @@ export class SolicitudComponent implements OnInit {
 
   cargarCiudadesSinlimite(){
 
-    this.cargando=true;
-this._CiudadService.cargarCiudadSinlimite(this.desde)
-            .subscribe( ciudades => this.ciudades=ciudades );
-            this.cargando=false;
+    this.cargando = true;
+    this._CiudadService.cargarCiudadSinlimite(this.desde).subscribe( ciudades => this.ciudades = ciudades );
+    this.cargando = false;
   }
 
   cargarDepartamentosSinlimite() {
@@ -213,53 +223,30 @@ cargarDepartamentosSinlimiteFiltrado() {
 
 //------------------------------------------------------------------------
 
-
-
-
-
-
 // Busqueda ------------------------------------
-  buscarEstudiante( termino:string){
-    
-    this.cargando=true;
+  buscarEstudiante(idInput: string) {
 
-    if(termino.length<=0){
-        this.estudiante2 = "Nombre completo del Estudiante";
+    this.cargando = true;
+    const termino = (document.getElementById(idInput) as HTMLInputElement).value;
+    if (termino.length !== 11 && idInput === 'codigoEstudiante2') {
+        this.estudiante2 = 'Nombre completo del Estudiante';
         return;
-    }
-
-    if (termino.length>=8) {
-    
-
-
-        this._usuarioService.buscarEstudiante(termino)
-        .subscribe((estudiante:Usuario)=>{
-          this.estudiantePrueba=estudiante;
-          this.cargando=false;
+    } else if (termino.length !== 11 && idInput === 'codigoEstudiante3') {
+        this.estudiante3 = 'Nombre completo del Estudiante';
+        return;
+  } else if (termino.length === 11 && termino !== this.usuario.codigoUniversitario) {
+        this._usuarioService.cargarUsuarioPorCodigoEstudiantil(termino).subscribe((estudiante: Usuario) => {
+          console.log(estudiante);
+          if (idInput === 'codigoEstudiante2') {
+            this.estudiante2 = estudiante.nombres + ' ' + estudiante.apellidos;
+          } else if (idInput === 'codigoEstudiante3') {
+            this.estudiante3 = estudiante.nombres + ' ' + estudiante.apellidos;
+          }
+          this.cargando = false;
           });
-        
-
-
-      this.estudiante2= this.estudiantePrueba.apellidos;
-
-      console.log(this.estudiante2);
-
-}
-
-
+    }
   }
-
-
  // ------------------------------------
-
-
-
-
-
-
-
-
-
 
   countChars() {
     const keywords = (document.getElementById('keyWords') as HTMLInputElement).value;
