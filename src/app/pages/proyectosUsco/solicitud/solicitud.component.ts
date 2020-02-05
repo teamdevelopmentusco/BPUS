@@ -171,6 +171,8 @@ export class SolicitudComponent implements OnInit {
     this.cargarPaisesSinlimite();
     this.cargarDepartamentosSinlimiteFiltrado();
     this.cargarCiudadesSinlimiteFiltrado();
+
+    this.cargarUsuarioPorId(this._usuarioService.usuario._id);
   }
 
   cargarSolicitud() {
@@ -239,8 +241,10 @@ cargarDepartamentosSinlimiteFiltrado() {
           console.log(estudiante);
           if (idInput === 'codigoEstudiante2') {
             this.estudiante2 = estudiante.nombres + ' ' + estudiante.apellidos;
+            this.estudiante2id= estudiante._id;
           } else if (idInput === 'codigoEstudiante3') {
             this.estudiante3 = estudiante.nombres + ' ' + estudiante.apellidos;
+            this.estudiante3id= estudiante._id;
           }
           this.cargando = false;
           });
@@ -290,9 +294,16 @@ cargarDepartamentosSinlimiteFiltrado() {
       cancelButtonText: 'No, cancelar!',
       reverseButtons: true
     })
-    .then(borrar => {
+    .then(opcionNotificacion => {
 
-    if (borrar.value) {
+    if (opcionNotificacion.value) {
+
+      if (this.estudiante2id=="") {
+        this.estudiante2id=null;
+      }
+      if (this.estudiante3id=="") {
+        this.estudiante3id=null;
+      }
 
       const solicitud = new Solicitud(
         this.jstoday,
@@ -306,8 +317,8 @@ cargarDepartamentosSinlimiteFiltrado() {
         forma.value.palabrasClaves,
         forma.value.resumenProyecto,
         this.usuario._id,
-        forma.value.nombreEstudiante2,
-        forma.value.nombreEstudiante3,
+        this.estudiante2id,
+        this.estudiante3id,
         forma.value.firmaEstudiante2,
         forma.value.firmaEstudiante3,
         null,
@@ -350,12 +361,12 @@ cargarDepartamentosSinlimiteFiltrado() {
 
 
 
-    
+  }
 
 
-   
-
-
+  cargarUsuarioPorId(id:string){
+    this._usuarioService.cargarUsuarioPorId(id)
+    .subscribe( usuario => this.usuario = usuario);
 
   }
 

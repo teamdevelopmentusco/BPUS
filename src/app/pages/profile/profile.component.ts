@@ -22,14 +22,15 @@ export class ProfileComponent implements OnInit {
 
 
     console.log(this.usuario);
-
-    if("5dd4a006952d6b266002a3e2"==this._usuarioService.usuario._id){ console.log("Son iguales");}
+    
    }
 
   ngOnInit() {
 
 
     this.cargarUsuarioPorId(this._usuarioService.usuario._id);
+
+   
     console.log(this.usuario);
   }
 
