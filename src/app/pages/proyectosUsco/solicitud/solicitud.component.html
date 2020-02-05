@@ -54,7 +54,7 @@
                         <tr class="colorCafe">
                             <th scope="col"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">No.</label></th>
                             <th scope="col"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">Código</label></th>
-                            <th scope="col"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">Nombre completo</label></th>
+                            <th scope="col"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px; width: 300px;">Nombre completo</label></th>
                             <th scope="col"><label class="uscoSesion text-uppercase" style="margin: 0px;padding:0px">confirmacion (firma)</label></th>
                         </tr>
                     </thead>
@@ -63,46 +63,62 @@
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">1</label></th>
                             <td><input name="codigoEstudiante1" class="selectSearch" placeholder="{{usuario.codigoUniversitario}}" type="text" style="height: 30px;border: 0px" disabled></td>
                             <td><input name="nombreEstudiante1" class="selectSearch" placeholder="{{usuario.nombres}} {{usuario.apellidos}}" type="text" style="height: 30px;border: 0px" disabled></td>
-                            <td><input name="firmaEstudiante1" class="selectSearch" placeholder="APROBADO" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td>
+                                <h6 class='pl-2 pt-1 text-left font-weight-light'>Aprobado</h6>
+                            </td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">2</label></th>
                             <td><input (keyup)="buscarEstudiante('codigoEstudiante2')" formControlName="codigoEstudiante2" id="codigoEstudiante2" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" maxlength="11"
                                     pattern="[0-9]{11}" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)'>
                                 <h6 *ngIf="(codigoEstudiante2.dirty || codigoEstudiante2.touched)" class='mt-1' style="color:red;">
-                                    <div *ngIf="estudiante2 === 'Nombre completo del Estudiante' && codigoEstudiante2.value.length === 11 && codigoEstudiante2.value !== usuario.codigoUniversitario">
+                                    <div *ngIf="estudiante2 === 'Nombre completo del Estudiante' && codigoEstudiante2.value.length === 11 && codigoEstudiante2.value !== usuario.codigoUniversitario && codigoEstudiante2.value !== codigoEstudiante3.value">
                                         El estudiante no está registrado
                                     </div>
                                     <div *ngIf="estudiante2 === 'Nombre completo del Estudiante' && codigoEstudiante2.value.length > 0 && codigoEstudiante2.value.length < 11">
                                         Código muy corto
                                     </div>
-                                    <div *ngIf="estudiante3 === 'Nombre completo del Estudiante' && (codigoEstudiante2.value ===  usuario.codigoUniversitario || (codigoEstudiante2.value === codigoEstudiante3.value && estudiante2 !== 'Nombre completo del Estudiante'))">
+                                    <div *ngIf="estudiante2 === 'Nombre completo del Estudiante' && codigoEstudiante2.value.length === 11 && (codigoEstudiante2.value === usuario.codigoUniversitario || codigoEstudiante2.value === codigoEstudiante3.value) && estudiante3 !== 'Nombre completo del Estudiante'">
                                         Ya esta inscrito en la solicitud
                                     </div>
                                 </h6>
                                 <td>
                                     <input formControlName="nombreEstudiante2" name="nombreEstudiante2" class="selectSearch" placeholder="{{ estudiante2 }}" type="text" style="height: 30px;border: 0px" disabled>
                                 </td>
-                                <td><input formControlName="firmaEstudiante2" name="firmaEstudiante2" class="selectSearch" value="Pendiente" placeholder="Pendiente" type="text" style="height: 30px;border: 0px" disabled></td>
+                                <td>
+                                    <h6 *ngIf="estudiante2 === 'Nombre completo del Estudiante'" class='pl-2 pt-1 text-left font-weight-light'>
+                                        Sin asignar
+                                    </h6>
+                                    <h6 *ngIf="estudiante2 !==  'Nombre completo del Estudiante'" class='pl-2 pt-1 text-left font-weight-light'>
+                                        Pendiente
+                                    </h6>
+                                </td>
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">3</label></th>
                             <td><input (keyup)="buscarEstudiante('codigoEstudiante3')" formControlName="codigoEstudiante3" id="codigoEstudiante3" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" maxlength="11"
                                     pattern="[0-9]{11}" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)'>
                                 <h6 *ngIf="(codigoEstudiante3.dirty || codigoEstudiante3.touched)" class='mt-1' style="color:red;">
-                                    <div *ngIf="estudiante3 === 'Nombre completo del Estudiante' && codigoEstudiante3.value.length === 11 && codigoEstudiante3.value !== usuario.codigoUniversitario">
+                                    <div *ngIf="estudiante3 === 'Nombre completo del Estudiante' && codigoEstudiante3.value.length === 11 && codigoEstudiante3.value !== usuario.codigoUniversitario && codigoEstudiante3.value !== codigoEstudiante2.value">
                                         El estudiante no está registrado
                                     </div>
                                     <div *ngIf="estudiante3 === 'Nombre completo del Estudiante' && codigoEstudiante3.value.length > 0 && codigoEstudiante3.value.length < 11">
                                         Código muy corto
                                     </div>
-                                    <div *ngIf="estudiante3 === 'Nombre completo del Estudiante' && (codigoEstudiante3.value ===  usuario.codigoUniversitario || (codigoEstudiante3.value === codigoEstudiante2.value && estudiante2 !== 'Nombre completo del Estudiante'))">
+                                    <div *ngIf="estudiante3 === 'Nombre completo del Estudiante' && codigoEstudiante3.value.length === 11 && (codigoEstudiante3.value === usuario.codigoUniversitario || codigoEstudiante3.value === codigoEstudiante2.value) && estudiante2 !== 'Nombre completo del Estudiante'">
                                         Ya esta inscrito en la solicitud
                                     </div>
                                 </h6>
                             </td>
                             <td><input formControlName="nombreEstudiante3" name="nombreEstudiante3" class="selectSearch" placeholder="{{ estudiante3 }}" type="text" style="height: 30px;border: 0px" disabled></td>
-                            <td><input formControlName="firmaEstudiante3" name="firmaEstudiante3" class="selectSearch" value="Pendiente" placeholder="Pendiente" type="text" style="height: 30px;border: 0px" disabled></td>
+                            <td>
+                                <h6 *ngIf="estudiante3 === 'Nombre completo del Estudiante'" class='pl-2 pt-1 text-left font-weight-light'>
+                                    Sin asignar
+                                </h6>
+                                <h6 *ngIf="estudiante3 !==  'Nombre completo del Estudiante'" class='pl-2 pt-1 text-left font-weight-light'>
+                                    Pendiente
+                                </h6>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -139,22 +155,22 @@
                 <!--pais-->
                 <div class="form-group">
                     <label for="pais" class="font-weight-bold text-uppercase">País:</label>
-                    <select formControlName="pais" (change)="cargarDepartamentosSinlimiteFiltrado()" id="pais" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
-                        <option  *ngFor="let pais of paises" value="{{ pais._id }}">{{ pais.nombre}}</option>
+                    <select formControlName="pais" (change)="cargarDepartamentosSinlimiteFiltrado()" id="pais" class="custom-select uscoInputs mb-3" required>
+                        <option  *ngFor="let pais of paises" value="{{ pais._id }}" selected>{{ pais.nombre}}</option>
                     </select>
                 </div>
                 <!--ciudad-->
                 <div class="form-group">
                     <label for="ciudad" class="font-weight-bold text-uppercase">Ciudad:</label>
-                    <select formControlName="departamento" id="ciudad" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
+                    <select formControlName="ciudad" id="ciudad" class="custom-select uscoInputs mb-3" required>
                         <option  *ngFor="let ciudad of ciudades" value="{{ ciudad._id }}">{{ ciudad.nombre}}</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="departamento" class="font-weight-bold text-uppercase">Departamento:</label>
-                <select formControlName="ciudad" (change)="cargarCiudadesSinlimiteFiltrado()" id="departamento" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
-                    <option  *ngFor="let departamento of departamentos" value="{{ departamento._id }}">{{ departamento.nombre}}</option>
+                <select formControlName="departamento" (change)="cargarCiudadesSinlimiteFiltrado()" id="departamento" class="custom-select uscoInputs mb-3" required>
+                        <option *ngFor="let departamento of departamentos" value="{{ departamento._id }}" selected>{{ departamento.nombre}}</option>
                 </select>
             </div>
         </div>
@@ -222,7 +238,7 @@
 
         <div class="mt-5 row animated fadeIn fast">
             <div class="col text-right">
-                <button type="submit" class="text-uppercase iconRadio" [disabled]="!solicitudForm.valid"  style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white">
+                <button type="submit" class="text-uppercase iconRadio" [disabled]="!solicitudForm.valid" style="color: #8F141B ;font-size: 18px;font-family:Segoe UI;margin-bottom: 10px;background-color: white">
                     Enviar  
                     <span class="far fa-save fa-lg colorNegro"></span>
                   </button>

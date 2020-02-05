@@ -83,12 +83,6 @@ export class SolicitudComponent implements OnInit {
       nombreEstudiante3: [
         ''
       ],
-      firmaEstudiante2: [
-        ''
-      ],
-      firmaEstudiante3: [
-        ''
-      ],
       pais: [
         '',
         [Validators.required]
@@ -181,13 +175,6 @@ export class SolicitudComponent implements OnInit {
 
   //------------------------------------------------ Cargar localidades sin limite
 
-  cargarCiudadesSinlimite(){
-
-    this.cargando = true;
-    this._CiudadService.cargarCiudadSinlimite(this.desde).subscribe( ciudades => this.ciudades = ciudades );
-    this.cargando = false;
-  }
-
   cargarDepartamentosSinlimite() {
 
     this.cargando = true;
@@ -205,14 +192,14 @@ export class SolicitudComponent implements OnInit {
 //------------------------------------------------------------------------
  //------------------------------------------------------------------------- 
 
- cargarCiudadesSinlimiteFiltrado(){
+ cargarCiudadesSinlimiteFiltrado() {
 
-  var departamentoId=(document.getElementById('departamento') as HTMLInputElement).value;
+  const departamentoId = (document.getElementById('departamento') as HTMLInputElement).value;
+  console.log(departamentoId);
 
-  this.cargando=true;
-this._CiudadService.cargarCiudadSinlimiteFiltrado(this.desde, departamentoId)
-          .subscribe( ciudades => this.ciudades=ciudades );
-          this.cargando=false;
+  this.cargando = true;
+  this._CiudadService.cargarCiudadSinlimiteFiltrado(this.desde, departamentoId).subscribe( ciudades => this.ciudades = ciudades );
+  this.cargando = false;
 }
 
 cargarDepartamentosSinlimiteFiltrado() {
@@ -232,19 +219,28 @@ cargarDepartamentosSinlimiteFiltrado() {
     const termino = (document.getElementById(idInput) as HTMLInputElement).value;
     if (termino.length !== 11 && idInput === 'codigoEstudiante2') {
         this.estudiante2 = 'Nombre completo del Estudiante';
-        return;
+        this.estudiante2id = '';
+        // return;
     } else if (termino.length !== 11 && idInput === 'codigoEstudiante3') {
         this.estudiante3 = 'Nombre completo del Estudiante';
-        return;
+        this.estudiante3id = '';
+        // return;
   } else if (termino.length === 11 && termino !== this.usuario.codigoUniversitario) {
         this._usuarioService.cargarUsuarioPorCodigoEstudiantil(termino).subscribe((estudiante: Usuario) => {
-          console.log(estudiante);
           if (idInput === 'codigoEstudiante2') {
             this.estudiante2 = estudiante.nombres + ' ' + estudiante.apellidos;
-            this.estudiante2id= estudiante._id;
+            this.estudiante2id = estudiante._id;
+            if (this.estudiante2 === this.estudiante3) {
+              this.estudiante2 = 'Nombre completo del Estudiante';
+              this.estudiante2id = '';
+            }
           } else if (idInput === 'codigoEstudiante3') {
             this.estudiante3 = estudiante.nombres + ' ' + estudiante.apellidos;
-            this.estudiante3id= estudiante._id;
+            this.estudiante3id = estudiante._id;
+            if (this.estudiante3 === this.estudiante2) {
+              this.estudiante3 = 'Nombre completo del Estudiante';
+              this.estudiante3id = '';
+            }
           }
           this.cargando = false;
           });
@@ -285,6 +281,11 @@ cargarDepartamentosSinlimiteFiltrado() {
 
   notificar(forma: FormGroup) {
 
+    console.log('id2: ' + this.estudiante2id);
+    console.log('estudiante2: ' + this.estudiante2);
+    console.log('id3: ' + this.estudiante3id);
+    console.log('estudiante3: ' + this.estudiante3);
+
     swal.fire({
       title: '¿Está seguro que desea enviar la solicitud?',
       type: 'question',
@@ -298,11 +299,18 @@ cargarDepartamentosSinlimiteFiltrado() {
 
     if (opcionNotificacion.value) {
 
-      if (this.estudiante2id=="") {
-        this.estudiante2id=null;
+      let firmaEstudiante2 = 'Sin asignar';
+      let firmaEstudiante3 = 'Sin asignar';
+
+      if (this.estudiante2id === '' ) {
+        this.estudiante2id = null;
+      } else {
+        firmaEstudiante2 = 'Pendiente';
       }
-      if (this.estudiante3id=="") {
-        this.estudiante3id=null;
+      if (this.estudiante3id === '') {
+        this.estudiante3id = null;
+      } else {
+        firmaEstudiante3 = 'Pendiente';
       }
 
       const solicitud = new Solicitud(
@@ -319,8 +327,8 @@ cargarDepartamentosSinlimiteFiltrado() {
         this.usuario._id,
         this.estudiante2id,
         this.estudiante3id,
-        forma.value.firmaEstudiante2,
-        forma.value.firmaEstudiante3,
+        firmaEstudiante2,
+        firmaEstudiante3,
         null,
         'rutapdf', // ***Arrglar para que aqui se coloque la ruta en que se guardo el pdf de la solicitud***
         'Subido', // estadoSolicitud
