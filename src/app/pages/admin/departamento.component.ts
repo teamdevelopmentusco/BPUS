@@ -58,13 +58,13 @@ export class DepartamentoComponent implements OnInit {
 
 
   ngOnInit() {
-    this.cargarPaises();
+    this.cargarPaisesSinlimite();
     this.cargarDepartamentos();
   }
 
-  cargarPaises() {
+  cargarPaisesSinlimite() {
     this.cargando = true;
-    this._PaisService.cargarPaises(this.desde).subscribe( paises => this.paises = paises );
+    this._PaisService.cargarPaisesSinlimite(this.desde).subscribe( paises => this.paises = paises );
     this.cargando = false;
   }
 

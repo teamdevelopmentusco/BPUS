@@ -24,12 +24,16 @@ import { Pais } from '../../../models/pais.model';
 export class SolicitudComponent implements OnInit {
   desde: number=0;
   cargando:boolean=true;
-  estudiantes: Usuario[] = [];
+  //estudiantes: Usuario[] = [];
+  estudiante2: String="Nombre completo del Estudiante";
+  estudiante3: String="Nombre completo del Estudiante";
+
+  estudiantePrueba: Usuario=null;
   ciudades: Ciudad[]=[];
   departamentos: Departamento[]=[];
   paises: Pais[]=[];
   usuario: Usuario;
-  solicitud: Solicitud = new Solicitud('','','', '', '', '', '', '', '', '', '', '', '', '' );
+ // solicitud: Solicitud = new Solicitud('','','', '', '', '', '', '', '', '', '', '', '', '' );
   notificacion: Notificacion = new Notificacion('','',null,'','');
   today = new Date();
   jstoday = '';
@@ -153,36 +157,100 @@ export class SolicitudComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cargarCiudades();
-    this.cargarDepartamentos();
-    this.cargarPaises();
+    this.cargarCiudadesSinlimiteFiltrado();
+    this.cargarDepartamentosSinlimiteFiltrado();
+    this.cargarPaisesSinlimite();
   }
 
   cargarSolicitud() {
     this._solicitudService.cargarSolicitudEstudiante((this.usuario.codigoUniversitario)).subscribe((resp: any) => {});
   }
 
-  cargarCiudades(){
+  //------------------------------------------------ Cargar localidades sin limite
+
+  cargarCiudadesSinlimite(){
+
     this.cargando=true;
-this._CiudadService.cargarCiudad(this.desde)
+this._CiudadService.cargarCiudadSinlimite(this.desde)
             .subscribe( ciudades => this.ciudades=ciudades );
             this.cargando=false;
   }
 
-  cargarDepartamentos() {
+  cargarDepartamentosSinlimite() {
+
     this.cargando = true;
-    this._DepartamentoService.cargarDepartamentos(this.desde).subscribe( departamentos => this.departamentos = departamentos );
+    this._DepartamentoService.cargarDepartamentosSinLimite(this.desde).subscribe( departamentos => this.departamentos = departamentos );
+    this.cargando = false;
+  }
+  cargarPaisesSinlimite() {
+    
+    this.cargando = true;
+    this._PaisService.cargarPaisesSinlimite(this.desde).subscribe( paises => this.paises = paises );
     this.cargando = false;
   }
 
 
-  cargarPaises() {
-    this.cargando = true;
-    this._PaisService.cargarPaises(this.desde).subscribe( paises => this.paises = paises );
-    this.cargando = false;
+//------------------------------------------------------------------------
+ //------------------------------------------------------------------------- 
+
+ cargarCiudadesSinlimiteFiltrado(){
+
+  var departamentoId=(document.getElementById('departamento') as HTMLInputElement).value;
+
+  this.cargando=true;
+this._CiudadService.cargarCiudadSinlimiteFiltrado(this.desde, departamentoId)
+          .subscribe( ciudades => this.ciudades=ciudades );
+          this.cargando=false;
+}
+
+cargarDepartamentosSinlimiteFiltrado() {
+  var paisId=(document.getElementById('pais') as HTMLInputElement).value;
+  this.cargando = true;
+  this._DepartamentoService.cargarDepartamentosSinLimiteFiltrado(this.desde,paisId).subscribe( departamentos => this.departamentos = departamentos );
+  this.cargando = false;
+}
+
+
+//------------------------------------------------------------------------
+
+
+
+
+
+
+// Busqueda ------------------------------------
+  buscarEstudiante( termino:string){
+    
+    this.cargando=true;
+
+    if(termino.length<=0){
+        this.estudiante2 = "Nombre completo del Estudiante";
+        return;
+    }
+
+    if (termino.length>=8) {
+    
+
+
+        this._usuarioService.buscarEstudiante(termino)
+        .subscribe((estudiante:Usuario)=>{
+          this.estudiantePrueba=estudiante;
+          this.cargando=false;
+          });
+        
+
+
+      this.estudiante2= this.estudiantePrueba.apellidos;
+
+      console.log(this.estudiante2);
+
+}
+
+
   }
 
 
+ // ------------------------------------
 
 
 
@@ -211,7 +279,7 @@ this._CiudadService.cargarCiudad(this.desde)
     textarea.style.height = textarea.getAttribute('data-min.rows');
     textarea.style.height = textarea.scrollHeight + 'px';
   }
-
+/*
   agregarEstudiante(numDocumento: string){
     console.log("CAMBIO DE JEFE DE PROGRAMA");
 
@@ -221,7 +289,7 @@ this._CiudadService.cargarCiudad(this.desde)
         });
 
 }
-
+*/
 
 
   notificar(forma: FormGroup) {

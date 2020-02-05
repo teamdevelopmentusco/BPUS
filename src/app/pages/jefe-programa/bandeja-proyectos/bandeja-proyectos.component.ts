@@ -12,7 +12,7 @@ export class BandejaProyectosComponent implements OnInit {
   desde: number=0;
   solicitudes: Solicitud[]=[];
   cargando:boolean=true;
-  constructor( public SolicitudService: SolicitudService) { 
+  constructor( public _SolicitudService: SolicitudService) { 
 
 
 
@@ -26,7 +26,7 @@ export class BandejaProyectosComponent implements OnInit {
 
   cargarSolicitudes(){
     this.cargando=true;
-this.SolicitudService.cargarSolicitud(this.desde)
+this._SolicitudService.cargarSolicitud(this.desde)
             .subscribe( solicitudes => this.solicitudes=solicitudes );
             this.cargando=false;
   }

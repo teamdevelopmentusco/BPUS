@@ -67,8 +67,8 @@
                         </tr>
                         <tr class="text-center">
                             <th scope="row"><label class="uscoSesion" style="margin: 0px;padding:0px">2</label></th>
-                            <td><input formControlName="codigoEstudiante2" name="codigoEstudiante2" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}"></td>
-                            <td><input formControlName="nombreEstudiante2" name="nombreEstudiante2" class="selectSearch" placeholder="Nombre completo del Estudiante" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}"></td>
+                            <td><input (keyup)="buscarEstudiante(input.value)" #input formControlName="codigoEstudiante2" name="codigoEstudiante2" class="selectSearch" placeholder="Código del estudiante" type="text" style="height: 30px;border: 0px" pattern="[0-9]{11}"></td>
+                            <td><input formControlName="nombreEstudiante2" name="nombreEstudiante2" class="selectSearch" placeholder="{{ estudiante2}}" type="text" style="height: 30px;border: 0px" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+){2,50}" disabled ></td>
                             <td><input formControlName="firmaEstudiante2" name="firmaEstudiante2" class="selectSearch" placeholder="PENDIENTE" type="text" style="height: 30px;border: 0px" disabled></td>
                         </tr>
                         <tr class="text-center">
@@ -112,22 +112,22 @@
                 <!--pais-->
                 <div class="form-group">
                     <label for="pais" class="font-weight-bold text-uppercase">País:</label>
-                    <select id="pais" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
-                        <option *ngFor="let pais of paises" value="{{ pais._id}}">{{ pais.nombre}}</option>
+                    <select (change)="cargarDepartamentosSinlimiteFiltrado()" id="pais" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
+                        <option  *ngFor="let pais of paises" value="{{ pais._id}}">{{ pais.nombre}}</option>
                     </select>
                 </div>
                 <!--ciudad-->
                 <div class="form-group">
                     <label for="ciudad" class="font-weight-bold text-uppercase">Ciudad:</label>
-                    <select id="ciudad" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
-                        <option *ngFor="let ciudad of ciudades" value="{{ ciudad._id}}">{{ ciudad.nombre}}</option>
+                    <select  id="ciudad" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
+                        <option  *ngFor="let ciudad of ciudades" value="{{ ciudad._id}}">{{ ciudad.nombre}}</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="departamento" class="font-weight-bold text-uppercase">Departamento:</label>
-                <select id="departamento" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
-                    <option *ngFor="let departamento of departamentos" value="{{ departamento._id}}">{{ departamento.nombre}}</option>
+                <select (change)="cargarCiudadesSinlimiteFiltrado()" id="departamento" name="sedeUniversitaria" class="custom-select uscoInputs mb-3" required>
+                    <option  *ngFor="let departamento of departamentos" value="{{ departamento._id}}">{{ departamento.nombre}}</option>
                 </select>
             </div>
         </div>

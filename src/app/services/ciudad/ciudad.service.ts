@@ -79,6 +79,35 @@ export class CiudadService {
     });
   }
 
+
+  cargarCiudadSinlimite(desde:number=0){
+
+
+    let url=URL_SERVICIOS+'/ciudad/sinlimite?desde='+desde;
+    return this.http.get(url) .map((resp:any) =>{
+
+      this.totalCiudades=resp.total;
+      return resp.ciudades;
+
+
+    });
+  }
+
+
+  cargarCiudadSinlimiteFiltrado(desde:number=0, filtroDepartamento:string="5e37aa2eaa9f8134f0f3c94b"){
+
+
+    let url=URL_SERVICIOS+'/ciudad/sinlimite/'+filtroDepartamento+'?desde='+desde;
+    return this.http.get(url) .map((resp:any) =>{
+
+      this.totalCiudades=resp.total;
+      return resp.ciudades;
+
+
+    });
+  }
+
+  
   buscarCiudad(termino:string){
 
     let url=URL_SERVICIOS+'/busqueda/coleccion/ciudad/'+termino;

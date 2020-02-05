@@ -73,6 +73,20 @@ export class PaisService {
     });
   }
 
+
+  cargarPaisesSinlimite(desde:number=0){
+
+
+    let url=URL_SERVICIOS+'/pais/sinlimite?desde='+desde;
+    return this.http.get(url) .map((resp:any) =>{
+
+      this.totalPaises=resp.total;
+      return resp.paises;
+
+
+    });
+  }
+
   buscarPaises(termino:string){
 
     let url=URL_SERVICIOS+'/busqueda/coleccion/pais/'+termino;

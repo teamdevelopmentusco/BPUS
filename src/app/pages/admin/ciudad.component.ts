@@ -56,13 +56,13 @@ export class CiudadComponent implements OnInit {
 
 
   ngOnInit() {
-    this.cargarDepartamentos();
+    this.cargarDepartamentosSinlimite();
     this.cargarCiudades();
   }
 
-  cargarDepartamentos() {
+  cargarDepartamentosSinlimite() {
     this.cargando = true;
-    this._DepartamentoService.cargarDepartamentos(this.desde).subscribe( departamentos => this.departamentos = departamentos );
+    this._DepartamentoService.cargarDepartamentosSinLimite(this.desde).subscribe( departamentos => this.departamentos = departamentos );
     this.cargando = false;
   }
 

@@ -5,6 +5,8 @@
     <button (click)="openModal(agregarPais)" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
     <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
 </div>
+
+
 <div *ngIf="_PaisService.totalPaises != 0; else noPaisesRegistrados" class="table-responsive-md animated fadeIn fast">
     <table class="table table-bordered">
         <thead>
@@ -32,6 +34,8 @@
 
         </tbody>
     </table>
+
+
     <div class="row">
         <div class="col">
         </div>

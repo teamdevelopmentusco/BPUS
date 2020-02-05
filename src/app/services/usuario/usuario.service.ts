@@ -256,6 +256,13 @@ export class UsuarioService {
 
   }
 
+  buscarEstudiante(termino:string){
+
+    let url=URL_SERVICIOS+'/busqueda/coleccion/estudiante_buscar/'+termino;
+    return this.http.get(url).map((resp:any)=>resp.estudiante);
+
+  }
+
 
   borrarUsuario(id:string){
 

@@ -63,7 +63,7 @@ export class DepartamentoService {
                     });
 
   }
-  cargarDepartamentos(desde:number=0){
+  cargarDepartamentos(desde:number=0){  // Limite de 5
 
 
     let url=URL_SERVICIOS+'/departamento?desde='+desde;
@@ -75,6 +75,33 @@ export class DepartamentoService {
 
     });
   }
+  
+  
+  cargarDepartamentosSinLimite(desde:number=0){
+
+
+    let url=URL_SERVICIOS+'/departamento/sinlimite?desde='+desde;
+    return this.http.get(url) .map((resp:any) =>{
+
+      this.totalDepartamentos=resp.total;
+      return resp.departamentos;
+
+
+    });
+  }
+  cargarDepartamentosSinLimiteFiltrado(desde:number=0,filtroPais:string ="5e372b62b4e295267cd37395"){
+
+
+    let url=URL_SERVICIOS+'/departamento/sinlimite/'+filtroPais+'?desde='+desde+'?filtroPais='+filtroPais;
+    return this.http.get(url) .map((resp:any) =>{
+
+      this.totalDepartamentos=resp.total;
+      return resp.departamentos;
+
+
+    });
+  }
+
 
   buscarDepartamentos(termino:string){
 

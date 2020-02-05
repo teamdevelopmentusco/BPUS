@@ -1,3 +1,6 @@
+
+<div *ngIf="_SolicitudService.totalSolicitudes != 0; else noSolicitudesRegistradas" class="table-responsive-md animated fadeIn fast">
+
 <table class="table table-hover">
     <thead class="text-white" style="background-color: #8F141B;">
         <tr>
@@ -21,4 +24,14 @@
         </tr>
     </tbody>
 </table>
+
+
+</div>
+
+<ng-template #noSolicitudesRegistradas>
+    <h2 class="m-5">No hay solicitudes pendientes hasta el momento...</h2>
+</ng-template>
+
+
+
 <pdf-viewer [src]="'../../../../assets/Manual Factoria.pdf'" [render-text]="true" style="display: block;"></pdf-viewer>

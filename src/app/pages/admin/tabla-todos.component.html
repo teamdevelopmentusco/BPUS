@@ -1,42 +1,10 @@
-<!--
-    - Proyecto:         BPUS
-    - Componente:       Perfil Admin
-    - Desarrollador:    John David Guerrero Córdoba
-    - Descripción:      Perfil Admin con rutas hijas para CRUD de tablas
-    -Última modificación:  27/07/2019   
--->
+
 <br>
 <h3 class="text-uppercase animated fadeIn fast">Usuarios</h3><br>
 
 <h6 class="text-left text-uppercase" style="margin-top: 2%">Usuarios Registrados (<small>{{ _usuarioService.totalUsuarios }}</small>)</h6>
 <input (keyup)="buscarUsuarios(input.value)" #input type="text" class="form-control uscoInputSearch" placeholder="" aria-describedby="basic-addon1" style="width:500px">
 
-<!--  TEMPORALMENTE COMENTARIADO.
-
-<h6 class="text-left text-uppercase" style="margin-top: 2%">Filtrar por:</h6>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Facultad</option>
-  <option value="1">Ingeniería</option>
-  <option value="2">Salúd</option>
-  <option value="3">Licenciatura</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Programa</option>
-  <option value="1">Ingeniería de software</option>
-  <option value="2">Tecnología de software</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Sede</option>
-  <option value="1">Neiva</option>
-  <option value="2">Garzón</option>
-  <option value="3">Pitalito</option>
-</select>
-<select class="custom-select selectAdmin" style="width: 10%">
-  <option selected>Rol</option>
-  <option value="1">Estudiante</option>
-  <option value="2">Profesor</option>
-</select>
--->
 <div class="text-right" style="padding: 1%">
     <button (click)="open(content)" class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-user-plus fa-2x"></span></button>
     <button class="btn btn-outline-dark" style="margin:2px"><span class="fas fa-redo-alt fa-2x"></span></button>
