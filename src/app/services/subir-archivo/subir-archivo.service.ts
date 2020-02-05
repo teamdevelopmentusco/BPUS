@@ -13,19 +13,19 @@ export class SubirArchivoService {
         let formData=new FormData(); //JavaScript puro.
         let xhr=new XMLHttpRequest();
     
-    
-        formData.append('imagen',archivo,archivo.name);
+    // formData.append(name, value, filename);
+        formData.append('archivo',archivo,archivo.name);  // Revisar
     
         xhr.onreadystatechange = function(){
     
           if (xhr.readyState===4) {
             
               if (xhr.status===200) {
-                console.log('Imagen subio!!!');
+                console.log('Archivo subio!!!');
                 resolve(JSON.parse(xhr.response));
               }else{
 
-                console.log('Fallo la carga de la imagen!!!');
+                console.log('Fallo la carga del archivo!!!');
                 resolve(xhr.response);
               }
             
@@ -41,11 +41,6 @@ export class SubirArchivoService {
         xhr.send(formData);
 
     });
-
-
- 
-
-
 
   }
 }

@@ -113,7 +113,6 @@ this._SedeService.cargarSedes(this.desde)
 
   borrarSedes(sede:Sede){
 
-   
 
     swal.fire({
       title: '¿Estas seguro?',

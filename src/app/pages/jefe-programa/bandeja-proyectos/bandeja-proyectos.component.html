@@ -15,11 +15,15 @@
         <tr *ngFor="let solicitud of solicitudes;  let i = index;">
             <td>{{ solicitud.tituloProyecto}}</td>
             <td>{{ solicitud.fechaSolicitud  }}</td>
-            <td>{{ solicitud.estudiante1}}</td>
+            <td>
+                <p>{{ solicitud.estudiante1.nombres +" "+solicitud.estudiante1.apellidos}}</p>
+                <p *ngIf=" solicitud.estudiante2 !== null ">{{ solicitud.estudiante2.nombres +" "+solicitud.estudiante2.apellidos}}</p>
+                <p *ngIf=" solicitud.estudiante3 !== null ">{{ solicitud.estudiante3.nombres +" "+solicitud.estudiante3.apellidos}}</p>
+            </td>
             <td>solicitud.pdf</td>
             <td>
-                <button class="btn btn-primary mr-1">ACEPTAR</button>
-                <button class="btn btn-danger">RECHAZAR</button>
+                <button (click)="aceptarSolicitud(solicitud)" class="btn btn-primary mr-1">ACEPTAR</button>
+                <button (click)="rechazarSolicitud(solicitud)" class="btn btn-danger">RECHAZAR</button>
             </td>
         </tr>
     </tbody>
