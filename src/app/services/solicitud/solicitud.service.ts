@@ -67,7 +67,7 @@ export class SolicitudService {
     const url = URL_SERVICIOS + '/solicitud/' + '/solicitudEstudiantes/' + id;
     return this.http.get(url) .map((resp: any) => {
       this.totalSolicitudes = resp.total;
-      return resp.solicitud;
+      return resp.solicitudRecienCreada;
     });
   }
 

@@ -16,6 +16,9 @@ import { Departamento } from '../../../models/departamento.model';
 import { Ciudad } from '../../../models/ciudad.model';
 import { PaisService } from '../../../services/pais/pais.service';
 import { Pais } from '../../../models/pais.model';
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { SubirArchivoService } from '../../../services/subir-archivo/subir-archivo.service';
 
 @Component({
   selector: 'app-solicitud',
@@ -57,6 +60,7 @@ export class SolicitudComponent implements OnInit {
       public _anteProyectoService: AnteProyectoService,
       public _proyectoService: ProyectoService,
       public _articuloService: ArticuloService,
+      public _subirArchivosService: SubirArchivoService,
       public router: Router) {
 
     this.usuario = this._usuarioService.usuario;
@@ -357,7 +361,7 @@ cargarDepartamentosSinlimiteFiltrado() {
           });
         });
       });
-
+      console.log("id del usuario para solicitud : "+this.usuario._id);
       this._solicitudService.cargarSolicitudEstudiante((this.usuario._id)).subscribe((solicitudRecienCreada: Solicitud) => {
         const notificacionEmisor = new Notificacion(
           this.usuario._id,
@@ -417,6 +421,9 @@ cargarDepartamentosSinlimiteFiltrado() {
         }
         this._notificacionService.crearNotificacion(notificacionEmisor).subscribe(resp => {console.log(resp); });
         this._notificacionService.crearNotificacion(notificacionReceptor).subscribe(resp => {console.log(resp); });
+
+        // Crea el pdf
+        this.htmltoPDF(solicitudRecienCreada._id);
       });
       this.router.navigate(['/search']);
     }
@@ -428,6 +435,32 @@ cargarDepartamentosSinlimiteFiltrado() {
     this._usuarioService.cargarUsuarioPorId(id)
     .subscribe( usuario => this.usuario = usuario);
 
+  }
+
+  htmltoPDF(idSolicitud:string)
+  {
+      // parentdiv is the html element which has to be converted to PDF
+      html2canvas(document.querySelector("#parentdiv")).then(canvas => {
+  
+        var pdf = new jsPDF('p', 'pt', [canvas.width, canvas.height]);
+  
+        var imgData  = canvas.toDataURL("image/jpeg", 1.0);
+        pdf.addImage(imgData,0,0,canvas.width, canvas.height);
+        //pdf.output('blob');
+
+        this._subirArchivosService.subirArcivo(pdf.output('blob'), 'Solicitud', idSolicitud).then((resp: any)=>{
+
+          swal.fire('Archivo subido con exito.', idSolicitud, 'success');
+    
+    
+        }).catch(resp =>{
+            console.log(resp);
+        });;
+    
+        //pdf.save('converteddoc.pdf');
+  
+    });
+  
   }
 
 
