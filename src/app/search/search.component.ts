@@ -8,18 +8,17 @@ import { Usuario } from '../models/usuario.model';
   styleUrls: []
 })
 export class SearchComponent implements OnInit {
-  usuario:Usuario;
-  constructor(public _usuarioService:UsuarioService) { 
+  usuario: Usuario;
+  totalResultadosBusqueda = 0;
+  constructor(public _usuarioService:UsuarioService) {
 
-    this.usuario=this._usuarioService.usuario;
+    this.usuario = this._usuarioService.usuario;
   }
 
   ngOnInit() {
   }
 
   sesionLogo(){
-  
     return this._usuarioService.estaLogueado();
-    
   }
 }
