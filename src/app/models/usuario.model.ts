@@ -17,7 +17,6 @@ export class Usuario{
         public facultad:string,
         public programaUniversitario:string,
         public estado?:Boolean,
-        public role?:string,
         public _id?: string
     ){
 

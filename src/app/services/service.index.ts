@@ -22,3 +22,4 @@ export { SidebarService } from './shared/sidebar.service';
 export { PaisService } from './pais/pais.service';
 export { DepartamentoService } from './departamento/departamento.service';
 export { CiudadService } from './ciudad/ciudad.service';
+export { DirectorProyectoGuard } from './guards/director-proyecto.guard';

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree,CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UsuarioService } from '../usuario/usuario.service';
 
 
+
 @Injectable()
-export class JefeProgramaGuard implements CanActivate {
+export class DirectorProyectoGuard implements  CanActivate{
 
   constructor(
 
@@ -17,7 +18,7 @@ export class JefeProgramaGuard implements CanActivate {
 
 
   canActivate(){
-    if (this._usuarioService.usuario.tipoUsuario==='Jefe de programa') {
+    if (this._usuarioService.usuario.tipoUsuario==='Director de proyecto') {
       return true;  
     } else {
       //console.log('BLOQUEADERO POR EL GUARD');

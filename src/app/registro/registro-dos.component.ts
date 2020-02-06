@@ -62,7 +62,7 @@ export class RegistroDosComponent implements OnInit {
       codigoEstudiantil = this.forma.value.codigoUniversitario;
     }
     // tslint:disable-next-line: max-line-length
-    const usuario = new Usuario(null, null, null, null, null, this.forma.value.tipoUsuario, this.forma.value.tipoID, this.forma.value.numDocumento, null, codigoEstudiantil, null, null, null, null, null, null);
+    const usuario = new Usuario(null, null, null, null, null, this.forma.value.tipoUsuario, this.forma.value.tipoID, this.forma.value.numDocumento, null, codigoEstudiantil, null, null, null, null, null);
 
     this.router.navigate(['/registro-tres']);
     this._usuarioService.paginadoRegistro2a3(usuario);

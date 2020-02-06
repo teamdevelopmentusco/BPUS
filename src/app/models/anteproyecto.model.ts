@@ -11,6 +11,7 @@ export class AnteProyecto {
     constructor(
         public rutaAnteproyecto: string,
         public estado?: string,
+        public motivoRechazo?:string,
         public _id?: string
     ) {
     }

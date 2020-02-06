@@ -11,6 +11,7 @@ export class Articulo {
     constructor(
         public rutaArticulo: string,
         public estado?: string,
+        public motivoRechazo?:string,
         public _id?: string
     ) {
     }

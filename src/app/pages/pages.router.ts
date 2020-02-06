@@ -30,6 +30,13 @@ import { PaisComponent } from './admin/pais.component';
 import { DepartamentoComponent } from './admin/departamento.component';
 import { CiudadComponent } from './admin/ciudad.component';
 
+//----- Director proyectos
+import { DirectorProyectoComponent } from './director-proyecto/director-proyecto.component';
+import { BandejaPeticionesComponent } from './director-proyecto/bandeja-peticiones/bandeja-peticiones.component';
+import { DirectorProyectoGuard } from '../services/guards/director-proyecto.guard';
+import { SeguimientoArticulosComponent } from './director-proyecto/seguimiento-articulos/seguimiento-articulos.component';
+import { SeguimientoProyectosComponent } from './director-proyecto/seguimiento-proyectos/seguimiento-proyectos.component';
+
 
 const pagesRouter: Routes = [
     {
@@ -74,6 +81,18 @@ const pagesRouter: Routes = [
         children: [
           { path: 'bandejaProyectos', component: BandejaProyectosComponent}, // Agregar paginas.
           { path: '' , redirectTo: 'bandejaProyectos', pathMatch: 'full'}
+        ]
+      },
+      {
+        path: 'directorProyecto' ,
+        component: DirectorProyectoComponent,
+       canActivate:[DirectorProyectoGuard,VerificaTokenGuard],
+       
+        children: [
+          { path: 'bandeja-peticiones', component: BandejaPeticionesComponent},
+          { path: 'seguimiento-proyectos', component: SeguimientoProyectosComponent}, // Agregar paginas.
+          { path: 'seguimiento-articulos', component: SeguimientoArticulosComponent},
+          { path: '' , redirectTo: 'bandeja-peticiones', pathMatch: 'full'}
         ]
       },
     { path: 'docente' , component: DocenteComponent},

@@ -44,6 +44,10 @@ import { JefeProgramaComponent } from './jefe-programa/jefe-programa.component';
 import { PaisComponent } from './admin/pais.component';
 import { CiudadComponent } from './admin/ciudad.component';
 import { DepartamentoComponent } from './admin/departamento.component';
+import { DirectorProyectoComponent } from './director-proyecto/director-proyecto.component';
+import { BandejaPeticionesComponent } from './director-proyecto/bandeja-peticiones/bandeja-peticiones.component';
+import { SeguimientoProyectosComponent } from './director-proyecto/seguimiento-proyectos/seguimiento-proyectos.component';
+import { SeguimientoArticulosComponent } from './director-proyecto/seguimiento-articulos/seguimiento-articulos.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +77,11 @@ import { DepartamentoComponent } from './admin/departamento.component';
     JefeProgramaComponent,
     PaisComponent,
     CiudadComponent,
-    DepartamentoComponent
+    DepartamentoComponent,
+    DirectorProyectoComponent,
+    BandejaPeticionesComponent,
+    SeguimientoProyectosComponent,
+    SeguimientoArticulosComponent
 
   ],
   entryComponents: [

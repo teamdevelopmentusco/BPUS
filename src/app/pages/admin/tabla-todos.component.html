@@ -36,9 +36,6 @@
                     <th scope="col" style="width: 10%" class="align-middle">
                         Sede
                     </th>
-                    <th scope="col" style="width: 10%" class="align-middle">
-                        Rol
-                    </th>
                     <th scope="col" style="width: 10%" class="align-middle colorRojo">
                         Opciones
                     </th>
@@ -58,7 +55,6 @@
                     <td>{{ usuario.facultad.nombre}}</td>
                     <td>{{ usuario.programaUniversitario.nombre}}</td>
                     <td>{{ usuario.sedeUniversitaria.nombre}}</td>
-                    <td>{{ usuario.role}}</td>
                     <td>
                         <div class="row">
                             <div class="col text-left" style="width: 50%;padding: 2%">
@@ -244,12 +240,6 @@
                         <input type="radio" class="custom-control-input" id="generoRadioF" formControlName="genero" name="genero" value="Femenino">
                         <label class="custom-control-label" for="generoRadioF">Femenino</label>
                     </div>
-                    <h6>ROLE</h6>
-                    <select formControlName="role" name="cars" class="custom-select uscoInputs mb-3">
-                         
-                            <option selected value="ADMIN_ROLE">ADMIN_ROLE</option>
-                            <option  value="USER_ROLE">USER_ROLE</option>
-                        </select>
 
                 </div>
             </div>

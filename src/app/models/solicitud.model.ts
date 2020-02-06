@@ -30,6 +30,7 @@ export class Solicitud {
         public anteproyecto?: string,
         public proyecto?: string,
         public articulo?: string,
+        public motivoRechazo?:string,
         public _id?: string
     ) {
     }

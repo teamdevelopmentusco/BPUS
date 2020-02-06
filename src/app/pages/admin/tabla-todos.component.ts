@@ -190,10 +190,6 @@ export class TablaTodosComponent implements OnInit {
       genero: [
         'Femenino',
         Validators.required
-      ],
-      role: [
-        'ADMIN_ROLE',
-        Validators.required
       ]
     });
     console.log(this.forma);
@@ -253,9 +249,6 @@ export class TablaTodosComponent implements OnInit {
 
   get genero() {
     return this.forma.get('genero');
-  }
-  get role() {
-    return this.forma.get('role');
   }
 
   somethingChanged() {
@@ -388,8 +381,7 @@ this._usuarioService.cargarUsuarios(this.desde)
       this.forma.value.codigoUniversitario,
       this.forma.value.sedeUniversitaria,
       this.forma.value.facultad,
-      this.forma.value.programaUniversitario,true,
-      this.forma.value.role
+      this.forma.value.programaUniversitario,true
       );
 
     this._usuarioService.crearUsuario(usuario).subscribe(resp=> {
@@ -450,11 +442,6 @@ this._usuarioService.cargarUsuarios(this.desde)
       '<select id="facultad" name="facultad" class="custom-select uscoInputs mb-3">' +
       '<option selected value="Ingeniería">Ingeniería</option>' +
       '</select>' +
-      '<label for="rol" class="font-weight-bold">ROL</label>' +
-      '<select id="rol" name="rol" class="custom-select uscoInputs mb-3">' +
-      '<option selected value="USER_ROLE">Usuario</option>' +
-      '<option value="ADMIN_ROLE">Administrador</option>' +
-      '</select>' +
       '</div>' +
       '<div class="col-sm-6">' +
       '<div class="form-group">' +
@@ -491,8 +478,7 @@ this._usuarioService.cargarUsuarios(this.desde)
         usuario.sedeUniversitaria = (document.getElementById('sedeUniversitaria') as HTMLInputElement).value;
         usuario.facultad = (document.getElementById('facultad') as HTMLInputElement).value;
         usuario.programaUniversitario = (document.getElementById('programaUniversitario') as HTMLInputElement).value;
-        usuario.role = (document.getElementById('rol') as HTMLInputElement).value;
-
+       
         this._usuarioService.actualizarUsuario(usuario).subscribe(resp => {
         console.log(resp);
         this.cargarUsuarios();

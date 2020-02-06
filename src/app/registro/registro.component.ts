@@ -64,7 +64,7 @@ export class RegistroComponent implements OnInit {
       return;
     }
    */
-    let usuario = new Usuario(null,null, this.forma.value.password, this.forma.value.email, null,null, null, null, null, null, null, null, null, null, null, null);
+    let usuario = new Usuario(null,null, this.forma.value.password, this.forma.value.email, null,null, null, null, null, null, null, null, null, null, null);
     
     this.router.navigate(['/registro-dos']);
     this._usuarioService.paginadoRegistro1a2(usuario);
