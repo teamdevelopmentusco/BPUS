@@ -18,7 +18,7 @@ export class BandejaProyectosComponent implements OnInit {
   usuario: Usuario;
   constructor( public _SolicitudService: SolicitudService,
                public _usuarioService: UsuarioService,
-               public _notificacionService: NotificacionService,) {
+               public _notificacionService: NotificacionService) {
     this.usuario = this._usuarioService.usuario;
   }
 

@@ -1,3 +1,36 @@
-<p>
-  seguimiento-proyectos works!
-</p>
+<div *ngIf="_SolicitudService.totalSolicitudes != 0; else noSolicitudesRegistradas" class="table-responsive-md animated fadeIn fast">
+    <h2 class="my-5">Seguimiento de proyectos</h2>
+    <table class="table table-hover">
+        <thead class="text-white" style="background-color: #8F141B;">
+            <tr>
+                <th>Título</th>
+                <th>Fecha</th>
+                <th>Estudiante(s)</th>
+                <th>Archivo PDF</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let solicitud of solicitudes;  let i = index;">
+                <td>{{ solicitud.tituloProyecto}}</td>
+                <td>{{ solicitud.fechaSolicitud }}</td>
+                <td>
+                    <p>{{ solicitud.estudiante1.nombres +" "+solicitud.estudiante1.apellidos}}</p>
+                    <p *ngIf=" solicitud.estudiante2 !== null ">{{ solicitud.estudiante2.nombres +" "+solicitud.estudiante2.apellidos}}</p>
+                    <p *ngIf=" solicitud.estudiante3 !== null ">{{ solicitud.estudiante3.nombres +" "+solicitud.estudiante3.apellidos}}</p>
+                </td>
+                <td>solicitud.pdf</td>
+                <td>
+                    <button (click)="aceptarSolicitud(solicitud)" class="btn btn-primary mr-1">ACEPTAR</button>
+                    <button (click)="rechazarSolicitud(solicitud)" class="btn btn-danger">RECHAZAR</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+<ng-template #noSolicitudesRegistradas>
+    <h2 class="m-5">No hay proyectos pendientes hasta el momento...</h2>
+</ng-template>
