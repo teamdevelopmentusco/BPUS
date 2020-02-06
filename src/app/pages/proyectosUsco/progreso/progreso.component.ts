@@ -12,8 +12,11 @@ import { UsuarioService, SolicitudService } from '../../../services/service.inde
 export class ProgresoComponent implements OnInit {
   today = new Date();
   usuario: Usuario;
-  solicitudEstudiante: Solicitud;
-  // estadoSolicitud = 'Por subir';
+  solicitudEstudiante = new Solicitud('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+  solicitudEstado = 'Por subir';
+  anteproyectoEstado = 'Bloqueado';
+  proyectoEstado = 'Bloqueado';
+  articuloEstado = 'Bloqueado';
   jstoday = '';
   // tslint:disable-next-line: variable-name
   constructor(public _usuarioService: UsuarioService, public _solicitudService: SolicitudService, ) {
@@ -30,6 +33,7 @@ export class ProgresoComponent implements OnInit {
   cargarSolicitud() {
     this._solicitudService.cargarSolicitudEstudiante((this.usuario._id)).subscribe((solicitud: Solicitud) => {
       this.solicitudEstudiante = solicitud;
+      this.solicitudEstado = solicitud.estadoSolicitud;
       console.log(this.solicitudEstudiante.estadoSolicitud);
     });
   }

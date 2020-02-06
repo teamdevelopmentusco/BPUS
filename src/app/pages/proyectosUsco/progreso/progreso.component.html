@@ -39,9 +39,10 @@
                             </div>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li *ngIf="solicitudEstudiante.estadoSolicitud === 'Por subir'" class="list-group-item bg-info text-white">{{solicitudEstudiante.estadoSolicitud}}</li>
-                            <li *ngIf="solicitudEstudiante.estadoSolicitud === 'Rechazado'" class="list-group-item bg-danger text-white">{{solicitudEstudiante.estadoSolicitud}}</li>
-                            <li *ngIf="solicitudEstudiante.estadoSolicitud === 'Aprobado'" class="list-group-item bg-success text-white">{{solicitudEstudiante.estadoSolicitud}}</li>
+                            <li *ngIf="solicitudEstado === 'Por subir'" class="list-group-item bg-info text-white">{{solicitudEstado}}</li>
+                            <li *ngIf="solicitudEstado === 'Rechazado'" class="list-group-item bg-danger text-white">{{solicitudEstado}}</li>
+                            <li *ngIf="solicitudEstado === 'Aprobado'" class="list-group-item bg-success text-white">{{solicitudEstado}}</li>
+                            <li *ngIf="solicitudEstado === 'Subido'" class="list-group-item bg-secondary text-white">{{solicitudEstado}}</li>
                         </ul>
                     </div>
                 </div>
@@ -54,7 +55,7 @@
                     <div class="card">
                         <div class="card-header" id="headingTwo" style="background-color: #8F141B;color:#DFD4A6;">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: #DFD4A6" [disabled]="solicitudEstudiante.estadoSolicitud !== 'Aprobado'">
+                                <button class="btn btn-link" type="button" [disabled]="solicitudEstado !== 'Aprobado'" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: #DFD4A6">
                                   ANTEPROYECTO
                               </button>
                             </h2>
@@ -84,7 +85,11 @@
                             </div>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" style="background-color:#00A4B7;color: ghostwhite">Aprobado</li>
+                            <li *ngIf="anteproyectoEstado === 'Bloqueado'" class="list-group-item bg-secondary text-white">{{anteproyectoEstado}}</li>
+                            <li *ngIf="anteproyectoEstado === 'Por subir'" class="list-group-item bg-info text-white">{{anteproyectoEstado}}</li>
+                            <li *ngIf="anteproyectoEstado === 'Rechazado'" class="list-group-item bg-danger text-white">{{anteproyectoEstado}}</li>
+                            <li *ngIf="anteproyectoEstado === 'Aprobado'" class="list-group-item bg-success text-white">{{anteproyectoEstado}}</li>
+                            <li *ngIf="anteproyectoEstado === 'Subido'" class="list-group-item bg-primary text-white">{{anteproyectoEstado}}</li>
                         </ul>
                     </div>
                 </div>
@@ -97,7 +102,7 @@
                     <div class="card">
                         <div class="card-header" id="headingThree" style="background-color: #8F141B;">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="color: #DFD4A6">
+                                <button class="btn btn-link" type="button" [disabled]="solicitudEstado !== 'Aprobado'" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="color: #DFD4A6">
                                 PROYECTO
                               </button>
                             </h2>
@@ -127,7 +132,11 @@
                             </div>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" style="color: ghostwhite;background-color: rgb(216, 25, 0)">Rechazado</li>
+                            <li *ngIf="proyectoEstado === 'Bloqueado'" class="list-group-item bg-secondary text-white">{{proyectoEstado}}</li>
+                            <li *ngIf="proyectoEstado === 'Por subir'" class="list-group-item bg-info text-white">{{proyectoEstado}}</li>
+                            <li *ngIf="proyectoEstado === 'Rechazado'" class="list-group-item bg-danger text-white">{{proyectoEstado}}</li>
+                            <li *ngIf="proyectoEstado === 'Aprobado'" class="list-group-item bg-success text-white">{{proyectoEstado}}</li>
+                            <li *ngIf="proyectoEstado === 'Subido'" class="list-group-item bg-primary text-white">{{proyectoEstado}}</li>
                         </ul>
                     </div>
                 </div>
@@ -139,7 +148,7 @@
                     <div class="card">
                         <div class="card-header" id="headingFour" style="background-color: #8F141B;">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="color: #DFD4A6">
+                                <button class="btn btn-link" type="button" [disabled]="solicitudEstado !== 'Aprobado'" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="color: #DFD4A6">
                                 ARTÍCULO
                               </button>
                             </h2>
@@ -169,7 +178,11 @@
                             </div>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" style="background-color:rgb(0, 189, 79);color: ghostwhite">Pendiente</li>
+                            <li *ngIf="articuloEstado === 'Bloqueado'" class="list-group-item bg-secondary text-white">{{articuloEstado}}</li>
+                            <li *ngIf="articuloEstado === 'Por subir'" class="list-group-item bg-info text-white">{{articuloEstado}}</li>
+                            <li *ngIf="articuloEstado === 'Rechazado'" class="list-group-item bg-danger text-white">{{articuloEstado}}</li>
+                            <li *ngIf="articuloEstado === 'Aprobado'" class="list-group-item bg-success text-white">{{articuloEstado}}</li>
+                            <li *ngIf="articuloEstado === 'Subido'" class="list-group-item bg-primary text-white">{{articuloEstado}}</li>
                         </ul>
                     </div>
                 </div>
