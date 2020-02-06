@@ -48,6 +48,7 @@ import { DirectorProyectoComponent } from './director-proyecto/director-proyecto
 import { BandejaPeticionesComponent } from './director-proyecto/bandeja-peticiones/bandeja-peticiones.component';
 import { SeguimientoProyectosComponent } from './director-proyecto/seguimiento-proyectos/seguimiento-proyectos.component';
 import { SeguimientoArticulosComponent } from './director-proyecto/seguimiento-articulos/seguimiento-articulos.component';
+import { VisualizadorArchivoComponent } from './visualizador-archivo/visualizador-archivo.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { SeguimientoArticulosComponent } from './director-proyecto/seguimiento-a
     DirectorProyectoComponent,
     BandejaPeticionesComponent,
     SeguimientoProyectosComponent,
-    SeguimientoArticulosComponent
+    SeguimientoArticulosComponent,
+    VisualizadorArchivoComponent
 
   ],
   entryComponents: [

@@ -36,6 +36,7 @@ import { BandejaPeticionesComponent } from './director-proyecto/bandeja-peticion
 import { DirectorProyectoGuard } from '../services/guards/director-proyecto.guard';
 import { SeguimientoArticulosComponent } from './director-proyecto/seguimiento-articulos/seguimiento-articulos.component';
 import { SeguimientoProyectosComponent } from './director-proyecto/seguimiento-proyectos/seguimiento-proyectos.component';
+import { VisualizadorArchivoComponent } from './visualizador-archivo/visualizador-archivo.component';
 
 
 const pagesRouter: Routes = [
@@ -57,7 +58,7 @@ const pagesRouter: Routes = [
 
      { path: 'semillero' , component: SemilleroUscoComponent},
      { path: 'pasantia' , component: PasantiaUscoComponent},
-
+     { path: 'visualizador' , component: VisualizadorArchivoComponent}
     {
         path: 'admin' ,
         component: AdminComponent,
