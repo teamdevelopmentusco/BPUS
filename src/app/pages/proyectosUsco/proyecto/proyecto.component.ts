@@ -23,7 +23,7 @@ export class ProyectoComponent implements OnInit {
   }
 
 
-  onFilesAdded(file:File ) {
+  onFilesAdded(file:File) {
 
 
     if (!file) {
@@ -67,9 +67,9 @@ export class ProyectoComponent implements OnInit {
   subirArchivo(){
 
 
-    this._subirArchivosService.subirArcivo(this.file,'proyectos',this.usuarioId).then((resp:any)=>{
+    this._subirArchivosService.subirArcivo(this.file, 'Proyecto', this.usuarioId).then((resp: any)=>{
 
-      swal.fire('Archivo subido con exito.',this.usuarioId,'success');
+      swal.fire('Archivo subido con exito.', this.usuarioId, 'success');
 
 
     }).catch(resp =>{
