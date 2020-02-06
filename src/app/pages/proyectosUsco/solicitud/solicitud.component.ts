@@ -342,7 +342,7 @@ cargarDepartamentosSinlimiteFiltrado() {
       });
 
       this._solicitudService.cargarSolicitudEstudiante((this.usuario._id)).subscribe((solicitudRecienCreada: Solicitud) => {
-        const notificacion = new Notificacion(
+        const notificacionEmisor = new Notificacion(
           this.usuario._id,
           '5dd50a0c6159e2198c4e39ee',
           true,
@@ -350,7 +350,56 @@ cargarDepartamentosSinlimiteFiltrado() {
           'Solicita la aprobación de',
           solicitudRecienCreada._id
           );
-        this._notificacionService.crearNotificacion(notificacion).subscribe(resp => {console.log(resp); });
+        const notificacionReceptor = new Notificacion(
+          this.usuario._id,
+          '5dd50a0c6159e2198c4e39ee',
+          false,
+          'Envió una solicitud a',
+          'Solicita la aprobación de',
+          solicitudRecienCreada._id
+          );
+        if (this.estudiante2id !== '' ) {
+          const notificacionToestudiante2Emisor = new Notificacion(
+            this.usuario._id,
+            this.estudiante2id,
+            true,
+            'Envió una solicitud a',
+            'Solicita la aprobación de',
+            solicitudRecienCreada._id
+            );
+          const notificacionToestudiante2Receptor = new Notificacion(
+            this.usuario._id,
+            this.estudiante2id,
+            false,
+            'Envió una solicitud a',
+            'Solicita la aprobación de',
+            solicitudRecienCreada._id
+            );
+          this._notificacionService.crearNotificacion(notificacionToestudiante2Emisor).subscribe(resp => {console.log(resp); });
+          this._notificacionService.crearNotificacion(notificacionToestudiante2Receptor).subscribe(resp => {console.log(resp); });
+        }
+        if (this.estudiante3id !== '' ) {
+          const notificacionToestudiante3Emisor = new Notificacion(
+            this.usuario._id,
+            this.estudiante3id,
+            true,
+            'Envió una solicitud a',
+            'Solicita la aprobación de',
+            solicitudRecienCreada._id
+            );
+          const notificacionToestudiante3Receptor = new Notificacion(
+            this.usuario._id,
+            this.estudiante3id,
+            false,
+            'Envió una solicitud a',
+            'Solicita la aprobación de',
+            solicitudRecienCreada._id
+            );
+          this._notificacionService.crearNotificacion(notificacionToestudiante3Emisor).subscribe(resp => {console.log(resp); });
+          this._notificacionService.crearNotificacion(notificacionToestudiante3Receptor).subscribe(resp => {console.log(resp); });
+        }
+        this._notificacionService.crearNotificacion(notificacionEmisor).subscribe(resp => {console.log(resp); });
+        this._notificacionService.crearNotificacion(notificacionReceptor).subscribe(resp => {console.log(resp); });
       });
       this.router.navigate(['/search']);
     }
@@ -358,7 +407,7 @@ cargarDepartamentosSinlimiteFiltrado() {
   }
 
 
-  cargarUsuarioPorId(id:string){
+  cargarUsuarioPorId(id: string) {
     this._usuarioService.cargarUsuarioPorId(id)
     .subscribe( usuario => this.usuario = usuario);
 

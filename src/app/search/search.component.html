@@ -11,8 +11,38 @@
 
 
 <div class="container animated fadeIn fast p-5" style="margin-top: 5px;">
-    <h1 class="uscoSearchTitulo txtcenter p-5">BUSQUE UN PROYECTO DE INTERÉS</h1>
+    <h1 class="uscoSearchTitulo txtcenter px-5 pt-3">BUSQUE UN PROYECTO DE INTERÉS</h1>
     <input class="uscoInputSearch m-3" type="text" placeholder="Digite una palabra clave">
-
-    <img src="../assets/icoPdf.png" class="centro" alt="..." style="width: 80px;margin-top: 10px;">
+    <div *ngIf="totalResultadosBusqueda !== 0">
+        <table class="table shadow mt-3">
+            <thead class="text-white" style="background-color: #8F141B;">
+                <tr>
+                    <th>Resultados busqueda</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <div class="row">
+                        <div class="col-6 px-5 py-3">
+                            <h6 class="d-inline">Titulo: </h6>
+                            <h6 class="d-inline font-weight-normal">Titulo del proyecto</h6>
+                            <h6>Investigadores: </h6>
+                            <div class="ml-5">
+                                <h6 class="font-weight-normal">James Paul McCartney </h6>
+                                <h6 class="font-weight-normal">Miguel de Cervantes Saavedra</h6>
+                                <h6 class="font-weight-normal">Leonardo di ser Piero da Vinci</h6>
+                            </div>
+                            <h6>Palabras claves:</h6>
+                            <p>PalabraClave1 PalabraClave2 PalabraClave3 PalabraClave4 PalabraClave5</p>
+                        </div>
+                        <div class="col-6 text-center py-5">
+                            <a>
+                                <img src="../assets/icoPdf.png" alt="..." style="width: 80px;margin-top: 10px;">
+                            </a>
+                        </div>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
