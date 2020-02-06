@@ -34,6 +34,9 @@ export class ProgresoComponent implements OnInit {
     this._solicitudService.cargarSolicitudEstudiante((this.usuario._id)).subscribe((solicitud: Solicitud) => {
       this.solicitudEstudiante = solicitud;
       this.solicitudEstado = solicitud.estadoSolicitud;
+      if (this.solicitudEstado === 'Aprobado') {
+        this.anteproyectoEstado = 'Por subir';
+      }
       console.log(this.solicitudEstudiante.estadoSolicitud);
     });
   }
