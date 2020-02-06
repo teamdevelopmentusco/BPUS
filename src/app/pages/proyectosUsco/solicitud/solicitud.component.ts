@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {formatDate } from '@angular/common';
 import { Usuario } from '../../../models/usuario.model';
-import { UsuarioService, NotificacionService, SolicitudService } from '../../../services/service.index';
+import { UsuarioService, NotificacionService, SolicitudService, AnteProyectoService, ProyectoService, ArticuloService } from '../../../services/service.index';
 import swal from 'sweetalert2';
 import { Solicitud } from 'src/app/models/solicitud.model';
+import { AnteProyecto } from '../../../models/anteproyecto.model';
+import { Proyecto } from '../../../models/proyecto.model';
+import { Articulo } from '../../../models/articulo.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Notificacion } from 'src/app/models/notificacion.model';
@@ -13,8 +16,6 @@ import { Departamento } from '../../../models/departamento.model';
 import { Ciudad } from '../../../models/ciudad.model';
 import { PaisService } from '../../../services/pais/pais.service';
 import { Pais } from '../../../models/pais.model';
-
-
 
 @Component({
   selector: 'app-solicitud',
@@ -41,6 +42,9 @@ export class SolicitudComponent implements OnInit {
   notificacion: Notificacion = new Notificacion('', '', null, '', '');
   today = new Date();
   jstoday = '';
+  anteproyectoid = '';
+  proyectoid = '';
+  articuloid = '';
   solicitudForm: any;
   constructor(
       public _CiudadService: CiudadService,
@@ -49,7 +53,11 @@ export class SolicitudComponent implements OnInit {
       private formBuilder: FormBuilder,
       public _usuarioService: UsuarioService,
       public _notificacionService: NotificacionService,
-      public _solicitudService: SolicitudService,  public router: Router) {
+      public _solicitudService: SolicitudService,
+      public _anteProyectoService: AnteProyectoService,
+      public _proyectoService: ProyectoService,
+      public _articuloService: ArticuloService,
+      public router: Router) {
 
     this.usuario = this._usuarioService.usuario;
     this.jstoday = formatDate(this.today, 'dd/MM/yyyy', 'en-US', '-0500');
@@ -281,11 +289,6 @@ cargarDepartamentosSinlimiteFiltrado() {
 
   notificar(forma: FormGroup) {
 
-    console.log('id2: ' + this.estudiante2id);
-    console.log('estudiante2: ' + this.estudiante2);
-    console.log('id3: ' + this.estudiante3id);
-    console.log('estudiante3: ' + this.estudiante3);
-
     swal.fire({
       title: '¿Está seguro que desea enviar la solicitud?',
       type: 'question',
@@ -313,32 +316,46 @@ cargarDepartamentosSinlimiteFiltrado() {
         firmaEstudiante3 = 'Pendiente';
       }
 
-      const solicitud = new Solicitud(
-        this.jstoday,
-        forma.value.titulo,
-        forma.value.lineaInvestigacion,
-        forma.value.pais,
-        forma.value.departamento,
-        forma.value.ciudad,
-        forma.value.duracionProyectoMeses,
-        '5dd50a0c6159e2198c4e39ee',  // Jefe de programa
-        forma.value.palabrasClaves,
-        forma.value.resumenProyecto,
-        this.usuario._id,
-        this.estudiante2id,
-        this.estudiante3id,
-        firmaEstudiante2,
-        firmaEstudiante3,
-        null,
-        'rutapdf', // ***Arrglar para que aqui se coloque la ruta en que se guardo el pdf de la solicitud***
-        'Subido', // estadoSolicitud
-        null,
-        null,
-        null
-        );
+      const anteproyecto = new AnteProyecto('xxx', 'Bloqueado');
+      const proyecto = new Proyecto('lol', 'Bloqueado');
+      const articulo = new Articulo('help', 'Bloqueado');
 
-      this._solicitudService.crearSolicitud(solicitud).subscribe(resp => {
-        console.log(resp);
+      this._anteProyectoService.crearAnteProyecto(anteproyecto).subscribe((anteproyectoRecienCreado: AnteProyecto) => {
+        this.anteproyectoid = anteproyectoRecienCreado._id;
+        // console.log(anteproyectoRecienCreado._id);
+        // console.log(this.anteproyectoid);
+        this._proyectoService.crearProyecto(proyecto).subscribe((proyectoRecienCreado: Proyecto) => {
+          this.proyectoid = proyectoRecienCreado._id;
+          this._articuloService.crearArticulo(articulo).subscribe((articuloRecienCreado: Proyecto) => {
+            this.articuloid = articuloRecienCreado._id;
+            const solicitud = new Solicitud(
+              this.jstoday,
+              forma.value.titulo,
+              forma.value.lineaInvestigacion,
+              forma.value.pais,
+              forma.value.departamento,
+              forma.value.ciudad,
+              forma.value.duracionProyectoMeses,
+              '5dd50a0c6159e2198c4e39ee',  // Jefe de programa
+              forma.value.palabrasClaves,
+              forma.value.resumenProyecto,
+              this.usuario._id,
+              this.estudiante2id,
+              this.estudiante3id,
+              firmaEstudiante2,
+              firmaEstudiante3,
+              null,
+              'rutapdf', // ***Arrglar para que aqui se coloque la ruta en que se guardo el pdf de la solicitud***
+              'Subido', // estadoSolicitud
+              this.anteproyectoid,
+              this.proyectoid,
+              this.articuloid
+              );
+            this._solicitudService.crearSolicitud(solicitud).subscribe(resp => {
+              console.log(resp);
+            });
+          });
+        });
       });
 
       this._solicitudService.cargarSolicitudEstudiante((this.usuario._id)).subscribe((solicitudRecienCreada: Solicitud) => {

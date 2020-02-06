@@ -9,7 +9,7 @@
 export class Proyecto {
 
     constructor(
-        public rutaArticulo: string,
+        public rutaProyecto: string,
         public estado?: string,
         public motivoRechazo?:string,
         public _id?: string
