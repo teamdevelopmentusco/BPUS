@@ -64,10 +64,10 @@ export class SolicitudService {
   }
 
   cargarSolicitudEstudiante(id: string ) {
-    const url = URL_SERVICIOS + '/solicitud/' + '/solicitudEstudiantes/' + id;
+    const url = URL_SERVICIOS + '/solicitud' + '/solicitudEstudiantes/' + id;
     return this.http.get(url) .map((resp: any) => {
-      this.totalSolicitudes = resp.total;
-      return resp.solicitudRecienCreada;
+      // this.totalSolicitudes = resp.total;
+      return resp.solicitud;
     });
   }
 

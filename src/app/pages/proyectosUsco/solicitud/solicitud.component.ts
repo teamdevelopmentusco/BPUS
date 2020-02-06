@@ -306,28 +306,24 @@ cargarDepartamentosSinlimiteFiltrado() {
 
     if (opcionNotificacion.value) {
 
-      let firmaEstudiante2 = 'Sin asignar';
-      let firmaEstudiante3 = 'Sin asignar';
-
-      if (this.estudiante2id === '' ) {
-        this.estudiante2id = null;
-      } else {
-        firmaEstudiante2 = 'Pendiente';
-      }
-      if (this.estudiante3id === '') {
-        this.estudiante3id = null;
-      } else {
-        firmaEstudiante3 = 'Pendiente';
-      }
-
       const anteproyecto = new AnteProyecto('xxx', 'Bloqueado');
       const proyecto = new Proyecto('lol', 'Bloqueado');
       const articulo = new Articulo('help', 'Bloqueado');
 
       this._anteProyectoService.crearAnteProyecto(anteproyecto).subscribe((anteproyectoRecienCreado: AnteProyecto) => {
         this.anteproyectoid = anteproyectoRecienCreado._id;
-        // console.log(anteproyectoRecienCreado._id);
-        // console.log(this.anteproyectoid);
+        let firmaEstudiante2 = 'Sin asignar';
+        let firmaEstudiante3 = 'Sin asignar';
+        if (this.estudiante2id === '' ) {
+          this.estudiante2id = null;
+        } else {
+          firmaEstudiante2 = 'Pendiente';
+        }
+        if (this.estudiante3id === '') {
+          this.estudiante3id = null;
+        } else {
+          firmaEstudiante3 = 'Pendiente';
+        }
         this._proyectoService.crearProyecto(proyecto).subscribe((proyectoRecienCreado: Proyecto) => {
           this.proyectoid = proyectoRecienCreado._id;
           this._articuloService.crearArticulo(articulo).subscribe((articuloRecienCreado: Proyecto) => {
@@ -355,75 +351,70 @@ cargarDepartamentosSinlimiteFiltrado() {
               this.proyectoid,
               this.articuloid
               );
-            this._solicitudService.crearSolicitud(solicitud).subscribe(resp => {
-              console.log(resp);
+            this._solicitudService.crearSolicitud(solicitud).subscribe((solicitudRecienCreada: Solicitud) => {
+              const notificacionEmisor = new Notificacion(
+                this.usuario._id,
+                '5dd50a0c6159e2198c4e39ee',
+                true,
+                'Envió una solicitud a',
+                'Solicita la aprobación de',
+                solicitudRecienCreada._id
+                );
+              const notificacionReceptor = new Notificacion(
+                this.usuario._id,
+                '5dd50a0c6159e2198c4e39ee',
+                false,
+                'Envió una solicitud a',
+                'Solicita la aprobación de',
+                solicitudRecienCreada._id
+                );
+              if (this.estudiante2id !== '' && this.estudiante2id !== null) {
+                const notificacionToestudiante2Emisor = new Notificacion(
+                  this.usuario._id,
+                  this.estudiante2id,
+                  true,
+                  'Envió una solicitud a',
+                  'Solicita la aprobación de',
+                  solicitudRecienCreada._id
+                  );
+                const notificacionToestudiante2Receptor = new Notificacion(
+                  this.usuario._id,
+                  this.estudiante2id,
+                  false,
+                  'Envió una solicitud a',
+                  'Solicita la aprobación de',
+                  solicitudRecienCreada._id
+                  );
+                this._notificacionService.crearNotificacion(notificacionToestudiante2Emisor).subscribe(resp => {console.log(resp); });
+                this._notificacionService.crearNotificacion(notificacionToestudiante2Receptor).subscribe(resp => {console.log(resp); });
+              }
+              if (this.estudiante3id !== '' &&  this.estudiante3id !== null) {
+                const notificacionToestudiante3Emisor = new Notificacion(
+                  this.usuario._id,
+                  this.estudiante3id,
+                  true,
+                  'Envió una solicitud a',
+                  'Solicita la aprobación de',
+                  solicitudRecienCreada._id
+                  );
+                const notificacionToestudiante3Receptor = new Notificacion(
+                  this.usuario._id,
+                  this.estudiante3id,
+                  false,
+                  'Envió una solicitud a',
+                  'Solicita la aprobación de',
+                  solicitudRecienCreada._id
+                  );
+                this._notificacionService.crearNotificacion(notificacionToestudiante3Emisor).subscribe(resp => {console.log(resp); });
+                this._notificacionService.crearNotificacion(notificacionToestudiante3Receptor).subscribe(resp => {console.log(resp); });
+              }
+              this._notificacionService.crearNotificacion(notificacionEmisor).subscribe(resp => {console.log(resp); });
+              this._notificacionService.crearNotificacion(notificacionReceptor).subscribe(resp => {console.log(resp); });
+              // Crea el pdf
+              this.htmltoPDF(solicitudRecienCreada._id);
             });
           });
         });
-      });
-      console.log("id del usuario para solicitud : "+this.usuario._id);
-      this._solicitudService.cargarSolicitudEstudiante((this.usuario._id)).subscribe((solicitudRecienCreada: Solicitud) => {
-        const notificacionEmisor = new Notificacion(
-          this.usuario._id,
-          '5dd50a0c6159e2198c4e39ee',
-          true,
-          'Envió una solicitud a',
-          'Solicita la aprobación de',
-          solicitudRecienCreada._id
-          );
-        const notificacionReceptor = new Notificacion(
-          this.usuario._id,
-          '5dd50a0c6159e2198c4e39ee',
-          false,
-          'Envió una solicitud a',
-          'Solicita la aprobación de',
-          solicitudRecienCreada._id
-          );
-        if (this.estudiante2id !== '' ) {
-          const notificacionToestudiante2Emisor = new Notificacion(
-            this.usuario._id,
-            this.estudiante2id,
-            true,
-            'Envió una solicitud a',
-            'Solicita la aprobación de',
-            solicitudRecienCreada._id
-            );
-          const notificacionToestudiante2Receptor = new Notificacion(
-            this.usuario._id,
-            this.estudiante2id,
-            false,
-            'Envió una solicitud a',
-            'Solicita la aprobación de',
-            solicitudRecienCreada._id
-            );
-          this._notificacionService.crearNotificacion(notificacionToestudiante2Emisor).subscribe(resp => {console.log(resp); });
-          this._notificacionService.crearNotificacion(notificacionToestudiante2Receptor).subscribe(resp => {console.log(resp); });
-        }
-        if (this.estudiante3id !== '' ) {
-          const notificacionToestudiante3Emisor = new Notificacion(
-            this.usuario._id,
-            this.estudiante3id,
-            true,
-            'Envió una solicitud a',
-            'Solicita la aprobación de',
-            solicitudRecienCreada._id
-            );
-          const notificacionToestudiante3Receptor = new Notificacion(
-            this.usuario._id,
-            this.estudiante3id,
-            false,
-            'Envió una solicitud a',
-            'Solicita la aprobación de',
-            solicitudRecienCreada._id
-            );
-          this._notificacionService.crearNotificacion(notificacionToestudiante3Emisor).subscribe(resp => {console.log(resp); });
-          this._notificacionService.crearNotificacion(notificacionToestudiante3Receptor).subscribe(resp => {console.log(resp); });
-        }
-        this._notificacionService.crearNotificacion(notificacionEmisor).subscribe(resp => {console.log(resp); });
-        this._notificacionService.crearNotificacion(notificacionReceptor).subscribe(resp => {console.log(resp); });
-
-        // Crea el pdf
-        this.htmltoPDF(solicitudRecienCreada._id);
       });
       this.router.navigate(['/search']);
     }
