@@ -32,7 +32,7 @@ export class SolicitudComponent implements OnInit {
   estudiante2id = '';
   estudiante3id = '';
 
-  estudiantePrueba = new Usuario('', '', '', '', '', '', '', '', '', '', '', '', '');
+  // estudiantePrueba = new Usuario('', '', '', '', '', '', '', '', '', '', '', '', '');
   ciudades: Ciudad[] = [];
   departamentos: Departamento[] = [];
   paises: Pais[] = [];
@@ -337,38 +337,24 @@ cargarDepartamentosSinlimiteFiltrado() {
         null
         );
 
-        var notificacion = new Notificacion(
-          this.usuario._id,
-          "5dd50a0c6159e2198c4e39ee",
-          true,
-          "Envió una solicitud a",
-          "Solicita la aprobación de",
-          
-          );
-
-
       this._solicitudService.crearSolicitud(solicitud).subscribe(resp => {
-      console.log(resp);
-      this.cargarSolicitud();
-
-
-// ---------------------------
-      this._notificacionService.crearNotificacion(notificacion).subscribe(resp => {
         console.log(resp);
-        
-        this.router.navigate(['/search']);
-        });
-//---------------------------
-
-
-    
       });
+
+      this._solicitudService.cargarSolicitudEstudiante((this.usuario._id)).subscribe((solicitudRecienCreada: Solicitud) => {
+        const notificacion = new Notificacion(
+          this.usuario._id,
+          '5dd50a0c6159e2198c4e39ee',
+          true,
+          'Envió una solicitud a',
+          'Solicita la aprobación de',
+          solicitudRecienCreada._id
+          );
+        this._notificacionService.crearNotificacion(notificacion).subscribe(resp => {console.log(resp); });
+      });
+      this.router.navigate(['/search']);
     }
-
     });
-
-
-
   }
 
 

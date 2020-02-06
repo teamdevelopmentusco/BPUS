@@ -20,7 +20,7 @@
                 <div class="col-sm-7">
                     <div *ngIf="tipoUsuario.value == 'Estudiante'" class="form-group">
                         <label for="code" class="font-weight-bold">CÓDIGO ESTUDIANTIL</label>
-                        <input formControlName="codigoUniversitario" class="uscoInputs" type="text" name="code" placeholder="Digite su código" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' maxlength="11" required pattern="([0-9]){11}">
+                        <input formControlName="codigoUniversitario" class="uscoInputs" type="text" name="code" placeholder="Digite su código" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' maxlength="11" pattern="([0-9]){2,11}">
                         <h6 *ngIf="codigoUniversitario.invalid && (codigoUniversitario.dirty || codigoUniversitario.touched)" class="mt-2" style="color: red;">
                             <div *ngIf="codigoUniversitario.errors.required">
                                 El código universitario es requerido.

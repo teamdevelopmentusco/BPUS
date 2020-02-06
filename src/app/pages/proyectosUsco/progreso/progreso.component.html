@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="card-header" id="headingOne" style="background-color: #8F141B;color:#DFD4A6;">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #DFD4A6" >
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #DFD4A6">
                                 SOLICITUD
                       </button>
                             </h2>
@@ -28,23 +28,20 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-
-
-                                        <label for="" style="font-size: 12px">Fecha publicado: </label> <br>
-                                        <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
-
-                                        <label for="" style="font-size: 12px">Fecha aprobado</label><br>
-                                        <label for="" style="font-size: 12px">{{jstoday}}</label> <br>
-
-                                        <label for="" style="font-size: 12px">Revisado</label><br>
-                                        <label for="" style="font-size: 12px"> Inserte nombre</label> <br>
-
+                                        <p style="font-size: 12px">Titulo: </p>
+                                        <p style="font-size: 12px">{{solicitudEstudiante.tituloProyecto}}</p>
+                                        <p style="font-size: 12px">Fecha subida: </p>
+                                        <p style="font-size: 12px">{{solicitudEstudiante.fechaSolicitud}}</p>
+                                        <p style="font-size: 12px">Fecha revisión: </p>
+                                        <p style="font-size: 12px">{{solicitudEstudiante.fechaAprovacionSolicitud}}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" style="background-color:#00A4B7;color: ghostwhite">Aprobado</li>
+                            <li *ngIf="solicitudEstudiante.estadoSolicitud === 'Por subir'" class="list-group-item bg-info text-white">{{solicitudEstudiante.estadoSolicitud}}</li>
+                            <li *ngIf="solicitudEstudiante.estadoSolicitud === 'Rechazado'" class="list-group-item bg-danger text-white">{{solicitudEstudiante.estadoSolicitud}}</li>
+                            <li *ngIf="solicitudEstudiante.estadoSolicitud === 'Aprobado'" class="list-group-item bg-success text-white">{{solicitudEstudiante.estadoSolicitud}}</li>
                         </ul>
                     </div>
                 </div>
@@ -57,7 +54,7 @@
                     <div class="card">
                         <div class="card-header" id="headingTwo" style="background-color: #8F141B;color:#DFD4A6;">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: #DFD4A6">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: #DFD4A6" [disabled]="solicitudEstudiante.estadoSolicitud !== 'Aprobado'">
                                   ANTEPROYECTO
                               </button>
                             </h2>

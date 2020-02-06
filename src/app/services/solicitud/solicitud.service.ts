@@ -55,16 +55,16 @@ export class SolicitudService {
     });
   }
  
-  cargarSolicitud(desde: number=0 ) {
-    const url = URL_SERVICIOS + '/solicitud?desde='+desde;
+  cargarSolicitud(desde: number = 0 ) {
+    const url = URL_SERVICIOS + '/solicitud?desde=' + desde;
     return this.http.get(url) .map((resp: any) => {
       this.totalSolicitudes = resp.total;
       return resp.solicitud;
     });
   }
 
-  cargarSolicitudEstudiante(codigoUniversitario: String ) {
-    const url = URL_SERVICIOS + '/solicitud/'+codigoUniversitario;
+  cargarSolicitudEstudiante(id: string ) {
+    const url = URL_SERVICIOS + '/solicitud/' + '/solicitudEstudiantes/' + id;
     return this.http.get(url) .map((resp: any) => {
       this.totalSolicitudes = resp.total;
       return resp.solicitud;

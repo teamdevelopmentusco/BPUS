@@ -14,6 +14,7 @@ export class Notificacion {
         public esEmisor: boolean,
         public tipoNotificacionEmisor: string,
         public tipoNotificacionReceptor: string,
+        public solicitudId?: string,
         public _id?: string
     ) {
     }

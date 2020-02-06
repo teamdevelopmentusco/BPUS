@@ -27,7 +27,7 @@ export class RegistroDosComponent implements OnInit {
         ],
         codigoUniversitario: [
           '',
-          [Validators.required, Validators.pattern("([0-9]){11}")]
+          [Validators.pattern("([0-9]){2,11}")]
         ]
       });
      }
@@ -54,11 +54,16 @@ export class RegistroDosComponent implements OnInit {
   nextRegistro() {
     if (this.forma.invalid) {
 
-      console.log("Error de forma");
+      console.log('Error de forma');
       return;
     }
-    let usuario = new Usuario(null,null, null, null, null, this.forma.value.tipoUsuario, this.forma.value.tipoID, this.forma.value.numDocumento,null, this.forma.value.codigoUniversitario, null, null, null, null, null, null);
-    
+    let codigoEstudiantil = 'aa';
+    if (this.forma.value.codigoUniversitario !== '') {
+      codigoEstudiantil = this.forma.value.codigoUniversitario;
+    }
+    // tslint:disable-next-line: max-line-length
+    const usuario = new Usuario(null, null, null, null, null, this.forma.value.tipoUsuario, this.forma.value.tipoID, this.forma.value.numDocumento, null, codigoEstudiantil, null, null, null, null, null, null);
+
     this.router.navigate(['/registro-tres']);
     this._usuarioService.paginadoRegistro2a3(usuario);
   }

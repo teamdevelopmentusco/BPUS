@@ -12,7 +12,8 @@ import { UsuarioService, SolicitudService } from '../../../services/service.inde
 export class ProgresoComponent implements OnInit {
   today = new Date();
   usuario: Usuario;
-  solicitud: Solicitud;
+  solicitudEstudiante: Solicitud;
+  // estadoSolicitud = 'Por subir';
   jstoday = '';
   // tslint:disable-next-line: variable-name
   constructor(public _usuarioService: UsuarioService, public _solicitudService: SolicitudService, ) {
@@ -23,6 +24,15 @@ export class ProgresoComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.cargarSolicitud();
   }
+
+  cargarSolicitud() {
+    this._solicitudService.cargarSolicitudEstudiante((this.usuario._id)).subscribe((solicitud: Solicitud) => {
+      this.solicitudEstudiante = solicitud;
+      console.log(this.solicitudEstudiante.estadoSolicitud);
+    });
+  }
+
 
 }
