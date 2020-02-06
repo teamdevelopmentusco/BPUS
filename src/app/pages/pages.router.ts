@@ -58,7 +58,7 @@ const pagesRouter: Routes = [
 
      { path: 'semillero' , component: SemilleroUscoComponent},
      { path: 'pasantia' , component: PasantiaUscoComponent},
-     { path: 'visualizador' , component: VisualizadorArchivoComponent}
+     { path: 'visualizador' , component: VisualizadorArchivoComponent},
     {
         path: 'admin' ,
         component: AdminComponent,
